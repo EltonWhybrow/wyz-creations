@@ -1,0 +1,34 @@
+.different-slider .slick-list {
+  margin: 0 -10px;
+  padding: 10px 0;
+}
+
+.different-slider .slick-track {
+  display: flex !important;
+  gap: 20px; /* Gap between slides */
+}
+
+.different-content p {
+  @apply mb-0! leading-none;
+}
+
+.different-slider-module {
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: 0% 70%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .different-slider-module {
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      var(--bg-image);
+    background-size: cover;
+    background-position: 0% 70%;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "generatePress-child-theme",
+  "version": "1.0.0",
+  "description": "Truvi for guests child theme using generatePress and tailwindcss",
+  "author": "Truvi",
+  "license": "ISC",
+  "scripts": {
+    "dev": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "watch:css": "tailwindcss -i ./assets/css/input/truvi-styles.css -o ./assets/css/truvi-styles.css --watch",
+    "watch:js": "npx chokidar \"./assets/js/input/**/*.js\" -c \"npm run js:dev\"",
+    "js:dev": "cp ./assets/js/input/truvi-main.js ./assets/js/truvi-main.min.js",
+    "build": "npm run css:build && npm run js:build",
+    "css:build": "tailwindcss -i ./assets/css/input/truvi-styles.css -o ./assets/css/truvi-styles.css --minify",
+    "js:build": "terser ./assets/js/input/truvi-main.js -o ./assets/js/truvi-main.min.js --compress --mangle"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.1",
+    "sass": "^1.93.3",
+    "terser": "^5.44.1"
+  }
+}

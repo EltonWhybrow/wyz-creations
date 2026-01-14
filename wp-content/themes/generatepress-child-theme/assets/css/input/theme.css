@@ -1,0 +1,21 @@
+@theme {
+  /* Your custom colors */
+  --color-truvi-guest-black-chalk: #020202;
+  --color-truvi-guest-black-chalk-50: rgba(36, 36, 36, 0.5);
+  --color-wyz-guest-white: rgb(252, 252, 252);;
+  /* --color-truvi-guest-black: #191615; */
+  --color-truvi-guest-light-gray: #f4f4f4;
+  --color-truvi-guest-med-gray: #e4e4e4;
+  --color-truvi-guest-dark-gray: #9d9d9d;
+  --color-truvi-guest-orange: #f97316;
+  --color-truvi-guest-green: #09a11b;
+  --color-truvi-guest-lime-green: #00ca18;
+  --color-truvi-guest-yellow: #fee01b;
+  --color-truvi-guest-blue: #4b5ee4;
+  --color-truvi-guest-red: #dc3545;
+  --color-truvi-guest-warning-yellow: #edb200;
+
+  /* Your custom fonts */
+  --font-family-sans: "DM Sans", system-ui, sans-serif;
+  --font-family-heading: "Work Sans", sans-serif;
+}

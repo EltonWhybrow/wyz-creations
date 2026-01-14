@@ -1,0 +1,52 @@
+/* Your components */
+@layer components {
+  #truvi-navigation {
+    @apply !m-0;
+    ul#truvi-menu {
+      @apply flex flex-row items-center gap-4 md:gap-7 !m-0 !p-0 !list-none;
+      li {
+        a {
+          @apply font-bold !text-[var(--color-truvi-guest-black-chalk)] md:text-[18px] text-base hover:!underline !no-underline;
+        }
+      }
+    }
+  }
+
+  /* Mobile menu */
+  #truvi-mobile-menu {
+    @apply !m-0 !p-0;
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none !important;
+    }
+  }
+
+  #truvi-mobile-menu a {
+    display: block;
+    padding: 20px !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    @apply text-center! font-semibold! text-2xl! rounded-none! border-0! no-underline! hover:bg-[var(--color-truvi-guest-black-chalk)]/90! hover:!text-[var(--color-wyz-guest-white)] transition-colors! duration-300!;
+    color: var(--color-truvi-guest-black-chalk) !important;
+  }
+
+  #truvi-mobile-menu .current-menu-item > a {
+    @apply bg-[var(--color-truvi-guest-black-chalk)] !text-[var(--color-wyz-guest-white)];
+  }
+
+  .burger-line {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #truvi-navigation {
+      display: none !important;
+    }
+  }
+}

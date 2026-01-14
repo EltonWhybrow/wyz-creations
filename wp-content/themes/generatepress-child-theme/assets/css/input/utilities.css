@@ -1,0 +1,34 @@
+/* Your utilities */
+@layer utilities {
+  .font-sans {
+    font-family: var(--font-family-sans);
+  }
+  .font-heading {
+    font-family: var(--font-family-heading);
+  }
+
+  /* fixes for my account/trips page */
+  .separate-containers .site-main {
+    margin: 0 !important;
+  }
+  .entry-content:not(:first-child) {
+    margin-top: 0 !important;
+  }
+
+  .error404 {
+    .content-area#primary {
+      @apply mx-[10vw]! w-auto!;
+    }
+  }
+
+  #info-top-banner {
+    /* starts hidden → jQuery slides it down */
+    @apply hidden px-5 py-3 text-sm md:text-base;
+    i {
+      @apply right-0 absolute mt-1 font-semibold cursor-pointer;
+    }
+    span {
+      @apply font-semibold;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.contact-us-content {
+  h1 {
+    @apply text-[40px]! leading-10! md:text-[70px]! md:leading-[70px]! font-semibold;
+  }
+  p {
+    @apply my-0! leading-7!;
+  }
+}

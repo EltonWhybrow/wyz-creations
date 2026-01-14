@@ -1,0 +1,23 @@
+/* Trusted Slider Styles */
+.trusted-slider .slick-list {
+  margin: 0 -10px;
+  padding: 10px 0;
+}
+
+.trusted-slider .slick-track {
+  display: flex !important;
+  gap: 20px; /* Gap between slides */
+}
+
+.trusted-content {
+  @apply text-[var(--color-wyz-guest-white)];
+  p {
+    @apply mb-0! leading-none;
+  }
+}
+
+.trusted-header {
+  p {
+    @apply mt-2.5 mb-0 text-[24px] text-[var(--color-wyz-guest-white)]!;
+  }
+}

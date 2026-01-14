@@ -1,0 +1,8 @@
+.our-mission-content {
+  h1 {
+    @apply text-[36px]! leading-9! md:text-[64px]! md:leading-[60px]! font-semibold;
+  }
+  p {
+    @apply my-0! leading-7!;
+  }
+}

@@ -1,0 +1,5 @@
+.page-banner-content {
+  h1 {
+    @apply text-[40px]! leading-10! md:text-[64px]! md:leading-[60px]! font-semibold  mx-auto;
+  }
+}

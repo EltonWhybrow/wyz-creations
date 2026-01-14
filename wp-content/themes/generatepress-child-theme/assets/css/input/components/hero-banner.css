@@ -1,0 +1,5 @@
+.banner-content {
+  h1 {
+    @apply mx-auto mb-6 md:max-w-[600px]! font-semibold text-[40px]! text-[var(--color-wyz-guest-white)] md:text-[78px]! leading-10! md:leading-20!;
+  }
+}

@@ -1,0 +1,13 @@
+/* Thing go wrong Section */
+@layer components {
+  .info-card {
+    min-height: 0; /* Important for grid items */
+    @apply bg-(--color-truvi-guest-light-gray) border-(--color-truvi-guest-med-gray) py-[30px] px-5 md:p-10 rounded-[35px] border hover:shadow-sm transition-shadow;
+    h3 {
+      @apply mb-2.5! md:mb-1!;
+    }
+    p {
+      @apply text-[18px] mb-0! leading-6!;
+    }
+  }
+}

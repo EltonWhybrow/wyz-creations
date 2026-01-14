@@ -1,0 +1,35 @@
+/*
+ Theme Name:   Truvi Guests Child Theme
+ Theme URI:    https://yourwebsite.com
+ Description:  Child theme for GeneratePress
+ Author:       Truvi
+ Author URI:   https://yourwebsite.com
+ Template:     generatepress
+ Version:      1.0.0
+ Text Domain:  generatepress-child
+*/
+
+/* ===================================
+  Kill every default container/padding that fights Tailwind
+   =================================== */
+
+.site-content,
+#page,
+.grid-container,
+.inside-article,
+.content-area,
+#primary {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Optional: also remove header/footer padding if you want full-bleed */
+.site-header,
+.site-footer {
+  padding-left: 0;
+  padding-right: 0;
+}

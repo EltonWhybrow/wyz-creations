@@ -1,0 +1,39 @@
+.back-to-top {
+  @apply flex justify-center items-center;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 60px;
+  height: 60px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
