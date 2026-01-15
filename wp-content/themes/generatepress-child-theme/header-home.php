@@ -15,8 +15,17 @@
 
 <body <?php body_class(); ?>>
     <!-- coupon banner  -->
-    <div id="info-top-banner" class="bg-[var(--color-truvi-guest-black-chalk)] text-[var(--color-wyz-guest-white)] text-center">
-        <div class="relative mx-5 md:mx-[10vw]">🎉 Limited Offer: FREE website for your small to medium business from our partners <span><a href="https://widesign.co.uk" target="_blank">WideSign</a></span> <i class="fas fa-close"></i>
+    <div id="info-top-banner" class="bg-[var(--color-truvi-guest-black-chalk)] text-[var(--color-wyz-guest-white)]">
+        <div class="relative flex justify-between items-center gap-2 p-0 rounded">
+            <span class="flex-1">
+                🎉 Offer: FREE website for your business from our partners
+                <a href="https://widesign.co.uk" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">
+                    WideSign
+                </a>
+            </span>
+            <div class="flex flex-shrink-0 justify-center text-white/85 hover:text-white align-middle">
+                <i class="fas fa-close"></i>
+            </div>
         </div>
     </div>
 

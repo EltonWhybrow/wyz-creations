@@ -9,6 +9,7 @@
       "Courier New", monospace;
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-blue-800: oklch(42.4% 0.199 265.638);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-800: oklch(27.8% 0.033 256.848);
@@ -627,9 +628,6 @@
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
-  .gap-12 {
-    gap: calc(var(--spacing) * 12);
-  }
   .gap-\[30px\] {
     gap: 30px;
   }
@@ -655,6 +653,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .rounded {
+    border-radius: 0.25rem;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -838,6 +839,9 @@
   .pt-5\! {
     padding-top: calc(var(--spacing) * 5) !important;
   }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
+  }
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
@@ -855,6 +859,15 @@
   }
   .pr-8 {
     padding-right: calc(var(--spacing) * 8);
+  }
+  .pb-1 {
+    padding-bottom: calc(var(--spacing) * 1);
+  }
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
+  }
+  .pb-3 {
+    padding-bottom: calc(var(--spacing) * 3);
   }
   .pb-5\! {
     padding-bottom: calc(var(--spacing) * 5) !important;
@@ -1006,6 +1019,9 @@
       color: color-mix(in oklab, var(--color-wyz-guest-white) 90%, transparent);
     }
   }
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
   .text-gray-500 {
     color: var(--color-gray-500);
   }
@@ -1024,8 +1040,17 @@
   .text-white\! {
     color: var(--color-white) !important;
   }
+  .text-white\/85 {
+    color: color-mix(in srgb, #fff 85%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-white) 85%, transparent);
+    }
+  }
   .no-underline\! {
     text-decoration-line: none !important;
+  }
+  .underline {
+    text-decoration-line: underline;
   }
   .opacity-0 {
     opacity: 0%;
@@ -1144,6 +1169,27 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-blue-600);
+      }
+    }
+  }
+  .hover\:text-blue-800 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-blue-800);
+      }
+    }
+  }
+  .hover\:text-gray-800 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-gray-800);
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
       }
     }
   }
@@ -2686,8 +2732,8 @@ button.faq-question {
   }
   #info-top-banner {
     display: none;
-    padding-inline: calc(var(--spacing) * 5);
-    padding-block: calc(var(--spacing) * 3);
+    padding-inline: calc(var(--spacing) * 2);
+    padding-block: calc(var(--spacing) * 1);
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
     @media (width >= 48rem) {
@@ -2695,8 +2741,6 @@ button.faq-question {
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
     i {
-      position: absolute;
-      right: calc(var(--spacing) * 0);
       margin-top: calc(var(--spacing) * 1);
       cursor: pointer;
       --tw-font-weight: var(--font-weight-semibold);

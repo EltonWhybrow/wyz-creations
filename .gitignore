@@ -1,103 +1,67 @@
-*~
-.DS_Store
-.svn
-.cvs
-*.bak
-*.swp
-Thumbs.db
+# ignore everything in the root except the "wp-content" directory and some ci stuff.
+# !wp-content/
+/wp-admin
+/wp-includes
+wp-*.php
 
 # ignore everything in the "wp-content" directory, except:
-# "mu-plugins" directory
-# "plugins" directory
-# "themes" directory
+# "mu-plugins", "*-plugins", "themes" directory
 wp-content/*
 wp-content/mu-plugins/
-wp-content/object-cache.php
-wp-content/uploads/
 wp-content/plugins/*
-!wp-content/plugins/
-!wp-content/pluginsfolder/
-!wp-content/plugins/plugins.html
+wp-content/plugins/advanced-custom-fields/
+wp-content/plugins/all-in-one-wp-migration/
+wp-content/plugins/classic-editor/
+wp-content/plugins/acf-content-analysis-for-yoast-seo/
+wp-content/plugins/duplicate-post-page-menu-custom-post-type/
+wp-content/plugins/html-editor-syntax-highlighter/
+wp-content/plugins/wordpress-seo/
+wp-content/plugins/wpforms-lite/
+wp-content/plugins/complianz-gdpr
+
+
 !wp-content/themes/
-
-# Ignore node_modules inside all themes
-wp-content/themes/generatepress-child-theme/node_modules/
-
-# wordpress specific
-wp-config.php
-.htaccess
-wp-content/blogs.dir/
-wp-content/upgrade/*
-wp-content/backup-db/*
+# pagely advice 
 wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
-wp-content/cache/*
-wp-content/cache/supercache/*
+wp-content/cache/
+wp-content/backups/
 
-# wpengine specific
-.smushit-status
-.gitattributes
-_wpeprivate*
+# ignore specific files/folders within the theme
+wp-content/themes/generatepress-child-theme/.idea
+wp-content/themes/generatepress-child-theme/.vscode
+wp-content/themes/generatepress-child-theme/build/mix-manifest.json
+wp-content/themes/generatepress-child-theme/build
+wp-content/themes/generatepress-child-theme/local.json
 
-# smart plugin manager specific 
-autoupdater_maintenance_mode_enabled.tmp
-
-# wp core (as of 4.9.5)
-/db-config.php
-/wp-content/themes/twentyten
-/wp-content/themes/twentyeleven
-/wp-content/themes/twentytwelve
-/wp-content/themes/twentythirteen
-/wp-content/themes/twentyfourteen
-/wp-content/themes/twentyfifteen
-/wp-content/themes/twentysixteen
-/wp-content/themes/twentyseventeen
-/wp-content/themes/twentyeighteen
-/wp-content/themes/twentynineteen
-/wp-content/themes/twentytwenty
-/wp-content/plugins/akismet*
-
-# large/disallowed file types
-# a CDN should be used for these
-*.hqx
-*.bin
-*.exe
-*.dll
-*.deb
-*.dmg
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*~
+# ignore specific files/folders misc
+/index.php
+xmlrpc.php
+license.txt
+readme.html
+sitemap.xml
+db-config.php
+sitemap.xml.gz
+wp-config.php
+wp-config-hosting.php
+.htaccess
 .DS_Store
-.svn
-.cvs
-*.bak
-*.swp
-Thumbs.db
-*.msi
-*.msp
-*.msm
-*.mid
-*.midi
-*.kar
-*.mp3
-*.ogg
-*.m4a
-*.ra
-*.3gpp
-*.3gp
-*.mp4
-*.mpeg
-*.mpg
-*.mov
-*.webm
-*.flv
-*.m4v
-*.mng
-*.asx
-*.asf
-*.wmv
-*.avi
+.vscode
+local-xdebuginfo.php
+
+# ignore these plugins
+#wp-content/plugins/hello.php
+
+# ignore node dependency directories
+#node_modules/
+wp-content/themes/generatepress-child-theme/node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore editor
+*.history/
+
+

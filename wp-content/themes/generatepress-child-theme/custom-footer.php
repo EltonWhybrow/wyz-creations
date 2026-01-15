@@ -25,7 +25,7 @@
             <!-- Column 2 – Services -->
             <div class="flex sm:flex-row flex-col justify-between gap-4 md:gap-8 w-full md:w-3/5">
                 <div class="footer-col">
-                    <!-- <h4>Services</h4> -->
+                    <h4>WideSign Creative</h4>
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'footer-services',     // we'll register this in a sec
@@ -39,8 +39,8 @@
                 </div>
 
                 <!-- Column 3 – Support -->
-                <div class="hidden md:block footer-col">
-                    <h4>Support</h4>
+                <div class="footer-col">
+                    <h4>Franks Emporium</h4>
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'footer-support',     // we'll register this in a sec
@@ -54,8 +54,8 @@
                 </div>
 
                 <!-- Column 4 – Company -->
-                <div class="hidden md:block footer-col">
-                    <h4>Company</h4>
+                <div class="footer-col">
+                    <h4>Touchbase</h4>
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'footer-company',     // we'll register this in a sec

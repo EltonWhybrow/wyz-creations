@@ -14,7 +14,7 @@ $action_link     = $args['link'];
 
 <div class="relative overflow-hidden section steps-slider-module"
     <?php if ($action_bg_image && is_array($action_bg_image) && isset($action_bg_image['url'])): ?>
-    style="background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.9)), url('<?php echo esc_url($action_bg_image['url']); ?>') 0% 50% / cover no-repeat;"
+    style="background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 1)), url('<?php echo esc_url($action_bg_image['url']); ?>') 0% 50% / cover no-repeat;"
     <?php endif; ?>>
     <!-- Optional: Overlay for better text readability -->
     <div class="z-0 absolute inset-0 bg-black/20"></div>
@@ -25,7 +25,7 @@ $action_link     = $args['link'];
         <div class="w-full">
 
             <!-- Content Section -->
-            <div class="flex flex-col justify-center items-center px-4 md:px-[10vw] py-6 md:py-[120px] text-center">
+            <div class="flex flex-col justify-center items-center px-4 md:px-[10vw] md:py-[120px] pt-6 pb-3 text-center">
 
                 <?php if ($action_link) : ?>
                     <div class="w-full slide-up">

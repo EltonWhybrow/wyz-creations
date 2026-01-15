@@ -23,9 +23,9 @@
 
   #info-top-banner {
     /* starts hidden → jQuery slides it down */
-    @apply hidden px-5 py-3 text-sm md:text-base;
+    @apply hidden px-2 py-1 text-sm md:text-base;
     i {
-      @apply right-0 absolute mt-1 font-semibold cursor-pointer;
+      @apply mt-1 font-semibold cursor-pointer;
     }
     span {
       @apply font-semibold;
