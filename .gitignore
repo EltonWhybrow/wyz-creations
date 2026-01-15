@@ -42,7 +42,7 @@ readme.html
 sitemap.xml
 db-config.php
 sitemap.xml.gz
-
+wp-config.php
 wp-config-hosting.php
 .htaccess
 .DS_Store
