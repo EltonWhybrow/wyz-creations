@@ -25,7 +25,7 @@ $action_link     = $args['link'];
         <div class="w-full">
 
             <!-- Content Section -->
-            <div class="flex flex-col justify-center items-center px-4 md:px-[10vw] md:py-[120px] pt-6 pb-3 text-center">
+            <div class="flex flex-col justify-center items-center px-4 md:px-[10vw] py-6 md:py-[120px] text-center">
 
                 <?php if ($action_link) : ?>
                     <div class="w-full slide-up">
