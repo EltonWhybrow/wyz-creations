@@ -1,0 +1,76 @@
+name: Production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install packages & build prod wp theme
+        run: |
+          ls
+          rm README.md
+          ls
+          cd wp-content/themes/widesign-2023/
+          ls
+          npm install
+          npm run prod
+          ls
+          echo '>>>> remove stuff'
+          rm -rf assets
+          rm local-example.json
+          rm -rf node_modules
+          rm package-lock.json
+          rm package.json
+          rm tailwind*.js
+          rm webpack.*.js 
+          echo '>>>> AFTER REMOVE stuff'                                            
+          ls
+          echo '>>>> BACK UP TO ROOT' 
+          cd ../../../
+          rm .gitignore
+          rm -rf .git
+          rm -rf .github
+          echo '>>>> PATH AND FILES LEFT' 
+          pwd
+          ls
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-folder
+          path: |
+            *
+
+  deployment:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency: production
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/download-artifact@v4
+        with:
+          name: build-folder
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ftps3.uk.cloudlogin.co
+          username: ${{ secrets.FTP_USER_PROD }}
+          password: ${{ secrets.FTP_PWD_PROD }}
