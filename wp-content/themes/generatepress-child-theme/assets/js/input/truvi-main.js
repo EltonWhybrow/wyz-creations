@@ -260,4 +260,21 @@ jQuery(function ($) {
         "info_banner_dismissed=1;expires=" + d.toUTCString() + ";path=/";
     });
   });
+
+
+  const openBtn = document.getElementById('open-linkme');
+  const closeBtn = document.getElementById('close-linkme');
+  const panel = document.getElementById('linkme-panel');
+
+  openBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    panel.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn.addEventListener('click', function () {
+    panel.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
 });
