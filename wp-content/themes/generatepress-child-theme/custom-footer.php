@@ -74,7 +74,7 @@
             <!-- YOUR MENU / CONTENT HERE -->
             <h2 class="!mb-0">Subscribe</h2>
             <p class="!mb-10">You'll get notified of new Tees and special discounts</p>
-            <?php echo do_shortcode('[contact-form-7 id="c06b1a3" title="Contact form 1"]'); ?>
+            <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
         </div>
     </div>
     </div>

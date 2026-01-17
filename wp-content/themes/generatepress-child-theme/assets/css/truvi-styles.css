@@ -350,12 +350,6 @@
   .\!mb-0 {
     margin-bottom: calc(var(--spacing) * 0) !important;
   }
-  .\!mb-1 {
-    margin-bottom: calc(var(--spacing) * 1) !important;
-  }
-  .\!mb-6 {
-    margin-bottom: calc(var(--spacing) * 6) !important;
-  }
   .\!mb-10 {
     margin-bottom: calc(var(--spacing) * 10) !important;
   }
@@ -364,9 +358,6 @@
   }
   .mb-0\! {
     margin-bottom: calc(var(--spacing) * 0) !important;
-  }
-  .mb-1 {
-    margin-bottom: calc(var(--spacing) * 1);
   }
   .mb-1\! {
     margin-bottom: calc(var(--spacing) * 1) !important;
