@@ -18,9 +18,9 @@
     <div id="info-top-banner" class="bg-[var(--color-truvi-guest-dark-gray)] text-[var(--color-wyz-guest-white)]">
         <div class="relative flex justify-between items-center gap-4 p-2">
             <span class="flex-1 text-center">
-                🎉 FREE 🎉 website for small your business
+                🎉 FREE 🎉 website for your business at
                 <a href="https://widesign.co.uk" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-400! underline">
-                    @WideSign
+                    WideSign
                 </a>
             </span>
             <div class="flex flex-shrink-0 justify-center text-white/85 hover:text-white align-middle">
@@ -31,13 +31,13 @@
     <div id="link-container" class="mx-auto max-w-[500px]">
         <header id="masthead" class="flex items-center gap-2 bg-white p-5 md:px-6 lg:px-[100px]" role="banner">
             <div class="w-3/4">
-                <a href="<?php echo home_url('/'); ?>" class="">
-                    <img
-                        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
-                        alt="<?php bloginfo('name'); ?>"
-                        class="w-auto" />
 
-                </a>
+                <img
+                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
+                    alt="<?php bloginfo('name'); ?>"
+                    class="w-auto" />
+
+
             </div>
             <div class="w-1/4">
                 <a href="mailto:info@wyzcreations.com" class="pb-1"> <img
