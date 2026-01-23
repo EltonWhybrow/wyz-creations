@@ -113,6 +113,16 @@ add_action('after_setup_theme', function () {
 add_action('generate_footer', 'my_custom_footer');
 function my_custom_footer()
 {
+    // NEVER render footer during REST requests
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        return;
+    }
+
+    // NEVER render footer during admin-ajax (CF7 uses this too)
+    if (wp_doing_ajax()) {
+        return;
+    }
+
     get_template_part('custom-footer');
 }
 
