@@ -3,6 +3,19 @@
 /**
  * Custom Footer – Replace the default GeneratePress footer completely
  */
+
+ <?php
+global $post;
+
+// If footer is loaded outside the loop, recover the queried post
+if ( ! $post ) {
+    $post_id = get_queried_object_id();
+    if ( $post_id ) {
+        $post = get_post( $post_id );
+        setup_postdata( $post );
+    }
+}
+
 ?>
 <footer id="colophon" class="bg-[radial-gradient(39.47%_143.28%_at_50%_143.28%,#4E4E4E_0%,#191615_100%)] px-5 md:px-24 py-14 md:py-20 md:text-left text-center" role="contentinfo">
     <div class="mx-auto w-full xl:max-w-[85%] truvi-footer">
@@ -79,8 +92,7 @@
                 <li>Chance to win a FREE T-shirt every month</li>
 
             </ul>
-            <?php //echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); 
-            ?>
+            <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
         </div>
     </div>
 
@@ -99,12 +111,7 @@
                 <li>Lock in early access before spots fill up</li>
 
             </ul>
-            <?php
-            global $post;
-
-            if ($post && $post->ID) {
-                echo do_shortcode('[contact-form-7 id="6173ea3"]');
-            }
+            <?php echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]');
             ?>
         </div>
     </div>
