@@ -68,7 +68,7 @@ function truvi_enqueue_scripts()
     wp_enqueue_script(
         'truvi-main-js',
         get_stylesheet_directory_uri() . '/assets/js/truvi-main.min.js', // npm run build to re minify latest
-        array('jquery', 'slick-js'), // Important: slick-js as dependency
+        array('slick-js'), // Important: slick-js as dependency
         $theme_version,
         true
     );
@@ -157,7 +157,7 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu
         $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
         $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
         $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
-        $attributes .= ' class="block py-3 px-4 text-gray-800 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors"';
+        $attributes .= ' class="block hover:bg-gray-50 px-4 py-3 rounded-lg text-gray-800 hover:text-blue-600 transition-colors"';
 
         $item_output = $args->before;
         $item_output .= '<a' . $attributes . '>';
