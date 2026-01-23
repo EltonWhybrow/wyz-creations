@@ -146,4 +146,5 @@ get_template_part('parts/action-links', null, [
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php // get_footer(); 
+?>
