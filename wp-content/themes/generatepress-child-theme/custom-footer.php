@@ -4,15 +4,15 @@
  * Custom Footer – Replace the default GeneratePress footer completely
  */
 
- <?php
+
 global $post;
 
 // If footer is loaded outside the loop, recover the queried post
-if ( ! $post ) {
+if (! $post) {
     $post_id = get_queried_object_id();
-    if ( $post_id ) {
-        $post = get_post( $post_id );
-        setup_postdata( $post );
+    if ($post_id) {
+        $post = get_post($post_id);
+        setup_postdata($post);
     }
 }
 
