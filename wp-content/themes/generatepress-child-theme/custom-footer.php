@@ -73,7 +73,12 @@
         <div class="linkme-content">
             <!-- YOUR MENU / CONTENT HERE -->
             <h2 class="!mb-0">Subscribe</h2>
-            <p class="!mb-10">You'll get notified of new Tees and special discounts</p>
+            <ul class="!mb-6 ml-0! list-inside list">
+                <li>Get notified first about new T-shirt drops</li>
+                <li>Receive exclusive discounts and promo codes not shared publicly</li>
+                <li>Chance to win a FREE T-shirt every month</li>
+
+            </ul>
             <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
         </div>
     </div>

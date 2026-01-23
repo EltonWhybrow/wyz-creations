@@ -17,6 +17,8 @@
 }
 
 #linkme-panel .linkme-content {
+    max-width: 500px;
+    margin: 0 auto;
     padding: 100px 20px;
     overflow-y: auto;
     height: 100%;
