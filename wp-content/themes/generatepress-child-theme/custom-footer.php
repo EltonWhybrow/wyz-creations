@@ -99,7 +99,12 @@
                 <li>Lock in early access before spots fill up</li>
 
             </ul>
-            <?php //echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]');
+            <?php
+            global $post;
+
+            if ($post && $post->ID) {
+                echo do_shortcode('[contact-form-7 id="6173ea3"]');
+            }
             ?>
         </div>
     </div>
