@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div id="widesign-panel">
+    <!-- <div id="widesign-panel">
         <button id="close-widesign" aria-label="Close menu">✕</button>
 
         <div class="linkme-content">
@@ -98,9 +98,10 @@
                 <li>Lock in early access before spots fill up</li>
 
             </ul>
-            <?php echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]'); ?>
+            <?php // echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]'); 
+            ?>
         </div>
-    </div>
+    </div> -->
     </div>
 
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
