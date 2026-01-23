@@ -90,7 +90,7 @@
 
             <h2 class="!mb-0">Claim a FREE Website</h2>
             <h3 class="!mt-0 !mb-4 font-normal text-base!">
-                Here at Widesign, we love helping businesses with their digital journey, which is why we offer a free website to get you started.
+                Here at <a class="text-white! undeline!" href="https://widesign.co.uk" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Widesign</a>, we love helping businesses with their digital journey, which is why we offer a free website to get you started.
             </h3>
             <ul class="!mb-6 ml-4! list-inside list">
                 <li>View info and a short video on what you get</li>
