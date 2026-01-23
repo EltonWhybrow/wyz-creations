@@ -262,44 +262,35 @@ jQuery(function ($) {
   });
 
   // WYZ CReations panel subscribe
-  document.addEventListener('DOMContentLoaded', function () {
-    const openBtn = document.getElementById('open-linkme');
-    const closeBtn = document.getElementById('close-linkme');
-    const panel = document.getElementById('linkme-panel');
+  const openBtn = document.getElementById('open-linkme');
+  const closeBtn = document.getElementById('close-linkme');
+  const panel = document.getElementById('linkme-panel');
 
-    // Only run if all elements exist on this page
-    if (openBtn && closeBtn && panel) {
-      openBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        panel.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
+  openBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    panel.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
 
-      closeBtn.addEventListener('click', function () {
-        panel.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
+  closeBtn.addEventListener('click', function () {
+    panel.classList.remove('active');
+    document.body.style.overflow = '';
   });
 
   // Widesign panel subscribe
-  document.addEventListener('DOMContentLoaded', function () {
-    const openWidesignBtn = document.getElementById('open-widesign');
-    const closeWidesignBtn = document.getElementById('close-widesign');
-    const widesignPanel = document.getElementById('widesign-panel');
+  const openWidesignBtn = document.getElementById('open-widesign');
+  const closeWidesignBtn = document.getElementById('close-widesign');
+  const widesignPanel = document.getElementById('widesign-panel');
 
-    if (openWidesignBtn && closeWidesignBtn && widesignPanel) {
-      openWidesignBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        widesignPanel.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
+  openWidesignBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    widesignPanel.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
 
-      closeWidesignBtn.addEventListener('click', function () {
-        widesignPanel.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
+  closeWidesignBtn.addEventListener('click', function () {
+    widesignPanel.classList.remove('active');
+    document.body.style.overflow = '';
   });
 
 });
