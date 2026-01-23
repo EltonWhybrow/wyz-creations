@@ -36,7 +36,16 @@ get_header('home'); ?>
 <?php //get_template_part('parts/trusted-travelers'); 
 ?>
 
-
+<?php
+while (have_posts()) :
+    the_post();
+?>
+    <div class="page-content">
+        <?php the_content(); ?>
+    </div>
+<?php
+endwhile;
+?>
 
 <?php
 $cta_one = get_field('linksection');
