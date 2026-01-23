@@ -261,36 +261,45 @@ jQuery(function ($) {
     });
   });
 
-  // WYZ CReations panel subscribe
-  const openBtn = document.getElementById('open-linkme');
-  const closeBtn = document.getElementById('close-linkme');
-  const panel = document.getElementById('linkme-panel');
+  // WYZ Creations panel subscribe
+  (function () {
+    const openBtn = document.getElementById('open-linkme');
+    const closeBtn = document.getElementById('close-linkme');
+    const panel = document.getElementById('linkme-panel');
 
-  openBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    panel.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
+    if (!openBtn || !closeBtn || !panel) return;
 
-  closeBtn.addEventListener('click', function () {
-    panel.classList.remove('active');
-    document.body.style.overflow = '';
-  });
+    openBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      panel.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', function () {
+      panel.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  })();
 
   // Widesign panel subscribe
-  const openWidesignBtn = document.getElementById('open-widesign');
-  const closeWidesignBtn = document.getElementById('close-widesign');
-  const widesignPanel = document.getElementById('widesign-panel');
+  (function () {
+    const openBtn = document.getElementById('open-widesign');
+    const closeBtn = document.getElementById('close-widesign');
+    const panel = document.getElementById('widesign-panel');
 
-  openWidesignBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    widesignPanel.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
+    if (!openBtn || !closeBtn || !panel) return;
 
-  closeWidesignBtn.addEventListener('click', function () {
-    widesignPanel.classList.remove('active');
-    document.body.style.overflow = '';
-  });
+    openBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      panel.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', function () {
+      panel.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  })();
+
 
 });
