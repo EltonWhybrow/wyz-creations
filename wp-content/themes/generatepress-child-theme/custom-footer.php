@@ -4,9 +4,7 @@
  * Custom Footer – Replace the default GeneratePress footer completely
  */
 
-if (defined('REST_REQUEST') && REST_REQUEST) {
-    return;
-}
+
 
 ?>
 <footer id="colophon" class="bg-[radial-gradient(39.47%_143.28%_at_50%_143.28%,#4E4E4E_0%,#191615_100%)] px-5 md:px-24 py-14 md:py-20 md:text-left text-center" role="contentinfo">
