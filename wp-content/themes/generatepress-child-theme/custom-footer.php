@@ -5,17 +5,6 @@
  */
 
 
-global $post;
-
-// If footer is loaded outside the loop, recover the queried post
-if (! $post) {
-    $post_id = get_queried_object_id();
-    if ($post_id) {
-        $post = get_post($post_id);
-        setup_postdata($post);
-    }
-}
-
 ?>
 <footer id="colophon" class="bg-[radial-gradient(39.47%_143.28%_at_50%_143.28%,#4E4E4E_0%,#191615_100%)] px-5 md:px-24 py-14 md:py-20 md:text-left text-center" role="contentinfo">
     <div class="mx-auto w-full xl:max-w-[85%] truvi-footer">
@@ -80,42 +69,8 @@ if (! $post) {
         </div>
     </div>
 
-    <div id="linkme-panel">
-        <button id="close-linkme" aria-label="Close menu">✕</button>
 
-        <div class="linkme-content">
-            <!-- YOUR MENU / CONTENT HERE -->
-            <h2 class="!mb-0">Subscribe</h2>
-            <ul class="!mb-6 ml-0! list-inside list">
-                <li>Get notified first about new T-shirt drops</li>
-                <li>Receive exclusive discounts and promo codes not shared publicly</li>
-                <li>Chance to win a FREE T-shirt every month</li>
 
-            </ul>
-            <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
-        </div>
-    </div>
-
-    <div id="widesign-panel">
-        <button id="close-widesign" aria-label="Close menu">✕</button>
-
-        <div class="linkme-content">
-
-            <h2 class="!mb-0">Claim a FREE Website</h2>
-            <h3 class="!mt-0 !mb-4 font-normal text-base!">
-                Here at <a class="text-white! undeline!" href="https://widesign.co.uk" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Widesign</a>, we love helping businesses with their digital journey, which is why we offer a free website to get you started.
-            </h3>
-            <ul class="!mb-6 ml-4! list-inside list">
-                <li>View info and a short video on what you get</li>
-                <li>Get yourself in the queue early</li>
-                <li>Lock in early access before spots fill up</li>
-
-            </ul>
-            <?php echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]');
-            ?>
-        </div>
-    </div>
-    </div>
 
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
         <i class="fa fa-arrow-up" aria-hidden="true"></i>
