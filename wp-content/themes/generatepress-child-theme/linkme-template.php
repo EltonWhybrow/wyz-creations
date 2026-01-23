@@ -121,8 +121,7 @@ get_template_part('parts/action-links', null, [
             <li>Chance to win a FREE T-shirt every month</li>
 
         </ul>
-        <?php // echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); 
-        ?>
+        <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
     </div>
 </div>
 
@@ -141,10 +140,9 @@ get_template_part('parts/action-links', null, [
             <li>Lock in early access before spots fill up</li>
 
         </ul>
-        <?php // echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]');
+        <?php echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]');
         ?>
     </div>
 </div>
 
-<?php get_footer();
-?>
+<?php get_footer(); ?>
