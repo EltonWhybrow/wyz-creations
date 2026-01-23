@@ -18,10 +18,9 @@
     <div id="info-top-banner" class="bg-[var(--color-truvi-guest-dark-gray)] text-[var(--color-wyz-guest-white)]">
         <div class="relative flex justify-between items-center gap-4 p-2">
             <span class="flex-1 text-center">
-                🎉 FREE 🎉 website for your business at
-                <a href="https://widesign.co.uk" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-400! underline">
-                    WideSign
-                </a>
+                🎉 FREE website for your business at
+                <a href="#" id="open-widesign" target="_blank" rel="noopener noreferrer" class="text-white! underline">
+                    WideSign</a> 🎉
             </span>
             <div class="flex flex-shrink-0 justify-center text-white/85 hover:text-white align-middle">
                 <i class="fas fa-close"></i>

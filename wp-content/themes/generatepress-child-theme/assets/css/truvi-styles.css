@@ -314,6 +314,9 @@
   .my-\[50px\] {
     margin-block: 50px;
   }
+  .\!mt-0 {
+    margin-top: calc(var(--spacing) * 0) !important;
+  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -350,11 +353,11 @@
   .\!mb-0 {
     margin-bottom: calc(var(--spacing) * 0) !important;
   }
+  .\!mb-4 {
+    margin-bottom: calc(var(--spacing) * 4) !important;
+  }
   .\!mb-6 {
     margin-bottom: calc(var(--spacing) * 6) !important;
-  }
-  .\!mb-10 {
-    margin-bottom: calc(var(--spacing) * 10) !important;
   }
   .mb-0 {
     margin-bottom: calc(var(--spacing) * 0);
@@ -410,8 +413,14 @@
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
   }
+  .ml-2\! {
+    margin-left: calc(var(--spacing) * 2) !important;
+  }
   .ml-4 {
     margin-left: calc(var(--spacing) * 4);
+  }
+  .ml-4\! {
+    margin-left: calc(var(--spacing) * 4) !important;
   }
   .block {
     display: block;
@@ -587,9 +596,6 @@
   }
   .list-inside {
     list-style-position: inside;
-  }
-  .list-outside {
-    list-style-position: outside;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -937,9 +943,21 @@
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
   }
+  .text-base\! {
+    font-size: var(--text-base) !important;
+    line-height: var(--tw-leading, var(--text-base--line-height)) !important;
+  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-sm\! {
+    font-size: var(--text-sm) !important;
+    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;
   }
   .text-xl {
     font-size: var(--text-xl);
@@ -2812,7 +2830,7 @@ button.faq-question {
     }
   }
 }
-#linkme-panel {
+#linkme-panel, #widesign-panel {
   position: fixed;
   left: 0;
   right: 0;
@@ -2824,17 +2842,17 @@ button.faq-question {
   transform: translateY(100%);
   transition: transform 0.4s ease;
 }
-#linkme-panel.active {
+#linkme-panel.active, #widesign-panel.active {
   transform: translateY(0);
 }
-#linkme-panel .linkme-content {
+#linkme-panel .linkme-content, #widesign-panel .linkme-content {
   max-width: 500px;
   margin: 0 auto;
   padding: 100px 20px;
   overflow-y: auto;
   height: 100%;
 }
-#close-linkme {
+#close-linkme, #close-widesign {
   position: absolute;
   top: 15px;
   right: 15px;

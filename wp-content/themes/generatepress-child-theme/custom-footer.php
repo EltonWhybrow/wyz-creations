@@ -82,6 +82,25 @@
             <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
         </div>
     </div>
+
+    <div id="widesign-panel">
+        <button id="close-widesign" aria-label="Close menu">✕</button>
+
+        <div class="linkme-content">
+
+            <h2 class="!mb-0">Claim a FREE Website</h2>
+            <h3 class="!mt-0 !mb-4 font-normal text-base!">
+                Here at Widesign, we love helping businesses with their digital journey, which is why we offer a free website to get you started.
+            </h3>
+            <ul class="!mb-6 ml-4! list-inside list">
+                <li>View info and a short video on what you get</li>
+                <li>Get yourself in the queue early</li>
+                <li>Lock in early access before spots fill up</li>
+
+            </ul>
+            <?php echo do_shortcode('[contact-form-7 id="6173ea3" title="FREE_Site_Widesign"]'); ?>
+        </div>
+    </div>
     </div>
 
     <button id="backToTop" class="back-to-top" aria-label="Back to top">

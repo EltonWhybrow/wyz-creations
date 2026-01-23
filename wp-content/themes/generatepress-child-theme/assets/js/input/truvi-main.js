@@ -261,7 +261,7 @@ jQuery(function ($) {
     });
   });
 
-
+  // WYZ CReations panel subscribe
   const openBtn = document.getElementById('open-linkme');
   const closeBtn = document.getElementById('close-linkme');
   const panel = document.getElementById('linkme-panel');
@@ -274,6 +274,22 @@ jQuery(function ($) {
 
   closeBtn.addEventListener('click', function () {
     panel.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  // Widesign panel subscribe
+  const openWidesignBtn = document.getElementById('open-widesign');
+  const closeWidesignBtn = document.getElementById('close-widesign');
+  const widesignPanel = document.getElementById('widesign-panel');
+
+  openWidesignBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    widesignPanel.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeWidesignBtn.addEventListener('click', function () {
+    widesignPanel.classList.remove('active');
     document.body.style.overflow = '';
   });
 

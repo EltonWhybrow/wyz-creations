@@ -1,4 +1,4 @@
-#linkme-panel {
+#linkme-panel, #widesign-panel {
     position: fixed;
     left: 0;
     right: 0;
@@ -12,11 +12,11 @@
     transition: transform 0.4s ease;
 }
 
-#linkme-panel.active {
+#linkme-panel.active, #widesign-panel.active {
     transform: translateY(0);
 }
 
-#linkme-panel .linkme-content {
+#linkme-panel .linkme-content, #widesign-panel .linkme-content {
     max-width: 500px;
     margin: 0 auto;
     padding: 100px 20px;
@@ -24,7 +24,7 @@
     height: 100%;
 }
 
-#close-linkme {
+#close-linkme, #close-widesign {
     position: absolute;
     top: 15px;
     right: 15px;
