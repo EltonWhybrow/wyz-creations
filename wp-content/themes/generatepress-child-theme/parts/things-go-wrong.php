@@ -28,34 +28,34 @@ $guests_damage_content = $guests_damage['damage_content'] ?? '';
 $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
 ?>
 
-<section id="things-go-wrong" class="py-10 md:py-24 px-0 md:px-4">
-    <div class="container mx-auto max-w-6xl">
+<section id="things-go-wrong" class="px-0 md:px-4 py-10 md:py-24">
+    <div class="mx-auto max-w-6xl container">
         <!-- Main Heading -->
-        <div class="text-center mb-12 md:mb-16">
-            <h1 class="text-[36px] leading-9 md:leading-16 md:text-[64px]! font-semibold! text-(--color-truvi-guest-black-chalk) mb-2!">
+        <div class="mb-12 md:mb-16 text-center">
+            <h1 class="text-[36px] leading-9 md:leading-16 md:text-[64px]! font-semibold! text-(--color-wyz-creations-guest-black-chalk) mb-2!">
                 <?php echo esc_html($things_title); ?>
             </h1>
-            <p class="text-xl md:text-[24px]  max-w-3xl !mx-auto">
+            <p class="!mx-auto max-w-3xl md:text-[24px] text-xl">
                 <?php echo esc_html($things_subtitle); ?>
             </p>
         </div>
 
-        <div class="container mx-auto px-4 md:pb-16">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-8 items-stretch">
+        <div class="mx-auto px-4 md:pb-16 container">
+            <div class="items-stretch gap-5 md:gap-8 grid grid-cols-1 lg:grid-cols-3">
 
-                <div class="flex justify-center md:hidden ">
-                    <div class="relative w-full max-w-md self-stretch">
+                <div class="md:hidden flex justify-center">
+                    <div class="relative self-stretch w-full max-w-md">
                         <img
                             src="<?php echo esc_url($things_image['url']); ?>"
                             alt="<?php echo esc_attr($things_image['alt']); ?>"
-                            class="w-full h-[310px]! object-cover rounded-[35px]"
+                            class="rounded-[35px] w-full h-[310px]! object-cover"
                             loading="lazy" />
                     </div>
                 </div>
 
                 <!-- Left Cards -->
-                <div class="grid md:grid-rows-2 gap-6 h-full">
-                    <div class="info-card flex-1 flex flex-col">
+                <div class="gap-6 grid md:grid-rows-2 h-full">
+                    <div class="flex flex-col flex-1 info-card">
                         <?php if ($guests_protection_icon) : ?>
                             <div class="mb-4 slide-up">
                                 <?php
@@ -70,7 +70,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                         <?php endif; ?>
                         <div class="mt-auto">
                             <?php if ($guests_protection_title) : ?>
-                                <h3 class="text-[28px] md:text-[32px]! font-medium! leading-8! mb-4!">
+                                <h3 class="mb-4! font-medium! text-[28px] md:text-[32px]! leading-8!">
                                     <?php echo esc_html($guests_protection_title); ?>
                                 </h3>
                             <?php endif; ?>
@@ -83,7 +83,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                         </div>
                     </div>
 
-                    <div class="info-card flex-1 flex flex-col">
+                    <div class="flex flex-col flex-1 info-card">
                         <?php if ($guests_disruptions_icon) : ?>
                             <div class="mb-4 slide-up">
                                 <?php
@@ -98,7 +98,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                         <?php endif; ?>
                         <div class="mt-auto">
                             <?php if ($guests_disruptions_title) : ?>
-                                <h3 class="text-[32px]! font-medium! leading-8! mb-4!">
+                                <h3 class="mb-4! font-medium! text-[32px]! leading-8!">
                                     <?php echo esc_html($guests_disruptions_title); ?>
                                 </h3>
                             <?php endif; ?>
@@ -113,19 +113,19 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                 </div>
 
                 <!-- Center Image desktop -->
-                <div class="md:flex items-stretch justify-center hidden "> <!-- Added items-stretch -->
-                    <div class="relative w-full max-w-md self-stretch"> <!-- Added self-stretch -->
+                <div class="hidden md:flex justify-center items-stretch"> <!-- Added items-stretch -->
+                    <div class="relative self-stretch w-full max-w-md"> <!-- Added self-stretch -->
                         <img
                             src="<?php echo esc_url($things_image['url']); ?>"
                             alt="<?php echo esc_attr($things_image['alt']); ?>"
-                            class="w-full h-full! object-cover rounded-[35px]"
+                            class="rounded-[35px] w-full h-full! object-cover"
                             loading="lazy" />
                     </div>
                 </div>
 
                 <!-- Right Cards -->
-                <div class="grid md:grid-rows-2 gap-6 h-full">
-                    <div class="info-card flex-1 flex flex-col">
+                <div class="gap-6 grid md:grid-rows-2 h-full">
+                    <div class="flex flex-col flex-1 info-card">
                         <?php if ($guests_issues_icon) : ?>
                             <div class="mb-4 slide-up">
                                 <?php
@@ -140,7 +140,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                         <?php endif; ?>
                         <div class="mt-auto">
                             <?php if ($guests_issues_title) : ?>
-                                <h3 class="text-[32px]! font-medium! leading-8!">
+                                <h3 class="font-medium! text-[32px]! leading-8!">
                                     <?php echo esc_html($guests_issues_title); ?>
                                 </h3>
                             <?php endif; ?>
@@ -153,7 +153,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                         </div>
                     </div>
 
-                    <div class="info-card flex-1 flex flex-col">
+                    <div class="flex flex-col flex-1 info-card">
                         <?php if ($guests_damage_icon) : ?>
                             <div class="mb-4 slide-up">
                                 <?php
@@ -168,7 +168,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
                         <?php endif; ?>
                         <div class="mt-auto">
                             <?php if ($guests_damage_title) : ?>
-                                <h3 class="text-[32px]! font-medium! leading-8! mb-4!">
+                                <h3 class="mb-4! font-medium! text-[32px]! leading-8!">
                                     <?php echo esc_html($guests_damage_title); ?>
                                 </h3>
                             <?php endif; ?>

@@ -4,19 +4,19 @@ $faq_subtitle = get_field('faq_subtitle');
 
 ?>
 
-<div id="faqs" class="faqs-module px-5 md:px-[10vw] py-[60px] md:py-20">
+<div id="faqs" class="px-5 md:px-[10vw] py-[60px] md:py-20 faqs-module">
     <!-- Header -->
-    <div class="faqs-header mb-16">
-        <h2 class="text-[36px]! md:text-[64px]! leading-9! font-semibold! md:leading-[60px]! mb-0!">
+    <div class="mb-16 faqs-header">
+        <h2 class="mb-0! font-semibold! text-[36px]! md:text-[64px]! leading-9! md:leading-[60px]!">
             <?php echo esc_html($faq_title); ?>
         </h2>
-        <p class="text-lg mt-4">
+        <p class="mt-4 text-lg">
             <?php echo esc_html($faq_subtitle); ?>
         </p>
     </div>
 
     <!-- FAQ Accordion -->
-    <div class="faq-accordion max-w-4xl mx-auto">
+    <div class="mx-auto max-w-4xl faq-accordion">
         <?php
         $faq_args = array(
             'post_type' => 'faq',
@@ -33,15 +33,15 @@ $faq_subtitle = get_field('faq_subtitle');
                 $index++;
                 $faq_id = 'faq-' . get_the_ID();
         ?>
-                <div class="faq-item mx-auto">
-                    <button class="faq-question w-full text-left flex justify-between items-center transition-colors duration-200 group"
+                <div class="mx-auto faq-item">
+                    <button class="group flex justify-between items-center w-full text-left transition-colors duration-200 faq-question"
                         aria-expanded="false"
                         aria-controls="<?php echo $faq_id; ?>"
                         data-faq-toggle>
-                        <h3 class="text-5 md:text-[24px]! text-(--color-truvi-guest-black-chalk) font-medium pr-8 mb-0!">
+                        <h3 class="text-5 md:text-[24px]! text-(--color-wyz-creations-guest-black-chalk) font-medium pr-8 mb-0!">
                             <?php echo get_the_title(); ?>
                         </h3>
-                        <span class="faq-icon flex-shrink-0 ml-4">
+                        <span class="flex-shrink-0 ml-4 faq-icon">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/add-icon.svg"
                                 alt="Open FAQ"
                                 class="w-6 h-6 icon-add">
@@ -52,7 +52,7 @@ $faq_subtitle = get_field('faq_subtitle');
                     </button>
 
                     <div id="<?php echo $faq_id; ?>"
-                        class="faq-answer text-[18px] md:text-[20px] overflow-hidden transition-all duration-500"
+                        class="overflow-hidden text-[18px] md:text-[20px] transition-all duration-500 faq-answer"
                         style="max-height: 0;">
 
                         <?php the_content(); ?>
@@ -64,7 +64,7 @@ $faq_subtitle = get_field('faq_subtitle');
             wp_reset_postdata();
         else:
             ?>
-            <p class=" text-center py-8 text-gray-500">No FAQs found. Add some in the admin panel.</p>
+            <p class="py-8 text-gray-500 text-center">No FAQs found. Add some in the admin panel.</p>
         <?php endif; ?>
     </div>
 </div>

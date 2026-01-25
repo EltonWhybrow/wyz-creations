@@ -1,19 +1,19 @@
 @theme {
   /* Your custom colors */
-  --color-truvi-guest-black-chalk: #020202;
-  --color-truvi-guest-black-chalk-50: rgba(36, 36, 36, 0.5);
+  --color-wyz-creations-guest-black-chalk: #020202;
+  --color-wyz-creations-guest-black-chalk-50: rgba(36, 36, 36, 0.5);
   --color-wyz-guest-white: rgb(252, 252, 252);;
-  /* --color-truvi-guest-black: #191615; */
-  --color-truvi-guest-light-gray: #f4f4f4;
-  --color-truvi-guest-med-gray: #e4e4e4;
-  --color-truvi-guest-dark-gray: #454545;
-  --color-truvi-guest-orange: #f97316;
-  --color-truvi-guest-green: #09a11b;
-  --color-truvi-guest-lime-green: #00ca18;
-  --color-truvi-guest-yellow: #fee01b;
-  --color-truvi-guest-blue: #4b5ee4;
-  --color-truvi-guest-red: #dc3545;
-  --color-truvi-guest-warning-yellow: #edb200;
+  /* --color-wyz-creations-guest-black: #191615; */
+  --color-wyz-creations-guest-light-gray: #f4f4f4;
+  --color-wyz-creations-guest-med-gray: #e4e4e4;
+  --color-wyz-creations-guest-dark-gray: #454545;
+  --color-wyz-creations-guest-orange: #f97316;
+  --color-wyz-creations-guest-green: #09a11b;
+  --color-wyz-creations-guest-lime-green: #00ca18;
+  --color-wyz-creations-guest-yellow: #fee01b;
+  --color-wyz-creations-guest-blue: #4b5ee4;
+  --color-wyz-creations-guest-red: #dc3545;
+  --color-wyz-creations-guest-warning-yellow: #edb200;
 
   /* Your custom fonts */
   --font-family-sans: "DM Sans", system-ui, sans-serif;

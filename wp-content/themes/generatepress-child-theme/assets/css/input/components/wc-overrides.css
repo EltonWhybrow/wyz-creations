@@ -5,7 +5,7 @@
 .term-trip-protection,
 .single-product {
   .content-area#primary {
-    @apply w-auto! mx-[10vw]!;
+    @apply mx-[10vw]! w-auto!;
   }
   .entry-content .alignwide {
     @apply ml-0! w-full! max-w-[100%]!;
@@ -14,12 +14,12 @@
   .wc-block-components-button.wp-element-button {
     &.wc-block-cart__submit-button,
     &.wc-block-components-checkout-place-order-button {
-      @apply font-bold! py-2.5 px-10 rounded-full transition-all no-underline! text-xl! h-[60px] flex items-center justify-center text-[var(--color-wyz-guest-white)]! bg-[var(--color-truvi-guest-blue)]! border! hover:border-[var(--color-truvi-guest-blue)]! hover:text-[var(--color-truvi-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]!;
+      @apply flex justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10 py-2.5 hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! border!;
     }
   }
   button.single_add_to_cart_button.button,
   .add_to_cart_button {
-    @apply font-bold! py-2.5! px-10! w-fit! rounded-full! transition-all no-underline! text-xl! h-[60px] flex! items-center justify-center text-[var(--color-wyz-guest-white)]! bg-[var(--color-truvi-guest-blue)]! border! hover:border-[var(--color-truvi-guest-blue)]! hover:text-[var(--color-truvi-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]!;
+    @apply justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10! py-2.5! hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full! w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! flex! border!;
   }
 }
 .woocommerce div.product form.cart {
@@ -29,15 +29,15 @@
 #custom-woo-form {
   .woocommerce-form-row,
   .form-row {
-    @apply block! w-full;
+    @apply w-full block!;
   }
   .woocommerce-form-login__submit,
   .woocommerce-Button {
-    @apply font-bold! mt-3 py-2.5 px-10 w-fit! rounded-full transition-all no-underline! text-xl! h-[60px] flex items-center justify-center text-[var(--color-wyz-guest-white)]! bg-[var(--color-truvi-guest-blue)]! border! hover:border-[var(--color-truvi-guest-blue)]! hover:text-[var(--color-truvi-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]!;
+    @apply flex justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! mt-3 px-10 py-2.5 hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! border!;
   }
   .lost_password {
     a {
-      @apply text-[var(--color-truvi-guest-black-chalk)]!;
+      @apply text-[var(--color-wyz-creations-guest-black-chalk)]!;
     }
   }
 }

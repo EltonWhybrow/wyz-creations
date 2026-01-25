@@ -1,6 +1,6 @@
 .tpm-header {
   h2 {
-    @apply mb-0 font-semibold text-[40px] text-[var(--color-truvi-guest-black-chalk)] md:text-[78px] leading-10 md:leading-20;
+    @apply mb-0 font-semibold text-[40px] text-[var(--color-wyz-creations-guest-black-chalk)] md:text-[78px] leading-10 md:leading-20;
   }
   span {
     font-family: var(--font-family-heading);
@@ -33,33 +33,33 @@
 .credit-value {
   @apply font-family-heading text-[64px] leading-[60px];
   &.has-credits {
-    @apply text-[var(--color-truvi-guest-green)];
+    @apply text-[var(--color-wyz-creations-guest-green)];
   }
   &.no-credits {
-    @apply text-[var(--color-truvi-guest-red)];
+    @apply text-[var(--color-wyz-creations-guest-red)];
   }
 }
 
 .no-credits-notice {
-  @apply flex gap-2 items-center p-3 rounded-lg border border-[var(--color-truvi-guest-red)] bg-[var(--color-truvi-guest-red)]/20;
+  @apply flex gap-2 items-center p-3 rounded-lg border border-[var(--color-wyz-creations-guest-red)] bg-[var(--color-wyz-creations-guest-red)]/20;
   i {
-    @apply text-[var(--color-truvi-guest-red)] text-xl;
+    @apply text-[var(--color-wyz-creations-guest-red)] text-xl;
   }
   p {
-    @apply mb-0 font-medium text-[var(--color-truvi-guest-red)] text-center;
+    @apply mb-0 font-medium text-[var(--color-wyz-creations-guest-red)] text-center;
     a {
-      @apply text-[var(--color-truvi-guest-black-chalk)];
+      @apply text-[var(--color-wyz-creations-guest-black-chalk)];
     }
   }
 }
 
 .active-credits-notice {
-  @apply flex gap-2 items-center p-3 rounded-lg border border-[var(--color-truvi-guest-green)] bg-[var(--color-truvi-guest-green)]/20;
+  @apply flex gap-2 items-center p-3 rounded-lg border border-[var(--color-wyz-creations-guest-green)] bg-[var(--color-wyz-creations-guest-green)]/20;
   i {
-    @apply text-[var(--color-truvi-guest-green)] text-xl;
+    @apply text-[var(--color-wyz-creations-guest-green)] text-xl;
   }
   .credits-message {
-    @apply mb-0 font-medium text-[var(--color-truvi-guest-green)] text-center;
+    @apply mb-0 font-medium text-[var(--color-wyz-creations-guest-green)] text-center;
   }
 }
 
@@ -69,15 +69,15 @@
 }
 
 .status-pending {
-  @apply bg-[var(--color-truvi-guest-yellow)];
+  @apply bg-[var(--color-wyz-creations-guest-yellow)];
 }
 
 .status-approved {
-  @apply bg-[var(--color-truvi-guest-green)] text-[var(--color-wyz-guest-white)];
+  @apply bg-[var(--color-wyz-creations-guest-green)] text-[var(--color-wyz-guest-white)];
 }
 
 .status-declined {
-  @apply bg-[var(--color-truvi-guest-red)] text-[var(--color-wyz-guest-white)];
+  @apply bg-[var(--color-wyz-creations-guest-red)] text-[var(--color-wyz-guest-white)];
 }
 
 .tpm-trips-section {
@@ -102,7 +102,7 @@
 .purchase-more-prompt {
   grid-column: 1 / -1;
   border-radius: 35px;
-  @apply bg-[var(--color-truvi-guest-black-chalk)] mt-7 p-8 border border-[var(--color-truvi-guest-black-chalk)] text-center;
+  @apply bg-[var(--color-wyz-creations-guest-black-chalk)] mt-7 p-8 border border-[var(--color-wyz-creations-guest-black-chalk)] text-center;
 }
 
 .prompt-content h4 {
@@ -152,7 +152,7 @@
 }
 
 .tpm-access-denied .tpm-btn {
-  @apply flex justify-center items-center bg-[var(--color-truvi-guest-black-chalk)] hover:bg-[var(--color-wyz-guest-white)] mx-auto px-10 py-2.5 border border-[var(--color-truvi-guest-black-chalk)] hover:!border-[var(--color-truvi-guest-black-chalk)] rounded-full w-fit h-[60px] font-bold! !text-[var(--color-wyz-guest-white)] text-xl! hover:!text-[var(--color-truvi-guest-black-chalk)] transition-all no-underline!;
+  @apply flex justify-center items-center bg-[var(--color-wyz-creations-guest-black-chalk)] hover:bg-[var(--color-wyz-guest-white)] mx-auto px-10 py-2.5 border border-[var(--color-wyz-creations-guest-black-chalk)] hover:!border-[var(--color-wyz-creations-guest-black-chalk)] rounded-full w-fit h-[60px] font-bold! !text-[var(--color-wyz-guest-white)] text-xl! hover:!text-[var(--color-wyz-creations-guest-black-chalk)] transition-all no-underline!;
 }
 
 /* Login area on my account if logged out */

@@ -1,7 +1,7 @@
 .protect-covered {
   @apply m-0;
   li {
-    @apply font-family-heading list-none border-t-1 border-truvi-guest-med-gray py-6  last:border-b-1 flex justify-between items-center text-(--color-truvi-guest-black-chalk) text-xl font-medium;
+    @apply font-family-heading list-none border-t-1 border-wyz-creations-guest-med-gray py-6  last:border-b-1 flex justify-between items-center text-(--color-wyz-creations-guest-black-chalk) text-xl font-medium;
   }
 }
 

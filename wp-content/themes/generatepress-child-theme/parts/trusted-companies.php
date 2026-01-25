@@ -11,10 +11,10 @@ for ($i = 1; $i <= 4; $i++) {
         <div class="relative mb-8 text-center">
 
             <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-(--color-truvi-guest-dark-gray)"></div>
+                <div class="w-full border-t border-(--color-wyz-creations-guest-dark-gray)"></div>
             </div>
 
-            <span class="relative inline-block bg-[var(--color-wyz-guest-white)] px-2 md:px-10 text-(--color-truvi-guest-black-chalk) text-base md:text-xl font-semibold md:font-normal">
+            <span class="relative inline-block bg-[var(--color-wyz-guest-white)] px-2 md:px-10 text-(--color-wyz-creations-guest-black-chalk) text-base md:text-xl font-semibold md:font-normal">
                 <?php echo esc_html($title); ?>
             </span>
         </div>

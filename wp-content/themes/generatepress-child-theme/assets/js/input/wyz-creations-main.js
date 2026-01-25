@@ -12,7 +12,7 @@ jQuery(function ($) {
       this.$overlay = $("#mobile-menu-overlay");
       this.$panel = $("#mobile-menu-panel");
       this.$burger = $(".burger-line");
-      this.$links = $("#truvi-mobile-menu a").not(".dropdown-toggle");
+      this.$links = $("#wyz-creations-mobile-menu a").not(".dropdown-toggle");
     },
 
     bindEvents: function () {
@@ -251,15 +251,24 @@ jQuery(function ($) {
     $("#info-top-banner").slideDown(400); // show it
   }
 
-  $("#info-top-banner").on("click", ".fa-close, .close-banner", function () {
-    $("#info-top-banner").slideUp(400, function () {
-      // Set cookie for 30 days
-      var d = new Date();
-      d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
-      document.cookie =
-        "info_banner_dismissed=1;expires=" + d.toUTCString() + ";path=/";
+  const $banner = $("#info-top-banner");
+
+  if ($banner.length) {
+    if (document.cookie.indexOf("info_banner_dismissed=1") === -1) {
+      $banner.slideDown(400);
+    }
+
+    $banner.on("click", ".fa-close, .close-banner", function () {
+      $banner.slideUp(400, function () {
+        const d = new Date();
+        d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
+        document.cookie =
+          "info_banner_dismissed=1;expires=" +
+          d.toUTCString() +
+          ";path=/;SameSite=Lax";
+      });
     });
-  });
+  }
 
   // WYZ Creations panel subscribe
   (function () {

@@ -28,7 +28,7 @@
 
                 if (
                     rtrim($clean_url, '/') === '/my-account' ||
-                    rtrim($clean_url, '/') === '/truvi-guests/my-account'
+                    rtrim($clean_url, '/') === '/wyz-creations-guests/my-account'
                 ) {
                     echo '<h1 class="mb-2.5! md:px-0! pt-2.5! slide-up">
                 Login
@@ -44,7 +44,7 @@
             ?>
 
         </header>
-        <div class="hidden md:block pt-8 border-[var(--color-truvi-guest-black-chalk)] border-t slide-up">
+        <div class="hidden md:block pt-8 border-[var(--color-wyz-creations-guest-black-chalk)] border-t slide-up">
             <div class="mx-auto my-0! max-w-4xl text-[18px] lg:text-2xl leading-normal!">
                 <h4 class="mb-1!">Don't have an account yet?</h4>
                 <p>You can set up account when you purchase your first trip protection membership</p>
@@ -62,7 +62,7 @@
         <?php echo do_shortcode('[woocommerce_my_account login="true"]'); ?>
     </div>
 
-    <div class="md:hidden pt-8 border-[var(--color-truvi-guest-black-chalk)] border-t slide-up">
+    <div class="md:hidden pt-8 border-[var(--color-wyz-creations-guest-black-chalk)] border-t slide-up">
         <div class="mx-auto my-0! max-w-4xl text-[18px] lg:text-2xl leading-normal!">
             <h4 class="mb-1!">Don't have an account yet?</h4>
             <p>You can set up account when you purchase your first trip protection membership</p>

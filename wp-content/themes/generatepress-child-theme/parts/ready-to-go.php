@@ -19,7 +19,7 @@ $protect_smallprint = get_field('protect_smallprint');
     <div class="mx-auto max-w-6xl container">
         <!-- Main Heading -->
         <div class="mb-12 md:mb-16 md:text-center">
-            <h1 class="text-[36px]! md:text-[64px]! font-semibold! text-(--color-truvi-guest-black-chalk) mb-5 md:mb-2!">
+            <h1 class="text-[36px]! md:text-[64px]! font-semibold! text-(--color-wyz-creations-guest-black-chalk) mb-5 md:mb-2!">
                 <?php echo esc_html($ready_title); ?>
             </h1>
             <p class="mx-auto! max-w-4xl text-[20px] md:text-[24px]">
@@ -30,7 +30,7 @@ $protect_smallprint = get_field('protect_smallprint');
 
     <div class="flex lg:flex-row flex-col-reverse gap-[90px] md:gap-20 lg:px-[10vw] pt-5! md:pt-0! included">
         <div class="w-full lg:w-3/5">
-            <div class="mb-4 font-semibold text-[15px] text-truvi-guest-dark-gray md:text-lg text-right"><span>Truvi</span><span class="ml-2 md:ml-5">Insurance</span></div>
+            <div class="mb-4 font-semibold text-[15px] text-wyz-creations-guest-dark-gray md:text-lg text-right"><span>wyz-creations</span><span class="ml-2 md:ml-5">Insurance</span></div>
             <?php
             $ready_items = array(
                 $ready_item_1,
@@ -59,9 +59,9 @@ $protect_smallprint = get_field('protect_smallprint');
             </ul>
             <div class="mt-12 text-xl md:text-left text-center"> <?php echo esc_html($protect_smallprint); ?></div>
         </div>
-        <div class="protect-trip w-full lg:w-2/5 bg-(--color-truvi-guest-black-chalk) text-[var(--color-wyz-guest-white)] rounded-[50px] flex flex-col justify-between p-8 md:p-[50px]">
+        <div class="protect-trip w-full lg:w-2/5 bg-(--color-wyz-creations-guest-black-chalk) text-[var(--color-wyz-guest-white)] rounded-[50px] flex flex-col justify-between p-8 md:p-[50px]">
             <h4 class="md:mb-2.5! text-[32px]! md-5!"><?php echo esc_html($protect_title); ?></h4>
-            <h3 class="border-b! border-(--color-truvi-guest-light-gray) text-[64px]! font-semibold font-family-heading inline leading-6! md:leading-none! pb-5!"><?php echo esc_html($protect_price); ?><span class="font-family-heading text-[24px]"><?php echo esc_html($protect_price_per); ?></span></h3>
+            <h3 class="border-b! border-(--color-wyz-creations-guest-light-gray) text-[64px]! font-semibold font-family-heading inline leading-6! md:leading-none! pb-5!"><?php echo esc_html($protect_price); ?><span class="font-family-heading text-[24px]"><?php echo esc_html($protect_price_per); ?></span></h3>
 
             <?php
             $protect_list_items = get_field('protect_list_items');

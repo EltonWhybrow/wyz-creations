@@ -1,19 +1,19 @@
 /* Your components */
 @layer components {
-  #truvi-navigation {
+  #wyz-creations-navigation {
     @apply !m-0;
-    ul#truvi-menu {
+    ul#wyz-creations-menu {
       @apply flex flex-row items-center gap-4 md:gap-7 !m-0 !p-0 !list-none;
       li {
         a {
-          @apply font-bold !text-[var(--color-truvi-guest-black-chalk)] md:text-[18px] text-base hover:!underline !no-underline;
+          @apply font-bold !text-[var(--color-wyz-creations-guest-black-chalk)] md:text-[18px] text-base hover:!underline !no-underline;
         }
       }
     }
   }
 
   /* Mobile menu */
-  #truvi-mobile-menu {
+  #wyz-creations-mobile-menu {
     @apply !m-0 !p-0;
     li {
       margin: 0;
@@ -22,17 +22,17 @@
     }
   }
 
-  #truvi-mobile-menu a {
+  #wyz-creations-mobile-menu a {
     display: block;
     padding: 20px !important;
     text-decoration: none;
     transition: all 0.2s ease;
-    @apply text-center! font-semibold! text-2xl! rounded-none! border-0! no-underline! hover:bg-[var(--color-truvi-guest-black-chalk)]/90! hover:!text-[var(--color-wyz-guest-white)] transition-colors! duration-300!;
-    color: var(--color-truvi-guest-black-chalk) !important;
+    @apply text-center! font-semibold! text-2xl! rounded-none! border-0! no-underline! hover:bg-[var(--color-wyz-creations-guest-black-chalk)]/90! hover:!text-[var(--color-wyz-guest-white)] transition-colors! duration-300!;
+    color: var(--color-wyz-creations-guest-black-chalk) !important;
   }
 
-  #truvi-mobile-menu .current-menu-item > a {
-    @apply bg-[var(--color-truvi-guest-black-chalk)] !text-[var(--color-wyz-guest-white)];
+  #wyz-creations-mobile-menu .current-menu-item > a {
+    @apply bg-[var(--color-wyz-creations-guest-black-chalk)] !text-[var(--color-wyz-guest-white)];
   }
 
   .burger-line {
@@ -45,7 +45,7 @@
 
   /* Responsive adjustments */
   @media (max-width: 768px) {
-    #truvi-navigation {
+    #wyz-creations-navigation {
       display: none !important;
     }
   }

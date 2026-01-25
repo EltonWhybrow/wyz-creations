@@ -24,10 +24,10 @@ $step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
                 <!-- Content Section -->
                 <div class="flex flex-col justify-center items-center px-10 md:px-[10vw] py-[50px] md:py-[120px] text-center">
                     <?php if ($action_title): ?>
-                        <h2 class="mx-auto mb-0! font-semibold! text-[36px]! text-[var(--color-truvi-guest-white)] md:text-[64px]! leading-9! md:leading-[60px]!">
+                        <h2 class="mx-auto mb-0! font-semibold! text-[36px]! text-[var(--color-wyz-creations-guest-white)] md:text-[64px]! leading-9! md:leading-[60px]!">
                             <?php echo esc_html($action_title); ?>
                         </h2>
-                        <p class="mt-4 text-[var(--color-truvi-guest-white)] text-xl">
+                        <p class="mt-4 text-[var(--color-wyz-creations-guest-white)] text-xl">
                             <?php echo esc_html($action_subtitle); ?>
                         </p>
                     <?php endif; ?>
@@ -39,7 +39,7 @@ $step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
                             <a
                                 href="<?php echo esc_url($action_link['url']); ?>"
                                 target="<?php echo esc_attr($action_link['target']); ?>"
-                                class="mx-auto w-full transition-all duration-300 truvi-btn secondary">
+                                class="mx-auto w-full transition-all duration-300 wyz-creations-btn secondary">
                                 <?php echo esc_html($action_link['title']); ?>
                             </a>
                         </div>

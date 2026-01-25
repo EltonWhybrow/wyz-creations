@@ -13,17 +13,22 @@ $guest_2 = $guests_protected['guest_2'] ?? '';
 $guest_3 = $guests_protected['guest_3'] ?? '';
 ?>
 
-<section class="relative flex justify-center items-center mx-auto overflow-hidden hero-banner">
+<section class="relative flex justify-center mx-auto overflow-hidden hero-banner">
 
     <?php if ($hero_image) : ?>
         <div
-            class="z-0 absolute inset-0 mx-5 md:mx-[50px] my-2 rounded-[50px] overflow-hidden"
-            style="background: linear-gradient(180deg, rgba(161, 73, 1, 0.75) 0%, rgba(73, 64, 54, 0) 100%), url('<?php echo esc_url($hero_image['url']); ?>') 55% 75% / cover no-repeat;">
+            class="z-0 absolute inset-0 mx-5 md:mx-[50px] my-2 rounded-[25px] overflow-hidden"
+            style="background:  linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0) 100%
+  ), url('<?php echo esc_url($hero_image['url']); ?>') 55% 75% / cover no-repeat;">
         </div>
     <?php endif; ?>
 
     <!-- Main Content Container -->
-    <div class="z-10 relative mx-auto px-5! py-[30px] md:py-40 text-center banner-content container">
+    <div class="z-10 relative mx-auto px-5! pt-14 pb-[60px] text-center banner-content container">
         <?php if ($title) : ?>
             <h1 class="mb-2.5! px-4! md:px-0! pt-2.5! stagger-words">
                 <?php echo esc_html($title); ?>
@@ -42,67 +47,14 @@ $guest_3 = $guests_protected['guest_3'] ?? '';
                 <a
                     href="<?php echo esc_url($button_link['url']); ?>"
                     target="<?php echo esc_attr($button_link['target']); ?>"
-                    class="group relative bg-[var(--color-truvi-guest-black-chalk)] mx-auto w-fit overflow-hidden text-[var(--color-wyz-guest-white)]! transition-all duration-300 wyz-btn">
+                    class="group relative bg-[var(--color-wyz-creations-guest-black-chalk)] mx-auto w-fit overflow-hidden text-[var(--color-wyz-guest-white)]! transition-all duration-300 wyz-btn">
                     <span class="absolute inset-0 bg-[var(--color-wyz-guest-white)] rounded-full transition-transform -translate-x-[100%] group-hover:translate-x-0 duration-400"></span>
                     <span class="z-10 group-hover:text-black"> <?php echo esc_html($button_link['title']); ?></span>
                 </a>
             </div>
         <?php endif; ?>
 
-        <?php if ($guests_title || $guests_subtitle || $guest_1 || $guest_2 || $guest_3) : ?>
-            <div class="flex justify-center items-center gap-4 mx-auto">
 
-                <div class="flex justify-center items-center -space-x-4">
-                    <?php if ($guest_1) : ?>
-                        <div class="z-10 relative">
-                            <div class="shadow-lg border-2 border-white rounded-full w-10 h-10 overflow-hidden">
-                                <img
-                                    src="<?php echo esc_url($guest_1['url']); ?>"
-                                    alt="<?php echo esc_attr($guest_1['alt']); ?>"
-                                    class="w-full h-full object-cover" />
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if ($guest_2) : ?>
-                        <div class="z-20 relative">
-                            <div class="shadow-lg border-2 border-white rounded-full w-10 h-10 overflow-hidden">
-                                <img
-                                    src="<?php echo esc_url($guest_2['url']); ?>"
-                                    alt="<?php echo esc_attr($guest_2['alt']); ?>"
-                                    class="w-full h-full object-cover" />
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if ($guest_3) : ?>
-                        <div class="z-30 relative">
-                            <div class="shadow-lg border-2 border-white rounded-full w-10 h-10 overflow-hidden">
-                                <img
-                                    src="<?php echo esc_url($guest_3['url']); ?>"
-                                    alt="<?php echo esc_attr($guest_3['alt']); ?>"
-                                    class="w-full h-full object-cover" />
-                            </div>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-
-                <div class="text-left">
-                    <?php if ($guests_title) : ?>
-                        <h3 class="!mb-0 font-semibold text-[var(--color-wyz-guest-white)] !text-base md:text-3xl">
-                            <?php echo esc_html($guests_title); ?>
-                        </h3>
-                    <?php endif; ?>
-
-                    <?php if ($guests_subtitle) : ?>
-                        <p class="!mb-0 text-[var(--color-wyz-guest-white)] text-base">
-                            <?php echo esc_html($guests_subtitle); ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-            </div>
-        <?php endif; ?>
 
         <!-- Button mobile -->
         <?php if ($button_link) : ?>

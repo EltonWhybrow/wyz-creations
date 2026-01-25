@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Truvi guest Child Theme functions and definitions
+ * wyz-creations guest Child Theme functions and definitions
  */
 
 // Enqueue Google Fonts
-add_action('wp_enqueue_scripts', 'truvi_load_google_fonts', 5);
-function truvi_load_google_fonts()
+add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);
+function wyzcreations_load_google_fonts()
 {
     wp_enqueue_style(
-        'truvi-google-fonts',
+        'wyz-creations-google-fonts',
         'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Work+Sans:wght@700&display=swap',
         array(),
         null
@@ -17,20 +17,20 @@ function truvi_load_google_fonts()
 }
 
 // Enqueue Tailwind CSS compiled file
-add_action('wp_enqueue_scripts', 'truvi_enqueue_tailwind', 20);
-function truvi_enqueue_tailwind()
+add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_tailwind', 20);
+function wyzcreations_enqueue_tailwind()
 {
     wp_enqueue_style(
-        'truvi-tailwind',
-        get_stylesheet_directory_uri() . '/assets/css/truvi-styles.css', // compiled file
+        'wyz-creations-tailwind',
+        get_stylesheet_directory_uri() . '/assets/css/wyz-creations-styles.css', // compiled file
         array('generate-style'),
-        filemtime(get_stylesheet_directory() . '/assets/css/truvi-styles.css')
+        filemtime(get_stylesheet_directory() . '/assets/css/wyz-creations-styles.css')
     );
 }
 
-// Enqueue truvi js
-add_action('wp_enqueue_scripts', 'truvi_enqueue_scripts');
-function truvi_enqueue_scripts()
+// Enqueue wyz-creations js
+add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_scripts');
+function wyzcreations_enqueue_scripts()
 {
     // Get theme version
     $theme_version = wp_get_theme()->get('Version');
@@ -66,20 +66,20 @@ function truvi_enqueue_scripts()
     wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', ['gsap'], null, true);
     // Animations init script
     wp_enqueue_script(
-        'truvi-main-js',
-        get_stylesheet_directory_uri() . '/assets/js/truvi-main.min.js', // npm run build to re minify latest
-        array('slick-js'), // Important: slick-js as dependency
+        'wyz-creations-main-js',
+        get_stylesheet_directory_uri() . '/assets/js/wyz-creations-main.min.js', // npm run build to re minify latest
+        array('jquery', 'slick-js'), // Important: slick-js as dependency
         $theme_version,
         true
     );
 
     // Localize script for PHP variables
-    wp_localize_script('truvi-main-js', 'truvi_ajax', array(
+    wp_localize_script('wyz-creations-main-js', 'wyzcreations_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'home_url' => home_url('/'),
     ));
 
-    wp_enqueue_script('animations-init', get_stylesheet_directory_uri() . '/assets/js/animations.js', ['gsap', 'gsap-scrolltrigger', 'truvi-main-js'], null, true);
+    wp_enqueue_script('animations-init', get_stylesheet_directory_uri() . '/assets/js/animations.js', ['gsap', 'gsap-scrolltrigger', 'wyz-creations-main-js'], null, true);
     // Load your main JS file
 
 }
@@ -113,13 +113,11 @@ add_action('after_setup_theme', function () {
 add_action('generate_footer', 'my_custom_footer');
 function my_custom_footer()
 {
-    // NEVER render footer during REST requests
-    if (defined('REST_REQUEST') && REST_REQUEST) {
-        return;
-    }
 
-    // NEVER render footer during admin-ajax (CF7 uses this too)
-    if (wp_doing_ajax()) {
+    if (wp_doing_ajax()) return;
+
+    if (is_page_template('templates/linkme.php')) {
+        get_template_part('parts/linkme-footer');
         return;
     }
 
@@ -130,9 +128,11 @@ function my_custom_footer()
 function mytheme_register_menus()
 {
     register_nav_menus(array(
-        'footer-services' => __('Footer Menu Services', 'truvi-guest-child-theme'),
-        'footer-support' => __('Footer Menu Support', 'truvi-guest-child-theme'),
-        'footer-company' => __('Footer Menu Company', 'truvi-guest-child-theme')
+        'footer-services' => __('Footer Menu Services', 'wyz-creations-guest-child-theme'),
+        'footer-support' => __('Footer Menu Support', 'wyz-creations-guest-child-theme'),
+        'footer-company' => __('Footer Menu Company', 'wyz-creations-guest-child-theme'),
+        'footer-franks' => __('Footer Menu Franks', 'wyz-creations-guest-child-theme'),
+        'footer-widesign' => __('Footer Menu WideSign', 'wyz-creations-guest-child-theme')
     ));
 }
 add_action('init', 'mytheme_register_menus');

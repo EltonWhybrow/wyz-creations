@@ -38,7 +38,7 @@ $step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
                     ?>
                             <div class="hidden md:block slide-up">
                                 <a href="<?php echo esc_url($steps_link['url']); ?>"
-                                    class="text-2xl font-medium inline-flex items-center text-(--color-truvi-guest-black-chalk)! transition-colors duration-300"
+                                    class="text-2xl font-medium inline-flex items-center text-(--color-wyz-creations-guest-black-chalk)! transition-colors duration-300"
                                     target="<?php echo esc_attr($steps_link['target'] ?? '_self'); ?>">
                                     <?php echo esc_html($steps_link['title'] ?? 'Learn More'); ?>
                                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ $step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
 
                                             <!-- Step Number Badge -->
                                             <?php if ($step_number): ?>
-                                                <div class=" hidden relative bg-(--color-truvi-guest-black-chalk) py-2.5 px-5 text-white rounded-[100px] w-fit md:flex items-center justify-between">
+                                                <div class=" hidden relative bg-(--color-wyz-creations-guest-black-chalk) py-2.5 px-5 text-white rounded-[100px] w-fit md:flex items-center justify-between">
                                                     Step <?php echo esc_html($step_number); ?>
                                                 </div>
                                             <?php endif; ?>

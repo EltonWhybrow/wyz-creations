@@ -3,19 +3,19 @@
   .wyz-btn {
     @apply flex justify-center items-center px-10 py-2.5 rounded-full h-[60px] font-bold! text-xl! transition-all transition-colors! duration-300! no-underline!;
     &.primary {
-      @apply bg-[var(--color-truvi-guest-black-chalk)]! hover:bg-[var(--color-wyz-guest-white)]! border-[var(--color-truvi-guest-black-chalk)]! hover:border-[var(--color-truvi-guest-black-chalk)]! !text-[var(--color-wyz-guest-white)] hover:text-[var(--color-truvi-guest-black-chalk)]! border!;
+      @apply bg-[var(--color-wyz-creations-guest-black-chalk)]! hover:bg-[var(--color-wyz-guest-white)]! border-[var(--color-wyz-creations-guest-black-chalk)]! hover:border-[var(--color-wyz-creations-guest-black-chalk)]! !text-[var(--color-wyz-guest-white)] hover:text-[var(--color-wyz-creations-guest-black-chalk)]! border!;
     }
     &.secondary {
-      @apply text-(--color-truvi-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
+      @apply text-(--color-wyz-creations-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
     }
     &.tertiary {
-      @apply bg-[var(--color-truvi-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! hover:border-[var(--color-truvi-guest-blue)]! text-[var(--color-wyz-guest-white)]! hover:text-[var(--color-truvi-guest-blue)]! border!;
+      @apply bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! hover:border-[var(--color-wyz-creations-guest-blue)]! text-[var(--color-wyz-guest-white)]! hover:text-[var(--color-wyz-creations-guest-blue)]! border!;
     }
   }
 
   .wpcf7-submit {
     @apply flex justify-center items-center px-10 py-2.5 rounded-full h-[60px] font-bold! text-xl! transition-all transition-colors! duration-300! no-underline!;
-    @apply text-(--color-truvi-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
+    @apply text-(--color-wyz-creations-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
   
     display: block;
   }

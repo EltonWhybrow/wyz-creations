@@ -1,7 +1,7 @@
 .faqs-header {
-  @apply text-center mb-20;
+  @apply mb-20 text-center;
   p {
-    @apply text-[24px] mt-2.5 mb-14;
+    @apply mt-2.5 mb-14 text-[24px];
   }
 }
 
@@ -14,14 +14,14 @@ button[aria-expanded="true"] .faq-icon .icon-minus {
 }
 
 button.faq-question {
-  @apply bg-(--color-truvi-guest-light-gray)! py-10 px-[25px];
+  @apply bg-(--color-wyz-creations-guest-light-gray)! py-10 px-[25px];
   &.active {
     @apply mb-2.5 pb-0!;
   }
 }
 
 .faq-answer {
-  @apply px-[25px] mb-0;
+  @apply mb-0 px-[25px];
   p {
     @apply pb-10;
   }
@@ -29,12 +29,12 @@ button.faq-question {
 
 .faq-question.active {
   .faq-answer {
-    @apply pt-0 py-7;
+    @apply py-7 pt-0;
   }
 }
 
 .faq-item {
-  @apply rounded-tr-[30px] rounded-b-[30px] overflow-clip  bg-(--color-truvi-guest-light-gray)! mb-2.5 max-w-[590px];
+  @apply rounded-tr-[30px] rounded-b-[30px] overflow-clip  bg-(--color-wyz-creations-guest-light-gray)! mb-2.5 max-w-[590px];
 }
 .faq-accordion {
   overflow: hidden;

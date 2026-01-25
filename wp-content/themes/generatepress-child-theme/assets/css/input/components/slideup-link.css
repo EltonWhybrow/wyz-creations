@@ -4,7 +4,7 @@
     right: 0;
     bottom: 0;
     top: 0;
-    @apply !bg-[var(--color-truvi-guest-black-chalk)];
+    @apply !bg-[var(--color-wyz-creations-guest-black-chalk)];
     color: #fff;
     z-index: 9999;
 

@@ -28,36 +28,20 @@
 
             <!-- Column 2 – Services -->
             <div class="flex sm:flex-row flex-col justify-between gap-4 md:gap-8 w-full md:w-3/5">
-                <!-- <div class="footer-col">
-                    <h4>Service</h4>
+                <div class="footer-col">
+                    <h4>WideSign Creative</h4>
                     <?php
-                    //   wp_nav_menu(array(
-                    //       'theme_location' => 'footer-services',     // we'll register this in a sec
-                    //       'fallback_cb'    => '__return_false',
-                    //      'depth'          => 1,
-                    //       'container'      => false,
-                    //       'items_wrap'     => '<ul class="footer-menu">%3$s</ul>',
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer-widesign',     // we'll register this in a sec
+                        'fallback_cb'    => '__return_false',
+                        'depth'          => 1,
+                        'container'      => false,
+                        'items_wrap'     => '<ul class="footer-menu">%3$s</ul>',
 
-                    //   ));
+                    ));
                     ?>
-                </div> -->
+                </div>
 
-                <!-- Column 3 – Support -->
-                <!-- <div class="footer-col">
-                    <h4>Support</h4>
-                    <?php
-                    //   wp_nav_menu(array(
-                    //      'theme_location' => 'footer-support',     // we'll register this in a sec
-                    //      'fallback_cb'    => '__return_false',
-                    //     'depth'          => 1,
-                    //     'container'      => false,
-                    //     'items_wrap'     => '<ul class="footer-menu">%3$s</ul>',
-
-                    // ));
-                    ?>
-                </div> -->
-
-                <!-- Column 4 – Company -->
 
             </div>
 
@@ -76,3 +60,14 @@
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
         <i class="fa fa-arrow-up" aria-hidden="true"></i>
     </button>
+
+    <?php
+    /**
+     * generate_after_footer hook.
+     *
+     * @since 2.1
+     */
+    do_action('generate_after_footer');
+
+    wp_footer();
+    ?>

@@ -15,7 +15,7 @@
 
 <body <?php body_class(); ?>>
     <!-- coupon banner  -->
-    <!-- <div id="info-top-banner" class="bg-[var(--color-truvi-guest-black-chalk)] text-[var(--color-wyz-guest-white)] text-center">
+    <!-- <div id="info-top-banner" class="bg-[var(--color-wyz-creations-guest-black-chalk)] text-[var(--color-wyz-guest-white)] text-center">
         <div class="relative mx-5 md:mx-[10vw]">🎉 Limited Time: Get 20% off your first trip membership - Use code <span>TRAVEL20</span> <i class="fas fa-close"></i>
         </div>
     </div> -->
@@ -25,16 +25,16 @@
             <img
                 src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
                 alt="<?php bloginfo('name'); ?>"
-                class="w-28" />
+                class="w-20" />
         </a>
 
         <!-- Desktop Navigation -->
-        <nav id="truvi-navigation" class="hidden md:flex items-center" role="navigation">
+        <nav id="wyz-creations-navigation" class="hidden md:flex items-center" role="navigation">
             <?php
             wp_nav_menu(
                 array(
                     'theme_location' => 'primary',
-                    'menu_id'        => 'truvi-menu',
+                    'menu_id'        => 'wyz-creations-menu',
                     'menu_class'     => '',
                     'container'      => false,
                 )
@@ -72,16 +72,14 @@
 
 
                 <!-- Desktop Button -->
-                <!-- If NOT on account page -->
-                <?php if (!$is_my_account_page): ?>
-                    <a href="<?php echo home_url('/?add-to-cart=61&quantity=1'); ?>" class="hidden md:flex wyz-btn primary">Get Protected</a>
-                <?php endif; ?>
+                <a href="<?php echo home_url('/cart'); ?>" class="hidden md:flex wyz-btn primary">Cart</a>
+
 
             </div>
 
             <!-- Mobile Menu Toggle (Burger Icon) -->
             <button id="mobile-menu-toggle"
-                class="md:hidden flex flex-col justify-center items-center !bg-[var(--color-truvi-guest-black-chalk)] rounded-lg w-10 h-10 transition-colors"
+                class="md:hidden flex flex-col justify-center items-center !bg-[var(--color-wyz-creations-guest-black-chalk)] rounded-lg w-10 h-10 transition-colors"
                 aria-label="Toggle mobile menu"
                 aria-expanded="false">
                 <span class="bg-white mb-1.5 w-6 h-0.5 transition-all duration-300 burger-line"></span>
@@ -106,12 +104,12 @@
             <!-- Mobile Menu Header -->
             <div class="flex justify-between items-center p-6 border-b">
                 <img
-                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/truvi-logo-black.png"
+                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
                     alt="<?php bloginfo('name'); ?>"
-                    class="w-28" />
+                    class="w-20" />
 
                 <button id="mobile-menu-close"
-                    class="md:hidden flex justify-center items-center !bg-[var(--color-truvi-guest-black-chalk)] !p-0 rounded-lg w-10 h-10"
+                    class="md:hidden flex justify-center items-center !bg-[var(--color-wyz-creations-guest-black-chalk)] !p-0 rounded-lg w-10 h-10"
                     aria-label="Close mobile menu">
                     <!-- Just an SVG X icon -->
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +124,7 @@
                 wp_nav_menu(
                     array(
                         'theme_location' => 'primary',
-                        'menu_id'        => 'truvi-mobile-menu',
+                        'menu_id'        => 'wyz-creations-mobile-menu',
                         'menu_class'     => '',
                         'container'      => false,
                         'walker'         => new Mobile_Menu_Walker(), // Optional: Custom walker for mobile
@@ -138,22 +136,11 @@
             <!-- Mobile Menu Footer -->
 
             <div class="flex flex-col gap-3 p-6 border-t">
-                <!-- If NOT on account page and logged in -->
-                <?php if (!$is_my_account_page && is_user_logged_in() && current_user_can('customer')): ?>
-                    <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
-                        class="px-4! rounded-full wyz-btn secondary">
-                        <i class="mr-2 fas fa-user"></i> My Account
-                    </a>
-                <?php endif; ?>
-                <?php if (!$is_my_account_page): ?>
-                    <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
-                        class="px-4! rounded-full wyz-btn secondary">
-                        <i class="mr-3 fas fa-user"></i> My Account
-                    </a>
-                <?php endif; ?>
+
+
                 <a href="<?php echo home_url('/cart'); ?>"
                     class="flex w-full text-center wyz-btn primary">
-                    Get Protected
+                    View Cart
                 </a>
             </div>
         </div>

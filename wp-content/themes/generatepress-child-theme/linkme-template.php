@@ -100,13 +100,17 @@ get_template_part('parts/action-links', null, [
 <?php //get_template_part('parts/call-to-action'); 
 ?>
 
+<!-- Trusted Travelers section -->
+<?php get_template_part('parts/trusted-partners');
+?>
+
 <div id="linkme-panel">
     <button id="close-linkme" aria-label="Close menu">✕</button>
 
     <div class="linkme-content">
         <!-- YOUR MENU / CONTENT HERE -->
         <h2 class="!mb-0">Subscribe</h2>
-        <ul class="!mb-6 ml-0! list-inside list">
+        <ul class="!mb-6 ml-4! list-inside list">
             <li>Get notified first about new T-shirt drops</li>
             <li>Receive exclusive discounts and promo codes not shared publicly</li>
             <li>Chance to win a FREE T-shirt every month</li>
@@ -136,4 +140,5 @@ get_template_part('parts/action-links', null, [
     </div>
 </div>
 
-<?php get_footer(); ?>
+
+<?php get_template_part('parts/linkme-footer'); ?>

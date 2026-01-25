@@ -15,7 +15,7 @@
 
 <body <?php body_class('link-back'); ?>>
     <!-- coupon banner  -->
-    <div id="info-top-banner" class="bg-[var(--color-truvi-guest-dark-gray)] text-[var(--color-wyz-guest-white)]">
+    <div id="info-top-banner" class="bg-[var(--color-wyz-creations-guest-dark-gray)] text-[var(--color-wyz-guest-white)]">
         <div class="relative flex justify-between items-center gap-4 p-2">
             <span class="flex-1 text-center">
                 🎉 FREE website for your business at
