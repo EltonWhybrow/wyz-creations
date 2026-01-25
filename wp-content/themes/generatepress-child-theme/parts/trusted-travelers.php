@@ -7,7 +7,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
 ?>
 
 
-<div class="section trusted-slider-module relative overflow-hidden bg-(--color-truvi-guest-black-chalk)">
+<div class="section trusted-slider-module relative overflow-hidden bg-(--color-wyz-creations-guest-black-chalk)">
 
 
     <!-- Content Container (everything on top) -->

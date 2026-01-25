@@ -12,6 +12,6 @@
   h5,
   h6 {
     font-family: var(--font-family-heading) !important;
-    @apply font-bold;
+    @apply font-bold; 
   }
 }

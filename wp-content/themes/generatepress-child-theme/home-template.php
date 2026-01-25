@@ -15,11 +15,11 @@ get_header(); ?>
 ?>
 
 
-<div class="z-10 relative mx-auto px-5! py-[20px] md:py-30 text-center banner-content container">
+<div id="woo-home-overrides" class="z-10 relative mx-auto px-5! py-[20px] md:py-30 text-center banner-content container">
     <?php
     $args = array(
         'post_type'      => 'product',
-        'posts_per_page' => 8,
+        'posts_per_page' => 12,
         'post_status'    => 'publish',
     );
 
