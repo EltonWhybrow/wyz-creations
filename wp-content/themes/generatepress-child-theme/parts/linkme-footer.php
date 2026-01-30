@@ -29,7 +29,7 @@
             <!-- Column 2 – Services -->
             <div class="flex sm:flex-row flex-col justify-between gap-4 md:gap-8 w-full md:w-3/5">
                 <div class="footer-col">
-                    <h4>WideSign Creative</h4>
+                    <!-- <h4>WideSign Creative</h4> -->
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'footer-widesign',     // we'll register this in a sec
