@@ -43,19 +43,19 @@
                 </div> -->
 
                 <!-- Column 3 – Support -->
-                <!-- <div class="footer-col">
+                <div class="footer-col">
                     <h4>Support</h4>
                     <?php
-                    //   wp_nav_menu(array(
-                    //      'theme_location' => 'footer-support',     // we'll register this in a sec
-                    //      'fallback_cb'    => '__return_false',
-                    //     'depth'          => 1,
-                    //     'container'      => false,
-                    //     'items_wrap'     => '<ul class="footer-menu">%3$s</ul>',
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer-support',     // we'll register this in a sec
+                        'fallback_cb'    => '__return_false',
+                        'depth'          => 1,
+                        'container'      => false,
+                        'items_wrap'     => '<ul class="footer-menu">%3$s</ul>',
 
-                    // ));
+                    ));
                     ?>
-                </div> -->
+                </div>
 
                 <!-- Column 4 – Company -->
 
