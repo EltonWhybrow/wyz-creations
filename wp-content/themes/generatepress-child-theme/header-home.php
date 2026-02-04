@@ -30,12 +30,12 @@
     <div id="link-container" class="mx-auto max-w-[500px]">
         <header id="masthead" class="flex items-center gap-2 bg-white p-5 md:px-6 lg:px-[100px]" role="banner">
             <div class="w-3/4">
-
-                <img
-                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
-                    alt="<?php bloginfo('name'); ?>"
-                    class="w-auto" />
-
+                <a href="<?php echo home_url('/'); ?>" class="site-branding">
+                    <img
+                        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
+                        alt="<?php bloginfo('name'); ?>"
+                        class="w-auto" />
+                </a>
 
             </div>
             <div class="w-1/4">

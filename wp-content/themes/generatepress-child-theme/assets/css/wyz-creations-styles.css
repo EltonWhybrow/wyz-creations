@@ -2802,8 +2802,14 @@ button.faq-question {
     }
   }
   .woocommerce-loop-product__title {
-    font-size: var(--text-2xl) !important;
-    line-height: var(--tw-leading, var(--text-2xl--line-height)) !important;
+    margin-top: calc(var(--spacing) * 2) !important;
+    margin-bottom: calc(var(--spacing) * 3) !important;
+    font-size: var(--text-base) !important;
+    line-height: var(--tw-leading, var(--text-base--line-height)) !important;
+    --tw-font-weight: var(--font-weight-normal) !important;
+    font-weight: var(--font-weight-normal) !important;
+  }
+  .woocommerce-LoopProduct-link {
     text-decoration-line: none !important;
   }
   li.product.type-product.post-307.status-publish.first.instock.product_cat-uncategorized.product_tag-tag.has-post-thumbnail.shipping-taxable.purchasable.product-type-simple {
@@ -2886,6 +2892,10 @@ button.faq-question {
   color: #fff;
   font-size: 28px;
   cursor: pointer;
+}
+.separate-containers .inside-article {
+  margin-inline: 5% !important;
+  width: auto !important;
 }
 @property --tw-translate-x {
   syntax: "*";

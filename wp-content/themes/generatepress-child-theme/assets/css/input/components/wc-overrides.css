@@ -52,8 +52,12 @@
   }
 
   .woocommerce-loop-product__title {
-    @apply text-2xl! no-underline!;
+    @apply mt-2! mb-3! font-normal! text-base!;
   } 
+
+  .woocommerce-LoopProduct-link {
+    @apply no-underline!;
+  }
 
   li.product.type-product.post-307.status-publish.first.instock.product_cat-uncategorized.product_tag-tag.has-post-thumbnail.shipping-taxable.purchasable.product-type-simple {
     list-style: none;
@@ -62,5 +66,10 @@
   span.price {
     @apply inline-block pb-2!;
   }
+
+ 
+
+
 }
+
 
