@@ -60,13 +60,13 @@
     }
   }
 
-  li.product.type-product.post-307.status-publish.first.instock.product_cat-uncategorized.product_tag-tag.has-post-thumbnail.shipping-taxable.purchasable.product-type-simple {
-    list-style: none;
-  }
-
   span.price {
     @apply inline-block pb-2!;
   }
+
+  li.product {
+    list-style: none;
+}
 
 }
 
