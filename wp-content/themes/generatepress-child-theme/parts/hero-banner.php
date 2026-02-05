@@ -13,11 +13,11 @@ $guest_2 = $guests_protected['guest_2'] ?? '';
 $guest_3 = $guests_protected['guest_3'] ?? '';
 ?>
 
-<section class="relative flex justify-center mx-auto overflow-hidden hero-banner">
+<section class="relative flex justify-center mx-[5vw] overflow-hidden hero-banner">
 
     <?php if ($hero_image) : ?>
         <div
-            class="z-0 absolute inset-0 mx-5 md:mx-[50px] my-2 rounded-[25px] overflow-hidden"
+            class="z-0 absolute inset-0 my-2 rounded-[25px] overflow-hidden"
             style="background:  linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.75) 0%,
@@ -28,7 +28,7 @@ $guest_3 = $guests_protected['guest_3'] ?? '';
     <?php endif; ?>
 
     <!-- Main Content Container -->
-    <div class="z-10 relative mx-auto px-5! pt-14 pb-[60px] text-center banner-content container">
+    <div class="z-10 relative pt-14 pb-[60px] text-center banner-content container">
         <?php if ($title) : ?>
             <h1 class="mb-2.5! px-4! md:px-0! pt-2.5! stagger-words">
                 <?php echo esc_html($title); ?>

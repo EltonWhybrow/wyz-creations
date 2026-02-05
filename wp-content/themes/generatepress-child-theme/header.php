@@ -20,7 +20,7 @@
         </div>
     </div> -->
 
-    <header id="masthead" class="flex justify-between items-center px-5 md:px-6 lg:px-[100px] py-3" role="banner">
+    <header id="masthead" class="flex justify-between items-center px-5 md:px-6 lg:px-[70px] py-5" role="banner">
         <a href="<?php echo home_url('/'); ?>" class="site-branding">
             <img
                 src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
@@ -42,7 +42,7 @@
             ?>
         </nav>
 
-        <div class="">
+        <div class="flex gap-2">
 
             <?php
             // Check if on My Account page

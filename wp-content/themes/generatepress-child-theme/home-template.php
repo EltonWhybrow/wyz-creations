@@ -15,7 +15,7 @@ get_header(); ?>
 ?>
 
 
-<div id="woo-home-overrides" class="z-10 relative mx-auto px-5! py-[20px] md:py-30 text-center banner-content container">
+<div id="woo-home-overrides" class="z-10 relative mx-[5vw] py-2.5 md:py-10 text-center banner-content container">
     <?php
     $args = array(
         'post_type'      => 'product',

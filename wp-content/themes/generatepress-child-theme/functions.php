@@ -189,3 +189,64 @@ function add_file_types_to_uploads($file_types)
     return $file_types;
 }
 add_filter('upload_mimes', 'add_file_types_to_uploads');
+
+// CUSTOM TEXT FOR SPECIFIC PRODUCTS
+// Add custom input field on product page
+// dd custom input field on specific products only
+
+add_action('woocommerce_before_add_to_cart_button', 'wyz_add_custom_text_field');
+function wyz_add_custom_text_field()
+{
+
+    // Target product IDs
+    $allowed_products = array(1805); // ← replace with your actual product IDs
+
+    global $product;
+
+    if (! is_a($product, 'WC_Product')) return;
+
+    // Only show on allowed products
+    if (! in_array($product->get_id(), $allowed_products)) return;
+
+    echo '<div class="block mb-2 wyz-custom-text-field">
+        <label for="custom_text">Enter custom date (max 4 characters):</label>
+        <input 
+            type="text" 
+            id="custom_text" 
+            name="custom_text" 
+            placeholder="TEXT" 
+            maxlength="4"
+            pattern="[A-Za-z0-9]{1,4}"
+            required
+        >
+    </div>';
+}
+
+add_filter('woocommerce_add_cart_item_data', 'wyz_save_custom_text_to_cart', 10, 2);
+function wyz_save_custom_text_to_cart($cart_item_data, $product_id)
+{
+    if (isset($_POST['custom_text'])) {
+        $cart_item_data['custom_text'] = sanitize_text_field($_POST['custom_text']);
+    }
+    return $cart_item_data;
+}
+
+add_filter('woocommerce_get_item_data', 'wyz_display_custom_text_cart', 10, 2);
+function wyz_display_custom_text_cart($item_data, $cart_item)
+{
+    if (isset($cart_item['custom_text'])) {
+        $item_data[] = array(
+            'name' => 'Custom Year',
+            'value' => wc_clean($cart_item['custom_text']),
+        );
+    }
+    return $item_data;
+}
+
+add_action('woocommerce_checkout_create_order_line_item', 'wyz_save_custom_text_to_order', 10, 4);
+function wyz_save_custom_text_to_order($item, $cart_item_key, $values, $order)
+{
+    if (isset($values['custom_text'])) {
+        $item->add_meta_data('Custom Text', $values['custom_text'], true);
+    }
+}

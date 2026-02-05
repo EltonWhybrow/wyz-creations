@@ -279,6 +279,9 @@
   .mx-14 {
     margin-inline: calc(var(--spacing) * 14);
   }
+  .mx-\[5vw\] {
+    margin-inline: 5vw;
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -825,6 +828,9 @@
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
@@ -837,8 +843,8 @@
   .py-14 {
     padding-block: calc(var(--spacing) * 14);
   }
-  .py-\[20px\] {
-    padding-block: 20px;
+  .py-\[10px\] {
+    padding-block: 10px;
   }
   .py-\[30px\] {
     padding-block: 30px;
@@ -1453,6 +1459,11 @@
       padding-inline: 10vw;
     }
   }
+  .md\:py-10 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 10);
+    }
+  }
   .md\:py-20 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 20);
@@ -1461,11 +1472,6 @@
   .md\:py-24 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 24);
-    }
-  }
-  .md\:py-30 {
-    @media (width >= 48rem) {
-      padding-block: calc(var(--spacing) * 30);
     }
   }
   .md\:py-40 {
@@ -1644,6 +1650,11 @@
   .lg\:px-\[10vw\] {
     @media (width >= 64rem) {
       padding-inline: 10vw;
+    }
+  }
+  .lg\:px-\[70px\] {
+    @media (width >= 64rem) {
+      padding-inline: 70px;
     }
   }
   .lg\:px-\[100px\] {
@@ -2711,6 +2722,7 @@ button.faq-question {
 }
 .woocommerce div.product form.cart {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 #custom-woo-form {
@@ -2860,9 +2872,13 @@ button.faq-question {
       font-weight: var(--font-weight-semibold);
     }
   }
+  .content-area#primary {
+    margin: 0 5vw !important;
+    width: auto !important;
+  }
 }
 #linkme-panel, #widesign-panel {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
@@ -2892,10 +2908,6 @@ button.faq-question {
   color: #fff;
   font-size: 28px;
   cursor: pointer;
-}
-.separate-containers .inside-article {
-  margin-inline: 5% !important;
-  width: auto !important;
 }
 @property --tw-translate-x {
   syntax: "*";

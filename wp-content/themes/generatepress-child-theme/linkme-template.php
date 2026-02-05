@@ -5,7 +5,7 @@
  * Description: Full-width template that uses only free ACF fields
  */
 
-get_header('home'); ?>
+get_header('linkme'); ?>
 <!-- // 'home' -->
 
 <!-- Hero Banner -->

@@ -31,4 +31,14 @@
       @apply font-semibold;
     }
   }
+
+  /* .separate-containers .inside-article {
+    @apply mx-[5%]! w-auto;
+  } */
+
+    .content-area#primary {
+      margin: 0 5vw !important;
+      width: auto !important;
+    }
+  
 }

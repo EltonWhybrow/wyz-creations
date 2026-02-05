@@ -24,6 +24,3 @@
 @import "./components/slideup-link.css";
 
 
-.separate-containers .inside-article {
-    @apply mx-[5%]! w-auto!;
-  }
