@@ -250,3 +250,43 @@ function wyz_save_custom_text_to_order($item, $cart_item_key, $values, $order)
         $item->add_meta_data('Custom Text', $values['custom_text'], true);
     }
 }
+
+// function wyz_render_category_grid()
+// {
+
+//     $categories = get_terms([
+//         'taxonomy' => 'product_cat',
+//         'hide_empty' => true,
+//     ]);
+
+//     if (empty($categories) || is_wp_error($categories)) return '';
+
+//     ob_start();
+
+//     echo '<div class="gap-6 grid grid-cols-2 md:grid-cols-4">';
+
+//     foreach ($categories as $cat) {
+
+//         $thumbnail_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
+//         $image = $thumbnail_id ? wp_get_attachment_url($thumbnail_id) : '';
+
+//         echo '
+//         <a href="' . esc_url(get_term_link($cat)) . '" 
+//            class="group block bg-white shadow hover:shadow-xl rounded-2xl overflow-hidden transition-all">
+
+//             <div class="bg-gray-100 aspect-square overflow-hidden">
+//                 ' . ($image ? '<img src="' . esc_url($image) . '" class="w-full h-full object-cover group-hover:scale-110 transition-transform">' : '') . '
+//             </div>
+
+//             <div class="p-3 font-semibold text-center tracking-wide">
+//                 ' . esc_html($cat->name) . '
+//             </div>
+//         </a>';
+//     }
+
+//     echo '</div>';
+
+//     return ob_get_clean();
+// }
+
+// add_shortcode('wyz_categories', 'wyz_render_category_grid');

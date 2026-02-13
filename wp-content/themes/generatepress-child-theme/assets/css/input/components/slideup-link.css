@@ -1,5 +1,6 @@
 #linkme-panel, #widesign-panel {
-    position: absolute;
+    position: fixed;
+    visibility: hidden;
     left: 0;
     right: 0;
     bottom: 0;
@@ -14,6 +15,7 @@
 
 #linkme-panel.active, #widesign-panel.active {
     transform: translateY(0);
+    visibility: visible;
 }
 
 #linkme-panel .linkme-content, #widesign-panel .linkme-content {

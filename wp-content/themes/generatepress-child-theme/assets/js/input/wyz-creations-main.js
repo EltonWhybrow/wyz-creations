@@ -290,7 +290,7 @@ jQuery(function ($) {
     });
   })();
 
-  // Widesign panel subscribe
+  // Widesign panel subscrFREE site
   (function () {
     const openBtn = document.getElementById('open-widesign');
     const closeBtn = document.getElementById('close-widesign');

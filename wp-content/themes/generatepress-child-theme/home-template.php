@@ -15,6 +15,9 @@ get_header(); ?>
 ?>
 
 
+<!-- <?php // echo do_shortcode('[wyz_categories]');  
+        ?> -->
+
 <div id="woo-home-overrides" class="z-10 relative mx-[5vw] py-2.5 md:py-10 text-center banner-content">
     <?php
     $args = array(
