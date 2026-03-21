@@ -152,6 +152,8 @@ add_filter('generate_container_width', '__return_false'); // removes the 1200px 
 add_filter('generate_blog_columns', '__return_false'); // removes masonry grid limits too
 
 
+add_filter('woocommerce_ajax_variation_threshold', '__return_false');
+
 //  Custom Walker for Mobile Menu -->
 class Mobile_Menu_Walker extends Walker_Nav_Menu
 {
