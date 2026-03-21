@@ -22,7 +22,7 @@ get_header(); ?>
     <?php
     $args = array(
         'post_type'      => 'product',
-        'posts_per_page' => 16,
+        'posts_per_page' => 4,
         'post_status'    => 'publish',
     );
 

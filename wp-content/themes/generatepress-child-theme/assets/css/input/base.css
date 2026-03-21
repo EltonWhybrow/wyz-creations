@@ -2,7 +2,7 @@
   body {
     font-family: var(--font-family-sans) !important;
     @apply !bg-white antialiased;
-    color: #242424 !important;
+    color: #42332F;
   }
 
   h1,

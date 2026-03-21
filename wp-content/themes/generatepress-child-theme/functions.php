@@ -5,24 +5,24 @@
  */
 
 // Enqueue Google Fonts
-add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);
-function wyzcreations_load_google_fonts()
-{
-    wp_enqueue_style(
-        'wyz-creations-google-fonts',
-        'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Work+Sans:wght@700&display=swap',
-        array(),
-        null
-    );
-}
+// add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);
+// function wyzcreations_load_google_fonts()
+// {
+//     wp_enqueue_style(
+//         'wyz-creations-google-fonts',
+//         'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Work+Sans:wght@700&display=swap',
+//         array(),
+//         null
+//     );
+// }
 
 // Enqueue Tailwind CSS compiled file
-add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_tailwind', 20);
+add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_tailwind', 999);
 function wyzcreations_enqueue_tailwind()
 {
     wp_enqueue_style(
         'wyz-creations-tailwind',
-        get_stylesheet_directory_uri() . '/assets/css/wyz-creations-styles.css', // compiled file
+        get_stylesheet_directory_uri() . '/assets/css/wyz-creations-styles.css',
         array('generate-style'),
         filemtime(get_stylesheet_directory() . '/assets/css/wyz-creations-styles.css')
     );
@@ -85,23 +85,23 @@ function wyzcreations_enqueue_scripts()
 }
 
 // Remove entry title from My Account (woocommerce)
-add_action('template_redirect', 'remove_my_account_entry_title');
-function remove_my_account_entry_title()
-{
-    if (function_exists('is_account_page') && is_account_page()) {
-        // Remove default WooCommerce title
-        remove_action('woocommerce_before_main_content', 'woocommerce_page_title', 20);
+// add_action('template_redirect', 'remove_my_account_entry_title');
+// function remove_my_account_entry_title()
+// {
+//     if (function_exists('is_account_page') && is_account_page()) {
+//         // Remove default WooCommerce title
+//         remove_action('woocommerce_before_main_content', 'woocommerce_page_title', 20);
 
-        // Remove theme's title if it uses the_title()
-        add_filter('the_title', function ($title, $id) {
-            $myaccount_page_id = get_option('woocommerce_myaccount_page_id');
-            if ($id == $myaccount_page_id && in_the_loop()) {
-                return '';
-            }
-            return $title;
-        }, 10, 2);
-    }
-}
+//         // Remove theme's title if it uses the_title()
+//         add_filter('the_title', function ($title, $id) {
+//             $myaccount_page_id = get_option('woocommerce_myaccount_page_id');
+//             if ($id == $myaccount_page_id && in_the_loop()) {
+//                 return '';
+//             }
+//             return $title;
+//         }, 10, 2);
+//     }
+// }
 
 // Remove default GeneratePress footer
 add_action('after_setup_theme', function () {
@@ -194,62 +194,62 @@ add_filter('upload_mimes', 'add_file_types_to_uploads');
 // Add custom input field on product page
 // dd custom input field on specific products only
 
-add_action('woocommerce_before_add_to_cart_button', 'wyz_add_custom_text_field');
-function wyz_add_custom_text_field()
-{
+// add_action('woocommerce_before_add_to_cart_button', 'wyz_add_custom_text_field');
+// function wyz_add_custom_text_field()
+// {
 
-    // Target product IDs
-    $allowed_products = array(1805); // ← replace with your actual product IDs
+//     // Target product IDs
+//     $allowed_products = array(1805); // ← replace with your actual product IDs
 
-    global $product;
+//     global $product;
 
-    if (! is_a($product, 'WC_Product')) return;
+//     if (! is_a($product, 'WC_Product')) return;
 
-    // Only show on allowed products
-    if (! in_array($product->get_id(), $allowed_products)) return;
+//     // Only show on allowed products
+//     if (! in_array($product->get_id(), $allowed_products)) return;
 
-    echo '<div class="block mb-2 wyz-custom-text-field">
-        <label for="custom_text">Enter custom date (max 4 characters):</label>
-        <input 
-            type="text" 
-            id="custom_text" 
-            name="custom_text" 
-            placeholder="TEXT" 
-            maxlength="4"
-            pattern="[A-Za-z0-9]{1,4}"
-            required
-        >
-    </div>';
-}
+//     echo '<div class="block mb-2 wyz-custom-text-field">
+//         <label for="custom_text">Enter custom date (max 4 characters):</label>
+//         <input 
+//             type="text" 
+//             id="custom_text" 
+//             name="custom_text" 
+//             placeholder="TEXT" 
+//             maxlength="4"
+//             pattern="[A-Za-z0-9]{1,4}"
+//             required
+//         >
+//     </div>';
+// }
 
-add_filter('woocommerce_add_cart_item_data', 'wyz_save_custom_text_to_cart', 10, 2);
-function wyz_save_custom_text_to_cart($cart_item_data, $product_id)
-{
-    if (isset($_POST['custom_text'])) {
-        $cart_item_data['custom_text'] = sanitize_text_field($_POST['custom_text']);
-    }
-    return $cart_item_data;
-}
+// add_filter('woocommerce_add_cart_item_data', 'wyz_save_custom_text_to_cart', 10, 2);
+// function wyz_save_custom_text_to_cart($cart_item_data, $product_id)
+// {
+//     if (isset($_POST['custom_text'])) {
+//         $cart_item_data['custom_text'] = sanitize_text_field($_POST['custom_text']);
+//     }
+//     return $cart_item_data;
+// }
 
-add_filter('woocommerce_get_item_data', 'wyz_display_custom_text_cart', 10, 2);
-function wyz_display_custom_text_cart($item_data, $cart_item)
-{
-    if (isset($cart_item['custom_text'])) {
-        $item_data[] = array(
-            'name' => 'Custom Year',
-            'value' => wc_clean($cart_item['custom_text']),
-        );
-    }
-    return $item_data;
-}
+// add_filter('woocommerce_get_item_data', 'wyz_display_custom_text_cart', 10, 2);
+// function wyz_display_custom_text_cart($item_data, $cart_item)
+// {
+//     if (isset($cart_item['custom_text'])) {
+//         $item_data[] = array(
+//             'name' => 'Custom Year',
+//             'value' => wc_clean($cart_item['custom_text']),
+//         );
+//     }
+//     return $item_data;
+// }
 
-add_action('woocommerce_checkout_create_order_line_item', 'wyz_save_custom_text_to_order', 10, 4);
-function wyz_save_custom_text_to_order($item, $cart_item_key, $values, $order)
-{
-    if (isset($values['custom_text'])) {
-        $item->add_meta_data('Custom Text', $values['custom_text'], true);
-    }
-}
+// add_action('woocommerce_checkout_create_order_line_item', 'wyz_save_custom_text_to_order', 10, 4);
+// function wyz_save_custom_text_to_order($item, $cart_item_key, $values, $order)
+// {
+//     if (isset($values['custom_text'])) {
+//         $item->add_meta_data('Custom Text', $values['custom_text'], true);
+//     }
+// }
 
 // function wyz_render_category_grid()
 // {
@@ -290,3 +290,58 @@ function wyz_save_custom_text_to_order($item, $cart_item_key, $values, $order)
 // }
 
 // add_shortcode('wyz_categories', 'wyz_render_category_grid');
+
+
+// google reviews //
+add_action('woocommerce_thankyou', 'add_google_reviews_optin');
+
+function add_google_reviews_optin($order_id)
+{
+    if (!$order_id) return;
+
+    $order = wc_get_order($order_id);
+
+    // REQUIRED VALUES
+    $merchant_id = 5721454439;
+    $order_id_js = $order->get_id();
+    $email = $order->get_billing_email();
+    $country = $order->get_billing_country();
+
+    // Estimated delivery date (adjust logic as needed)
+    $delivery_date = date('Y-m-d', strtotime('+5 days'));
+
+    // OPTIONAL: products with GTIN (if stored)
+    // $products = [];
+
+    // foreach ($order->get_items() as $item) {
+    //     $product = $item->get_product();
+
+    //     if ($product) {
+    //         $gtin = $product->get_meta('gtin'); // or '_gtin', depends on setup
+
+    //         if ($gtin) {
+    //             $products[] = ['gtin' => $gtin];
+    //         }
+    //     }
+    // }
+?>
+
+    <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+
+    <script>
+        window.renderOptIn = function() {
+            window.gapi.load('surveyoptin', function() {
+                window.gapi.surveyoptin.render({
+                    merchant_id: "<?php echo esc_js($merchant_id); ?>",
+                    order_id: "<?php echo esc_js($order_id_js); ?>",
+                    email: "<?php echo esc_js($email); ?>",
+                    delivery_country: "<?php echo esc_js($country); ?>",
+                    estimated_delivery_date: "<?php echo esc_js($delivery_date); ?>",
+
+                });
+            });
+        }
+    </script>
+
+<?php
+}

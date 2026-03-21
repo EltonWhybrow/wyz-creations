@@ -6,7 +6,7 @@
       @apply flex flex-row items-center gap-4 md:gap-7 !m-0 !p-0 !list-none;
       li {
         a {
-          @apply font-bold !text-[var(--color-wyz-creations-guest-black-chalk)] md:text-[18px] text-base hover:!underline !no-underline;
+          @apply font-bold !text-[#42332F] md:text-[18px] text-base hover:!underline !no-underline;
         }
       }
     }

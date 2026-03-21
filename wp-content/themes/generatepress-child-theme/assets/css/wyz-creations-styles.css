@@ -491,6 +491,9 @@
   .w-10 {
     width: calc(var(--spacing) * 10);
   }
+  .w-14 {
+    width: calc(var(--spacing) * 14);
+  }
   .w-20 {
     width: calc(var(--spacing) * 20);
   }
@@ -841,9 +844,6 @@
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
-  }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
@@ -1693,7 +1693,7 @@
     background-color: var(--color-white) !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #242424 !important;
+    color: #42332F;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading) !important;
@@ -1753,7 +1753,7 @@
           line-height: var(--tw-leading, var(--text-base--line-height));
           --tw-font-weight: var(--font-weight-bold);
           font-weight: var(--font-weight-bold);
-          color: var(--color-wyz-creations-guest-black-chalk) !important;
+          color: #42332F !important;
           text-decoration-line: none !important;
           &:hover {
             @media (hover: hover) {

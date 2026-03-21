@@ -20,12 +20,12 @@
         </div>
     </div> -->
 
-    <header id="masthead" class="flex justify-between items-center mx-[5vw] py-5" role="banner">
+    <header id="masthead" class="flex justify-between items-center mx-[5vw] py-2" role="banner">
         <a href="<?php echo home_url('/'); ?>" class="site-branding">
             <img
                 src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
                 alt="<?php bloginfo('name'); ?>"
-                class="w-20" />
+                class="w-14" />
         </a>
 
         <!-- Desktop Navigation -->
