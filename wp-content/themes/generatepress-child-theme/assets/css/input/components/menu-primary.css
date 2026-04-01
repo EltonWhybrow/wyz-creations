@@ -1,0 +1,47 @@
+#menu-header-menu > li {
+	> a {
+		@apply border-white hover:border-wyz-creations-guest-black-chalk border-b-2 hover:border-b-2 font-bold text-wyz-creations-guest-black-chalk;
+	}
+}
+
+.main-menu {
+	@apply hidden md:block;
+}
+
+/* main mega menu opening */
+.sub-menu-level-1 {
+	@apply invisible group-hover:visible top-[70px] left-0 z-10 absolute flex flex-wrap justify-center bg-white px-16 py-8 w-full transition-all duration-200 ease-in-out;
+}
+
+.menu-level-2 {
+	@apply w-1/6;
+	a {
+		@apply mb-3 font-semibold text-wyz-creations-guest-black-chalk text-sm;
+	}
+}
+
+.menu-level-3 {
+	a {
+		@apply text-wyz-creations-guest-black-chalk hover:text-wyz-creations-guest-black-chalk/80 text-xs font-semibold w-full block;
+	}
+}
+
+#menu-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.25);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s ease;
+	z-index: 20; /* below menu, above content */
+}
+
+#menu-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Optional: delay hiding visibility */
+#menu-overlay:not(.active) {
+	transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}

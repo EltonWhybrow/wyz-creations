@@ -33,7 +33,7 @@ $action_link     = $args['link'];
                             href="<?php echo esc_url($action_link['url']); ?>"
                             target="<?php echo esc_attr($action_link['target'] ?: '_self'); ?>"
 
-                            class="mx-auto w-full transition-all duration-300 wyz-btn secondary">
+                            class="mx-auto w-full transition-all duration-300 wyz-btn btn-lg secondary">
                             <?php echo esc_html($action_link['title']); ?>
                         </a>
                     </div>

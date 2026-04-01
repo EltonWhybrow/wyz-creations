@@ -17,13 +17,13 @@
 // }
 
 // Enqueue Tailwind CSS compiled file
-add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_tailwind', 999);
+add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_tailwind', 998);
 function wyzcreations_enqueue_tailwind()
 {
     wp_enqueue_style(
         'wyz-creations-tailwind',
         get_stylesheet_directory_uri() . '/assets/css/wyz-creations-styles.css',
-        array('generate-style'),
+        [],
         filemtime(get_stylesheet_directory() . '/assets/css/wyz-creations-styles.css')
     );
 }
@@ -128,10 +128,8 @@ function my_custom_footer()
 function mytheme_register_menus()
 {
     register_nav_menus(array(
-        'footer-services' => __('Footer Menu Services', 'wyz-creations-guest-child-theme'),
-        'footer-support' => __('Footer Menu Support', 'wyz-creations-guest-child-theme'),
-        'footer-company' => __('Footer Menu Company', 'wyz-creations-guest-child-theme'),
-        'footer-franks' => __('Footer Menu Franks', 'wyz-creations-guest-child-theme'),
+        'primary' => __('Primary Menu', 'wyz-creations-guest-child-theme'),
+        'footer-menu' => __('Footer Menu', 'wyz-creations-guest-child-theme'),
         'footer-widesign' => __('Footer Menu WideSign', 'wyz-creations-guest-child-theme')
     ));
 }
@@ -182,6 +180,79 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu
 }
 // End of Mobile Menu Walker
 
+class Desktop_Mega_Menu_Walker extends Walker_Nav_Menu
+{
+    // Start a new level (submenu)
+    function start_lvl(&$output, $depth = 0, $args = null)
+    {
+        $indent = str_repeat("\t", $depth);
+
+        if ($depth === 0) {
+            // Full-width mega menu container
+            $output .= "\n$indent<ul class=\"absolute top-full left-0 w-screen bg-white hidden group-hover:block z-50 shadow-lg\">\n";
+        } else {
+            // Nested submenus (column items)
+            $output .= "\n$indent<ul class=\"pl-4 space-y-2\">\n";
+        }
+    }
+
+    // Start a menu item
+    function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+    {
+        $has_children = in_array('menu-item-has-children', $item->classes);
+
+        // Top-level items
+        if ($depth === 0) {
+            $output .= '<li class="group relative">'; // Removed px-4 to align submenu to viewport
+
+            $output .= '<a href="' . esc_url($item->url) . '" 
+                class="flex items-center gap-1 px-6 py-3 font-medium text-gray-800 hover:text-blue-600">'; // padding for clickable area
+
+            $output .= esc_html($item->title);
+
+            if ($has_children) {
+                $output .= '<i class="ml-1 text-xs fa fa-chevron-down"></i>';
+            }
+
+            $output .= '</a>';
+        }
+
+        // Sub-items (columns)
+        elseif ($depth === 1) {
+            $output .= '<li class="mb-3">';
+
+            $output .= '<a href="' . esc_url($item->url) . '" 
+                class="block py-1 font-semibold text-gray-900 hover:text-blue-600">';
+
+            $output .= esc_html($item->title);
+            $output .= '</a>';
+        }
+
+        // Third-level items
+        else {
+            $output .= '<li>';
+
+            $output .= '<a href="' . esc_url($item->url) . '" 
+                class="block py-1 text-gray-600 hover:text-blue-600">';
+
+            $output .= esc_html($item->title);
+            $output .= '</a>';
+        }
+    }
+
+    // End a menu item
+    function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+        $output .= "</li>\n";
+    }
+
+    // End a level (submenu)
+    function end_lvl(&$output, $depth = 0, $args = null)
+    {
+        $output .= "</ul>\n";
+    }
+}
+
 // SVG support
 function add_file_types_to_uploads($file_types)
 {
@@ -191,6 +262,12 @@ function add_file_types_to_uploads($file_types)
     return $file_types;
 }
 add_filter('upload_mimes', 'add_file_types_to_uploads');
+
+// remove all generatepress css so i can have full control with tailwind
+add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('generate-style');
+    wp_deregister_style('generate-style'); // important
+}, 999);
 
 // CUSTOM TEXT FOR SPECIFIC PRODUCTS
 // Add custom input field on product page
@@ -346,4 +423,198 @@ function add_google_reviews_optin($order_id)
     </script>
 
 <?php
+}
+
+
+
+
+
+
+class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
+{
+
+    // Start submenu level (ul)
+    function start_lvl(&$output, $depth = 0, $args = null)
+    {
+        $level = $depth + 1; // Start counting from 1 (more readable)
+        $output .= "\n<ul class=\"sub-menu sub-menu-level-{$level}\">\n";
+    }
+
+    // Start menu item (li + a)
+    function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+    {
+        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $has_children = in_array('menu-item-has-children', $classes);
+        $level = $depth + 1;
+
+        // Base classes (shared across all levels)
+        $li_classes = [
+            'menu-item',
+            'lg:static',
+            'relative',
+            'group',
+            "menu-level-{$level}", // Depth-specific class
+        ];
+
+        // Merge with WordPress-generated classes
+        $li_classes = array_merge($li_classes, $classes);
+
+        // Depth-specific styles
+        if ($depth === 0) {
+            $li_classes[] = 'py-4 lg:p-3'; // Level 1
+        } else if ($depth === 1) {
+            $li_classes[] = 'px-0 '; // Level 2 (indent)
+        } else if ($depth >= 2) {
+            $li_classes[] = 'px-0 pl-2 lg:pl-0'; // Level 3+ (further indent)
+        }
+
+        $output .= sprintf(
+            '<li class="%s">',
+            implode(' ', array_filter($li_classes)) // Remove empty values
+        );
+
+        // Link (all levels)
+        $output .= sprintf(
+            '<a href="%s" class="inline-block %s">%s</a>',
+            esc_url($item->url),
+            $depth > 0 ? 'text-base' : 'text-base', // Smaller text for submenus
+            esc_html($item->title)
+        );
+
+        // Toggle button (if has children)
+        if ($has_children) {
+            $output .= sprintf(
+                '<button class="lg:hidden right-0 absolute text-blue cursor-pointer submenu-toggle %s">
+          <i class="fa-solid fa-chevron-down %s"></i>
+        </button>',
+                $depth > 0 ? 'top-0 px-3 pt-2 pb-3' : 'top-0 px-3 pt-4 pb-2', // Adjust position per level
+                $depth > 0 ? 'text-md' : 'text-md' // Icon size
+            );
+        }
+    }
+
+    function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+        $output .= "</li>\n";
+    }
+}
+
+// Use the custom walker in your menu
+function add_submenu_toggle($args)
+{
+    // Add the custom walker only to your main menu, adjust location as needed
+    if ($args['theme_location'] == 'primary') {
+        $args['walker'] = new Add_Submenu_Toggle_Walker();
+    }
+    return $args;
+}
+add_filter('wp_nav_menu_args', 'add_submenu_toggle');
+
+
+// FOOTER MENU WALKER (simpler, 2-level only)
+class Mega_Menu_Walker extends Walker_Nav_Menu
+{
+
+    function start_lvl(&$output, $depth = 0, $args = null)
+    {
+        if ($depth === 0) {
+            $output .= '<ul class="space-y-2 mt-3 font-semibold text-sm">';
+        }
+    }
+
+    function end_lvl(&$output, $depth = 0, $args = null)
+    {
+        if ($depth === 0) {
+            $output .= '</ul>';
+        }
+    }
+
+    function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+    {
+
+        if ($depth === 0) {
+            // Column wrapper + header
+            $output .= '<div class="col-span-1">';
+            $output .= '<h3 class="mb-6 font-bold text-base">' . esc_html($item->title) . '</h3>';
+        } else {
+            // Child links
+            $output .= '<li>';
+            $output .= '<a href="' . esc_url($item->url) . '" class="text-wyz-creations-guest-black-chalk/60 hover:text-wyz-creations-guest-black-chalk">';
+            $output .= esc_html($item->title);
+            $output .= '</a></li>';
+        }
+    }
+
+    function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+        if ($depth === 0) {
+            $output .= '</div>';
+        }
+    }
+}
+
+// favourite code
+function favourites_scripts()
+{
+    wp_enqueue_script(
+        'favourites-js',
+        get_template_directory_uri() . '/js/favourites.js',
+        [],
+        null,
+        true
+    );
+
+    wp_localize_script('favourites-js', 'favourites_ajax', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ]);
+}
+add_action('wp_enqueue_scripts', 'favourites_scripts');
+
+add_action('wp_ajax_toggle_favourite', 'toggle_favourite');
+add_action('wp_ajax_nopriv_toggle_favourite', 'toggle_favourite');
+
+function toggle_favourite()
+{
+    $product_id = intval($_POST['product_id']);
+
+    // Logged-in users → user meta
+    if (is_user_logged_in()) {
+        $user_id = get_current_user_id();
+        $favourites = get_user_meta($user_id, 'favourites', true);
+
+        if (!is_array($favourites)) $favourites = [];
+
+        if (in_array($product_id, $favourites)) {
+            $favourites = array_diff($favourites, [$product_id]);
+            $status = 'removed';
+        } else {
+            $favourites[] = $product_id;
+            $status = 'added';
+        }
+
+        update_user_meta($user_id, 'favourites', $favourites);
+    }
+    // Guests → cookies
+    else {
+        $favourites = isset($_COOKIE['favourites'])
+            ? json_decode(stripslashes($_COOKIE['favourites']), true)
+            : [];
+
+        if (!is_array($favourites)) $favourites = [];
+
+        if (in_array($product_id, $favourites)) {
+            $favourites = array_diff($favourites, [$product_id]);
+            $status = 'removed';
+        } else {
+            $favourites[] = $product_id;
+            $status = 'added';
+        }
+
+        setcookie('favourites', json_encode(array_values($favourites)), time() + 86400 * 30, '/');
+    }
+
+    wp_send_json([
+        'status' => $status,
+        'favourites' => array_values($favourites)
+    ]);
 }

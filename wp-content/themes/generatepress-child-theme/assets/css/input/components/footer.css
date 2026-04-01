@@ -1,20 +1,27 @@
 /* Your components */
 @layer components {
-  .wyz-creations-footer {
-    .footer-menu {
-      @apply !m-0;
-      li {
-        @apply mb-1 list-none;
-        a {
-          @apply text-[var(--color-wyz-guest-white)]! text-xl no-underline! hover:underline!;
-        }
-      }
-    }
+	.wyz-creations-footer {
+		.footer-menu {
+			@apply !m-0;
+			li {
+				@apply mb-1 list-none;
+				a {
+					@apply text-[var(--color-wyz-guest-white)]! text-xl no-underline! hover:underline!;
+				}
+			}
+		}
 
-    .footer-col {
-      h4 {
-        @apply mb-1! font-bold text-[var(--color-wyz-guest-white)] text-xl!;
-      }
-    }
-  }
+		.footer-col {
+			h4 {
+				@apply mb-1! font-bold text-[var(--color-wyz-guest-white)] text-xl!;
+			}
+		}
+	}
+
+	#main-footer {
+		@apply text-wyz-creations-guest-black-chalk;
+		li {
+			@apply text-wyz-creations-guest-black-chalk/60 hover:text-wyz-creations-guest-black-chalk;
+		}
+	}
 }

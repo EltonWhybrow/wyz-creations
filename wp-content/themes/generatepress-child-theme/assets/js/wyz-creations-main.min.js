@@ -1,4 +1,66 @@
 jQuery(function ($) {
+
+
+  document.querySelectorAll('.favourite-toggle').forEach(button => {
+
+    button.addEventListener('click', function () {
+      const productId = this.dataset.productId;
+      const heart = this.querySelector('.heart');
+
+      fetch(favourites_ajax.ajax_url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `action=toggle_favourite&product_id=${productId}`
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'added') {
+            heart.classList.remove('text-gray-400');
+            heart.classList.add('text-red-500');
+          } else {
+            heart.classList.remove('text-red-500');
+            heart.classList.add('text-gray-400');
+          }
+
+          updateFavouriteCount(data.favourites.length);
+        });
+    });
+
+  });
+
+
+  function updateFavouriteCount(count) {
+    const badge = document.querySelector('.favourites-count');
+    if (badge) {
+      badge.textContent = count;
+    }
+  }
+
+  // menu js
+  const overlay = document.getElementById('menu-overlay');
+  const nav = document.querySelector('.sub-menu');
+
+  if (overlay && nav) {
+    let timeout;
+
+    nav.addEventListener('mouseover', (e) => {
+      if (e.target.closest('.menu-item-has-children') || e.target.closest('.sub-menu')) {
+        clearTimeout(timeout);
+        overlay.classList.add('active');
+      }
+    });
+
+    nav.addEventListener('mouseout', (e) => {
+      if (!nav.contains(e.relatedTarget)) {
+        timeout = setTimeout(() => {
+          overlay.classList.remove('active');
+        }, 100);
+      }
+    });
+  }
+
+
+
   // Mobile menu
   const mobileMenu = {
     init: function () {
@@ -199,7 +261,7 @@ jQuery(function ($) {
 
     var $target = $("#" + hash);
     if ($target.length) {
-      var headerHeight = $(".fixed-header").outerHeight() || 0;
+      var headerHeight = $(".sticky").outerHeight() || 0;
       var offset = parseInt($(this).data("offset")) || headerHeight;
 
       $("html, body").animate(
@@ -220,7 +282,7 @@ jQuery(function ($) {
     var $target = $("#" + hash);
     if ($target.length) {
       setTimeout(function () {
-        var headerHeight = $(".fixed-header").outerHeight() || 0;
+        var headerHeight = $(".sticky").outerHeight() || 0;
         $("html, body").scrollTop($target.offset().top - headerHeight);
       }, 100);
     }

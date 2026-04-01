@@ -18,12 +18,9 @@
                     <img
                         src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo-white.png"
                         alt="<?php bloginfo('name'); ?>"
-                        class="mx-auto md:mx-0 w-[80px]" />
+                        class="mx-auto md:mx-0 w-20" />
 
                 </div>
-                <!-- <p class="w-full md:w-[65%] text-[var(--color-wyz-guest-white)] text-base">
-                    In association with: <br>
-                </p> -->
             </div>
 
             <!-- Column 2 – Services -->

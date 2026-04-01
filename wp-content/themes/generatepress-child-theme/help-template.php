@@ -1,45 +1,23 @@
 <?php
 
 /**
- * Template Name: Home Template
+ * Template Name: Help Template
  * Description: Full-width template that uses only free ACF fields
  */
+
+
 
 get_header(); ?>
 
 <!-- Hero Banner -->
 <?php get_template_part('parts/hero-banner'); ?>
 
-<!-- Categroy Upsell -->
-<?php get_template_part('parts/category-upsell'); ?>
-
-<!-- Trusted Companies section -->
-<?php // get_template_part('parts/trusted-companies');
-?>
-
-<!-- Stats section -->
-<? //php // get_template_part('parts/stats');
-?>
-
-<!-- Steps section -->
-<?php // get_template_part('parts/steps');
-?>
-
-<!-- Ready to go section -->
-<?php // get_template_part('parts/ready-to-go');
-?>
-
-<!-- Best Seller section -->
-<?php get_template_part('parts/best-sellers');
-?>
 
 <!-- FAQs section -->
-<?php // get_template_part('parts/faqs');
+<?php get_template_part('parts/faqs');
 ?>
 
-<!-- Call to Action section -->
-<?php get_template_part('parts/call-to-action');
-?>
+
 
 <div id="linkme-panel">
     <button id="close-linkme" aria-label="Close menu">✕</button>

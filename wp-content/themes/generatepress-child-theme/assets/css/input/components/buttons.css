@@ -1,22 +1,37 @@
 /* Buttons */
-@layer components {
-  .wyz-btn {
-    @apply flex justify-center items-center px-10 py-2.5 rounded-full h-[60px] font-bold! text-xl! transition-all transition-colors! duration-300! no-underline!;
-    &.primary {
-      @apply bg-[var(--color-wyz-creations-guest-black-chalk)]! hover:bg-[var(--color-wyz-guest-white)]! border-[var(--color-wyz-creations-guest-black-chalk)]! hover:border-[var(--color-wyz-creations-guest-black-chalk)]! !text-[var(--color-wyz-guest-white)] hover:text-[var(--color-wyz-creations-guest-black-chalk)]! border!;
-    }
-    &.secondary {
-      @apply text-(--color-wyz-creations-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
-    }
-    &.tertiary {
-      @apply bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! hover:border-[var(--color-wyz-creations-guest-blue)]! text-[var(--color-wyz-guest-white)]! hover:text-[var(--color-wyz-creations-guest-blue)]! border!;
-    }
-  }
+@layer utilities {
+	.wyz-btn {
+		@apply inline-flex justify-center items-center mt-3 rounded-full w-fit font-bold! no-underline transition-all duration-300;
+		&.btn-sm {
+			@apply px-8 py-1.5 h-10 text-base;
+		}
+		&.btn-lg {
+			@apply px-10 py-2.5 h-[60px] text-xl;
+		}
+		&.primary {
+			@apply bg-wyz-creations-guest-black-chalk hover:bg-wyz-guest-white text-wyz-guest-white hover:text-wyz-creations-guest-black-chalk;
+		}
+		&.secondary {
+			@apply bg-wyz-guest-white hover:bg-wyz-creations-guest-black-chalk text-wyz-creations-guest-black-chalk hover:text-wyz-guest-white;
+		}
+		&.tertiary {
+			@apply bg-wyz-creations-guest-blue hover:bg-wyz-guest-white border hover:border-wyz-creations-guest-blue text-wyz-guest-white hover:text-wyz-creations-guest-blue;
+		}
+	}
 
-  .wpcf7-submit {
-    @apply flex justify-center items-center px-10 py-2.5 rounded-full h-[60px] font-bold! text-xl! transition-all transition-colors! duration-300! no-underline!;
-    @apply text-(--color-wyz-creations-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
-  
-    display: block;
-  }
+	/* extra top menu */
+	.menu-link-secondary {
+		@apply font-medium text-wyz-creations-guest-black-chalk text-xs hover:underline;
+	}
+
+	.menu-link-icons {
+		@apply text-wyz-creations-guest-black-chalk! text-xl no-underline!;
+	}
+
+	.wpcf7-submit {
+		@apply flex justify-center items-center px-10 py-2.5 rounded-full h-[60px] font-bold! text-xl! transition-all transition-colors! duration-300! no-underline!;
+		@apply text-(--color-wyz-creations-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
+
+		display: block;
+	}
 }
