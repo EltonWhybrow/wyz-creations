@@ -2662,7 +2662,7 @@ button.faq-question {
   }
 }
 .form-split-content {
-  input {
+  input.wpcf7-text {
     width: 100%;
     border-radius: var(--radius-lg);
     border-style: var(--tw-border-style);
