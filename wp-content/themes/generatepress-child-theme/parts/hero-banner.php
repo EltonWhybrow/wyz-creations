@@ -81,11 +81,8 @@ $guest_3 = $guests_protected['guest_3'] ?? '';
     <!-- hero image -->
     <?php if ($hero_image) : ?>
 
-
-
-
         <div
-            class="z-0 absolute inset-0 my-2 overflow-hidden skip-lazy"
+            class="z-0 absolute inset-0 overflow-hidden skip-lazy"
             style="background:  linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.75) 0%,
