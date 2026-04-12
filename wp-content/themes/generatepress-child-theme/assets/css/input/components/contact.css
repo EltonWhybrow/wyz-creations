@@ -1,8 +1,15 @@
 .contact-us-content {
-  h1 {
-    @apply text-[40px]! leading-10! md:text-[70px]! md:leading-[70px]! font-semibold;
-  }
-  p {
-    @apply my-0! leading-7!;
-  }
+	h1 {
+		@apply font-semibold text-[40px]! md:text-[70px]! leading-10! md:leading-[70px]!;
+	}
+	p {
+		@apply my-0! leading-7!;
+	}
+}
+
+/* // Form Split stlyes */
+.form-split-content {
+	input {
+		@apply p-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black w-full text-lg;
+	}
 }

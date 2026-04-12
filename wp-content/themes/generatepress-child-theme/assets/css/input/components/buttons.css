@@ -15,7 +15,6 @@
 			@apply bg-wyz-guest-white hover:bg-wyz-creations-guest-black-chalk text-wyz-creations-guest-black-chalk hover:text-wyz-guest-white;
 		}
 		&.tertiary {
-			@apply block bg-wyz-creations-guest-blue hover:bg-wyz-guest-white border hover:border-wyz-creations-guest-blue text-wyz-guest-white hover:text-wyz-creations-guest-blue;
 		}
 	}
 
@@ -29,9 +28,6 @@
 	}
 
 	.wpcf7-submit {
-		@apply flex justify-center items-center px-10 py-2.5 rounded-full h-[60px] font-bold! text-xl! transition-all transition-colors! duration-300! no-underline!;
-		@apply text-(--color-wyz-creations-guest-black-chalk)!  bg-white/60! hover:text-[var(--color-wyz-guest-white)]! hover:bg-black/90!;
-
-		display: block;
+		@apply block inline-flex justify-center items-center bg-wyz-creations-guest-blue hover:bg-wyz-guest-white mt-3 px-12 py-3.5 border hover:border-wyz-creations-guest-blue rounded-full w-fit font-bold! text-wyz-guest-white hover:text-wyz-creations-guest-blue text-xl no-underline transition-all duration-300;
 	}
 }
