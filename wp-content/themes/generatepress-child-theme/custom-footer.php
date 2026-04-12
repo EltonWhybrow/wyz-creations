@@ -39,7 +39,7 @@
         <!-- Bottom Bar -->
         <div class="pt-14 font-semibold text-wyz-creations-guest-black-chalk/60 text-sm">
             <span> © <?php echo date('Y'); ?> WYZCreations - All rights reserved</span>
-            | <span><a href="#" class="hover:text-wyz-creations-guest-black-chalk">Privacy & Cookie Policy</a></span>
+            | <span><a href="<?php echo home_url('/privacy-policy/'); ?>" class="hover:text-wyz-creations-guest-black-chalk">Privacy & Cookie Policy</a></span>
 
         </div>
 
