@@ -25,7 +25,7 @@ if (is_user_logged_in()) {
         ?>
 
         <!-- Page Title -->
-        <h1 class="mb-[1em] CUSTOM-woocommerce-products-header"><?php the_title(); ?></h1>
+        <h1 class="mb-[1em] CUSTOM-woocommerce-products-header">Your <?php the_title(); ?></h1>
 
 
         <?php

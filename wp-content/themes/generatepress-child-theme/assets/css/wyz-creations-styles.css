@@ -2292,6 +2292,28 @@
         }
       }
     }
+    &.tertiary {
+      display: block;
+      border-style: var(--tw-border-style);
+      border-width: 1px;
+      background-color: var(--color-wyz-creations-guest-blue);
+      color: var(--color-wyz-guest-white);
+      &:hover {
+        @media (hover: hover) {
+          border-color: var(--color-wyz-creations-guest-blue);
+        }
+      }
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-wyz-guest-white);
+        }
+      }
+      &:hover {
+        @media (hover: hover) {
+          color: var(--color-wyz-creations-guest-blue);
+        }
+      }
+    }
   }
   .menu-link-secondary {
     font-size: var(--text-xs);
