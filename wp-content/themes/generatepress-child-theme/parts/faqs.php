@@ -4,16 +4,44 @@ $faq_subtitle = get_field('faq_subtitle');
 
 ?>
 
-<div id="faqs" class="px-5 md:px-[10vw] py-[60px] md:py-20 faqs-module">
+<div id="faqs" class="py-6 faqs-module">
     <!-- Header -->
-    <div class="mb-16 faqs-header">
-        <h2 class="mb-0! font-semibold! text-[36px]! md:text-[64px]! leading-9! md:leading-[60px]!">
-            <?php echo esc_html($faq_title); ?>
-        </h2>
-        <p class="mt-4 text-lg">
-            <?php echo esc_html($faq_subtitle); ?>
-        </p>
+    <?php if ($faq_title || $faq_subtitle): ?>
+
+        <div class="mb-16 faqs-header">
+            <h2 class="mb-0! font-semibold! text-[36px]! md:text-[64px]! leading-9! md:leading-[60px]!">
+                <?php echo esc_html($faq_title); ?>
+            </h2>
+
+            <p class="mt-4 text-lg">
+                <?php echo esc_html($faq_subtitle); ?>
+            </p>
+        </div>
+
+    <?php endif; ?>
+
+    <div class="relative mb-10 faq-search">
+
+        <input
+            type="text"
+            id="faqSearchInput"
+            placeholder="Search FAQs..."
+            class="p-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black w-full text-lg" />
+
+        <button
+            type="button"
+            id="faqClearSearch"
+            class="hidden top-1/2 right-4 absolute text-gray-400 hover:text-black -translate-y-1/2"
+            aria-label="Clear search">
+            ✕
+        </button>
+
     </div>
+    <p id="faqNoResults" class="hidden mt-4 text-gray-500">
+        No FAQs found matching your search.
+    </p>
+
+
 
     <!-- FAQ Accordion -->
     <div class="mx-auto max-w-4xl faq-accordion">
@@ -33,7 +61,7 @@ $faq_subtitle = get_field('faq_subtitle');
                 $index++;
                 $faq_id = 'faq-' . get_the_ID();
         ?>
-                <div class="mx-auto faq-item">
+                <div class="mx-auto faq-item" data-faq-item>
                     <button class="group flex justify-between items-center w-full text-left transition-colors duration-200 faq-question"
                         aria-expanded="false"
                         aria-controls="<?php echo $faq_id; ?>"
@@ -42,12 +70,7 @@ $faq_subtitle = get_field('faq_subtitle');
                             <?php echo get_the_title(); ?>
                         </h3>
                         <span class="flex-shrink-0 ml-4 faq-icon">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/add-icon.svg"
-                                alt="Open FAQ"
-                                class="w-6 h-6 icon-add">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/minus-icon.svg"
-                                alt="Close FAQ"
-                                class="w-6 h-6 icon-minus">
+                            <i class="transition-transform duration-300 fa-solid fa-chevron-down"></i>
                         </span>
                     </button>
 

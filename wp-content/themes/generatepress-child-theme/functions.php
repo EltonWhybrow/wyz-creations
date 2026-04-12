@@ -558,14 +558,20 @@ function favourites_scripts()
 {
     wp_enqueue_script(
         'favourites-js',
-        get_template_directory_uri() . '/js/favourites.js',
+        get_stylesheet_directory_uri() . '/assets/js/favourites.js',
         [],
         null,
         true
     );
 
+    // Pass data to JS
     wp_localize_script('favourites-js', 'favourites_ajax', [
-        'ajax_url' => admin_url('admin-ajax.php'),
+        'ajax_url'   => admin_url('admin-ajax.php'),
+        'favourites' => is_user_logged_in()
+            ? get_user_meta(get_current_user_id(), 'favourites', true)
+            : (isset($_COOKIE['favourites'])
+                ? json_decode(stripslashes($_COOKIE['favourites']), true)
+                : [])
     ]);
 }
 add_action('wp_enqueue_scripts', 'favourites_scripts');
@@ -618,3 +624,65 @@ function toggle_favourite()
         'favourites' => array_values($favourites)
     ]);
 }
+
+
+// debug template being used for product category pages
+add_action('template_include', function ($template) {
+    if (is_product_category()) {
+        echo '<!-- Template being used: ' . $template . ' -->';
+    }
+    return $template;
+});
+
+// override cart buttons
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+
+add_action('woocommerce_after_shop_loop_item', function () {
+    global $product;
+
+    echo '<a href="' . esc_url($product->add_to_cart_url()) . '" 
+        data-quantity="1"
+        class="wyz-btn btn-sm tertiary"
+        data-product_id="' . esc_attr($product->get_id()) . '"
+        data-product_sku="' . esc_attr($product->get_sku()) . '"
+        aria-label="' . esc_attr($product->add_to_cart_description()) . '"
+        rel="nofollow">'
+        . esc_html($product->add_to_cart_text()) .
+        '</a>';
+}, 10);
+
+
+// Load specific template parts at bottom of specific pages
+add_action('generate_before_footer', function () {
+    if (is_page(['returns-refunds', 'privacy-policy', 'new-products', 'favourites', 'contact-us', 'promo-codes']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
+        get_template_part('parts/call-to-action');
+    }
+});
+
+add_action('generate_before_footer', function () {
+    if (is_page(['subscribe', 'delivery']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
+        get_template_part('parts/socials');
+        get_template_part('parts/best-sellers');
+    }
+});
+
+add_action('generate_before_footer', function () {
+
+    if (
+        (is_page('help') || is_home()) &&
+        (!function_exists('is_woocommerce') || !is_woocommerce())
+    ) {
+
+        // ALWAYS resolve correct page ID explicitly
+        if (is_home()) {
+            $page_id = get_option('page_for_posts'); // NEWS PAGE
+        } else {
+            $page_id = get_queried_object_id(); // safer than get_the_ID()
+        }
+
+        set_query_var('cta_page_id', $page_id);
+
+        get_template_part('parts/socials');
+        get_template_part('parts/call-to-action');
+    }
+});

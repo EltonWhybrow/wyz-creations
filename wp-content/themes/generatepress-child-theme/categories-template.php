@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Home Template
+ * Template Name: Categories Template
  * Description: Full-width template that uses only free ACF fields
  */
 
@@ -30,7 +30,11 @@ get_header(); ?>
 ?>
 
 <!-- Best Seller section -->
-<?php get_template_part('parts/best-sellers');
+<?php // get_template_part('parts/best-sellers');
+?>
+
+<!-- FAQs section -->
+<?php // get_template_part('parts/faqs');
 ?>
 
 <!-- Socail media strip -->

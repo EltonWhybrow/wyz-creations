@@ -3,10 +3,10 @@
 	.wyz-btn {
 		@apply inline-flex justify-center items-center mt-3 rounded-full w-fit font-bold! no-underline transition-all duration-300;
 		&.btn-sm {
-			@apply px-8 py-1.5 h-10 text-base;
+			@apply px-8 py-2.5 text-base;
 		}
 		&.btn-lg {
-			@apply px-10 py-2.5 h-[60px] text-xl;
+			@apply px-12 py-3.5 text-xl;
 		}
 		&.primary {
 			@apply bg-wyz-creations-guest-black-chalk hover:bg-wyz-guest-white text-wyz-guest-white hover:text-wyz-creations-guest-black-chalk;
@@ -15,7 +15,7 @@
 			@apply bg-wyz-guest-white hover:bg-wyz-creations-guest-black-chalk text-wyz-creations-guest-black-chalk hover:text-wyz-guest-white;
 		}
 		&.tertiary {
-			@apply bg-wyz-creations-guest-blue hover:bg-wyz-guest-white border hover:border-wyz-creations-guest-blue text-wyz-guest-white hover:text-wyz-creations-guest-blue;
+			@apply block bg-wyz-creations-guest-blue hover:bg-wyz-guest-white border hover:border-wyz-creations-guest-blue text-wyz-guest-white hover:text-wyz-creations-guest-blue;
 		}
 	}
 

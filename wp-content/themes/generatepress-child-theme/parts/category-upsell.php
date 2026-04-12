@@ -68,9 +68,17 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
+
+                <?php if ($guests_protection_link) : ?>
+                    <a
+                        href="<?php echo esc_url($guests_protection_link['url']); ?>"
+                        class="top-0 left-0 absolute w-full h-full">
+
+                    </a>
+                <?php endif; ?>
+
+
                 <div class="mt-auto">
-
-
                     <?php if ($guests_protection_content) : ?>
                         <div class="info-card-text">
                             <?php echo wp_kses_post($guests_protection_content); ?>
@@ -106,6 +114,15 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
+
+                <?php if ($guests_protection_link) : ?>
+                    <a
+                        href="<?php echo esc_url($guests_protection_link['url']); ?>"
+                        class="top-0 left-0 absolute w-full h-full">
+
+                    </a>
+                <?php endif; ?>
+
                 <div class="mt-auto">
                     <?php if ($guests_disruptions_content) : ?>
                         <div class="info-card-text">
@@ -146,6 +163,16 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
+
+                <?php if ($guests_issues_link) : ?>
+                    <a
+                        href="<?php echo esc_url($guests_issues_link['url']); ?>"
+                        class="top-0 left-0 absolute w-full h-full">
+
+                    </a>
+                <?php endif; ?>
+
+
                 <div class="mt-auto">
 
 
@@ -184,6 +211,15 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
+
+                <?php if ($guests_damage_link) : ?>
+                    <a
+                        href="<?php echo esc_url($guests_damage_link['url']); ?>"
+                        class="top-0 left-0 absolute w-full h-full">
+
+                    </a>
+                <?php endif; ?>
+
                 <div class="mt-auto">
 
 

@@ -70,7 +70,7 @@ if (! is_a($product, WC_Product::class) || ! $product->is_visible()) {
     <button
         class="top-2 right-2 z-10 absolute favourite-toggle"
         data-product-id="<?php echo get_the_ID(); ?>">
-        <span class="text-gray-400 hover:text-red-500 transition heart">
+        <span class="text-gray-400 hover:text-red-500 text-2xl transition heart">
             ♥
         </span>
     </button>

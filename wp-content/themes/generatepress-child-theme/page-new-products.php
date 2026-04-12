@@ -1,15 +1,13 @@
 <?php
-/* Template Name: Favourites */
-get_header();
 
-if (is_user_logged_in()) {
-    $favourites = get_user_meta(get_current_user_id(), 'favourites', true);
-} else {
-    $favourites = isset($_COOKIE['favourites'])
-        ? json_decode(stripslashes($_COOKIE['favourites']), true)
-        : [];
-}
+/**
+ * Template Name: New Products
+ */
+
+get_header();
 ?>
+
+
 <div class="content-area" id="primary">
     <main class="pt-8 site-main" id="main">
 
@@ -27,20 +25,26 @@ if (is_user_logged_in()) {
         <!-- Page Title -->
         <h1 class="mb-[1em] CUSTOM-woocommerce-products-header"><?php the_title(); ?></h1>
 
-
         <?php
-        if (!empty($favourites)) {
+        // Custom query for latest products
+        $paged = max(1, get_query_var('paged'));
+        $args = [
+            'post_type'      => 'product',
+            'posts_per_page' => 12,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'post_status'    => 'publish',
+            'paged'          => $paged,
+        ];
 
-            $args = [
-                'post_type' => 'product',
-                'post__in'  => $favourites,
-                'orderby'   => 'post__in'
-            ];
+        $loop = new WP_Query($args);
 
-            $loop = new WP_Query($args);
+        if ($loop->have_posts()) :
 
+            // Optional: WooCommerce result count + sorting
             do_action('woocommerce_before_shop_loop');
 
+            // Start product loop wrapper
             echo '<div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">';
 
             while ($loop->have_posts()) : $loop->the_post();
@@ -49,15 +53,18 @@ if (is_user_logged_in()) {
 
             echo '</div>';
 
+            // Optional: WooCommerce pagination
             do_action('woocommerce_after_shop_loop');
 
-            wp_reset_postdata();
-        } else {
-            echo '<p class="text-gray-500">No favourites yet.</p>';
-        }
+        else :
+            echo '<p>No new products found.</p>';
+        endif;
+
+        wp_reset_postdata();
         ?>
+
+
     </main>
 </div>
-<?php
 
-get_footer();
+<?php get_footer(); ?>

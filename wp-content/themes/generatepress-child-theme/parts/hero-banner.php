@@ -80,15 +80,69 @@ $guest_3 = $guests_protected['guest_3'] ?? '';
 
     <!-- hero image -->
     <?php if ($hero_image) : ?>
+
+
+
+
         <div
-            class="z-0 absolute inset-0 my-2 rounded-[25px] overflow-hidden"
+            class="z-0 absolute inset-0 my-2 overflow-hidden"
             style="background:  linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.75) 0%,
     rgba(0, 0, 0, 0.6) 70%,
     rgba(0, 0, 0, 0) 100%
   ), url('<?php echo esc_url($hero_image['url']); ?>') 55% 75% / cover no-repeat;">
+
+
+            <!-- Main Content Container -->
+            <div class="bottom-6! left-12! z-10 flex flex-col pt-14 pb-[60px] text-left absolute! banner-content">
+
+                <?php if ($subtitle) : ?>
+                    <p class="mb-0! ml-1! text-[18px] text-wyz-guest-white/90 lg:text-2xl leading-normal! slide-up">
+                        <?php echo esc_html($subtitle); ?>
+                    </p>
+                <?php endif; ?>
+
+
+                <?php if ($title) : ?>
+                    <h1 class="stagger-words">
+                        <?php echo esc_html($title); ?>
+                    </h1>
+                <?php endif; ?>
+
+
+
+                <!-- CTA buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <?php if ($button_link) : ?>
+
+                        <a
+                            href="<?php echo esc_url($button_link['url']); ?>"
+                            target="<?php echo esc_attr($button_link['target']); ?>"
+                            class="group relative wyz-btn btn-lg primary">
+                            <?php echo esc_html($button_link['title']); ?>
+                        </a>
+                    <?php endif; ?>
+                    <?php if ($button_link_2) : ?>
+                        <a
+                            href="<?php echo esc_url($button_link_2['url']); ?>"
+                            target="<?php echo esc_attr($button_link_2['target']); ?>"
+                            class="group relative wyz-btn btn-lg secondary">
+                            <?php echo esc_html($button_link_2['title']); ?>
+                        </a>
+
+                    <?php endif; ?>
+                </div>
+            </div>
+
+
         </div>
+
+
+
+
+
+
     <?php endif; ?>
 
 

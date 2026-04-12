@@ -1,53 +1,17 @@
 jQuery(function ($) {
 
-
-  document.querySelectorAll('.favourite-toggle').forEach(button => {
-
-    button.addEventListener('click', function () {
-      const productId = this.dataset.productId;
-      const heart = this.querySelector('.heart');
-
-      fetch(favourites_ajax.ajax_url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `action=toggle_favourite&product_id=${productId}`
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.status === 'added') {
-            heart.classList.remove('text-gray-400');
-            heart.classList.add('text-red-500');
-          } else {
-            heart.classList.remove('text-red-500');
-            heart.classList.add('text-gray-400');
-          }
-
-          updateFavouriteCount(data.favourites.length);
-        });
-    });
-
-  });
-
-
-  function updateFavouriteCount(count) {
-    const badge = document.querySelector('.favourites-count');
-    if (badge) {
-      badge.textContent = count;
-    }
-  }
-
   // menu js
   const overlay = document.getElementById('menu-overlay');
-  const nav = document.querySelector('.sub-menu');
+  const nav = document.querySelector('.main-menu'); // adjust if needed
 
   if (overlay && nav) {
     let timeout;
 
     nav.addEventListener('mouseover', (e) => {
-      if (e.target.closest('.menu-item-has-children') || e.target.closest('.sub-menu')) {
-        clearTimeout(timeout);
-        overlay.classList.add('active');
-      }
+
+      clearTimeout(timeout);
+      overlay.classList.add('active');
+
     });
 
     nav.addEventListener('mouseout', (e) => {
@@ -373,4 +337,56 @@ jQuery(function ($) {
   })();
 
 
+  // FAQ seach facility
+  const $search = $('#faqSearchInput');
+  const $clear = $('#faqClearSearch');
+  const $items = $('[data-faq-item]');
+  const $noResults = $('#faqNoResults');
+
+  function filterFAQs() {
+
+    const query = $search.val().toLowerCase().trim();
+    let visibleCount = 0;
+
+    $items.each(function () {
+
+      const $item = $(this);
+
+      const question = $item.find('.faq-question h3').text().toLowerCase();
+      const answer = $item.find('.faq-answer').text().toLowerCase();
+
+      const match = question.includes(query) || answer.includes(query);
+
+      if (match) {
+        $item.show();
+        visibleCount++;
+      } else {
+        $item.hide();
+      }
+    });
+
+    // show/hide no results
+    if (visibleCount === 0 && query.length > 0) {
+      $noResults.removeClass('hidden');
+    } else {
+      $noResults.addClass('hidden');
+    }
+
+    // show/hide clear button
+    if (query.length > 0) {
+      $clear.removeClass('hidden');
+    } else {
+      $clear.addClass('hidden');
+    }
+  }
+
+  // typing
+  $search.on('input', filterFAQs);
+
+  // clear button
+  $clear.on('click', function () {
+    $search.val('');
+    filterFAQs();
+    $search.focus();
+  });
 });
