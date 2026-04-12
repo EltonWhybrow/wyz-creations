@@ -30,7 +30,7 @@ if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
 }
 ?>
 
-<div class="relative overflow-hidden" id="call-to-action"
+<div class="relative overflow-hidden skip-lazy" id="call-to-action"
     <?php if ($bg_url): ?>
     style="background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.0)), url('<?php echo esc_url($bg_url); ?>') center / cover no-repeat;"
     <?php endif; ?>>
