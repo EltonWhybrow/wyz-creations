@@ -6,6 +6,9 @@
 
 .main-menu {
 	@apply hidden md:block;
+	&.main-menu-mobile {
+		@apply md:hidden block;
+	}
 }
 
 /* main mega menu opening */

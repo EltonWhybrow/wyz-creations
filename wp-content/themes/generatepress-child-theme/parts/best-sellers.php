@@ -11,7 +11,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
 
 
     <!-- Content Container (everything on top) -->
-    <div class="z-10 relative">
+    <div class="z-10 relative mb-5">
         <div class="w-full">
             <div class="w-full">
 
@@ -72,21 +72,20 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
                                             style="background: url('<?php echo esc_url($image); ?>') center/cover no-repeat;">
 
                                             <!-- Content -->
-                                            <div class="flex items-center p-4">
-                                                <div class="w-full transition-transform translate-y-4 group-hover:translate-y-0 duration-500 transform">
-                                                    <div class="best-seller-content">
+                                            <div class="flex items-center p-4 align-center">
+                                                <div class="w-full transition-transform translate-y-2 group-hover:translate-y-0 duration-500 transform">
+                                                    <div class="text-center best-seller-content">
 
 
-                                                        <!-- CTA button -->
-                                                        <?php if ($name) : ?>
 
-                                                            <a
-                                                                href="<?php echo esc_url($link); ?>"
-                                                                class="group relative wyz-btn btn-sm primary">
-                                                                <?php echo esc_html($name); ?>
-                                                            </a>
+                                                        <?php  ?>
 
-                                                        <?php endif; ?>
+                                                        <div
+                                                            class="group relative wyz-btn btn-sm primary">
+                                                            View
+                                                        </div>
+
+                                                        <?php ?>
 
 
 

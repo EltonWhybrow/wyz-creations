@@ -175,14 +175,17 @@
 
             <!-- Mobile Menu Items -->
             <div class="flex-1">
+
+
                 <?php
                 wp_nav_menu(
                     array(
-                        'theme_location' => 'primary',
-                        'menu_id'        => 'wyz-creations-mobile-menu',
-                        'menu_class'     => '',
-                        'container'      => false,
-                        'walker'         => new Mobile_Menu_Walker(), // Optional: Custom walker for mobile
+                        'container_id'    => 'primary-menu',
+                        'container_class' => 'main-menu main-menu-mobile lg:mt-4 px-6 pt-0 md:px-[5vw] lg:bg-transparent md:flex gap-4',
+                        'menu_class'      => 'md:flex lg:-mx-4 block md:flex-row flex-col lg:gap-0 gap-4',
+                        'theme_location'  => 'primary',
+                        'li_class'        => 'lg:mx-4 text-black-chalk font-dm-sans relative py-10',
+                        'fallback_cb'     => false,
                     )
                 );
                 ?>
