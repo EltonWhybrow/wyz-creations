@@ -155,27 +155,44 @@ add_filter('woocommerce_ajax_variation_threshold', '__return_false');
 //  Custom Walker for Mobile Menu -->
 class Mobile_Menu_Walker extends Walker_Nav_Menu
 {
+    // START SUBMENU
+    function start_lvl(&$output, $depth = 0, $args = null)
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"sub-menu pl-4 mt-2 space-y-2\">\n";
+    }
+
+    // END SUBMENU
+    function end_lvl(&$output, $depth = 0, $args = null)
+    {
+        $output .= "</ul>\n";
+    }
+
     function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
     {
-        $classes = empty($item->classes) ? array() : (array) $item->classes;
-        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
-        $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+        $classes = empty($item->classes) ? [] : (array) $item->classes;
+        $has_children = in_array('menu-item-has-children', $classes);
 
-        $output .= '<li' . $class_names . '>';
+        $output .= '<li class="relative">';
 
-        $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
-        $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
-        $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-        $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
-        $attributes .= ' class="block hover:bg-gray-50 px-4 py-3 rounded-lg text-gray-800 hover:text-blue-600 transition-colors"';
+        $attributes  = !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
+        $attributes .= ' class="block px-4 py-3 text-gray-800 hover:text-blue-600"';
 
-        $item_output = $args->before;
-        $item_output .= '<a' . $attributes . '>';
-        $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-        $item_output .= '</a>';
-        $item_output .= $args->after;
+        $output .= '<a' . $attributes . '>';
+        $output .= esc_html($item->title);
+        $output .= '</a>';
 
-        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+        // Optional: toggle button
+        if ($has_children) {
+            $output .= '<button class="top-4 right-4 absolute submenu-toggle">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>';
+        }
+    }
+
+    function end_el(&$output, $item, $depth = 0, $args = null)
+    {
+        $output .= "</li>\n";
     }
 }
 // End of Mobile Menu Walker
@@ -219,7 +236,7 @@ class Desktop_Mega_Menu_Walker extends Walker_Nav_Menu
 
         // Sub-items (columns)
         elseif ($depth === 1) {
-            $output .= '<li class="mb-3">';
+            $output .= '<li class="group mb-3">';
 
             $output .= '<a href="' . esc_url($item->url) . '" 
                 class="block py-1 font-semibold text-gray-900 hover:text-blue-600">';
@@ -465,7 +482,7 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
         } else if ($depth === 1) {
             $li_classes[] = 'px-0 '; // Level 2 (indent)
         } else if ($depth >= 2) {
-            $li_classes[] = 'px-0 pl-2 lg:pl-0'; // Level 3+ (further indent)
+            $li_classes[] = 'px-0 pl-0'; // Level 3+ (further indent)
         }
 
         $output .= sprintf(
@@ -484,7 +501,7 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
         // Toggle button (if has children)
         if ($has_children) {
             $output .= sprintf(
-                '<button class="lg:hidden right-0 absolute text-blue cursor-pointer submenu-toggle %s">
+                '<button class="lg:hidden right-0 absolute h-[70px] cursor-pointer submenu-toggle %s">
           <i class="fa-solid fa-chevron-down %s"></i>
         </button>',
                 $depth > 0 ? 'top-0 px-3 pt-2 pb-3' : 'top-0 px-3 pt-4 pb-2', // Adjust position per level

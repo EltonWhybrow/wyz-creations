@@ -82,7 +82,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
 
                                                         <div
                                                             class="group relative wyz-btn btn-sm primary">
-                                                            View
+                                                            View Product
                                                         </div>
 
                                                         <?php ?>

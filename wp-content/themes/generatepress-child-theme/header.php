@@ -87,24 +87,8 @@
             );
             ?>
 
-            <!-- Desktop Navigation -->
-            <!-- <nav id="wyz-creations-navigation" class="hidden md:flex items-center" role="navigation">
-                <?php //
-                // wp_nav_menu(
-                //   array(
-                //      'theme_location' => 'primary',
-                //     'menu_id'        => 'wyz-creations-menu',
-                //     'menu_class'     => '',
-                //     'container'      => false,
-                //     'walker'         => new Desktop_Mega_Menu_Walker(), // todo: remove
-                //   )
-                // );
-                // 
-                ?>
-            </nav> -->
 
-
-            <div class="flex gap-3 align-middle">
+            <div class="flex gap-1 md:gap-3 ml-2 align-middle">
 
                 <!-- Search bar  -->
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex">
@@ -132,7 +116,7 @@
 
                 <!-- Mobile Menu Toggle (Burger Icon) -->
                 <button id="mobile-menu-toggle"
-                    class="md:hidden flex flex-col justify-center items-center bg-wyz-creations-guest-black-chalk! rounded-lg w-10 h-10 transition-colors"
+                    class="lg:hidden flex flex-col justify-center items-center bg-wyz-creations-guest-black-chalk! rounded-lg w-10 h-10 transition-colors"
                     aria-label="Toggle mobile menu"
                     aria-expanded="false">
                     <span class="bg-white mb-1.5 w-6 h-0.5 transition-all duration-300 burger-line"></span>
@@ -146,45 +130,45 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu-overlay"
-        class="md:hidden invisible z-40 fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300">
+        class="lg:hidden invisible z-50 fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300">
     </div>
 
     <!-- Mobile Menu Panel -->
     <nav id="mobile-menu-panel"
-        class="md:hidden top-0 right-0 z-50 fixed bg-white shadow-xl w-[90%] h-full transition-transform translate-x-full duration-300 transform"
+        class="lg:hidden top-0 right-0 z-50 fixed bg-white shadow-xl w-[90%] h-full transition-transform translate-x-full duration-300 transform"
         role="navigation"
         aria-label="Mobile menu">
 
         <div class="flex flex-col h-full">
             <!-- Mobile Menu Header -->
-            <div class="flex justify-between items-center p-6 border-b">
+            <div class="flex justify-between items-center px-5 py-3">
                 <img
                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
                     alt="<?php bloginfo('name'); ?>"
-                    class="w-20" />
+                    class="w-14" />
 
                 <button id="mobile-menu-close"
-                    class="md:hidden flex justify-center items-center !bg-[var(--color-wyz-creations-guest-black-chalk)] !p-0 rounded-lg w-10 h-10"
+                    class="lg:hidden flex justify-center items-center bg-wyz-creations-guest-black-chalk p-0! rounded-full w-7 h-7"
                     aria-label="Close mobile menu">
                     <!-- Just an SVG X icon -->
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
 
             <!-- Mobile Menu Items -->
-            <div class="flex-1">
+            <div class="flex-1 h-full overflow-auto">
 
 
                 <?php
                 wp_nav_menu(
                     array(
                         'container_id'    => 'primary-menu',
-                        'container_class' => 'main-menu main-menu-mobile lg:mt-4 px-6 pt-0 md:px-[5vw] lg:bg-transparent md:flex gap-4',
-                        'menu_class'      => 'md:flex lg:-mx-4 block md:flex-row flex-col lg:gap-0 gap-4',
+                        'container_class' => 'main-menu main-menu-mobile gap-4 overflow-y-auto',
+                        'menu_class'      => 'lg:flex lg:-mx-4 block lg:flex-row flex-col lg:gap-0 gap-4 overflow-y-auto',
                         'theme_location'  => 'primary',
-                        'li_class'        => 'lg:mx-4 text-black-chalk font-dm-sans relative py-10',
+                        'li_class'        => 'lg:mx-4 relative py-0',
                         'fallback_cb'     => false,
                     )
                 );
@@ -193,12 +177,16 @@
 
             <!-- Mobile Menu Footer -->
 
-            <div class="flex flex-col gap-3 p-6 border-t">
+            <div class="flex gap-2 bg-wyz-creations-guest-black-chalk/80 p-3 border-t">
 
 
                 <a href="<?php echo home_url('/cart'); ?>"
-                    class="flex w-full text-center wyz-btn primary">
+                    class="flex mt-0! w-full wyz-btn btn-sm secondary">
                     View Cart
+                </a>
+                <a href="<?php echo home_url('/my-account'); ?>"
+                    class="flex mt-0! w-full wyz-btn btn-sm secondary">
+                    My Account
                 </a>
             </div>
         </div>

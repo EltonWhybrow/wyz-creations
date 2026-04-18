@@ -21,8 +21,45 @@ jQuery(function ($) {
         }, 100);
       }
     });
+
+
   }
 
+  //mobile specific main menu mobile
+  document.querySelectorAll('.menu-item-has-children').forEach(item => {
+
+    const link = item.querySelector(':scope > a');
+    const button = link ? link.nextElementSibling : null;
+
+    function toggleMenu(e) {
+      if (window.innerWidth >= 1024) return;
+
+      e.preventDefault();
+
+      const submenu = item.querySelector(':scope > ul');
+      if (!submenu) return;
+
+      const isOpen = submenu.style.display === 'flex';
+
+      if (isOpen) {
+        submenu.style.display = 'none';
+        item.classList.remove('is-active');
+      } else {
+        submenu.style.display = 'flex';
+        submenu.style.flexDirection = 'column';
+        item.classList.add('is-active');
+      }
+    }
+
+    if (link) {
+      link.addEventListener('click', toggleMenu);
+    }
+
+    if (button) {
+      button.addEventListener('click', toggleMenu);
+    }
+
+  });
 
 
   // Mobile menu
