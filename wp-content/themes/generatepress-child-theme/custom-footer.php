@@ -67,7 +67,7 @@
             <li>Chance to win a FREE T-shirt every month</li>
 
         </ul>
-        <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="c06b1a3" title="Subscribe form"]'); ?>
     </div>
 </div>
 

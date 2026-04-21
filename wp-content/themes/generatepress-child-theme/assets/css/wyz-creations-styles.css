@@ -50,6 +50,7 @@
     --leading-normal: 1.5;
     --leading-relaxed: 1.625;
     --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --animate-bounce: bounce 1s infinite;
@@ -268,6 +269,9 @@
   .right-4 {
     right: calc(var(--spacing) * 4);
   }
+  .bottom-4 {
+    bottom: calc(var(--spacing) * 4);
+  }
   .bottom-6\! {
     bottom: calc(var(--spacing) * 6) !important;
   }
@@ -354,6 +358,9 @@
   }
   .my-5 {
     margin-block: calc(var(--spacing) * 5);
+  }
+  .my-10 {
+    margin-block: calc(var(--spacing) * 10);
   }
   .my-\[50px\] {
     margin-block: 50px;
@@ -820,6 +827,9 @@
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -917,12 +927,6 @@
     background-color: color-mix(in srgb, #020202 80%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-wyz-creations-guest-black-chalk) 80%, transparent);
-    }
-  }
-  .bg-wyz-creations-guest-black-chalk\/90 {
-    background-color: color-mix(in srgb, #020202 90%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-wyz-creations-guest-black-chalk) 90%, transparent);
     }
   }
   .bg-wyz-creations-guest-light-gray {
@@ -1050,6 +1054,9 @@
   }
   .py-14 {
     padding-block: calc(var(--spacing) * 14);
+  }
+  .py-16 {
+    padding-block: calc(var(--spacing) * 16);
   }
   .py-\[30px\] {
     padding-block: 30px;
@@ -1936,6 +1943,12 @@
       line-height: var(--tw-leading, var(--text-2xl--line-height));
     }
   }
+  .md\:text-3xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
   .md\:text-lg {
     @media (width >= 48rem) {
       font-size: var(--text-lg);
@@ -2730,30 +2743,6 @@ button.faq-question {
     margin-block: calc(var(--spacing) * 0) !important;
     --tw-leading: calc(var(--spacing) * 7) !important;
     line-height: calc(var(--spacing) * 7) !important;
-  }
-}
-.form-split-content {
-  input.wpcf7-text {
-    width: 100%;
-    border-radius: var(--radius-lg);
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-    border-color: var(--color-gray-300);
-    padding: calc(var(--spacing) * 4);
-    padding-right: calc(var(--spacing) * 12);
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-    &:focus {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-    &:focus {
-      --tw-ring-color: var(--color-black);
-    }
-    &:focus {
-      --tw-outline-style: none;
-      outline-style: none;
-    }
   }
 }
 .tpm-header {
@@ -3810,6 +3799,28 @@ article .product .summary {
     margin-block: calc(var(--spacing) * 0) !important;
     --tw-leading: calc(var(--spacing) * 7) !important;
     line-height: calc(var(--spacing) * 7) !important;
+  }
+}
+input.wpcf7-text, input.wpcf7-email {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-gray-300);
+  padding: calc(var(--spacing) * 4);
+  padding-right: calc(var(--spacing) * 12);
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+  &:focus {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  &:focus {
+    --tw-ring-color: var(--color-black);
+  }
+  &:focus {
+    --tw-outline-style: none;
+    outline-style: none;
   }
 }
 @property --tw-translate-x {

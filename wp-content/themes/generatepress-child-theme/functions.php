@@ -671,13 +671,15 @@ add_action('woocommerce_after_shop_loop_item', function () {
 
 // Load specific template parts at bottom of specific pages
 add_action('generate_before_footer', function () {
-    if (is_page(['returns-refunds', 'privacy-policy', 'new-products', 'favourites', 'contact-us', 'promo-codes']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
+    if (is_page(['returns-refunds', 'privacy-policy', 'new-products', 'favourites', 'contact-us']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
         get_template_part('parts/call-to-action');
     }
 });
 
+
+
 add_action('generate_before_footer', function () {
-    if (is_page(['subscribe', 'delivery']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
+    if (is_page(['subscribe', 'delivery', 'promo-codes']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
         get_template_part('parts/socials');
         get_template_part('parts/best-sellers');
     }
