@@ -22,7 +22,7 @@ get_header(); ?>
 ?>
 
 <!-- Steps section -->
-<?php get_template_part('parts/steps');
+<?php // get_template_part('parts/steps');
 ?>
 
 <!-- Ready to go section -->
