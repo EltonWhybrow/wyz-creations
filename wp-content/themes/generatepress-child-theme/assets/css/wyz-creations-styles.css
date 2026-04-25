@@ -3502,7 +3502,7 @@ article .product .summary {
   .page-template-default,	.page-template-help-template,	.page-template-subscribe-template,	.blog,	.single-post {
     .content-area#primary {
       margin-inline: 5vw;
-      margin-block: 10vh;
+      margin-block: 5vh;
       @media (width >= 48rem) {
         margin-inline: 15vw;
       }
