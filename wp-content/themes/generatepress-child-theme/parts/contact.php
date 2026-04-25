@@ -38,9 +38,12 @@ $contact_info = get_field('contact_info');
 
         <?php if ($contact_image) : ?>
             <div
-                class="flex-1 my-2 rounded-[35px] w-full md:w-auto overflow-hidden scale-hover">
-                <img src="<?php echo esc_url($contact_image['url']); ?>" alt="" class="w-full h-60! md:h-[430px]! object-cover" loading="lazy">
+                class="flex-1">
+                <div class="my-2 rounded-[35px] w-full md:w-auto overflow-hidden scale-hover">
+                    <img src="<?php echo esc_url($contact_image['url']); ?>" alt="" class="w-full h-60! md:h-[430px]! object-cover" loading="lazy">
+                </div>
             </div>
+
         <?php endif; ?>
     </div>
 
