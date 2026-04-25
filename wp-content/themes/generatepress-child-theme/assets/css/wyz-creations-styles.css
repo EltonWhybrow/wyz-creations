@@ -2450,7 +2450,6 @@
   .wpcf7-submit {
     margin-top: calc(var(--spacing) * 3);
     display: block;
-    display: inline-flex;
     width: fit-content;
     align-items: center;
     justify-content: center;
@@ -2485,6 +2484,9 @@
       @media (hover: hover) {
         color: var(--color-wyz-creations-guest-blue);
       }
+    }
+    @media (width >= 48rem) {
+      display: inline-flex;
     }
   }
 }

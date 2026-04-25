@@ -29,6 +29,6 @@
 	}
 
 	.wpcf7-submit {
-		@apply block inline-flex justify-center items-center bg-wyz-creations-guest-blue hover:bg-wyz-guest-white mt-3 px-12 py-3.5 border hover:border-wyz-creations-guest-blue rounded-full w-fit font-bold! text-wyz-guest-white hover:text-wyz-creations-guest-blue text-xl no-underline transition-all duration-300;
+		@apply block md:inline-flex justify-center items-center bg-wyz-creations-guest-blue hover:bg-wyz-guest-white mt-3 px-12 py-3.5 border hover:border-wyz-creations-guest-blue rounded-full w-fit font-bold! text-wyz-guest-white hover:text-wyz-creations-guest-blue text-xl no-underline transition-all duration-300;
 	}
 }
