@@ -21,9 +21,7 @@ get_header(); ?>
 <? //php // get_template_part('parts/stats');
 ?>
 
-<!-- Steps section -->
-<?php // get_template_part('parts/steps');
-?>
+
 
 <!-- Ready to go section -->
 <?php // get_template_part('parts/ready-to-go');
@@ -40,6 +38,14 @@ get_header(); ?>
 
 <!-- Call to Action section -->
 <?php get_template_part('parts/call-to-action');
+?>
+
+<!-- Reviews section -->
+<?php get_template_part('parts/feedback');
+?>
+
+<!-- Call to Action section -->
+<?php get_template_part('parts/category-cta');
 ?>
 
 

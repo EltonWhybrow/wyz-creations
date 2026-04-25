@@ -15,13 +15,13 @@
 
                     <div class="relative overflow-hidden section steps-slider-module"
                         <?php if (!empty($action_bg_image['url'])) : ?>
-                        style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,1)), url('<?php echo esc_url($action_bg_image['url']); ?>') center/cover no-repeat;"
+                        style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.75)), url('<?php echo esc_url($action_bg_image['url']); ?>') center/cover no-repeat;"
                         <?php endif; ?>>
 
                         <div class="z-0 absolute inset-0 bg-black/20"></div>
 
                         <div class="z-10 relative">
-                            <div class="flex flex-col justify-center items-center px-4 py-16 text-center">
+                            <div class="flex flex-col justify-center items-center px-4 py-16 min-h-[400px] text-center">
 
                                 <?php if ($action_title) : ?>
                                     <h3 class="mb-6 font-bold text-white text-2xl md:text-3xl">
