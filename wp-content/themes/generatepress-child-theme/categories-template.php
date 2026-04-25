@@ -37,9 +37,14 @@ get_header(); ?>
 <?php // get_template_part('parts/faqs');
 ?>
 
+<!-- Call to Action section -->
+<?php get_template_part('parts/category-cta');
+?>
+
 <!-- Socail media strip -->
 <?php get_template_part('parts/socials');
 ?>
+
 
 
 <!-- Call to Action section -->
