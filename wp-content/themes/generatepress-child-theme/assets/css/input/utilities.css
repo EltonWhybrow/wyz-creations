@@ -54,7 +54,8 @@
 	.blog,
 	.single-post {
 		.content-area#primary {
-			margin: 10vh 15vw;
+			@apply mx-[5vw] md:mx-[15vw] my-[10vh] md:my-[10vh];
+			/* margin: 10vh 15vw; */
 			width: auto;
 
 			h1 {

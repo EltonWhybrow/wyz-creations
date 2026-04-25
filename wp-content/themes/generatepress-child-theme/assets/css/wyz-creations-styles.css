@@ -61,7 +61,6 @@
     --color-wyz-creations-guest-black-chalk: #020202;
     --color-wyzc-brown: #42332f;
     --color-wyz-creations-guest-black-chalk-50: rgba(36, 36, 36, 0.5);
-    --color-wyz-creations-guest-black-chalk-75: rgba(36, 36, 36, 0.75);
     --color-wyz-guest-white: rgb(252, 252, 252);
     --color-wyz-creations-guest-light-gray: #f4f4f4;
     --color-wyz-creations-guest-med-gray: #e4e4e4;
@@ -265,26 +264,11 @@
   .top-full {
     top: 100%;
   }
-  .-right-3 {
-    right: calc(var(--spacing) * -3);
-  }
-  .-right-5 {
-    right: calc(var(--spacing) * -5);
-  }
-  .-right-10 {
-    right: calc(var(--spacing) * -10);
-  }
   .-right-12 {
     right: calc(var(--spacing) * -12);
   }
-  .-right-14 {
-    right: calc(var(--spacing) * -14);
-  }
   .right-0 {
     right: calc(var(--spacing) * 0);
-  }
-  .right-1 {
-    right: calc(var(--spacing) * 1);
   }
   .right-2 {
     right: calc(var(--spacing) * 2);
@@ -294,18 +278,6 @@
   }
   .-bottom-3 {
     bottom: calc(var(--spacing) * -3);
-  }
-  .-bottom-4 {
-    bottom: calc(var(--spacing) * -4);
-  }
-  .-bottom-10 {
-    bottom: calc(var(--spacing) * -10);
-  }
-  .bottom-0 {
-    bottom: calc(var(--spacing) * 0);
-  }
-  .bottom-3 {
-    bottom: calc(var(--spacing) * 3);
   }
   .bottom-6\! {
     bottom: calc(var(--spacing) * 6) !important;
@@ -961,9 +933,6 @@
   .bg-wyz-creations-guest-black-chalk\! {
     background-color: var(--color-wyz-creations-guest-black-chalk) !important;
   }
-  .bg-wyz-creations-guest-black-chalk-75 {
-    background-color: var(--color-wyz-creations-guest-black-chalk-75);
-  }
   .bg-wyz-creations-guest-black-chalk\/80 {
     background-color: color-mix(in srgb, #020202 80%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -972,9 +941,6 @@
   }
   .bg-wyz-creations-guest-light-gray {
     background-color: var(--color-wyz-creations-guest-light-gray);
-  }
-  .bg-wyzc-brown {
-    background-color: var(--color-wyzc-brown);
   }
   .bg-\[radial-gradient\(39\.47\%_143\.28\%_at_50\%_143\.28\%\,\#4E4E4E_0\%\,\#191615_100\%\)\] {
     background-image: radial-gradient(39.47% 143.28% at 50% 143.28%,#4E4E4E 0%,#191615 100%);
@@ -1210,16 +1176,9 @@
   .font-family-heading {
     font-family: var(--font-family-heading);
   }
-  .font-sans {
-    font-family: var(--font-sans);
-  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
   .text-4xl {
     font-size: var(--text-4xl);
@@ -1291,14 +1250,8 @@
   .text-\[64px\]\! {
     font-size: 64px !important;
   }
-  .text-\[100px\] {
-    font-size: 100px;
-  }
   .text-\[150px\] {
     font-size: 150px;
-  }
-  .text-\[200px\] {
-    font-size: 200px;
   }
   .leading-0 {
     --tw-leading: calc(var(--spacing) * 0);
@@ -1931,16 +1884,6 @@
       padding-block: 50px;
     }
   }
-  .md\:py-\[60px\] {
-    @media (width >= 48rem) {
-      padding-block: 60px;
-    }
-  }
-  .md\:py-\[60x\] {
-    @media (width >= 48rem) {
-      padding-block: 60x;
-    }
-  }
   .md\:py-\[120px\] {
     @media (width >= 48rem) {
       padding-block: 120px;
@@ -1999,11 +1942,6 @@
   .md\:pb-\[60px\] {
     @media (width >= 48rem) {
       padding-bottom: 60px;
-    }
-  }
-  .md\:pb-\[60x\] {
-    @media (width >= 48rem) {
-      padding-bottom: 60x;
     }
   }
   .md\:pb-\[120px\] {
@@ -2246,24 +2184,9 @@
       max-width: 85%;
     }
   }
-  .\[\&_p\]\:text-center {
-    & p {
-      text-align: center;
-    }
-  }
   .\[\&_p\]\:text-\[40px\] {
     & p {
       font-size: 40px;
-    }
-  }
-  .\[\&_p\]\:text-\[40px\]\! {
-    & p {
-      font-size: 40px !important;
-    }
-  }
-  .\[\&_p\]\:text-\[48px\]\! {
-    & p {
-      font-size: 48px !important;
     }
   }
 }
@@ -3576,7 +3499,14 @@ article .product .summary {
   }
   .page-template-default,	.page-template-help-template,	.page-template-subscribe-template,	.blog,	.single-post {
     .content-area#primary {
-      margin: 10vh 15vw;
+      margin-inline: 5vw;
+      margin-block: 10vh;
+      @media (width >= 48rem) {
+        margin-inline: 15vw;
+      }
+      @media (width >= 48rem) {
+        margin-block: 10vh;
+      }
       width: auto;
       h1 {
         margin-bottom: calc(var(--spacing) * 4);
@@ -3930,7 +3860,8 @@ article .product .summary {
     line-height: calc(var(--spacing) * 7) !important;
   }
 }
-input.wpcf7-text, input.wpcf7-email {
+input.wpcf7-text, input.wpcf7-email, textarea.wpcf7-textarea {
+  margin-bottom: calc(var(--spacing) * 1);
   width: 100%;
   border-radius: var(--radius-lg);
   border-style: var(--tw-border-style);

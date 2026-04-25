@@ -1,4 +1,5 @@
 input.wpcf7-text,
-input.wpcf7-email {
-	@apply p-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black w-full text-lg;
+input.wpcf7-email,
+textarea.wpcf7-textarea {
+	@apply mb-1 p-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black w-full text-lg;
 }
