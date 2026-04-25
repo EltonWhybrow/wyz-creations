@@ -77,7 +77,8 @@ $step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
                         ?>
                                 <div class="step-slider-item">
                                     <div class="group block h-full">
-                                        <div class="flex flex-col justify-between md:gap-1 bg-wyz-creations-guest-light-gray shadow p-5 md:p-14 rounded-[10px] h-full min-h-80 md:min-h-[480px] overflow-hidden text-wyzc-brown">
+                                        <div class="relative flex flex-col justify-between md:gap-1 bg-wyz-creations-guest-light-gray shadow p-5 md:p-14 rounded-[10px] h-full min-h-80 md:min-h-[480px] overflow-hidden text-wyzc-brown">
+                                            <i class="-right-12 -bottom-3 fa-quote-left absolute opacity-10 text-[200px] text-wyzc-brown fa-solid"></i>
 
 
                                             <!-- Title & Content Overlay - Slides up on Hover -->
