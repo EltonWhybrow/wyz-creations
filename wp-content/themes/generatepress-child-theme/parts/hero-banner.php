@@ -151,7 +151,7 @@ $guest_3 = $guests_protected['guest_3'] ?? '';
 
     <!-- Scroll Indicator -->
     <div class="hidden md:block bottom-8 left-1/2 z-10 absolute -translate-x-1/2 animate-bounce transform">
-        <a href="#category-anchor">
+        <a href="#show-me">
             <svg class="w-8 h-8 text-[var(--color-wyz-guest-white)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>

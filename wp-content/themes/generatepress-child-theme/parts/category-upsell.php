@@ -32,7 +32,7 @@ $guests_damage_icon = $guests_damage['damage_icon'] ?? '';
 $guests_damage_link = $guests_damage['damage_link'] ?? '';
 ?>
 
-<section id="category-anchor">
+<section id="show-me">
 
     <!-- Main Heading -->
     <!-- <div class="mb-12 md:mb-16 text-center">
