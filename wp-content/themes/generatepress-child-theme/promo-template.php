@@ -7,6 +7,11 @@
 
 get_header(); ?>
 
+
+<!-- Hero Banner -->
+<?php get_template_part('parts/hero-banner'); ?>
+
+<!-- Offers/Promos -->
 <?php get_template_part('parts/promotion-offers'); ?>
 
 <?php get_footer(); ?>
