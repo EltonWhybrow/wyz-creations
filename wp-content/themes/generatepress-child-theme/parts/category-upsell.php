@@ -117,7 +117,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
 
                 <?php if ($guests_protection_link) : ?>
                     <a
-                        href="<?php echo esc_url($guests_protection_link['url']); ?>"
+                        href="<?php echo esc_url($guests_disruptions_link['url']); ?>"
                         class="top-0 left-0 absolute w-full h-full">
 
                     </a>
