@@ -1,6 +1,6 @@
 <?php if (have_rows('promos_and_offers')) : ?>
 
-    <div class="mx-auto my-10">
+    <div class="mx-auto mb-10" id="category-anchor">
         <div class="gap-2 grid md:grid-cols-2">
 
             <?php while (have_rows('promos_and_offers')) : the_row(); ?>
