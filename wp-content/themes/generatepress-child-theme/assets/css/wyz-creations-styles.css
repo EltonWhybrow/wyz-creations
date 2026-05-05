@@ -61,6 +61,7 @@
     --color-wyz-creations-guest-black-chalk: #020202;
     --color-wyzc-brown: #42332f;
     --color-wyz-creations-guest-black-chalk-50: rgba(36, 36, 36, 0.5);
+    --color-wyz-creations-guest-black-chalk-95: rgba(36, 36, 36, 0.95);
     --color-wyz-guest-white: rgb(252, 252, 252);
     --color-wyz-creations-guest-light-gray: #f4f4f4;
     --color-wyz-creations-guest-med-gray: #e4e4e4;
@@ -3556,7 +3557,7 @@ article .product .summary {
   right: 0;
   bottom: 0;
   top: 0;
-  background-color: var(--color-wyz-creations-guest-black-chalk) !important;
+  background-color: var(--color-wyz-creations-guest-black-chalk-95) !important;
   color: #fff;
   z-index: 9999;
   transform: translateY(100%);

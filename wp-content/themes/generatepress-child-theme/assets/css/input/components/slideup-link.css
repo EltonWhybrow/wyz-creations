@@ -6,7 +6,7 @@
 	right: 0;
 	bottom: 0;
 	top: 0;
-	@apply !bg-[var(--color-wyz-creations-guest-black-chalk)];
+	@apply !bg-[var(--color-wyz-creations-guest-black-chalk-95)];
 	color: #fff;
 	z-index: 9999;
 
