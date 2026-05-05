@@ -28,7 +28,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
                     <?php endif; ?>
 
                     <!-- Arrows -->
-                    <div class="hidden md:flex gap-3">
+                    <div class="flex gap-3">
                         <button class="trusted-prev">
                             <i class="fa-chevron-left fa-solid"></i>
                         </button>
