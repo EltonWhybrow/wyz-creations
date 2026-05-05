@@ -2639,11 +2639,13 @@ button.faq-question {
   }
 }
 .faq-item {
-  max-width: 90%;
   overflow: clip;
   border-bottom-style: var(--tw-border-style);
   border-bottom-width: 1px;
   border-color: var(--color-wyz-creations-guest-black-chalk-50);
+  @media (width >= 48rem) {
+    max-width: 90%;
+  }
 }
 .faq-accordion {
   overflow: hidden;
@@ -2657,10 +2659,6 @@ button.faq-question {
   margin-bottom: 0;
 }
 @media (max-width: 768px) {
-  .faqs-module {
-    padding-left: 5vw !important;
-    padding-right: 5vw !important;
-  }
   .faq-question h3 {
     font-size: 18px !important;
   }

@@ -34,7 +34,7 @@ button.faq-question {
 }
 
 .faq-item {
-	@apply border-wyz-creations-guest-black-chalk-50 border-b max-w-[90%] overflow-clip;
+	@apply border-wyz-creations-guest-black-chalk-50 border-b md:max-w-[90%] overflow-clip;
 }
 .faq-accordion {
 	overflow: hidden;
@@ -52,10 +52,10 @@ button.faq-question {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-	.faqs-module {
+	/* .faqs-module {
 		padding-left: 5vw !important;
 		padding-right: 5vw !important;
-	}
+	} */
 
 	.faq-question h3 {
 		font-size: 18px !important;
