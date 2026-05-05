@@ -30,7 +30,7 @@ get_header();
         $paged = max(1, get_query_var('paged'));
         $args = [
             'post_type'      => 'product',
-            'posts_per_page' => 12,
+            'posts_per_page' => 16,
             'orderby'        => 'date',
             'order'          => 'DESC',
             'post_status'    => 'publish',
