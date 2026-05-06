@@ -45,7 +45,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
                         <?php
                         $args = [
                             'post_type' => 'product',
-                            'posts_per_page' => 8,
+                            'posts_per_page' => 16,
                             'tax_query' => [
                                 [
                                     'taxonomy' => 'product_cat',
