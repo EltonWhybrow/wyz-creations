@@ -3884,6 +3884,24 @@ input.wpcf7-text, input.wpcf7-email, textarea.wpcf7-textarea {
     outline-style: none;
   }
 }
+.chart-headings {
+  display: block;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 10px solid #d1d5db;
+}
+.size-guide-table th:nth-child(even), .size-guide-table td:nth-child(even) {
+  background-color: #e6e6e6;
+}
+.size-guide-table th, .size-guide-table td {
+  padding: 2px;
+  text-align: center;
+}
+.size-guide-table th:first-child, .size-guide-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  background-color: white;
+}
 @property --tw-translate-x {
   syntax: "*";
   inherits: false;
