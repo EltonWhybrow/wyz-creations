@@ -236,6 +236,12 @@ jQuery(function ($) {
 
   // Smooth scroll for all anchor links
   $('a[href*="#"]').on("click", function (e) {
+
+    // Ignore WooCommerce tabs
+    if ($(this).closest('.wc-tabs').length) {
+      return;
+    }
+
     var href = $(this).attr("href");
 
     // Skip empty or "#" only links
