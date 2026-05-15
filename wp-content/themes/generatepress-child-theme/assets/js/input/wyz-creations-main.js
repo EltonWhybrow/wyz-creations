@@ -242,6 +242,11 @@ jQuery(function ($) {
       return;
     }
 
+    // Ignore new tab links
+    if ($(this).attr('target') === '_blank') {
+      return;
+    }
+
     var href = $(this).attr("href");
 
     // Skip empty or "#" only links
