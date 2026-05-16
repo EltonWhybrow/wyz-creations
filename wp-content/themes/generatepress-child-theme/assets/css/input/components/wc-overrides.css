@@ -89,7 +89,36 @@ article .product .summary {
 	}
 }
 
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+	@apply bg-wyz-creations-guest-black-chalk px-3 md:px-6;
+	border-radius: 4px 4px 0 0;
+	&.active {
+		a {
+			@apply text-wyz-creations-guest-black-chalk;
+			&:hover {
+				@apply text-wyz-creations-guest-black-chalk;
+			}
+		}
+	}
+	a {
+		@apply pt-3 text-wyz-creations-guest-med-gray text-xs md:text-base;
+		max-width: 12ch;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		&:hover {
+			@apply text-wyz-guest-white;
+		}
+	}
+}
+
 .woocommerce {
+	#review_form #respond {
+		textarea,
+		input:not(#wp-comment-cookies-consent, #submit) {
+			@apply block mb-1 p-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black w-full md:w-1/2 text-lg;
+		}
+	}
 	&.single-product {
 		.content-area#primary {
 			.summary {
@@ -113,7 +142,18 @@ article .product .summary {
 				.quantity {
 					@apply inline py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black w-auto;
 				}
+
+				#submit {
+					@apply block md:inline-flex justify-center items-center bg-wyz-creations-guest-blue hover:bg-wyz-guest-white mt-3 px-12 py-3.5 border hover:border-wyz-creations-guest-blue rounded-full w-fit font-bold! text-wyz-guest-white hover:text-wyz-creations-guest-blue text-xl no-underline transition-all duration-300;
+				}
 			}
 		}
+	}
+}
+
+.product_meta {
+	@apply flex flex-col gap-2 mt-4 text-wyz-creations-guest-black-chalk-75 text-sm;
+	a {
+		@apply text-wyz-creations-guest-black-chalk-75 hover:text-wyz-creations-guest-black-chalk underline;
 	}
 }

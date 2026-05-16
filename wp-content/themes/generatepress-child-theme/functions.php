@@ -705,3 +705,27 @@ add_action('generate_before_footer', function () {
         get_template_part('parts/call-to-action');
     }
 });
+
+// Remove "Additional Information" tab from single product pages
+add_filter('woocommerce_product_tabs', 'custom_woocommerce_product_tabs', 98);
+
+function custom_woocommerce_product_tabs($tabs)
+{
+
+    // Rename Description tab
+    if (isset($tabs['description'])) {
+        $tabs['description']['title'] = 'Description';
+    }
+
+    // Rename Additional Information tab
+    if (isset($tabs['additional_information'])) {
+        $tabs['additional_information']['title'] = 'More Info';
+    }
+
+    // Rename Reviews tab
+    if (isset($tabs['reviews'])) {
+        $tabs['reviews']['title'] = 'Reviews';
+    }
+
+    return $tabs;
+}
