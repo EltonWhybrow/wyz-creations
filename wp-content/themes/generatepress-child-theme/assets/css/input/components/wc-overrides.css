@@ -157,3 +157,10 @@ article .product .summary {
 		@apply text-wyz-creations-guest-black-chalk-75 hover:text-wyz-creations-guest-black-chalk underline;
 	}
 }
+
+.related.products {
+	@apply mt-16 pt-8 border-wyz-creations-guest-black-chalk border-t;
+	h2 {
+		@apply mb-8! font-semibold text-[34px] text-wyz-creations-guest-black-chalk leading-9;
+	}
+}

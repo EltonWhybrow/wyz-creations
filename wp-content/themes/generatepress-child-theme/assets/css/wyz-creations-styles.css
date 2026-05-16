@@ -3572,6 +3572,22 @@ article .product .summary {
     }
   }
 }
+.related.products {
+  margin-top: calc(var(--spacing) * 16);
+  border-top-style: var(--tw-border-style);
+  border-top-width: 1px;
+  border-color: var(--color-wyz-creations-guest-black-chalk);
+  padding-top: calc(var(--spacing) * 8);
+  h2 {
+    margin-bottom: calc(var(--spacing) * 8) !important;
+    font-size: 34px;
+    --tw-leading: calc(var(--spacing) * 9);
+    line-height: calc(var(--spacing) * 9);
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-wyz-creations-guest-black-chalk);
+  }
+}
 @layer utilities {
   .font-sans {
     font-family: var(--font-family-sans);
