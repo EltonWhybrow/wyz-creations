@@ -4,7 +4,7 @@
 		min-height: 650px; /* Important for grid items */
 		@apply md:p-10 px-5 py-[30px] relative!;
 		p {
-			@apply mb-0! font-medium text-[18px] text-wyz-creations-guest-black-chalk leading-6!;
+			@apply mb-0! font-medium text-[18px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-6! transition-colors duration-400 ease-in-out;
 		}
 	}
 }

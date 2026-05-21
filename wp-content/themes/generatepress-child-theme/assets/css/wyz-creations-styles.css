@@ -53,6 +53,7 @@
     --radius-lg: 0.5rem;
     --radius-2xl: 1rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-bounce: bounce 1s infinite;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1464,6 +1465,10 @@
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
+  }
   .ease-out {
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
@@ -1490,6 +1495,13 @@
         --tw-scale-y: 110%;
         --tw-scale-z: 110%;
         scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
+  .group-hover\:text-wyz-guest-white {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-wyz-guest-white);
       }
     }
   }
@@ -3976,6 +3988,18 @@ article .product .summary {
       --tw-font-weight: var(--font-weight-medium);
       font-weight: var(--font-weight-medium);
       color: var(--color-wyz-creations-guest-black-chalk);
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 400ms;
+      transition-duration: 400ms;
+      --tw-ease: var(--ease-in-out);
+      transition-timing-function: var(--ease-in-out);
+      &:is(:where(.group):hover *) {
+        @media (hover: hover) {
+          color: var(--color-wyz-guest-white);
+        }
+      }
     }
   }
 }

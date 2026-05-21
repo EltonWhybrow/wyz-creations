@@ -64,7 +64,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
             ?>
 
             <div
-                class="flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
+                class="group flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
@@ -86,7 +86,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                     <?php endif; ?>
 
                     <?php if ($guests_protection_title) : ?>
-                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk leading-10 stagger-words">
+                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-outstagger-words">
                             <?php echo esc_html($guests_protection_title); ?>
                         </h3>
                     <?php endif; ?>
@@ -110,7 +110,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
             ?>
 
             <div
-                class="flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
+                class="group flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
@@ -131,7 +131,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                     <?php endif; ?>
 
                     <?php if ($guests_disruptions_title) : ?>
-                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk leading-10 stagger-words">
+                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-out stagger-words">
                             <?php echo esc_html($guests_disruptions_title); ?>
                         </h3>
                     <?php endif; ?>
@@ -159,7 +159,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
             ?>
 
             <div
-                class="flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
+                class="group flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
@@ -183,7 +183,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                     <?php endif; ?>
 
                     <?php if ($guests_issues_title) : ?>
-                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk leading-10 stagger-words">
+                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-out stagger-words">
                             <?php echo esc_html($guests_issues_title); ?>
                         </h3>
                     <?php endif; ?>
@@ -207,7 +207,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
             ?>
 
             <div
-                class="flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
+                class="group flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
                 <?php if ($bg_image_url) : ?>
                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
                 <?php endif; ?>>
@@ -230,7 +230,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                     <?php endif; ?>
 
                     <?php if ($guests_damage_title) : ?>
-                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk leading-10 stagger-words">
+                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-outstagger-words">
                             <?php echo esc_html($guests_damage_title); ?>
                         </h3>
                     <?php endif; ?>
