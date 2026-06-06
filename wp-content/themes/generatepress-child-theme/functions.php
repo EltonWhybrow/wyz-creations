@@ -731,22 +731,29 @@ function custom_woocommerce_product_tabs($tabs)
 }
 
 // add rss image to feed
+function rss_add_media_namespace()
+{
+    echo 'xmlns:media="http://search.yahoo.com/mrss/"';
+}
+add_action('rss2_ns', 'rss_add_media_namespace');
+
 function rss_post_thumbnail_enclosure()
 {
     global $post;
 
     if (has_post_thumbnail($post->ID)) {
-        $image = wp_get_attachment_image_src(
-            get_post_thumbnail_id($post->ID),
-            'medium'
-        );
+        $attachment_id = get_post_thumbnail_id($post->ID);
+        $image = wp_get_attachment_image_src($attachment_id, 'medium');
+        $mime = get_post_mime_type($attachment_id);
+        $file_path = get_attached_file($attachment_id);
+        $file_size = file_exists($file_path) ? filesize($file_path) : 0;
 
         if ($image) {
-            // Get mime type to be accurate
-            $attachment_id = get_post_thumbnail_id($post->ID);
-            $mime = get_post_mime_type($attachment_id);
+            // Standard enclosure
+            echo '<enclosure url="' . esc_url($image[0]) . '" length="' . $file_size . '" type="' . esc_attr($mime) . '" />';
 
-            echo '<enclosure url="' . esc_url($image[0]) . '" length="' . $image[1] * $image[2] . '" type="' . esc_attr($mime) . '" />';
+            // media:content tag — Buffer prefers this
+            echo '<media:content url="' . esc_url($image[0]) . '" medium="image" type="' . esc_attr($mime) . '" width="' . $image[1] . '" height="' . $image[2] . '" />';
         }
     }
 }
