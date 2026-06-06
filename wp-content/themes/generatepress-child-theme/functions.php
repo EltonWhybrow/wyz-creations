@@ -103,6 +103,10 @@ function wyzcreations_enqueue_scripts()
 //     }
 // }
 
+// Register a zoomed/cropped image size
+add_image_size('social_posts_zoom', 900, 900, true);
+
+
 // Remove default GeneratePress footer
 add_action('after_setup_theme', function () {
     remove_action('generate_footer', 'generate_construct_footer');
@@ -743,7 +747,7 @@ function rss_post_thumbnail_enclosure()
 
     if (has_post_thumbnail($post->ID)) {
         $attachment_id = get_post_thumbnail_id($post->ID);
-        $image = wp_get_attachment_image_src($attachment_id, 'large');
+        $image = wp_get_attachment_image_src($attachment_id, 'social_posts_zoom');
         $mime = get_post_mime_type($attachment_id);
         $file_path = get_attached_file($attachment_id);
         $file_size = file_exists($file_path) ? filesize($file_path) : 0;
@@ -753,7 +757,7 @@ function rss_post_thumbnail_enclosure()
             echo '<enclosure url="' . esc_url($image[0]) . '" length="' . $file_size . '" type="' . esc_attr($mime) . '" />';
 
             // media:content tag — Buffer prefers this
-            echo '<media:content url="' . esc_url($image[0]) . '" large="image" type="' . esc_attr($mime) . '" width="' . $image[1] . '" height="' . $image[2] . '" />';
+            echo '<media:content url="' . esc_url($image[0]) . '" medium="image" type="' . esc_attr($mime) . '" width="' . $image[1] . '" height="' . $image[2] . '" />';
         }
     }
 }
