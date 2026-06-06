@@ -729,3 +729,20 @@ function custom_woocommerce_product_tabs($tabs)
 
     return $tabs;
 }
+
+// add rss image to feed
+function rss_post_thumbnail_enclosure()
+{
+    global $post;
+
+    if (has_post_thumbnail($post->ID)) {
+        $image = wp_get_attachment_image_src(
+            get_post_thumbnail_id($post->ID),
+            'full'
+        );
+
+        echo '<enclosure url="' . esc_url($image[0]) . '" type="image/jpeg" />';
+    }
+}
+
+add_action('rss2_item', 'rss_post_thumbnail_enclosure');
