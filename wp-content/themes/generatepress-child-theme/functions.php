@@ -741,7 +741,13 @@ function rss_post_thumbnail_enclosure()
             'medium'
         );
 
-        echo '<enclosure url="' . esc_url($image[0]) . '" type="image/jpeg" />';
+        if ($image) {
+            // Get mime type to be accurate
+            $attachment_id = get_post_thumbnail_id($post->ID);
+            $mime = get_post_mime_type($attachment_id);
+
+            echo '<enclosure url="' . esc_url($image[0]) . '" length="' . $image[1] * $image[2] . '" type="' . esc_attr($mime) . '" />';
+        }
     }
 }
 
