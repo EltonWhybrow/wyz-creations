@@ -738,7 +738,7 @@ function rss_post_thumbnail_enclosure()
     if (has_post_thumbnail($post->ID)) {
         $image = wp_get_attachment_image_src(
             get_post_thumbnail_id($post->ID),
-            'full'
+            'medium'
         );
 
         echo '<enclosure url="' . esc_url($image[0]) . '" type="image/jpeg" />';
