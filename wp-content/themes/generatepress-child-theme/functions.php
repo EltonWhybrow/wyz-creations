@@ -763,3 +763,85 @@ function rss_post_thumbnail_enclosure()
 }
 
 add_action('rss2_item', 'rss_post_thumbnail_enclosure');
+
+
+// =============================================
+// SHORTCODES FOR BLOG POSTS
+// =============================================
+
+// Simplest possible — just defaults
+// [wyz_button]
+
+// // Custom link and text
+// [wyz_button url="/shop/funny" text="See the Funny Range"]
+
+// // Opens in a new tab (good for external links)
+// [wyz_button url="https://example.com" text="Visit Us" target="_blank"]
+
+// // Callout box, default copy
+// [wyz_callout]
+
+// // Callout box, custom everything
+// [wyz_callout heading="Fancy 25% off?" body="Subscribe and we'll fire a discount code straight to your inbox." url="/subscribe" btn_text="Claim Your 25% Off"]
+
+/**
+ * CTA Button Shortcode
+ * Usage: [wyz_button]
+ * Usage: [wyz_button url="/shop" text="Browse the Shop" style="secondary"]
+ * Styles: primary | secondary | tertiary
+ */
+add_shortcode('wyz_button', function ($atts) {
+    $atts = shortcode_atts([
+        'url'    => '/get-in-touch',
+        'text'   => 'Get in Touch',
+        'style'  => 'primary',
+        'target' => '_self',
+    ], $atts, 'wyz_button');
+
+    $allowed_styles = ['primary', 'secondary', 'tertiary'];
+    $style = in_array($atts['style'], $allowed_styles) ? $atts['style'] : 'primary';
+    $target = $atts['target'] === '_blank' ? '_blank' : '_self';
+    $rel = $target === '_blank' ? ' rel="noopener noreferrer"' : '';
+
+    return sprintf(
+        '<div class="my-6 text-center wyz-shortcode-btn-wrap">
+            <a href="%s" class="wyz-btn btn-lg %s" target="%s"%s>%s</a>
+        </div>',
+        esc_url(home_url($atts['url'])),
+        esc_attr($style),
+        esc_attr($target),
+        $rel,
+        esc_html($atts['text'])
+    );
+});
+
+/**
+ * Promo/Callout Box Shortcode
+ * Usage: [wyz_callout]
+ * Usage: [wyz_callout heading="Fancy 15% off?" body="Subscribe and get a discount code sent straight to your inbox." url="/subscribe" btn_text="Claim Your Discount"]
+ */
+add_shortcode('wyz_callout', function ($atts) {
+    $atts = shortcode_atts([
+        'heading'  => "Like what you're reading?",
+        'body'     => 'Browse our full range of graphic tees — funny, sarcastic, retro, and everything in between.',
+        'url'      => '/shop',
+        'btn_text' => 'Shop Now',
+        'style'    => 'primary',
+    ], $atts, 'wyz_callout');
+
+    $allowed_styles = ['primary', 'secondary', 'tertiary'];
+    $style = in_array($atts['style'], $allowed_styles) ? $atts['style'] : 'primary';
+
+    return sprintf(
+        '<div class="bg-wyz-creations-guest-light-gray my-8 p-6 rounded-xl text-center wyz-shortcode-callout">
+            <h3 class="mb-2 font-bold text-xl">%s</h3>
+            <p class="mb-4 text-base">%s</p>
+            <a href="%s" class="wyz-btn btn-sm %s">%s</a>
+        </div>',
+        esc_html($atts['heading']),
+        esc_html($atts['body']),
+        esc_url(home_url($atts['url'])),
+        esc_attr($style),
+        esc_html($atts['btn_text'])
+    );
+});
