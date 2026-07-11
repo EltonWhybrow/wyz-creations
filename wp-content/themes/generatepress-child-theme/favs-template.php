@@ -41,7 +41,7 @@ if (is_user_logged_in()) {
 
             do_action('woocommerce_before_shop_loop');
 
-            echo '<div class="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">';
+            echo '<div class="gap-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">';
 
             while ($loop->have_posts()) : $loop->the_post();
                 echo '<div class="product-item" data-product-id="' . get_the_ID() . '">';
