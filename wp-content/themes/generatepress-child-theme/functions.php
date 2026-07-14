@@ -845,14 +845,20 @@ add_shortcode('wyz_callout', function ($atts) {
         esc_html($atts['btn_text'])
     );
 });
-
+/**
+ * Use the WooCommerce featured image as the Open Graph image
+ * if Yoast hasn't already selected one.
+ */
 add_filter('wpseo_opengraph_image', function ($image) {
 
+    // If Yoast already has an image, leave it alone.
     if (! empty($image)) {
         return $image;
     }
 
+    // Only on WooCommerce product pages.
     if (function_exists('is_product') && is_product()) {
+
         $thumbnail_id = get_post_thumbnail_id();
 
         if ($thumbnail_id) {
@@ -865,4 +871,4 @@ add_filter('wpseo_opengraph_image', function ($image) {
     }
 
     return $image;
-});
+}, 10, 1);
