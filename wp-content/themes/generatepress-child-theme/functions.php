@@ -845,3 +845,24 @@ add_shortcode('wyz_callout', function ($atts) {
         esc_html($atts['btn_text'])
     );
 });
+
+add_filter('wpseo_opengraph_image', function ($image) {
+
+    if (! empty($image)) {
+        return $image;
+    }
+
+    if (function_exists('is_product') && is_product()) {
+        $thumbnail_id = get_post_thumbnail_id();
+
+        if ($thumbnail_id) {
+            $src = wp_get_attachment_image_src($thumbnail_id, 'full');
+
+            if (! empty($src[0])) {
+                return $src[0];
+            }
+        }
+    }
+
+    return $image;
+});
