@@ -186,7 +186,7 @@ article .product .summary {
 	}
 
 	.woocommerce-pagination .page-numbers.current {
-		@apply bg-wyz-creations-guest-black-chalk text-white;
+		@apply bg-wyz-creations-guest-blue text-white;
 	}
 
 	.woocommerce-pagination .page-numbers.dots {

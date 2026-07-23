@@ -3659,7 +3659,7 @@ article .product .summary {
     }
   }
   .woocommerce-pagination .page-numbers.current {
-    background-color: var(--color-wyz-creations-guest-black-chalk);
+    background-color: var(--color-wyz-creations-guest-blue);
     color: var(--color-white);
   }
   .woocommerce-pagination .page-numbers.dots {
