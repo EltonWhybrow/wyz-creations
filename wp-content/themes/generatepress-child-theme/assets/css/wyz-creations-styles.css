@@ -3609,6 +3609,110 @@ article .product .summary {
     color: var(--color-wyz-creations-guest-black-chalk);
   }
 }
+.woocommerce {
+  nav.woocommerce-pagination {
+    margin-top: calc(var(--spacing) * 10);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 2);
+    ul {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: calc(var(--spacing) * 2);
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+  }
+  .woocommerce-pagination .page-numbers li {
+    height: calc(var(--spacing) * 12);
+    width: calc(var(--spacing) * 12);
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-wyz-creations-guest-black-chalk);
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-wyz-creations-guest-light-gray);
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+    a,	span {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-wyz-creations-guest-blue);
+        }
+      }
+      &:hover {
+        @media (hover: hover) {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+  .woocommerce-pagination .page-numbers.current {
+    background-color: var(--color-wyz-creations-guest-black-chalk);
+    color: var(--color-white);
+  }
+  .woocommerce-pagination .page-numbers.dots {
+    width: auto;
+    background-color: transparent;
+    color: color-mix(in srgb, #020202 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-wyz-creations-guest-black-chalk) 60%, transparent);
+    }
+    &:hover {
+      @media (hover: hover) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+.woocommerce-ordering select, .widget_layered_nav_filters select, select.dropdown_layered_nav_attribute, select.orderby {
+  cursor: pointer;
+  appearance: none;
+  border-radius: calc(infinity * 1px);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-wyz-creations-guest-black-chalk);
+  background-color: var(--color-white);
+  padding-block: calc(var(--spacing) * 2);
+  padding-right: calc(var(--spacing) * 10);
+  padding-left: calc(var(--spacing) * 4);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-wyz-creations-guest-black-chalk);
+  &:focus {
+    border-color: var(--color-wyz-creations-guest-black-chalk);
+  }
+  &:focus {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23222222'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1rem;
+}
+.woocommerce-ordering select:hover, select.dropdown_layered_nav_attribute:hover {
+  border-color: color-mix(in srgb, #020202 50%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-wyz-creations-guest-black-chalk) 50%, transparent);
+  }
+}
+.woocommerce-result-count {
+  color: var(--color-wyz-creations-guest-black-chalk);
+}
 @layer utilities {
   .font-sans {
     font-family: var(--font-family-sans);
