@@ -846,29 +846,20 @@ add_shortcode('wyz_callout', function ($atts) {
     );
 });
 /**
- * Use the WooCommerce featured image as the Open Graph image
- * if Yoast hasn't already selected one.
+ * Use the WooCommerce featured image as an Open Graph image
+ * on product pages, via Yoast's image-array filter (runs even
+ * when Yoast hasn't found an image itself).
  */
-add_filter('wpseo_opengraph_image', function ($image) {
+add_filter('wpseo_add_opengraph_images', function ($image_container) {
 
-    // If Yoast already has an image, leave it alone.
-    if (! empty($image)) {
-        return $image;
-    }
-
-    // Only on WooCommerce product pages.
     if (function_exists('is_product') && is_product()) {
 
         $thumbnail_id = get_post_thumbnail_id();
 
         if ($thumbnail_id) {
-            $src = wp_get_attachment_image_src($thumbnail_id, 'full');
-
-            if (! empty($src[0])) {
-                return $src[0];
-            }
+            $image_container->add_image_by_id($thumbnail_id);
         }
     }
 
-    return $image;
-}, 10, 1);
+    return $image_container;
+});
