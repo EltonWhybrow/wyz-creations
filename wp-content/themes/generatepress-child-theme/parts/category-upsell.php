@@ -72,7 +72,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($guests_protection_link) : ?>
                     <a
                         href="<?php echo esc_url($guests_protection_link['url']); ?>"
-                        class="top-0 left-0 absolute w-full h-full">
+                        class="top-0 left-0 absolute group-hover:bg-wyz-creations-guest-black-chalk-50 w-full h-full transition-colors duration-300 ease-in-out">
 
                     </a>
                 <?php endif; ?>
@@ -80,16 +80,18 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
 
                 <div class="mt-auto">
                     <?php if ($guests_protection_content) : ?>
-                        <div class="info-card-text">
+                        <div class="relative info-card-text">
                             <?php echo wp_kses_post($guests_protection_content); ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($guests_protection_title) : ?>
-                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading- transition-colors duration-400 ease-in-out 10 stagger-words">
+                        <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-out stagger-words">
+
                             <?php echo esc_html($guests_protection_title); ?>
                         </h3>
                     <?php endif; ?>
+
 
                     <!-- CTA button -->
                     <?php if ($guests_protection_link) : ?>
@@ -118,14 +120,14 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($guests_protection_link) : ?>
                     <a
                         href="<?php echo esc_url($guests_disruptions_link['url']); ?>"
-                        class="top-0 left-0 absolute w-full h-full">
+                        class="top-0 left-0 absolute group-hover:bg-wyz-creations-guest-black-chalk-50 w-full h-full transition-colors duration-300 ease-in-out">
 
                     </a>
                 <?php endif; ?>
 
                 <div class="mt-auto">
                     <?php if ($guests_disruptions_content) : ?>
-                        <div class="info-card-text">
+                        <div class="relative info-card-text">
                             <?php echo wp_kses_post($guests_disruptions_content); ?>
                         </div>
                     <?php endif; ?>
@@ -167,7 +169,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($guests_issues_link) : ?>
                     <a
                         href="<?php echo esc_url($guests_issues_link['url']); ?>"
-                        class="top-0 left-0 absolute w-full h-full">
+                        class="top-0 left-0 absolute group-hover:bg-wyz-creations-guest-black-chalk-50 w-full h-full transition-colors duration-300 ease-in-out">
 
                     </a>
                 <?php endif; ?>
@@ -177,7 +179,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
 
 
                     <?php if ($guests_issues_content) : ?>
-                        <div class="info-card-text">
+                        <div class="relative info-card-text">
                             <?php echo wp_kses_post($guests_issues_content); ?>
                         </div>
                     <?php endif; ?>
@@ -215,7 +217,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
                 <?php if ($guests_damage_link) : ?>
                     <a
                         href="<?php echo esc_url($guests_damage_link['url']); ?>"
-                        class="top-0 left-0 absolute w-full h-full">
+                        class="top-0 left-0 absolute group-hover:bg-wyz-creations-guest-black-chalk-50 w-full h-full transition-colors duration-300 ease-in-out">
 
                     </a>
                 <?php endif; ?>
@@ -224,7 +226,7 @@ $guests_damage_link = $guests_damage['damage_link'] ?? '';
 
 
                     <?php if ($guests_damage_content) : ?>
-                        <div class="info-card-text">
+                        <div class="relative info-card-text">
                             <?php echo wp_kses_post($guests_damage_content); ?>
                         </div>
                     <?php endif; ?>
