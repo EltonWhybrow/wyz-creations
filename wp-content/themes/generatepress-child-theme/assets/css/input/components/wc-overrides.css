@@ -219,3 +219,8 @@ select.dropdown_layered_nav_attribute:hover {
 .woocommerce-result-count {
 	@apply text-wyz-creations-guest-black-chalk;
 }
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce-loop-product__title {
+	@apply truncate;
+}

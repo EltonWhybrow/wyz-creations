@@ -3723,6 +3723,11 @@ article .product .summary {
 .woocommerce-result-count {
   color: var(--color-wyz-creations-guest-black-chalk);
 }
+.woocommerce ul.products li.product .woocommerce-loop-product__title, .woocommerce-loop-product__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 @layer utilities {
   .font-sans {
     font-family: var(--font-family-sans);
