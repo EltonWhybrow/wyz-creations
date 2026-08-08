@@ -41,6 +41,18 @@ jQuery(function ($) {
 
       const isOpen = submenu.style.display === 'flex';
 
+      // Close sibling dropdowns at the same level so only one is open at a time
+      const parentList = item.parentElement;
+      if (parentList) {
+        parentList.querySelectorAll(':scope > .menu-item-has-children').forEach(sibling => {
+          if (sibling === item) return;
+
+          const siblingSubmenu = sibling.querySelector(':scope > ul');
+          if (siblingSubmenu) siblingSubmenu.style.display = 'none';
+          sibling.classList.remove('is-active');
+        });
+      }
+
       if (isOpen) {
         submenu.style.display = 'none';
         item.classList.remove('is-active');
