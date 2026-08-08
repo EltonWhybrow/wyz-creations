@@ -4,6 +4,8 @@
  * wyz-creations guest Child Theme functions and definitions
  */
 
+require_once get_stylesheet_directory() . '/inc/acf-page-builder.php';
+
 // Enqueue Google Fonts
 // add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);
 // function wyzcreations_load_google_fonts()
