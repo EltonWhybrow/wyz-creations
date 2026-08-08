@@ -34,9 +34,6 @@ function wyzcreations_enqueue_tailwind()
 add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_scripts');
 function wyzcreations_enqueue_scripts()
 {
-    // Get theme version
-    $theme_version = wp_get_theme()->get('Version');
-
     // Load Slick Carousel from CDN
     wp_enqueue_style(
         'slick-css',
@@ -71,7 +68,7 @@ function wyzcreations_enqueue_scripts()
         'wyz-creations-main-js',
         get_stylesheet_directory_uri() . '/assets/js/wyz-creations-main.min.js', // npm run build to re minify latest
         array('jquery', 'slick-js'), // Important: slick-js as dependency
-        $theme_version,
+        filemtime(get_stylesheet_directory() . '/assets/js/wyz-creations-main.min.js'),
         true
     );
 
@@ -81,9 +78,13 @@ function wyzcreations_enqueue_scripts()
         'home_url' => home_url('/'),
     ));
 
-    wp_enqueue_script('animations-init', get_stylesheet_directory_uri() . '/assets/js/animations.js', ['gsap', 'gsap-scrolltrigger', 'wyz-creations-main-js'], null, true);
-    // Load your main JS file
-
+    wp_enqueue_script(
+        'animations-init',
+        get_stylesheet_directory_uri() . '/assets/js/animations.js',
+        ['gsap', 'gsap-scrolltrigger', 'wyz-creations-main-js'],
+        filemtime(get_stylesheet_directory() . '/assets/js/animations.js'),
+        true
+    );
 }
 
 // Remove entry title from My Account (woocommerce)
@@ -583,7 +584,7 @@ function favourites_scripts()
         'favourites-js',
         get_stylesheet_directory_uri() . '/assets/js/favourites.js',
         [],
-        null,
+        filemtime(get_stylesheet_directory() . '/assets/js/favourites.js'),
         true
     );
 
