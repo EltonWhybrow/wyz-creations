@@ -577,6 +577,9 @@
   .min-h-\[480px\] {
     min-height: 480px;
   }
+  .min-h-\[530px\] {
+    min-height: 530px;
+  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }

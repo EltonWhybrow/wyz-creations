@@ -63,12 +63,13 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
 
                                 $image = get_the_post_thumbnail_url(get_the_ID(), 'large');
                                 $name = get_the_title();
+                                $short_name = mb_strlen($name) > 20 ? mb_substr($name, 0, 20) . '…' : $name;
                                 // $price = $product->get_price_html();
                                 $link = get_permalink();
                         ?>
                                 <div class="best-seller-slider-item">
                                     <a href="<?php echo esc_url($link); ?>" class="group block h-full">
-                                        <div class="flex flex-col justify-end gap-1 p-10 h-full min-h-[480px] overflow-hidden transition-all duration-500"
+                                        <div class="flex flex-col justify-end gap-1 p-10 h-full min-h-[530px] overflow-hidden transition-all duration-500"
                                             style="background: url('<?php echo esc_url($image); ?>') center/cover no-repeat;">
 
                                             <!-- Content -->
@@ -82,7 +83,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
 
                                                         <div
                                                             class="group relative wyz-btn btn-sm primary">
-                                                            View Product
+                                                            <?php echo esc_html($short_name); ?>
                                                         </div>
 
                                                         <?php ?>
