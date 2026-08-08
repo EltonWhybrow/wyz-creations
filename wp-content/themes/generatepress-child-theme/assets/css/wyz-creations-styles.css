@@ -3924,6 +3924,7 @@ article .product .summary {
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--color-wyz-creations-guest-black-chalk) 5%, transparent);
       }
+      transition: max-height 300ms ease, opacity 300ms ease;
       .menu-item {
         a {
           padding-left: calc(var(--spacing) * 10);
@@ -3941,6 +3942,7 @@ article .product .summary {
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--color-wyz-creations-guest-black-chalk) 10%, transparent);
       }
+      transition: max-height 300ms ease, opacity 300ms ease;
       .menu-item {
         & i {
           display: inline-block;

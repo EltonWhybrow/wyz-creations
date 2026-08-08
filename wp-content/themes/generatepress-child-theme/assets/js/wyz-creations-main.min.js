@@ -26,6 +26,46 @@ jQuery(function ($) {
   }
 
   //mobile specific main menu mobile
+  const SUBMENU_SLIDE_DURATION = 300; // keep in sync with the CSS transition duration
+
+  function slideSubmenuOpen(submenu) {
+    clearTimeout(submenu._slideTimeout);
+
+    submenu.style.display = 'flex';
+    submenu.style.flexDirection = 'column';
+    submenu.style.overflow = 'hidden';
+    submenu.style.maxHeight = '0px';
+    submenu.style.opacity = '0';
+
+    submenu.offsetHeight; // force reflow so the transition runs
+
+    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+    submenu.style.opacity = '1';
+
+    // Once open, drop the height cap so a nested submenu can expand
+    // inside it later without being clipped by this fixed value.
+    submenu._slideTimeout = setTimeout(() => {
+      submenu.style.maxHeight = 'none';
+    }, SUBMENU_SLIDE_DURATION);
+  }
+
+  function slideSubmenuClosed(submenu) {
+    clearTimeout(submenu._slideTimeout);
+
+    submenu.style.overflow = 'hidden';
+    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+    submenu.style.opacity = '1';
+
+    submenu.offsetHeight; // force reflow so the transition runs
+
+    submenu.style.maxHeight = '0px';
+    submenu.style.opacity = '0';
+
+    submenu._slideTimeout = setTimeout(() => {
+      submenu.style.display = 'none';
+    }, SUBMENU_SLIDE_DURATION);
+  }
+
   document.querySelectorAll('.menu-item-has-children').forEach(item => {
 
     const link = item.querySelector(':scope > a');
@@ -39,7 +79,7 @@ jQuery(function ($) {
       const submenu = item.querySelector(':scope > ul');
       if (!submenu) return;
 
-      const isOpen = submenu.style.display === 'flex';
+      const isOpen = item.classList.contains('is-active');
 
       // Close sibling dropdowns at the same level so only one is open at a time
       const parentList = item.parentElement;
@@ -48,17 +88,16 @@ jQuery(function ($) {
           if (sibling === item) return;
 
           const siblingSubmenu = sibling.querySelector(':scope > ul');
-          if (siblingSubmenu) siblingSubmenu.style.display = 'none';
+          if (siblingSubmenu) slideSubmenuClosed(siblingSubmenu);
           sibling.classList.remove('is-active');
         });
       }
 
       if (isOpen) {
-        submenu.style.display = 'none';
+        slideSubmenuClosed(submenu);
         item.classList.remove('is-active');
       } else {
-        submenu.style.display = 'flex';
-        submenu.style.flexDirection = 'column';
+        slideSubmenuOpen(submenu);
         item.classList.add('is-active');
       }
     }

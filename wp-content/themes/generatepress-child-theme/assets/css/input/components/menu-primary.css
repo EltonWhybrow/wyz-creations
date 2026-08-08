@@ -21,6 +21,7 @@
 		}
 		.sub-menu-level-1 {
 			@apply hidden w-full bg-wyz-creations-guest-black-chalk/5;
+			transition: max-height 300ms ease, opacity 300ms ease;
 			.menu-item {
 				a {
 					@apply pl-10 font-normal text-base;
@@ -30,6 +31,7 @@
 
 		.sub-menu-level-2 {
 			@apply hidden w-full bg-wyz-creations-guest-black-chalk/10;
+			transition: max-height 300ms ease, opacity 300ms ease;
 			.menu-item {
 				& i {
 					@apply inline-block transition-transform duration-300;
