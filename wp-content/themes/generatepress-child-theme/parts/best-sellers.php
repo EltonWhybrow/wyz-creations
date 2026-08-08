@@ -69,7 +69,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
                         ?>
                                 <div class="best-seller-slider-item">
                                     <a href="<?php echo esc_url($link); ?>" class="group block h-full">
-                                        <div class="flex flex-col justify-end gap-1 p-10 h-full min-h-[530px] overflow-hidden transition-all duration-500"
+                                        <div class="flex flex-col justify-end gap-1 p-10 h-full min-h-[570px] overflow-hidden transition-all duration-500"
                                             style="background: url('<?php echo esc_url($image); ?>') center/cover no-repeat;">
 
                                             <!-- Content -->

@@ -580,6 +580,12 @@
   .min-h-\[530px\] {
     min-height: 530px;
   }
+  .min-h-\[550px\] {
+    min-height: 550px;
+  }
+  .min-h-\[570px\] {
+    min-height: 570px;
+  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
