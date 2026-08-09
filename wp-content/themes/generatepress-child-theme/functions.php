@@ -152,9 +152,9 @@ function wyzcreations_cart_count_fragment($fragments)
     $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 
     ob_start();
-    ?>
+?>
     <span class="cart-count-badge<?php echo $count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($count); ?></span>
-    <?php
+<?php
     $fragments['.cart-count-badge'] = ob_get_clean();
 
     return $fragments;
@@ -698,6 +698,38 @@ add_action('template_include', function ($template) {
     }
     return $template;
 });
+
+// Show the result count in brackets after the shop title instead of on its own line
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+
+add_filter('woocommerce_page_title', 'wyzcreations_append_result_count_to_title');
+function wyzcreations_append_result_count_to_title($title)
+{
+    if (!wc_get_loop_prop('is_paginated') || !woocommerce_products_will_display()) {
+        return $title;
+    }
+
+    $total = wc_get_loop_prop('total');
+
+    if (!$total) {
+        return $title;
+    }
+
+    $per_page = wc_get_loop_prop('per_page');
+
+    if (1 === (int) $total) {
+        $count_text = '1 result';
+    } elseif ($total <= $per_page || -1 === (int) $per_page) {
+        $count_text = $total . ' results';
+    } else {
+        $current = wc_get_loop_prop('current_page');
+        $first   = ($per_page * $current) - $per_page + 1;
+        $last    = min($total, $per_page * $current);
+        $count_text = $first . '-' . $last . ' of ' . $total . ' results';
+    }
+
+    return $title . ' <span class="shop-title-result-count">(' . esc_html($count_text) . ')</span>';
+}
 
 // override cart buttons
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);

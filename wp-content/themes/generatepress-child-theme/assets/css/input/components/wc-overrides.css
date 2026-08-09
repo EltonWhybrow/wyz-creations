@@ -211,13 +211,17 @@ select.orderby {
 	background-size: 1rem;
 }
 
+.woocommerce-ordering select {
+	@apply mt-2 md:mt-0;
+}
+
 .woocommerce-ordering select:hover,
 select.dropdown_layered_nav_attribute:hover {
 	@apply border-wyz-creations-guest-black-chalk/50;
 }
 
-.woocommerce-result-count {
-	@apply text-wyz-creations-guest-black-chalk;
+.shop-title-result-count {
+	@apply font-normal! text-wyz-creations-guest-black-chalk text-sm;
 }
 
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
