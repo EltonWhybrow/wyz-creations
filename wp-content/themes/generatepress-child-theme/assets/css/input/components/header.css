@@ -1,52 +1,57 @@
 /* Your components */
 @layer components {
-  #wyz-creations-navigation {
-    @apply !m-0;
-    ul#wyz-creations-menu {
-      @apply flex flex-row items-center gap-4 md:gap-7 !m-0 !p-0 !list-none;
-      li {
-        a {
-          @apply font-bold !text-[#42332F] md:text-[18px] text-base hover:!underline !no-underline;
-        }
-      }
-    }
-  }
+	#wyz-creations-navigation {
+		@apply !m-0;
+		ul#wyz-creations-menu {
+			@apply flex flex-row items-center gap-4 md:gap-7 !m-0 !p-0 !list-none;
+			li {
+				a {
+					@apply font-bold !text-[#42332F] md:text-[18px] text-base hover:!underline !no-underline;
+				}
+			}
+		}
+	}
 
-  /* Mobile menu */
-  #wyz-creations-mobile-menu {
-    @apply !m-0 !p-0;
-    li {
-      margin: 0;
-      padding: 0;
-      list-style-type: none !important;
-    }
-  }
+	/* Mobile menu */
+	#wyz-creations-mobile-menu {
+		@apply !m-0 !p-0;
+		li {
+			margin: 0;
+			padding: 0;
+			list-style-type: none !important;
+		}
+	}
 
-  #wyz-creations-mobile-menu a {
-    display: block;
-    padding: 20px !important;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    @apply text-center! font-semibold! text-2xl! rounded-none! border-0! no-underline! hover:bg-[var(--color-wyz-creations-guest-black-chalk)]/90! hover:!text-[var(--color-wyz-guest-white)] transition-colors! duration-300!;
-    color: var(--color-wyz-creations-guest-black-chalk) !important;
-  }
+	#wyz-creations-mobile-menu a {
+		display: block;
+		padding: 20px !important;
+		text-decoration: none;
+		transition: all 0.2s ease;
+		@apply text-center! font-semibold! text-2xl! rounded-none! border-0! no-underline! hover:bg-[var(--color-wyz-creations-guest-black-chalk)]/90! hover:!text-[var(--color-wyz-guest-white)] transition-colors! duration-300!;
+		color: var(--color-wyz-creations-guest-black-chalk) !important;
+	}
 
-  #wyz-creations-mobile-menu .current-menu-item > a {
-    @apply bg-[var(--color-wyz-creations-guest-black-chalk)] !text-[var(--color-wyz-guest-white)];
-  }
+	#wyz-creations-mobile-menu .current-menu-item > a {
+		@apply bg-[var(--color-wyz-creations-guest-black-chalk)] !text-[var(--color-wyz-guest-white)];
+	}
 
-  .burger-line {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+	.burger-line {
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
 
-  body.menu-open {
-    overflow: hidden;
-  }
+	.cart-count-badge,
+	.favourites-count-badge {
+		@apply -top-2 -right-2 absolute flex justify-center items-center bg-wyz-creations-guest-orange px-1 rounded-full min-w-[19px] h-[19px] font-bold text-[11px] text-white leading-none;
+	}
 
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    #wyz-creations-navigation {
-      display: none !important;
-    }
-  }
+	body.menu-open {
+		overflow: hidden;
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		#wyz-creations-navigation {
+			display: none !important;
+		}
+	}
 }

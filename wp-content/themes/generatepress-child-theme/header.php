@@ -125,8 +125,16 @@
 
                 <!-- Desktop Icons (Wishlist and Cart) -->
                 <div class="flex items-center gap-3">
-                    <a href="<?php echo home_url('/favourites'); ?>" class="hidden md:flex text-wyz-creations-guest-black-chalk! menu-link-icons"> <i class="fa-solid fa-heart" aria-hidden="true"></i></a>
-                    <a href="<?php echo home_url('/cart'); ?>" class="hidden md:flex text-wyz-creations-guest-black-chalk! menu-link-icons"> <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i></a>
+                    <a href="<?php echo home_url('/favourites'); ?>" class="hidden md:flex relative text-wyz-creations-guest-black-chalk! menu-link-icons">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                        <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
+                        <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
+                    </a>
+                    <a href="<?php echo home_url('/cart'); ?>" class="hidden md:flex relative text-wyz-creations-guest-black-chalk! menu-link-icons">
+                        <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                        <?php $cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
+                        <span class="cart-count-badge<?php echo $cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($cart_count); ?></span>
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Toggle (Burger Icon) -->

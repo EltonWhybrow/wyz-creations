@@ -145,6 +145,21 @@ add_action('init', 'mytheme_register_menus');
 // Enable AJAX add to cart on single product pages (even older WC versions)
 add_filter('woocommerce_add_to_cart_redirect', '__return_false');
 
+// Keep the header cart count badge in sync after AJAX add-to-cart
+add_filter('woocommerce_add_to_cart_fragments', 'wyzcreations_cart_count_fragment');
+function wyzcreations_cart_count_fragment($fragments)
+{
+    $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+
+    ob_start();
+    ?>
+    <span class="cart-count-badge<?php echo $count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($count); ?></span>
+    <?php
+    $fragments['.cart-count-badge'] = ob_get_clean();
+
+    return $fragments;
+}
+
 // Remove sidebar from ALL pages, posts, archives – everything
 add_filter('generate_sidebar_layout', 'tu_remove_sidebar_everywhere');
 function tu_remove_sidebar_everywhere($layout)
@@ -578,6 +593,37 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 }
 
 // favourite code
+
+// Dedupes stored IDs and drops any that no longer point to a published
+// product (deleted/trashed products), so counts always match what the
+// favourites page can actually display.
+function wyzcreations_get_valid_favourites($ids)
+{
+    if (!is_array($ids) || empty($ids)) return [];
+
+    $ids = array_unique(array_map('intval', $ids));
+
+    return array_values(array_filter($ids, function ($id) {
+        return get_post_type($id) === 'product' && get_post_status($id) === 'publish';
+    }));
+}
+
+function wyzcreations_get_stored_favourites()
+{
+    $favourites = is_user_logged_in()
+        ? get_user_meta(get_current_user_id(), 'favourites', true)
+        : (isset($_COOKIE['favourites'])
+            ? json_decode(stripslashes($_COOKIE['favourites']), true)
+            : []);
+
+    return wyzcreations_get_valid_favourites($favourites);
+}
+
+function wyzcreations_get_favourites_count()
+{
+    return count(wyzcreations_get_stored_favourites());
+}
+
 function favourites_scripts()
 {
     wp_enqueue_script(
@@ -591,11 +637,7 @@ function favourites_scripts()
     // Pass data to JS
     wp_localize_script('favourites-js', 'favourites_ajax', [
         'ajax_url'   => admin_url('admin-ajax.php'),
-        'favourites' => is_user_logged_in()
-            ? get_user_meta(get_current_user_id(), 'favourites', true)
-            : (isset($_COOKIE['favourites'])
-                ? json_decode(stripslashes($_COOKIE['favourites']), true)
-                : [])
+        'favourites' => wyzcreations_get_stored_favourites(),
     ]);
 }
 add_action('wp_enqueue_scripts', 'favourites_scripts');
@@ -610,9 +652,7 @@ function toggle_favourite()
     // Logged-in users → user meta
     if (is_user_logged_in()) {
         $user_id = get_current_user_id();
-        $favourites = get_user_meta($user_id, 'favourites', true);
-
-        if (!is_array($favourites)) $favourites = [];
+        $favourites = wyzcreations_get_valid_favourites(get_user_meta($user_id, 'favourites', true));
 
         if (in_array($product_id, $favourites)) {
             $favourites = array_diff($favourites, [$product_id]);
@@ -622,15 +662,15 @@ function toggle_favourite()
             $status = 'added';
         }
 
+        $favourites = array_values($favourites);
         update_user_meta($user_id, 'favourites', $favourites);
     }
     // Guests → cookies
     else {
-        $favourites = isset($_COOKIE['favourites'])
+        $stored = isset($_COOKIE['favourites'])
             ? json_decode(stripslashes($_COOKIE['favourites']), true)
             : [];
-
-        if (!is_array($favourites)) $favourites = [];
+        $favourites = wyzcreations_get_valid_favourites($stored);
 
         if (in_array($product_id, $favourites)) {
             $favourites = array_diff($favourites, [$product_id]);
@@ -640,12 +680,13 @@ function toggle_favourite()
             $status = 'added';
         }
 
-        setcookie('favourites', json_encode(array_values($favourites)), time() + 86400 * 30, '/');
+        $favourites = array_values($favourites);
+        setcookie('favourites', json_encode($favourites), time() + 86400 * 30, '/');
     }
 
     wp_send_json([
         'status' => $status,
-        'favourites' => array_values($favourites)
+        'favourites' => $favourites
     ]);
 }
 

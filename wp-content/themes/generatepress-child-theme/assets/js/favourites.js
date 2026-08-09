@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(data => {
                     const productCard = this.closest('.product-item');
 
+                    const badge = document.querySelector('.favourites-count-badge');
+                    if (badge) {
+                        const count = Array.isArray(data.favourites) ? data.favourites.length : 0;
+                        badge.textContent = count;
+                        badge.classList.toggle('hidden', count === 0);
+                    }
+
                     if (data.status === 'added') {
                         heart.classList.remove('text-gray-400');
                         heart.classList.add('text-red-500');

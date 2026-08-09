@@ -2,13 +2,7 @@
 /* Template Name: Favourites */
 get_header();
 
-if (is_user_logged_in()) {
-    $favourites = get_user_meta(get_current_user_id(), 'favourites', true);
-} else {
-    $favourites = isset($_COOKIE['favourites'])
-        ? json_decode(stripslashes($_COOKIE['favourites']), true)
-        : [];
-}
+$favourites = wyzcreations_get_stored_favourites();
 ?>
 <div class="content-area" id="primary">
     <main class="pt-8 site-main" id="main">

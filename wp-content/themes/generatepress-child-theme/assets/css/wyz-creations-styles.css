@@ -69,6 +69,7 @@
     --color-wyz-creations-guest-light-gray: #f4f4f4;
     --color-wyz-creations-guest-med-gray: #e4e4e4;
     --color-wyz-creations-guest-dark-gray: #454545;
+    --color-wyz-creations-guest-orange: #f97316;
     --color-wyz-creations-guest-green: #09a11b;
     --color-wyz-creations-guest-yellow: #fee01b;
     --color-wyz-creations-guest-blue: #4b5ee4;
@@ -576,15 +577,6 @@
   }
   .min-h-\[480px\] {
     min-height: 480px;
-  }
-  .min-h-\[530px\] {
-    min-height: 530px;
-  }
-  .min-h-\[550px\] {
-    min-height: 550px;
-  }
-  .min-h-\[570px\] {
-    min-height: 570px;
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
@@ -2385,6 +2377,25 @@
   }
   .burger-line {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .cart-count-badge,	.favourites-count-badge {
+    position: absolute;
+    top: calc(var(--spacing) * -2);
+    right: calc(var(--spacing) * -2);
+    display: flex;
+    height: 19px;
+    min-width: 19px;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-wyz-creations-guest-orange);
+    padding-inline: calc(var(--spacing) * 1);
+    font-size: 11px;
+    --tw-leading: 1;
+    line-height: 1;
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
   }
   body.menu-open {
     overflow: hidden;
