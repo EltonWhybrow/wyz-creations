@@ -1,49 +1,36 @@
-// wrap in dom ready
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.favourite-toggle').forEach(button => {
+jQuery(function ($) {
+    $('.favourite-toggle').on('click', function () {
+        const $button = $(this);
+        const productId = $button.data('product-id');
+        const $heart = $button.find('.heart');
 
-        button.addEventListener('click', function () {
-            const productId = this.dataset.productId;
-            const heart = this.querySelector('.heart');
+        $.post(favourites_ajax.ajax_url, {
+            action: 'toggle_favourite',
+            product_id: productId
+        }).done(function (data) {
+            const $productCard = $button.closest('.product-item');
 
-            fetch(favourites_ajax.ajax_url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `action=toggle_favourite&product_id=${productId}`
-            })
-                .then(res => res.json())
-                .then(data => {
-                    const productCard = this.closest('.product-item');
+            const $badge = $('.favourites-count-badge');
+            if ($badge.length) {
+                const count = Array.isArray(data.favourites) ? data.favourites.length : 0;
+                $badge.text(count);
+                $badge.toggleClass('hidden', count === 0);
+            }
 
-                    const badge = document.querySelector('.favourites-count-badge');
-                    if (badge) {
-                        const count = Array.isArray(data.favourites) ? data.favourites.length : 0;
-                        badge.textContent = count;
-                        badge.classList.toggle('hidden', count === 0);
-                    }
+            if (data.status === 'added') {
+                $heart.removeClass('text-gray-400').addClass('text-red-500');
+            } else {
+                $heart.removeClass('text-red-500').addClass('text-gray-400');
 
-                    if (data.status === 'added') {
-                        heart.classList.remove('text-gray-400');
-                        heart.classList.add('text-red-500');
+                // 💥 REMOVE FROM PAGE (only on favourites page)
+                if ($productCard.length) {
+                    $productCard.css('transition', 'opacity 0.3s ease').css('opacity', '0');
 
-                    } else {
-                        heart.classList.remove('text-red-500');
-                        heart.classList.add('text-gray-400');
-
-                        // 💥 REMOVE FROM PAGE (only on favourites page)
-                        if (productCard) {
-                            productCard.style.transition = 'opacity 0.3s ease';
-                            productCard.style.opacity = '0';
-
-                            setTimeout(() => {
-                                productCard.remove();
-                            }, 300);
-                        }
-                    }
-
-
-                });
+                    setTimeout(() => {
+                        $productCard.remove();
+                    }, 300);
+                }
+            }
         });
-
     });
 });

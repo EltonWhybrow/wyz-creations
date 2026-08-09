@@ -629,7 +629,7 @@ function favourites_scripts()
     wp_enqueue_script(
         'favourites-js',
         get_stylesheet_directory_uri() . '/assets/js/favourites.js',
-        [],
+        ['jquery'],
         filemtime(get_stylesheet_directory() . '/assets/js/favourites.js'),
         true
     );

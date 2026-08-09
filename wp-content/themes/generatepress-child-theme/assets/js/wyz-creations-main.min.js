@@ -1,5 +1,21 @@
 jQuery(function ($) {
 
+  // Global AJAX loading spinner — shows for any jQuery AJAX request
+  // (WooCommerce cart/checkout, favourites, etc). Delayed slightly so
+  // fast requests don't cause a flash of the spinner.
+  const $spinner = $('#global-loading-spinner');
+  let spinnerShowTimeout;
+
+  $(document).on('ajaxStart', function () {
+    clearTimeout(spinnerShowTimeout);
+    spinnerShowTimeout = setTimeout(() => $spinner.addClass('active'), 200);
+  });
+
+  $(document).on('ajaxStop', function () {
+    clearTimeout(spinnerShowTimeout);
+    $spinner.removeClass('active');
+  });
+
   // menu js
   const overlay = document.getElementById('menu-overlay');
   const nav = document.querySelector('.main-menu'); // adjust if needed

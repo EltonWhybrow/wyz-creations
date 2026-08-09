@@ -29,6 +29,11 @@
 
 
 <body <?php body_class(); ?>>
+    <!-- Global AJAX loading spinner -->
+    <div id="global-loading-spinner" class="global-loading-spinner" aria-hidden="true">
+        <div class="global-loading-spinner__icon"></div>
+    </div>
+
     <!-- coupon banner  test-->
     <!-- <div id="info-top-banner" class="bg-[var(--color-wyz-creations-guest-black-chalk)] text-[var(--color-wyz-guest-white)] text-center">
         <div class="relative mx-5 md:mx-[10vw]">🎉 Limited Time: Get 20% off your first trip membership - Use code <span>TRAVEL20</span> <i class="fas fa-close"></i>
