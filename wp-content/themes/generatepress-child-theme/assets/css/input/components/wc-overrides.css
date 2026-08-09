@@ -22,6 +22,28 @@
 		@apply justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10! py-2.5! hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full! w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! flex! border!;
 	}
 }
+
+/* Add-to-cart notice: keep the message text on the left and pin the
+   "View cart" button to the right at all times */
+.woocommerce-message {
+	@apply flex-wrap! md:flex-nowrap! justify-between! gap-4! flex!;
+	/* WC's own float-clearfix ::after has no positioning, so flex treats
+	   it as a real (invisible) third item — kill it or it eats the space
+	   justify-between meant for the button. ::before is WC's message icon
+	   and is already position:absolute, so flex ignores it already. */
+	&::after {
+		content: none !important;
+	}
+}
+
+/* "View cart" link — WC ships this (and the block notice banner
+   equivalent) with hardcoded !important styles, so match
+   .wyz-btn.btn-sm.primary with our own !important utilities rather than
+   trying to add classes to it */
+.wc-block-components-notice-banner .wc-forward,
+.woocommerce-message a.button.wc-forward {
+	@apply inline-flex! float-none! flex-none! justify-center items-center bg-wyz-creations-guest-black-chalk! hover:bg-wyz-guest-white! opacity-100! shadow-none! mt-0! px-8! py-2.5! rounded-full! font-bold! text-wyz-guest-white! hover:text-wyz-creations-guest-black-chalk! transition-all! duration-300! no-underline!;
+}
 .woocommerce div.product form.cart {
 	@apply flex flex-wrap items-center;
 }
@@ -69,9 +91,27 @@
 	}
 }
 
+/* Non-struck-through prices (the actual current price) — bigger + darker
+   than the struck-through original price next to it */
+.price ins,
+.price > .woocommerce-Price-amount {
+	@apply text-wyz-creations-guest-black-chalk text-lg no-underline!;
+}
+
 /* // custom styles to category pages and shop page */
 .woocommerce-archive-wrapper {
 	@apply pt-8;
+}
+
+.woocommerce-no-products-found .woocommerce-info {
+	@apply items-center gap-3 bg-wyz-creations-guest-light-gray p-6! border-t-wyz-creations-guest-black-chalk! text-wyz-creations-guest-black-chalk flex!;
+	&::before,
+	&::after {
+		content: none !important;
+	}
+	i {
+		@apply text-xl;
+	}
 }
 
 img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
@@ -90,29 +130,34 @@ article .product .summary {
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
-	@apply bg-wyz-creations-guest-black-chalk px-3 md:px-6;
+	@apply bg-wyz-guest-white hover:bg-wyz-creations-guest-light-gray px-3 md:px-6;
 	border-radius: 4px 4px 0 0;
 	&.active {
+		@apply bg-wyz-creations-guest-black-chalk hover:bg-wyz-creations-guest-black-chalk;
 		a {
-			@apply text-wyz-creations-guest-black-chalk;
+			@apply text-wyz-guest-white;
 			&:hover {
-				@apply text-wyz-creations-guest-black-chalk;
+				@apply text-wyz-guest-white;
 			}
 		}
 	}
 	a {
-		@apply pt-3 text-wyz-creations-guest-med-gray text-xs md:text-base;
+		@apply pt-3 text-wyz-creations-guest-black-chalk text-xs md:text-base;
 		max-width: 12ch;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		&:hover {
-			@apply text-wyz-guest-white;
+			@apply text-wyz-creations-guest-black-chalk;
 		}
 	}
 }
 
 .woocommerce {
+	.woocommerce-Reviews-title {
+		@apply mb-4;
+	}
+
 	#review_form #respond {
 		textarea,
 		input:not(#wp-comment-cookies-consent, #submit) {
@@ -155,6 +200,13 @@ article .product .summary {
 	@apply flex flex-col gap-2 mt-4 text-wyz-creations-guest-black-chalk-75 text-sm;
 	a {
 		@apply text-wyz-creations-guest-black-chalk-75 hover:text-wyz-creations-guest-black-chalk underline;
+	}
+}
+
+.product_meta .posted_in {
+	@apply flex flex-wrap items-center gap-2;
+	a {
+		@apply inline-flex items-center bg-wyz-creations-guest-light-gray hover:bg-wyz-creations-guest-med-gray px-3 py-1 rounded-full text-wyz-creations-guest-black-chalk text-xs no-underline!;
 	}
 }
 

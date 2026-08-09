@@ -76,6 +76,7 @@ function wyzcreations_enqueue_scripts()
     wp_localize_script('wyz-creations-main-js', 'wyzcreations_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'home_url' => home_url('/'),
+        'shop_url' => function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/'),
     ));
 
     wp_enqueue_script(

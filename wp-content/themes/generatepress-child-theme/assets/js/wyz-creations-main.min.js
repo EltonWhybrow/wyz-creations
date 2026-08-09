@@ -16,6 +16,16 @@ jQuery(function ($) {
     $spinner.removeClass('active');
   });
 
+  // Header search: clicking the browser's native "x" clear button on
+  // input[type=search] only empties the field, it doesn't re-run the
+  // search — so the old (empty) results stay on screen. Send the user
+  // back to the shop when that happens.
+  $('input[type="search"][name="s"]').on('search', function () {
+    if (!this.value && window.wyzcreations_ajax && wyzcreations_ajax.shop_url) {
+      window.location.href = wyzcreations_ajax.shop_url;
+    }
+  });
+
   // menu js
   const overlay = document.getElementById('menu-overlay');
   const nav = document.querySelector('.main-menu'); // adjust if needed
@@ -323,6 +333,13 @@ jQuery(function ($) {
     var hash = href.split("#")[1];
     if (!hash) return;
 
+    // WooCommerce's review-count link points to #reviews, but the actual
+    // tab panel's id is #tab-reviews (WooCommerce only special-cases the
+    // literal "#reviews" hash in its own page-load tab-init code).
+    if (hash === "reviews") {
+      hash = "tab-reviews";
+    }
+
     var path = href.split("#")[0];
     var currentPath = window.location.pathname + window.location.search;
 
@@ -339,6 +356,14 @@ jQuery(function ($) {
     e.preventDefault();
 
     var $target = $("#" + hash);
+
+    // WooCommerce tab panels are hidden until their tab is clicked, so a
+    // hidden target has no usable position to scroll to. Activate the
+    // matching tab first (WC's own click handler shows it synchronously).
+    if ($target.length && $target.hasClass("panel") && !$target.is(":visible")) {
+      $('.wc-tabs a[href="#' + hash + '"], ul.tabs a[href="#' + hash + '"]').trigger("click");
+    }
+
     if ($target.length) {
       var headerHeight = $(".sticky").outerHeight() || 0;
       var offset = parseInt($(this).data("offset")) || headerHeight;
