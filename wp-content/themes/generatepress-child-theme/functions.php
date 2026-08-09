@@ -737,9 +737,23 @@ remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add
 add_action('woocommerce_after_shop_loop_item', function () {
     global $product;
 
-    echo '<a href="' . esc_url($product->add_to_cart_url()) . '" 
+    // Needs add_to_cart_button + ajax_add_to_cart so WooCommerce's own
+    // add-to-cart.js intercepts the click and does it via AJAX instead
+    // of a full page reload — matches the classes wc_get_template()
+    // would normally add on the default loop button markup.
+    $classes = ['wyz-btn', 'btn-sm', 'tertiary', 'product_type_' . $product->get_type()];
+
+    if ($product->is_purchasable() && $product->is_in_stock()) {
+        $classes[] = 'add_to_cart_button';
+
+        if ($product->supports('ajax_add_to_cart')) {
+            $classes[] = 'ajax_add_to_cart';
+        }
+    }
+
+    echo '<a href="' . esc_url($product->add_to_cart_url()) . '"
         data-quantity="1"
-        class="wyz-btn btn-sm tertiary"
+        class="' . esc_attr(implode(' ', $classes)) . '"
         data-product_id="' . esc_attr($product->get_id()) . '"
         data-product_sku="' . esc_attr($product->get_sku()) . '"
         aria-label="' . esc_attr($product->add_to_cart_description()) . '"
