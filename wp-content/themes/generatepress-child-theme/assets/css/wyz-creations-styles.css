@@ -2397,6 +2397,10 @@
     font-weight: var(--font-weight-bold);
     color: var(--color-white);
   }
+  .wyz-btn .cart-count-badge {
+    top: calc(5px * -1) !important;
+    right: calc(5px * -1) !important;
+  }
   body.menu-open {
     overflow: hidden;
   }

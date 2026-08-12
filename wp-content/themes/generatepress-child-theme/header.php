@@ -209,8 +209,10 @@
 
 
                 <a href="<?php echo home_url('/cart'); ?>"
-                    class="flex mt-0! w-full wyz-btn btn-sm secondary">
+                    class="flex relative mt-0! w-full wyz-btn btn-sm secondary">
                     View Cart
+                    <?php $mobile_cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
+                    <span class="cart-count-badge<?php echo $mobile_cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_cart_count); ?></span>
                 </a>
                 <a href="<?php echo home_url('/my-account'); ?>"
                     class="flex mt-0! w-full wyz-btn btn-sm secondary">
