@@ -125,7 +125,7 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
             if ($items.length > 0) {
                 $this.slick({
                     slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToScroll: 1,
                     arrows: true,
                     prevArrow: $('.trusted-prev'),
                     nextArrow: $('.trusted-next'),
