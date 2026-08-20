@@ -1,11 +1,7 @@
 <?php
-$trusted_heading = get_field('trusted_heading');
-// $trusted_subheading = get_field('trusted_subheading');
-
-// Define the group names
-$trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
+$slider_heading = get_field('slider_heading');
+$taxonomy_term = get_field('taxonomy_term');
 ?>
-
 
 <div class="relative overflow-hidden section best-seller-slider-module">
 
@@ -17,9 +13,9 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
 
                 <!-- Content Section -->
                 <div class="best-seller-header">
-                    <?php if ($trusted_heading): ?>
+                    <?php if ($slider_heading): ?>
                         <h2 class="mb-0! font-semibold text-[50px] text-wyz-creations-guest-black-chalk leading-9 stagger-words">
-                            <?php echo esc_html($trusted_heading); ?>
+                            <?php echo esc_html($slider_heading); ?>
                         </h2>
                         <!-- <p class="md:text-left text-center">
                             <?php //echo esc_html($trusted_subheading); 
@@ -49,8 +45,8 @@ $trusted_groups = array('trusted_1', 'trusted_2', 'trusted_3', 'trusted_4');
                             'tax_query' => [
                                 [
                                     'taxonomy' => 'product_cat',
-                                    'field'    => 'slug',
-                                    'terms'    => 'best-sellers',
+                                    'field'    => $taxonomy_term ? 'term_id' : 'slug',
+                                    'terms'    => $taxonomy_term ?: 'best-sellers',
                                 ],
                             ],
                         ];

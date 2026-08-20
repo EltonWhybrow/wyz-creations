@@ -1,21 +1,9 @@
 <?php
 
-$page_id = get_query_var('cta_page_id');
-
-// HARD fallback (important)
-if (!$page_id) {
-    $page_id = get_queried_object_id();
-}
-
-
-
-$cat_action_title = get_field('cat_action_title', $page_id);
-$cat_action_subtitle = get_field('cat_action_subtitle', $page_id);
-$cat_action_bg_image = get_field('cat_action_bg_image', $page_id);
-$cat_action_link = get_field('cat_action_link', $page_id);
-
-// Define the group names
-$step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
+$cat_action_title = get_sub_field('cat_action_title');
+$cat_action_subtitle = get_sub_field('cat_action_subtitle');
+$cat_action_bg_image = get_sub_field('cat_action_bg_image');
+$cat_action_link = get_sub_field('cat_action_link');
 ?>
 
 <?php

@@ -5,14 +5,6 @@ $subtitle = get_field('sub_title');
 $button_link = get_field('button_link');
 $button_link = get_field('button_link');
 $button_link_2 = get_field('button_link_2');
-$guests_protected = get_field('guests_protected');
-
-// Extract guests protected group
-$guests_title = $guests_protected['title'] ?? '';
-$guests_subtitle = $guests_protected['guest_sub_title'] ?? 'otherwise';
-$guest_1 = $guests_protected['guest_1'] ?? '';
-$guest_2 = $guests_protected['guest_2'] ?? '';
-$guest_3 = $guests_protected['guest_3'] ?? '';
 ?>
 
 <section class="relative justify-center h-[calc(100vh-160px)] overflow-hidden hero-banner">

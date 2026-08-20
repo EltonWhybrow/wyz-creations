@@ -1,24 +1,4 @@
-<?php
-$faq_title = get_field('faq_title');
-$faq_subtitle = get_field('faq_subtitle');
-
-?>
-
 <div id="faqs" class="py-6 faqs-module">
-    <!-- Header -->
-    <?php if ($faq_title || $faq_subtitle): ?>
-
-        <div class="mb-16 faqs-header">
-            <h2 class="mb-0! font-semibold! text-[36px]! md:text-[64px]! leading-9! md:leading-[60px]!">
-                <?php echo esc_html($faq_title); ?>
-            </h2>
-
-            <p class="mt-4 text-lg">
-                <?php echo esc_html($faq_subtitle); ?>
-            </p>
-        </div>
-
-    <?php endif; ?>
 
     <div class="relative mb-10 faq-search">
 

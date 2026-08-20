@@ -4,7 +4,7 @@
 
 
         <!-- Etsy -->
-        <a href="https://wyzcreations.etsy.com" target="_blank" rel="noopener noreferrer"
+        <!-- <a href="https://wyzcreations.etsy.com" target="_blank" rel="noopener noreferrer"
             class="flex justify-center py-4 w-1/2 md:w-1/3 lg:w-1/6 text-wyz-creations-guest-black-chalk/75 hover:text-[#F1641E] hover:scale-110 transition-all duration-400 ease-out transform">
             <svg role="img" class="fill-current w-12 h-12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>Etsy</title>
@@ -12,7 +12,7 @@
             </svg>
 
         </a>
-        <span class="hidden lg:flex lg:justify-center lg:items-center py-4 w-1/2 md:w-1/3 lg:w-1/6 font-bold">-</span>
+        <span class="hidden lg:flex lg:justify-center lg:items-center py-4 w-1/2 md:w-1/3 lg:w-1/6 font-bold">-</span> -->
         <!-- Facebook -->
         <a href="https://www.facebook.com/wyzcreations/" target="_blank" rel="noopener noreferrer"
             class="flex justify-center py-4 w-1/2 md:w-1/3 lg:w-1/6 text-wyz-creations-guest-black-chalk/75 hover:text-[#1877F2] hover:scale-110 transition-all duration-400 ease-out transform">

@@ -124,11 +124,6 @@ function my_custom_footer()
 
     if (wp_doing_ajax()) return;
 
-    if (is_page_template('templates/linkme.php')) {
-        get_template_part('parts/linkme-footer');
-        return;
-    }
-
     get_template_part('custom-footer');
 }
 
@@ -764,41 +759,26 @@ add_action('woocommerce_after_shop_loop_item', function () {
 }, 10);
 
 
-// Load specific template parts at bottom of specific pages
+// Render the Page Builder "Sections" flexible content on pages using the
+// default template (home-template.php/categories-template.php render their
+// own home_page_builder loop directly, so this only needs to cover default).
+// Hooked to generate_before_footer (fires outside the sidebar-constrained
+// #content wrapper, in footer.php) so sections render full width, matching
+// how home-template.php/categories-template.php render them.
 add_action('generate_before_footer', function () {
-    if (is_page(['returns-refunds', 'privacy-policy', 'new-products', 'favourites', 'contact-us', 'product-advice']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
-        get_template_part('parts/call-to-action');
+    if (!is_page() || wp_doing_ajax() || !is_page_template('default')) {
+        return;
     }
-});
 
-
-
-add_action('generate_before_footer', function () {
-    if (is_page(['subscribe', 'delivery', 'promo-codes']) && (!function_exists('is_woocommerce') || !is_woocommerce())) {
-        get_template_part('parts/socials');
-        get_template_part('parts/best-sellers');
-    }
-});
-
-add_action('generate_before_footer', function () {
-
-    if (
-        (is_page('help') || is_home()) &&
-        (!function_exists('is_woocommerce') || !is_woocommerce())
-    ) {
-
-        // ALWAYS resolve correct page ID explicitly
-        if (is_home()) {
-            $page_id = get_option('page_for_posts'); // NEWS PAGE
-        } else {
-            $page_id = get_queried_object_id(); // safer than get_the_ID()
-        }
-
-        set_query_var('cta_page_id', $page_id);
-
-        get_template_part('parts/socials');
-        get_template_part('parts/call-to-action');
-    }
+    if (have_rows('home_page_builder')) :
+        $layouts = wyzcreations_home_builder_layouts();
+        while (have_rows('home_page_builder')) : the_row();
+            $layout = get_row_layout();
+            if (isset($layouts[$layout])) {
+                get_template_part('parts/' . $layouts[$layout]);
+            }
+        endwhile;
+    endif;
 });
 
 // Remove "Additional Information" tab from single product pages

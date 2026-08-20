@@ -63,6 +63,6 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: ftps10.uk.cloudlogin.co
+          server: ftps8.uk.cloudlogin.co
           username: ${{ secrets.FTP_USER_PROD }}
           password: ${{ secrets.FTP_PWD_PROD }}

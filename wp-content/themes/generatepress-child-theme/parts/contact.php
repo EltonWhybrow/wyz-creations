@@ -1,6 +1,5 @@
 <?php
 $contact_image = get_field('contact_image');
-$contact_title = get_field('contact_title');
 $contact_content = get_field('contact_content');
 $contact_link = get_field('contact_link');
 $contact_info = get_field('contact_info');
@@ -11,11 +10,6 @@ $contact_info = get_field('contact_info');
 
     <div class="relative flex md:flex-row flex-col justify-center items-center gap-[30px] md:gap-28 pb-[50px] md:pb-[120px]">
         <div class="flex flex-col flex-1 mx-auto md:text-left text-center contact-us-content">
-            <?php if ($contact_title) : ?>
-                <h1 class="mb-2.5! md:px-0! pt-2.5! slide-up">
-                    <?php echo esc_html($contact_title); ?>
-                </h1>
-            <?php endif; ?>
 
             <?php if ($contact_content) : ?>
                 <div class="mx-auto my-0! max-w-4xl text-[18px] lg:text-2xl leading-normal! slide-up">

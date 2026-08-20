@@ -1,8 +1,5 @@
 <?php
 $contact_image = get_field('contact_image');
-$contact_title = get_field('contact_title');
-$contact_content = get_field('contact_content');
-
 $contact_info = get_field('contact_info');
 
 ?>
@@ -11,13 +8,6 @@ $contact_info = get_field('contact_info');
 
     <div class="relative flex md:flex-row flex-col justify-center gap-5 md:gap-28 pb-[50px]">
         <div class="flex flex-col flex-1 mx-auto md:text-left text-center form-split-content">
-            <?php if ($contact_title) : ?>
-                <h1 class="slide-up">
-                    <?php echo esc_html($contact_title); ?>
-                </h1>
-            <?php endif; ?>
-
-
 
             <?php
             $page_content = get_query_var('page_content');
