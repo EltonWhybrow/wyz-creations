@@ -6,6 +6,18 @@
 
 require_once get_stylesheet_directory() . '/inc/acf-page-builder.php';
 
+// Sync the Page Builder field group with acf-json/ instead of registering
+// it via PHP, so it's fully editable in wp-admin (add/remove/reorder
+// fields, including inside flexible-content layouts) while still being
+// version-controlled — ACF writes changes straight back to the JSON file.
+add_filter('acf/settings/save_json', function () {
+    return get_stylesheet_directory() . '/acf-json';
+});
+add_filter('acf/settings/load_json', function ($paths) {
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+});
+
 // Enqueue Google Fonts
 // add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);
 // function wyzcreations_load_google_fonts()
@@ -759,27 +771,15 @@ add_action('woocommerce_after_shop_loop_item', function () {
 }, 10);
 
 
-// Render the Page Builder "Sections" flexible content on pages using the
-// default template (home-template.php/categories-template.php render their
-// own home_page_builder loop directly, so this only needs to cover default).
-// Hooked to generate_before_footer (fires outside the sidebar-constrained
-// #content wrapper, in footer.php) so sections render full width, matching
-// how home-template.php/categories-template.php render them.
-add_action('generate_before_footer', function () {
-    if (!is_page() || wp_doing_ajax() || !is_page_template('default')) {
-        return;
-    }
-
-    if (have_rows('home_page_builder')) :
-        $layouts = wyzcreations_home_builder_layouts();
-        while (have_rows('home_page_builder')) : the_row();
-            $layout = get_row_layout();
-            if (isset($layouts[$layout])) {
-                get_template_part('parts/' . $layouts[$layout]);
-            }
-        endwhile;
-    endif;
-});
+// True when the current default-template page has Page Builder rows set up.
+// Used by page.php to render the builder full width instead of the normal
+// sidebar-constrained content wrapper, and by content-page.php to skip the
+// normal WP title/content — both fall back to normal behaviour when no
+// rows are configured yet.
+function wyzcreations_default_template_has_builder_rows()
+{
+    return is_page() && !wp_doing_ajax() && is_page_template('default') && have_rows('home_page_builder');
+}
 
 // Remove "Additional Information" tab from single product pages
 add_filter('woocommerce_product_tabs', 'custom_woocommerce_product_tabs', 98);

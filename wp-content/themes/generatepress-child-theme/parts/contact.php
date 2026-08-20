@@ -1,8 +1,8 @@
 <?php
-$contact_image = get_field('contact_image');
-$contact_content = get_field('contact_content');
-$contact_link = get_field('contact_link');
-$contact_info = get_field('contact_info');
+$contact_image = get_sub_field('contact_image');
+$contact_content = get_sub_field('contact_content');
+$contact_link = get_sub_field('contact_link');
+$contact_info = get_sub_field('contact_info');
 
 ?>
 

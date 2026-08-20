@@ -15,7 +15,23 @@ if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-get_header(); ?>
+get_header();
+
+// Pages with Page Builder ("Sections") rows configured render those
+// sections directly, full width, entirely bypassing GeneratePress's
+// sidebar-constrained #primary/#content/<main> wrapper (which still takes
+// up visible space via its own padding/min-height even when empty) — same
+// approach the old home-template.php/categories-template.php used.
+if (function_exists('wyzcreations_default_template_has_builder_rows') && wyzcreations_default_template_has_builder_rows()) :
+    $layouts = wyzcreations_home_builder_layouts();
+    while (have_rows('home_page_builder')) : the_row();
+        $layout = get_row_layout();
+        if (isset($layouts[$layout])) {
+            get_template_part('parts/' . $layouts[$layout]);
+        }
+    endwhile;
+else :
+?>
 
 <div <?php generate_do_attr('content'); ?>>
     <main <?php generate_do_attr('main'); ?>>
@@ -56,5 +72,7 @@ get_header(); ?>
 do_action('generate_after_primary_content_area');
 
 generate_construct_sidebars();
+
+endif;
 
 get_footer();

@@ -1,15 +1,14 @@
 <?php
-$hero_image = get_field('hero_image');
-$title = get_field('title');
-$subtitle = get_field('sub_title');
-$button_link = get_field('button_link');
-$button_link = get_field('button_link');
-$button_link_2 = get_field('button_link_2');
+$hero_image = wyzcreations_builder_field('hero_image');
+$title = wyzcreations_builder_field('title');
+$subtitle = wyzcreations_builder_field('sub_title');
+$button_link = wyzcreations_builder_field('button_link');
+$button_link_2 = wyzcreations_builder_field('button_link_2');
 ?>
 
 <section class="relative justify-center h-[calc(100vh-160px)] overflow-hidden hero-banner">
 
-    <?php $video = get_field('video'); ?>
+    <?php $video = wyzcreations_builder_field('video'); ?>
 
     <?php if ($video): ?>
         <div class="absolute w-full">

@@ -1,8 +1,8 @@
 <?php
 
-$feedback_title = get_field('feedback_title');
+$feedback_title = get_sub_field('feedback_title');
 
-$feedback_link = get_field('feedback_link');
+$feedback_link = get_sub_field('feedback_link');
 ?>
 
 <div class="relative overflow-hidden section steps-slider-module"

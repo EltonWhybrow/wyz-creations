@@ -1,21 +1,9 @@
 <?php
 
-$page_id = get_query_var('cta_page_id');
-
-// HARD fallback (important)
-if (!$page_id) {
-    $page_id = get_queried_object_id();
-}
-
-
-
-$action_title = get_field('action_title', $page_id);
-$action_subtitle = get_field('action_subtitle', $page_id);
-$action_bg_image = get_field('action_bg_image', $page_id);
-$action_link = get_field('action_link', $page_id);
-
-// Define the group names
-$step_groups = array('step_1', 'step_2', 'step_3', 'step_4');
+$action_title = get_sub_field('action_title');
+$action_subtitle = get_sub_field('action_subtitle');
+$action_bg_image = get_sub_field('action_bg_image');
+$action_link = get_sub_field('action_link');
 ?>
 
 <?php

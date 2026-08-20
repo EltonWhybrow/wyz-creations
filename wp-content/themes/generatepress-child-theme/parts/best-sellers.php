@@ -1,6 +1,6 @@
 <?php
-$slider_heading = get_field('slider_heading');
-$taxonomy_term = get_field('taxonomy_term');
+$slider_heading = get_sub_field('slider_heading');
+$taxonomy_term = get_sub_field('taxonomy_term');
 ?>
 
 <div class="relative overflow-hidden section best-seller-slider-module">

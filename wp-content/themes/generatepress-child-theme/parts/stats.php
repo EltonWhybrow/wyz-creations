@@ -9,7 +9,7 @@ $group_names = array('number_block_1', 'number_block_2', 'number_block_3', 'numb
             <?php
             foreach ($group_names as $group_name):
                 // Get all fields from the group
-                $group_data = get_field($group_name);
+                $group_data = get_sub_field($group_name);
 
                 if ($group_data):
 
