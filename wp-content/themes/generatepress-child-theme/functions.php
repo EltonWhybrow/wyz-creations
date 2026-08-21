@@ -781,6 +781,20 @@ function wyzcreations_default_template_has_builder_rows()
     return is_page() && !wp_doing_ajax() && is_page_template('default') && have_rows('home_page_builder');
 }
 
+// True when the blog/posts page (Settings > Reading > "Posts page") has
+// Page Builder rows set up. Used by home.php. Can't reuse
+// wyzcreations_default_template_has_builder_rows() here: on the posts-page
+// request is_page()/is_page_template() both return false (WordPress treats
+// it as is_home(), not is_singular()), even though the page's own template
+// meta is still 'default' — so this checks the page's ID directly via
+// get_option('page_for_posts') instead. Only true on page 1 of the listing.
+function wyzcreations_news_page_has_builder_rows()
+{
+    $news_page_id = (int) get_option('page_for_posts');
+
+    return $news_page_id && !wp_doing_ajax() && !is_paged() && have_rows('home_page_builder', $news_page_id);
+}
+
 // Remove "Additional Information" tab from single product pages
 add_filter('woocommerce_product_tabs', 'custom_woocommerce_product_tabs', 98);
 

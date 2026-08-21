@@ -1,8 +1,0 @@
-.form-split-content {
-	h1 {
-		@apply font-semibold text-[40px]! md:text-[70px]! leading-10! md:leading-[70px]!;
-	}
-	p {
-		@apply my-0! leading-7!;
-	}
-}

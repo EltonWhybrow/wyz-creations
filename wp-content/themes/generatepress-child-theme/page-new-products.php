@@ -63,8 +63,22 @@ get_header();
         wp_reset_postdata();
         ?>
 
-
     </main>
 </div>
+
+<?php
+// Page Builder sections, rendered full width below the product grid —
+// outside the boxed #primary wrapper, matching how sections render
+// everywhere else on the site.
+if (have_rows('home_page_builder')) :
+    $layouts = wyzcreations_home_builder_layouts();
+    while (have_rows('home_page_builder')) : the_row();
+        $layout = get_row_layout();
+        if (isset($layouts[$layout])) {
+            get_template_part('parts/' . $layouts[$layout]);
+        }
+    endwhile;
+endif;
+?>
 
 <?php get_footer(); ?>

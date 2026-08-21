@@ -1448,20 +1448,21 @@
                                     "label": "Phone Data",
                                     "name": "phone_data",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "wysiwyg",
                                     "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
+                                    "required": 0,
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
                                         "id": ""
                                     },
                                     "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
+                                    "allow_in_bindings": 0,
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
                                 },
                                 {
                                     "key": "field_home_builder_contact_email_label",
@@ -1488,20 +1489,21 @@
                                     "label": "Email Data",
                                     "name": "email_data",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "wysiwyg",
                                     "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
+                                    "required": 0,
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
                                         "id": ""
                                     },
                                     "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
+                                    "allow_in_bindings": 0,
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
                                 },
                                 {
                                     "key": "field_home_builder_contact_response_label",
@@ -1528,20 +1530,21 @@
                                     "label": "Response Time Data",
                                     "name": "response_time_data",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "wysiwyg",
                                     "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
+                                    "required": 0,
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
                                         "id": ""
                                     },
                                     "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
+                                    "allow_in_bindings": 0,
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
                                 }
                             ]
                         }
@@ -1562,6 +1565,13 @@
                 "operator": "==",
                 "value": "default"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-new-products.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -1576,5 +1586,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787242164
+    "modified": 1787287251
 }

@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+
 <div class="content-area news-page" id="primary">
 
 
@@ -55,6 +56,23 @@
 
 
 </div>
+
+
+<?php
+// Page Builder sections for the News/blog page, rendered full width above
+// the post grid (which always still renders below regardless of whether
+// any sections are configured — the grid is the page's actual content).
+if (function_exists('wyzcreations_news_page_has_builder_rows') && wyzcreations_news_page_has_builder_rows()) :
+    $news_page_id = (int) get_option('page_for_posts');
+    $layouts = wyzcreations_home_builder_layouts();
+    while (have_rows('home_page_builder', $news_page_id)) : the_row();
+        $layout = get_row_layout();
+        if (isset($layouts[$layout])) {
+            get_template_part('parts/' . $layouts[$layout]);
+        }
+    endwhile;
+endif;
+?>
 
 
 

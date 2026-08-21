@@ -9,11 +9,11 @@ $contact_info = get_sub_field('contact_info');
 <section class="px-5 lg:px-60 py-2 md:pt-[120px] contact-us">
 
     <div class="relative flex md:flex-row flex-col justify-center items-center gap-[30px] md:gap-28 pb-[50px] md:pb-[120px]">
-        <div class="flex flex-col flex-1 mx-auto md:text-left text-center contact-us-content">
+        <div class="flex flex-col flex-1 justify-between mx-auto md:text-left text-center contact-us-content">
 
             <?php if ($contact_content) : ?>
                 <div class="mx-auto my-0! max-w-4xl text-[18px] lg:text-2xl leading-normal! slide-up">
-                    <?php echo wp_kses_post($contact_content); ?>
+                    <?php echo apply_filters('the_content', $contact_content); ?>
                 </div>
             <?php endif; ?>
 
@@ -40,56 +40,58 @@ $contact_info = get_sub_field('contact_info');
 
         <?php endif; ?>
     </div>
-
-    <?php
-    if ($contact_info):
-    ?>
-
-
-        <div class="flex md:flex-row flex-col justify-center gap-5 my-[50px] md:text-left text-center align-middle">
+    <div class="flex flex-col flex-1 mx-auto md:text-left text-center contact-us-content">
+        <?php
+        if ($contact_info):
+        ?>
 
 
-            <div class="w-full">
-                <h3 class="my-5 mb-2.5! font-medium md:font-semibold text-[28px]! md:text-[32px]!">
-                    <?php echo esc_html($contact_info['phone_label']); ?>
-                </h3>
-                <p class="text-[24px]">
-                    <?php echo esc_html($contact_info['phone_data']); ?>
-                </p>
+            <div class="flex md:flex-row flex-col justify-center gap-5 my-[50px] md:text-left text-center align-middle">
+
+
+                <div class="w-full">
+                    <h3 class="my-5 mb-2.5! font-medium md:font-semibold text-[28px]! md:text-[32px]!">
+                        <?php echo esc_html($contact_info['phone_label']); ?>
+                    </h3>
+                    <p class="text-[24px]">
+                        <?php echo wp_kses_post($contact_info['phone_data']); ?>
+                    </p>
+                </div>
+
+
+
+
+                <div class="w-full">
+                    <h3 class="my-5 mb-2.5! font-semibold text-[28px]! md:text-[32px]!">
+                        <?php echo esc_html($contact_info['email_label']); ?>
+                    </h3>
+                    <p class="text-[24px]">
+                        <?php $email_data = wp_strip_all_tags($contact_info['email_data']); ?>
+                        <a href="mailto:<?php echo esc_attr($email_data); ?>"
+                            class="hover:text-blue-400 transition-colors duration-300">
+                            <?php echo wp_kses_post($contact_info['email_data']); ?>
+                        </a>
+                    </p>
+                </div>
+
+
+
+
+                <div class="w-full">
+                    <h3 class="my-5 mb-2.5! font-semibold text-[28px]! md:text-[32px]!">
+                        <?php echo esc_html($contact_info['response_time_label']); ?>
+                    </h3>
+                    <p class="text-[24px]">
+                        <?php echo wp_kses_post($contact_info['response_time_data']); ?>
+                    </p>
+                </div>
+
+
+
+
             </div>
 
-
-
-
-            <div class="w-full">
-                <h3 class="my-5 mb-2.5! font-semibold text-[28px]! md:text-[32px]!">
-                    <?php echo esc_html($contact_info['email_label']); ?>
-                </h3>
-                <p class="text-[24px]">
-                    <a href="mailto:<?php echo esc_attr($contact_info['email_data']); ?>"
-                        class="hover:text-blue-400 transition-colors duration-300">
-                        <?php echo esc_html($contact_info['email_data']); ?>
-                    </a>
-                </p>
-            </div>
-
-
-
-
-            <div class="w-full">
-                <h3 class="my-5 mb-2.5! font-semibold text-[28px]! md:text-[32px]!">
-                    <?php echo esc_html($contact_info['response_time_label']); ?>
-                </h3>
-                <p class="text-[24px]">
-                    <?php echo esc_html($contact_info['response_time_data']); ?>
-                </p>
-            </div>
-
-
-
-
-        </div>
-
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
 
 </section>
