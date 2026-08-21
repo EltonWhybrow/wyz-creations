@@ -456,6 +456,47 @@ jQuery(function ($) {
     });
   })();
 
+  // Timed subscribe modal - auto-opens centered 10s after arrival, closing
+  // it sets a cookie so it doesn't show again for 10 days
+  (function () {
+    const modal = document.getElementById('subscribe-modal');
+    const overlay = document.getElementById('subscribe-modal-overlay');
+    const closeBtn = document.getElementById('close-subscribe-modal');
+
+    if (!modal || !overlay || !closeBtn) return;
+
+    const SUBSCRIBE_MODAL_COOKIE = 'subscribe_modal_dismissed';
+
+    function hasDismissedSubscribeModal() {
+      return document.cookie.indexOf(SUBSCRIBE_MODAL_COOKIE + '=1') !== -1;
+    }
+
+    function dismissSubscribeModalFor10Days() {
+      const d = new Date();
+      d.setTime(d.getTime() + 10 * 24 * 60 * 60 * 1000);
+      document.cookie =
+        SUBSCRIBE_MODAL_COOKIE + '=1;expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+    }
+
+    function closeSubscribeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      dismissSubscribeModalFor10Days();
+    }
+
+    closeBtn.addEventListener('click', closeSubscribeModal);
+    overlay.addEventListener('click', closeSubscribeModal);
+
+    if (!hasDismissedSubscribeModal()) {
+      setTimeout(function () {
+        if (!hasDismissedSubscribeModal()) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }, 10000);
+    }
+  })();
+
   // Widesign panel subscrFREE site
   (function () {
     const openBtn = document.getElementById('open-widesign');

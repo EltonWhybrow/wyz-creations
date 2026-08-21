@@ -59,13 +59,30 @@
     <button id="close-linkme" aria-label="Close menu">✕</button>
 
     <div class="linkme-content">
-        <h2 class="mb-2 text-lg">Subscribe</h2>
-        <h3 class="mb-6 text-wyz-creations-guest-light-gray text-xl">Get 25% OFF your first order!</h3>
+        <h2 class="mb-2 text-xl">Subscribe</h2>
+        <h3 class="mb-6 text-lg">Get 25% OFF your first order!</h3>
         <ul class="mb-6 ml-4! list-disc list-outside list">
             <li>Be notified first about new T-shirt drops</li>
             <li>Receive exclusive discounts and promo codes</li>
-            <li>Chance to win a FREE T-shirt every month</li>
+            <li>In Raffle to win a £100 T-shirt voucher</li>
 
+        </ul>
+        <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
+    </div>
+</div>
+
+<!-- // Timed Subscribe Modal (centered, auto-opens after 20s) -->
+<div id="subscribe-modal">
+    <div id="subscribe-modal-overlay"></div>
+    <div class="subscribe-modal-content">
+        <button id="close-subscribe-modal" aria-label="Close">✕</button>
+
+        <h2 class="mb-2 text-xl">Subscribe</h2>
+        <h3 class="mb-6 text-lg">Get 25% OFF your first order!</h3>
+        <ul class="mb-6 ml-4! list-none list-outside list">
+            <li>Be notified first about new T-shirt drops</li>
+            <li>Receive exclusive discounts and promo codes</li>
+            <li>In Raffle to win a £100 T-shirt voucher</li>
         </ul>
         <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
     </div>
