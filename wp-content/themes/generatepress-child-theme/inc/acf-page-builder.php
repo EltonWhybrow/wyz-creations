@@ -37,8 +37,8 @@ function wyzcreations_home_builder_layouts()
 
 // Reads a field from the current flexible-content row when called inside
 // the Page Builder loop; falls back to the page-level field of the same
-// name otherwise. Needed only by layouts whose part file is also rendered
-// directly outside the builder (e.g. hero-banner.php via promo-template.php).
+// name otherwise. Needed only by layouts whose part file might also be
+// rendered directly outside the builder from some other template.
 function wyzcreations_builder_field($field_name)
 {
     if (get_row_layout()) {
