@@ -280,3 +280,23 @@ select.dropdown_layered_nav_attribute:hover {
 .woocommerce-loop-product__title {
 	@apply truncate;
 }
+
+/* "New in store" block on the empty cart page (core WooCommerce
+   Product New block): .wc-block-grid__product-image img has no CSS
+   width rule at all, so its rendered box size follows whichever
+   srcset candidate the browser happens to pick. The 4th image is the
+   first one WordPress marks loading="lazy", and at wide viewports the
+   browser's auto sizing for that lazy image picks a larger srcset
+   candidate than the other (eager-loaded) images use — rendering it
+   visibly bigger even though every card is the same width. Forcing an
+   explicit width makes box size container-driven instead of
+   resource-driven, regardless of which srcset candidate loads. */
+.wc-block-grid__product-image,
+.wc-block-components-product-image {
+	@apply block w-full;
+}
+
+.wc-block-grid__product-image img,
+.wc-block-components-product-image img {
+	@apply w-full aspect-square object-cover;
+}
