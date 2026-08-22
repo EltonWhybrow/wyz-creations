@@ -38,6 +38,14 @@
 	transform: translate(-50%, -50%) scale(1);
 }
 
+/* .wpcf7-submit is display:block below the md breakpoint (only becomes
+   inline-flex at md:), so text-align:center on .subscribe-modal-content
+   has no effect on it at narrow widths and it sits left-aligned. Force
+   it centered here regardless of viewport width. */
+#subscribe-modal .wpcf7-submit {
+	@apply inline-flex! mx-auto!;
+}
+
 #close-subscribe-modal {
 	position: absolute;
 	top: 15px;
