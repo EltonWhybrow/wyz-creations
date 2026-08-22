@@ -66,3 +66,4 @@ jobs:
           server: ftps8.uk.cloudlogin.co
           username: ${{ secrets.FTP_USER_PROD }}
           password: ${{ secrets.FTP_PWD_PROD }}
+          server-dir: wyzcreations.com/
