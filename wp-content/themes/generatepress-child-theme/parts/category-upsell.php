@@ -27,7 +27,7 @@
                         <?php if ($upsell_link) : ?>
                             <a
                                 href="<?php echo esc_url($upsell_link['url']); ?>"
-                                class="top-0 left-0 absolute group-hover:bg-wyz-creations-guest-black-chalk-50 w-full h-full transition-colors duration-300 ease-in-out">
+                                class="top-0 left-0 absolute max-lg:bg-wyz-creations-guest-black-chalk-50 group-hover:bg-wyz-creations-guest-black-chalk-50 w-full h-full transition-colors duration-300 ease-in-out">
 
                             </a>
                         <?php endif; ?>
@@ -41,7 +41,7 @@
                             <?php endif; ?>
 
                             <?php if ($upsell_title) : ?>
-                                <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-out stagger-words">
+                                <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk max-lg:text-wyz-guest-white group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-out stagger-words">
 
                                     <?php echo esc_html($upsell_title); ?>
                                 </h3>
