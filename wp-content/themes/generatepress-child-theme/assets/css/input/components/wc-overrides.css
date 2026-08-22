@@ -300,3 +300,14 @@ select.dropdown_layered_nav_attribute:hover {
 .wc-block-components-product-image img {
 	@apply w-full aspect-square object-cover;
 }
+
+/* Same "New in store" block: the shared .add_to_cart_button rule above
+   forces display:flex!important, which breaks this button's built-in
+   centering — WooCommerce's own default here is inline-flex, centered
+   via text-align:center on the .wp-block-button wrapper. Scoped to
+   just this block so the shop loop / single product pages (where the
+   button is a flex *item* of a different flex container, not something
+   text-align:center'd) are left untouched. */
+.wc-block-grid__product-add-to-cart .add_to_cart_button {
+	@apply inline-flex! mx-auto!;
+}
