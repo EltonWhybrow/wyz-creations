@@ -45,7 +45,7 @@
     <div id="top-section" class="z-50 relative bg-wyz-creations-guest-light-gray">
         <div class="relative flex flex-row items-center items-justified-right gap-3 p-2 px-4">
             <a href="/subscribe" id="open-linkme" class="menu-link-secondary">
-                Get 25% OFF</a>
+                Get 50% OFF</a>
             |
             <?php
             // Check if on My Account page

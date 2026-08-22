@@ -60,7 +60,7 @@
 
     <div class="linkme-content">
         <h2 class="mb-2 text-xl">Subscribe</h2>
-        <h3 class="mb-6 text-lg">Get 25% OFF your first order!</h3>
+        <h3 class="mb-6 text-lg">Get 50% OFF your first order!</h3>
         <ul class="mb-6 ml-4! list-disc list-outside list">
             <li>Be notified first about new T-shirt drops</li>
             <li>Receive exclusive discounts and promo codes</li>
@@ -78,7 +78,7 @@
         <button id="close-subscribe-modal" aria-label="Close">✕</button>
 
         <h2 class="mb-2 text-xl">Subscribe</h2>
-        <h3 class="mb-6 text-lg">Get 25% OFF your first order!</h3>
+        <h3 class="mb-6 text-lg">Get 50% OFF your first order!</h3>
         <ul class="mb-6 ml-4! list-none list-outside list">
             <li>Be notified first about new T-shirt drops</li>
             <li>Receive exclusive discounts and promo codes</li>
