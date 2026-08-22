@@ -74,7 +74,7 @@
 <!-- // Timed Subscribe Modal (centered, auto-opens after 20s) -->
 <div id="subscribe-modal">
     <div id="subscribe-modal-overlay"></div>
-    <div class="subscribe-modal-content">
+    <div class="text-left subscribe-modal-content">
         <button id="close-subscribe-modal" aria-label="Close">✕</button>
 
         <h2 class="mb-2 text-xl">Subscribe</h2>
