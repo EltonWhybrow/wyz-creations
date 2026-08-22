@@ -3,3 +3,29 @@
 		@apply font-semibold text-[40px]! text-wyz-guest-white md:text-[78px]! leading-10! md:leading-20!;
 	}
 }
+
+/* Shown over the hero image wrapper until the <img> fires its load
+   event (see hero-banner-video JS in wyz-creations-main.js), then
+   faded out as the image fades in. */
+.hero-banner-spinner {
+	@apply z-10 absolute inset-0 flex justify-center items-center bg-wyz-creations-guest-black-chalk transition-opacity duration-300;
+}
+
+.hero-banner-spinner.is-hidden {
+	@apply opacity-0 pointer-events-none;
+}
+
+.hero-banner-spinner__icon {
+	width: 42px;
+	height: 42px;
+	border: 4px solid var(--color-wyz-creations-guest-med-gray);
+	border-top-color: var(--color-wyz-guest-white);
+	border-radius: 50%;
+	animation: hero-banner-spinner-spin 0.7s linear infinite;
+}
+
+@keyframes hero-banner-spinner-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}

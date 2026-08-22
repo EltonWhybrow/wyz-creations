@@ -16,6 +16,64 @@ jQuery(function ($) {
     $spinner.removeClass('active');
   });
 
+  // Hero banner image: show a spinner over it until the <img> actually
+  // fires its load event, then fade the spinner out and the image in.
+  (function () {
+    document.querySelectorAll('.hero-banner-image').forEach(function (img) {
+      const spinner = img.parentElement.querySelector('.hero-banner-spinner');
+
+      function reveal() {
+        if (spinner) {
+          // Let the spinner fully fade out before the image starts
+          // fading in, so the two transitions never overlap.
+          spinner.classList.add('is-hidden');
+          setTimeout(function () {
+            img.classList.remove('opacity-0');
+          }, 300);
+        } else {
+          img.classList.remove('opacity-0');
+        }
+      }
+
+      if (img.complete && img.naturalWidth > 0) {
+        reveal();
+      } else {
+        img.addEventListener('load', reveal, { once: true });
+        img.addEventListener('error', reveal, { once: true });
+      }
+    });
+  })();
+
+  // Hero banner video: the hero image renders immediately and doubles as
+  // the video's poster/placeholder. The video itself has no src on page
+  // load (only data-src), so the browser never fetches it up front — we
+  // assign the src once the page is idle/loaded, then fade the video in
+  // over the image once it's actually ready to play.
+  (function () {
+    const videos = document.querySelectorAll('.hero-banner-video[data-src]');
+    if (!videos.length) return;
+
+    function loadHeroVideo(video) {
+      if (video.dataset.loaded) return;
+      video.dataset.loaded = '1';
+      video.src = video.dataset.src;
+      video.load();
+      video.addEventListener('canplay', function () {
+        video.classList.remove('opacity-0');
+      }, { once: true });
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function () {
+        videos.forEach(loadHeroVideo);
+      });
+    } else {
+      window.addEventListener('load', function () {
+        videos.forEach(loadHeroVideo);
+      });
+    }
+  })();
+
   // Header search: clicking the browser's native "x" clear button on
   // input[type=search] only empties the field, it doesn't re-run the
   // search — so the old (empty) results stay on screen. Send the user
