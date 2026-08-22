@@ -4,6 +4,14 @@ $action_title = get_sub_field('action_title');
 $action_subtitle = get_sub_field('action_subtitle');
 $action_bg_image = get_sub_field('action_bg_image');
 $action_link = get_sub_field('action_link');
+$action_text_align = strtolower(get_sub_field('action_text_align') ?: 'center');
+
+$align_classes = [
+    'left'   => 'items-start text-left',
+    'center' => 'items-center text-center',
+    'right'  => 'items-end text-right',
+];
+$align_class = $align_classes[$action_text_align] ?? $align_classes['center'];
 ?>
 
 <?php
@@ -23,7 +31,7 @@ if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
     style="background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.0)), url('<?php echo esc_url($bg_url); ?>') center / cover no-repeat;"
     <?php endif; ?>>
     <!-- Optional: Overlay for better text readability -->
-    <div class="z-0 absolute inset-0 bg-black/40"></div>
+    <div class="z-0 absolute inset-0 bg-black/10"></div>
 
 
     <!-- Content Container (everything on top) -->
@@ -32,9 +40,9 @@ if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
 
 
             <!-- Content Section -->
-            <div class="flex flex-col justify-center items-center px-10 md:px-[10vw] py-[50px] md:py-[175px] text-center">
+            <div class="flex flex-col justify-center <?php echo esc_attr($align_class); ?> px-10 md:px-[10vw] py-[50px] md:py-[175px]">
                 <?php if ($action_title): ?>
-                    <h2 class="mx-auto mb-0! font-semibold! text-[36px]! text-wyz-guest-white md:text-[64px]! leading-9! md:leading-[60px]!">
+                    <h2 class="mb-0! font-semibold! text-[36px]! text-wyz-guest-white md:text-[64px]! leading-9! md:leading-[60px]!">
                         <?php echo esc_html($action_title); ?>
                     </h2>
                     <p class="mt-4 text-wyz-guest-white text-xl">
