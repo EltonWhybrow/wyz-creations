@@ -67,3 +67,10 @@ jobs:
           username: ${{ secrets.FTP_USER_PROD }}
           password: ${{ secrets.FTP_PWD_PROD }}
           server-dir: wyzcreations.com/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/node_modules/**/*
+            **/wp-content/themes/twentytwentyfive/**
+            **/wp-content/themes/twentytwentyfive
