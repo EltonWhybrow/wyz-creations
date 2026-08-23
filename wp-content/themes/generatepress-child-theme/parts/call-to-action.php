@@ -31,7 +31,7 @@ if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
     style="background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.0)), url('<?php echo esc_url($bg_url); ?>') center / cover no-repeat;"
     <?php endif; ?>>
     <!-- Optional: Overlay for better text readability -->
-    <div class="z-0 absolute inset-0 bg-black/10"></div>
+    <div class="z-0 absolute inset-0 bg-black/40"></div>
 
 
     <!-- Content Container (everything on top) -->
@@ -40,7 +40,7 @@ if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
 
 
             <!-- Content Section -->
-            <div class="flex flex-col justify-center <?php echo esc_attr($align_class); ?> px-10 md:px-[10vw] py-[50px] md:py-[175px]">
+            <div class="flex flex-col justify-center <?php echo esc_attr($align_class); ?> px-10 md:px-[10vw] py-[50px] md:py-[210px]">
                 <?php if ($action_title): ?>
                     <h2 class="mb-0! font-semibold! text-[36px]! text-wyz-guest-white md:text-[64px]! leading-9! md:leading-[60px]!">
                         <?php echo esc_html($action_title); ?>
