@@ -17,8 +17,8 @@
                 <article class="p-4 border rounded-lg news-card">
 
                     <?php if (has_post_thumbnail()) : ?>
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('large', ['class' => 'w-full h-auto']); ?>
+                        <a class="block rounded-lg w-full h-48 overflow-hidden" href="<?php the_permalink(); ?>">
+                            <?php the_post_thumbnail('large', ['class' => 'w-full h-full object-cover']); ?>
                         </a>
                     <?php endif; ?>
 
