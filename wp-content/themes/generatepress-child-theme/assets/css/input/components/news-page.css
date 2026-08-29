@@ -1,0 +1,31 @@
+/* news/blog listing pagination - mirrors WooCommerce pagination styling */
+/* GeneratePress strips the outer <nav class="navigation pagination"> wrapper
+   (see generate_modify_posts_pagination_template), leaving just
+   .nav-links > ul.page-numbers > li — so scope from .nav-links, not .pagination.
+   WooCommerce's own stylesheet gives its pagination <li> overflow:hidden (so the
+   current-page span's square corners get clipped to the circle); that CSS only
+   matches inside .woocommerce, so it's set explicitly here for the news page. */
+.news-page .nav-links {
+	ul {
+		@apply flex flex-wrap justify-center items-center gap-2 m-0 p-0 w-full list-none;
+	}
+
+	.page-numbers li {
+		@apply rounded-full w-12 h-12 font-bold overflow-hidden
+			text-wyz-creations-guest-light-gray bg-wyz-creations-guest-black-chalk
+			transition-colors duration-200;
+
+		a,
+		span {
+			@apply flex justify-center items-center hover:bg-wyz-creations-guest-blue w-full h-full hover:text-white;
+		}
+	}
+
+	.page-numbers.current {
+		@apply bg-wyz-creations-guest-blue text-white;
+	}
+
+	.page-numbers.dots {
+		@apply bg-transparent hover:bg-transparent w-auto text-wyz-creations-guest-black-chalk/60;
+	}
+}

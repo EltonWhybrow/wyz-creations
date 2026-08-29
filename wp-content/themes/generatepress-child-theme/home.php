@@ -43,7 +43,13 @@
         </div>
 
         <div class="mt-10">
-            <?php the_posts_pagination(); ?>
+            <?php
+            the_posts_pagination([
+                'type'      => 'list',
+                'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
+                'next_text' => is_rtl() ? '&larr;' : '&rarr;',
+            ]);
+            ?>
         </div>
 
     <?php else : ?>

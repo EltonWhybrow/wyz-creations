@@ -26,6 +26,7 @@
 @import "./components/category-upsell.css";
 @import "./components/forms.css";
 @import "./components/loading-spinner.css";
+@import "./components/news-page.css";
 
 .chart-headings {
 	margin-top: 3rem;
