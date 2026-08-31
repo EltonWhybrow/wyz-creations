@@ -904,6 +904,7 @@ add_shortcode('wyz_button', function ($atts) {
  * Promo/Callout Box Shortcode
  * Usage: [wyz_callout]
  * Usage: [wyz_callout heading="Fancy 15% off?" body="Subscribe and get a discount code sent straight to your inbox." url="/subscribe" btn_text="Claim Your Discount"]
+ * Usage: [wyz_callout image="https://example.com/photo.jpg" overlay="false"] (image accepts a URL or an attachment ID; overlay defaults to "true" and only applies when an image is set; image="none" removes the default background)
  */
 add_shortcode('wyz_callout', function ($atts) {
     $atts = shortcode_atts([
@@ -912,17 +913,44 @@ add_shortcode('wyz_callout', function ($atts) {
         'url'      => '/shop',
         'btn_text' => 'Shop Now',
         'style'    => 'primary',
+        'image'    => get_stylesheet_directory_uri() . '/assets/img/blog-post-call-to-action.jpg',
+        'overlay'  => 'true',
     ], $atts, 'wyz_callout');
 
     $allowed_styles = ['primary', 'secondary', 'tertiary'];
     $style = in_array($atts['style'], $allowed_styles) ? $atts['style'] : 'primary';
 
+    if ('none' === $atts['image']) {
+        $bg_url = '';
+    } elseif (is_numeric($atts['image'])) {
+        $bg_url = wp_get_attachment_image_url((int) $atts['image'], 'large');
+    } else {
+        $bg_url = trim($atts['image']);
+    }
+
+    $bg_markup = '';
+    if ($bg_url) {
+        $bg_markup = sprintf(
+            '<div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image:url(\'%s\');"></div>',
+            esc_url($bg_url)
+        );
+        if (filter_var($atts['overlay'], FILTER_VALIDATE_BOOLEAN)) {
+            $bg_markup .= '<div class="absolute inset-0 bg-radial from-black via-black/70 to-transparent"></div>';
+        }
+    }
+
     return sprintf(
-        '<div class="bg-wyz-creations-guest-light-gray my-8 p-6 rounded-xl text-center wyz-shortcode-callout">
-            <h3 class="mb-2 font-bold text-xl">%s</h3>
-            <p class="mb-4 text-base">%s</p>
-            <a href="%s" class="wyz-btn btn-sm %s">%s</a>
+        '<div class="relative my-8 p-10 rounded-xl overflow-hidden text-center wyz-shortcode-callout %s">
+            %s
+            <div class="z-10 relative %s">
+                <h3 class="mb-2 font-bold text-xl">%s</h3>
+                <p class="mb-4 text-base">%s</p>
+                <a href="%s" class="wyz-btn btn-sm %s">%s</a>
+            </div>
         </div>',
+        $bg_url ? '' : 'bg-wyz-creations-guest-light-gray',
+        $bg_markup,
+        $bg_url ? 'text-white' : '',
         esc_html($atts['heading']),
         esc_html($atts['body']),
         esc_url(home_url($atts['url'])),
