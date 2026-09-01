@@ -535,7 +535,7 @@ jQuery(function ($) {
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
         }
-      }, 10000);
+      }, 15000);
     }
   })();
 
