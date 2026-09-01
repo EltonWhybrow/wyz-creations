@@ -1,21 +1,5 @@
 jQuery(function ($) {
 
-  // Global AJAX loading spinner — shows for any jQuery AJAX request
-  // (WooCommerce cart/checkout, favourites, etc). Delayed slightly so
-  // fast requests don't cause a flash of the spinner.
-  const $spinner = $('#global-loading-spinner');
-  let spinnerShowTimeout;
-
-  $(document).on('ajaxStart', function () {
-    clearTimeout(spinnerShowTimeout);
-    spinnerShowTimeout = setTimeout(() => $spinner.addClass('active'), 200);
-  });
-
-  $(document).on('ajaxStop', function () {
-    clearTimeout(spinnerShowTimeout);
-    $spinner.removeClass('active');
-  });
-
   // Hero banner image: show a spinner over it until the <img> actually
   // fires its load event, then fade the spinner out and the image in.
   (function () {
