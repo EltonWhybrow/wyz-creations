@@ -25,6 +25,7 @@ function wyzcreations_home_builder_layouts()
         'trusted_companies' => 'trusted-companies',
         'stats'             => 'stats',
         'best_sellers'      => 'best-sellers',
+        'featured_posts'    => 'featured-posts',
         'faqs'              => 'faqs',
         'socials'           => 'socials',
         'call_to_action'    => 'call-to-action',

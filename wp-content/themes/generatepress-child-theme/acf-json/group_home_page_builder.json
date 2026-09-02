@@ -868,6 +868,60 @@
                     "min": "",
                     "max": "1"
                 },
+                "layout_featured_posts": {
+                    "key": "layout_featured_posts",
+                    "name": "featured_posts",
+                    "label": "Featured Posts",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_8959c17aac508",
+                            "label": "Slider Heading",
+                            "name": "slider_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_7faa0dcdce14a",
+                            "label": "Category",
+                            "name": "taxonomy_term",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "Posts shown are those in this category, plus any post marked as Sticky in the Publish box (regardless of category). Leave blank to show only Sticky posts.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "category",
+                            "add_term": 0,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "id",
+                            "field_type": "select",
+                            "multiple": 0,
+                            "allow_null": 1,
+                            "bidirectional_target": []
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
                 "layout_faqs": {
                     "key": "layout_faqs",
                     "name": "faqs",
@@ -1590,5 +1644,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788338451
+    "modified": 1788369767
 }

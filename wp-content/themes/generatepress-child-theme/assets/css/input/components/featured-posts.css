@@ -1,0 +1,18 @@
+/* Featured Posts Slider Styles */
+.featured-posts-slider .slick-list {
+	margin: 0 -10px;
+	padding: 10px 0 0;
+}
+
+.featured-posts-slider .slick-track {
+	display: flex !important;
+	gap: 4px; /* Gap between slides */
+}
+
+.featured-posts-header {
+	@apply flex justify-between items-center mx-4 md:mx-10 mt-16 p-1;
+	.featured-posts-prev,
+	.featured-posts-next {
+		@apply flex justify-center items-center bg-wyz-creations-guest-light-gray hover:bg-wyz-creations-guest-med-gray rounded-full w-14 h-14 text-wyz-creations-guest-black-chalk transition-colors duration-300;
+	}
+}
