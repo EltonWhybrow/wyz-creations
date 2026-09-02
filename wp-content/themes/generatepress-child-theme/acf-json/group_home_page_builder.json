@@ -240,6 +240,32 @@
                                     "mime_types": ""
                                 },
                                 {
+                                    "key": "field_6259349a22bba",
+                                    "label": "Upsell Image (Mobile)",
+                                    "name": "upsell_image_mobile",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "Optional. If set, used instead of Upsell Image on mobile screens \u2014 upload an image cropped/optimized for a narrow, taller layout.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "id",
+                                    "library": "all",
+                                    "parent_repeater": "field_6a8539b9d94ed",
+                                    "preview_size": "medium",
+                                    "min_width": 0,
+                                    "min_height": 0,
+                                    "min_size": 0,
+                                    "max_width": 0,
+                                    "max_height": 0,
+                                    "max_size": 0,
+                                    "mime_types": ""
+                                },
+                                {
                                     "key": "field_6a853b155416b",
                                     "label": "Upsell Link",
                                     "name": "upsell_link",
@@ -286,7 +312,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316c2c44113",
-                                    "label": "Stat\/Number",
+                                    "label": "Stat/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -415,7 +441,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316c99725e3",
-                                    "label": "Stat\/Number",
+                                    "label": "Stat/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -544,7 +570,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316ca0725e8",
-                                    "label": "Stat\/Number",
+                                    "label": "Stat/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -673,7 +699,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316ca1725ed",
-                                    "label": "Stat\/Number",
+                                    "label": "Stat/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -1564,5 +1590,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787393573
+    "modified": 1788338451
 }

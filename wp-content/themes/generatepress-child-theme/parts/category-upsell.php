@@ -13,16 +13,28 @@
                     $upsell_title = get_sub_field('upsell_title');
                     $upsell_content = get_sub_field('upsell_content');
                     $upsell_image = get_sub_field('upsell_image');
+                    $upsell_image_mobile = get_sub_field('upsell_image_mobile');
                     $upsell_link = get_sub_field('upsell_link');
 
                     $bg_image_url = $upsell_image ? wp_get_attachment_image_url($upsell_image, 'large') : '';
+                    $bg_image_url_mobile = $upsell_image_mobile ? wp_get_attachment_image_url($upsell_image_mobile, 'large') : $bg_image_url;
                 ?>
 
-                    <div
-                        class="group flex flex-col flex-1 bg-cover bg-no-repeat bg-center info-card"
+                    <div class="group flex flex-col flex-1 info-card">
+
+                        <?php if ($bg_image_url_mobile) : ?>
+                            <div
+                                class="absolute inset-0 bg-cover bg-no-repeat bg-center lg:hidden"
+                                style="background-image: url('<?php echo esc_url($bg_image_url_mobile); ?>');">
+                            </div>
+                        <?php endif; ?>
+
                         <?php if ($bg_image_url) : ?>
-                        style="background-image: url('<?php echo esc_url($bg_image_url); ?>');"
-                        <?php endif; ?>>
+                            <div
+                                class="hidden absolute inset-0 lg:block bg-cover bg-no-repeat bg-center"
+                                style="background-image: url('<?php echo esc_url($bg_image_url); ?>');">
+                            </div>
+                        <?php endif; ?>
 
                         <?php if ($upsell_link) : ?>
                             <a
@@ -33,7 +45,7 @@
                         <?php endif; ?>
 
 
-                        <div class="mt-auto">
+                        <div class="relative mt-auto">
                             <?php if ($upsell_content) : ?>
                                 <div class="relative info-card-text">
                                     <?php echo wp_kses_post($upsell_content); ?>
