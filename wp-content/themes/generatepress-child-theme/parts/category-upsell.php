@@ -24,14 +24,14 @@
 
                         <?php if ($bg_image_url_mobile) : ?>
                             <div
-                                class="absolute inset-0 bg-cover bg-no-repeat bg-center lg:hidden"
+                                class="absolute inset-0 bg-cover bg-no-repeat bg-center md:hidden"
                                 style="background-image: url('<?php echo esc_url($bg_image_url_mobile); ?>');">
                             </div>
                         <?php endif; ?>
 
                         <?php if ($bg_image_url) : ?>
                             <div
-                                class="hidden absolute inset-0 lg:block bg-cover bg-no-repeat bg-center"
+                                class="hidden absolute inset-0 md:block bg-cover bg-no-repeat bg-center"
                                 style="background-image: url('<?php echo esc_url($bg_image_url); ?>');">
                             </div>
                         <?php endif; ?>
