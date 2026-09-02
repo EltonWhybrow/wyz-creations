@@ -75,25 +75,17 @@ $taxonomy_term = get_sub_field('taxonomy_term');
 
                                 $image = get_the_post_thumbnail_url(get_the_ID(), 'large');
                                 $name = get_the_title();
-                                $short_name = mb_strlen($name) > 20 ? mb_substr($name, 0, 20) . '…' : $name;
                                 $link = get_permalink();
                         ?>
                                 <div class="featured-posts-slider-item">
                                     <a href="<?php echo esc_url($link); ?>" class="group block h-full">
-                                        <div class="flex flex-col justify-end gap-1 p-10 h-full min-h-[480px] md:min-h-[570px] overflow-hidden transition-all duration-500"
+                                        <div class="flex flex-col justify-start items-end p-6 h-full min-h-[480px] md:min-h-[570px] overflow-hidden transition-all duration-500"
                                             style="background: url('<?php echo esc_url($image); ?>') center/cover no-repeat;">
 
                                             <!-- Content -->
-                                            <div class="flex items-center p-4 align-center">
-                                                <div class="w-full transition-transform translate-y-2 group-hover:translate-y-0 duration-500 transform">
-                                                    <div class="text-center featured-posts-content">
-
-                                                        <div
-                                                            class="group relative wyz-btn btn-sm primary">
-                                                            <?php echo esc_html($short_name); ?>
-                                                        </div>
-
-                                                    </div>
+                                            <div class="max-w-[75%] text-right transition-transform translate-y-2 group-hover:translate-y-0 duration-500 transform featured-posts-content">
+                                                <div class="bg-wyz-creations-guest-black-chalk px-4 py-2 rounded-2xl font-semibold text-wyz-guest-white">
+                                                    <?php echo esc_html($name); ?>
                                                 </div>
                                             </div>
 
