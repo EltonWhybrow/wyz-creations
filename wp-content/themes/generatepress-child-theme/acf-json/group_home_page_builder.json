@@ -1616,6 +1616,137 @@
                     ],
                     "min": "",
                     "max": "1"
+                },
+                "layout_call_to_action_split": {
+                    "key": "layout_call_to_action_split",
+                    "name": "call_to_action_split",
+                    "label": "Call To Action Split",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_0ab3e9760d26e",
+                            "label": "Heading",
+                            "name": "split_heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_82d976334aa49",
+                            "label": "Image",
+                            "name": "split_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_21775d92e5441",
+                            "label": "Paragraph",
+                            "name": "split_paragraph",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Short intro paragraph shown above the editor content.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": 3,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_d0c9fff2fa969",
+                            "label": "Content",
+                            "name": "split_content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "default_value": "",
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_c7457f5a4e46e",
+                            "label": "Button",
+                            "name": "split_button",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Shown under the paragraph/editor content.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_69d6641975860",
+                            "label": "Flip Layout",
+                            "name": "split_flip",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Enable to swap the image to the right and content to the left.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1644,5 +1775,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788369767
+    "modified": 1788601642
 }

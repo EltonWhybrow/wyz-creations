@@ -29,6 +29,7 @@ function wyzcreations_home_builder_layouts()
         'faqs'              => 'faqs',
         'socials'           => 'socials',
         'call_to_action'    => 'call-to-action',
+        'call_to_action_split' => 'call-to-action-split',
         'feedback'          => 'feedback',
         'category_cta'      => 'category-cta',
         'promotion_offers'  => 'promotion-offers',

@@ -1,0 +1,5 @@
+.call-to-action-split-content {
+	p {
+		@apply my-0! leading-7!;
+	}
+}
