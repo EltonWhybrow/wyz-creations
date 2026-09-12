@@ -153,6 +153,12 @@ article .product .summary {
 	}
 }
 
+/* Description tab — WooCommerce renders the product's raw description
+   content here, so any links inside it need explicit link styling */
+.woocommerce-Tabs-panel--description a {
+	@apply text-wyz-creations-guest-orange underline hover:text-wyz-creations-guest-black-chalk;
+}
+
 .woocommerce {
 	.woocommerce-Reviews-title {
 		@apply mb-4;
