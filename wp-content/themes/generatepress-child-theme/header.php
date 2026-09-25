@@ -12,8 +12,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M5FWJGF7');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBT9Z9W469"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBT9Z9W469"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -23,7 +42,7 @@
         gtag('js', new Date());
 
         gtag('config', 'G-LBT9Z9W469');
-    </script>
+    </script> -->
     <!-- Start cookieyes banner -->
     <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f9ff109a8a436cfed3c6081c6e42a6ec/script.js"></script> <!-- End cookieyes banner -->
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="xEBaC9JlstlujwWcFnLv2g" async></script>
@@ -32,6 +51,10 @@
 
 
 <body <?php body_class(); ?>>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5FWJGF7"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- coupon banner  test-->
     <!-- <div id="info-top-banner" class="bg-[var(--color-wyz-creations-guest-black-chalk)] text-[var(--color-wyz-guest-white)] text-center">
         <div class="relative mx-5 md:mx-[10vw]">🎉 Limited Time: Get 20% off your first trip membership - Use code <span>TRAVEL20</span> <i class="fas fa-close"></i>
