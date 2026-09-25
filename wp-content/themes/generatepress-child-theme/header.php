@@ -31,21 +31,6 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBT9Z9W469"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-LBT9Z9W469');
-    </script> -->
-    <!-- Start cookieyes banner -->
-    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f9ff109a8a436cfed3c6081c6e42a6ec/script.js"></script> <!-- End cookieyes banner -->
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="xEBaC9JlstlujwWcFnLv2g" async></script>
 </head>
 
 
