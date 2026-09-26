@@ -1,5 +1,25 @@
 <?php
 
+// Audience targeting — admins always see everything for preview
+$audience = get_sub_field('uk_eu_only') ?: 'everywhere';
+if ($audience !== 'everywhere' && !current_user_can('manage_options')) {
+    $uk_eu = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU',
+              'IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','GB'];
+    $country = '';
+    $is_local = str_ends_with($_SERVER['HTTP_HOST'] ?? '', '.local');
+    if ($is_local && isset($_GET['test_country'])) {
+        $country = strtoupper(sanitize_text_field($_GET['test_country']));
+    } elseif (class_exists('WC_Geolocation')) {
+        $location = WC_Geolocation::geolocate_ip();
+        $country  = $location['country'] ?? '';
+    }
+    if ($country) {
+        $in_uk_eu = in_array($country, $uk_eu, true);
+        if ($audience === 'uk_eu_only' && !$in_uk_eu) return;
+        if ($audience === 'rest_of_world' && $in_uk_eu) return;
+    }
+}
+
 $action_title = get_sub_field('action_title');
 $action_subtitle = get_sub_field('action_subtitle');
 $action_bg_image = get_sub_field('action_bg_image');

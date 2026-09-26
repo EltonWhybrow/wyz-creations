@@ -1051,6 +1051,33 @@
 							"allow_null": 0,
 							"allow_in_bindings": 0,
 							"layout": "horizontal"
+						},
+						{
+							"key": "field_cta_uk_eu_only",
+							"label": "Audience",
+							"name": "uk_eu_only",
+							"aria-label": "",
+							"type": "select",
+							"instructions": "Control which visitors see this section based on their location.",
+							"required": false,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"choices": {
+								"everywhere": "Everywhere",
+								"uk_eu_only": "UK & EU Only",
+								"rest_of_world": "Rest of World Only"
+							},
+							"default_value": "everywhere",
+							"return_format": "value",
+							"multiple": 0,
+							"allow_null": 0,
+							"ui": 1,
+							"ajax": 0,
+							"placeholder": ""
 						}
 					],
 					"min": "",
@@ -1837,5 +1864,5 @@
 	"display_title": "",
 	"allow_ai_access": false,
 	"ai_description": "",
-	"modified": 1790399923
+	"modified": 1790402448
 }
