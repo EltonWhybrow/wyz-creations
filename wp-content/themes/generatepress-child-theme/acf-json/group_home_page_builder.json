@@ -245,7 +245,7 @@
                                     "name": "upsell_image_mobile",
                                     "aria-label": "",
                                     "type": "image",
-                                    "instructions": "Optional. If set, used instead of Upsell Image on mobile screens \u2014 upload an image cropped/optimized for a narrow, taller layout.",
+                                    "instructions": "Optional. If set, used instead of Upsell Image on mobile screens — upload an image cropped\/optimized for a narrow, taller layout.",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
@@ -292,7 +292,7 @@
                     "key": "layout_stats",
                     "name": "stats",
                     "label": "Stats",
-                    "display": "block",
+                    "display": "row",
                     "sub_fields": [
                         {
                             "key": "field_69316bcf44112",
@@ -312,7 +312,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316c2c44113",
-                                    "label": "Stat/Number",
+                                    "label": "Stat\/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -441,7 +441,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316c99725e3",
-                                    "label": "Stat/Number",
+                                    "label": "Stat\/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -570,7 +570,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316ca0725e8",
-                                    "label": "Stat/Number",
+                                    "label": "Stat\/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -699,7 +699,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_69316ca1725ed",
-                                    "label": "Stat/Number",
+                                    "label": "Stat\/Number",
                                     "name": "statnumber",
                                     "aria-label": "",
                                     "type": "text",
@@ -1714,7 +1714,7 @@
                             "name": "split_button",
                             "aria-label": "",
                             "type": "link",
-                            "instructions": "Shown under the paragraph/editor content.",
+                            "instructions": "Shown under the paragraph\/editor content.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -1747,6 +1747,36 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_rich_text": {
+                    "key": "layout_rich_text",
+                    "name": "rich_text",
+                    "label": "Rich Text",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_c3a7f2b8d9e15",
+                            "label": "Content",
+                            "name": "rich_text_content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "default_value": "",
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1768,12 +1798,14 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788601642
+    "modified": 1790398696
 }

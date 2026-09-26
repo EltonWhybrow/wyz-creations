@@ -34,6 +34,7 @@ function wyzcreations_home_builder_layouts()
         'category_cta'      => 'category-cta',
         'promotion_offers'  => 'promotion-offers',
         'contact'           => 'contact',
+        'rich_text'         => 'rich-text',
     ];
 }
 

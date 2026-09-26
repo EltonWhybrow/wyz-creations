@@ -28,6 +28,7 @@
 @import "./components/category-upsell.css";
 @import "./components/forms.css";
 @import "./components/news-page.css";
+@import "./components/rich-text.css";
 
 .chart-headings {
 	margin-top: 3rem;
