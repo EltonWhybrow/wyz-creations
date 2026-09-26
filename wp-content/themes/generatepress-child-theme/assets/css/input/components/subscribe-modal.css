@@ -31,34 +31,105 @@
 	width: calc(100% - 40px);
 	max-height: calc(100vh - 40px);
 	overflow-y: auto;
-	padding: 50px 30px;
+	padding: 48px 32px 40px;
 	text-align: center;
 	@apply bg-wyz-guest-white shadow-xl rounded-[20px] text-wyz-creations-guest-black-chalk;
-
-	form.wpcf7-form.init {
-		text-align: left;
-	}
 }
 
 #subscribe-modal.active .subscribe-modal-content {
 	transform: translate(-50%, -50%) scale(1);
 }
 
-/* .wpcf7-submit is display:block below the md breakpoint (only becomes
-   inline-flex at md:), so text-align:center on .subscribe-modal-content
-   has no effect on it at narrow widths and it sits left-aligned. Force
-   it centered here regardless of viewport width. */
-#subscribe-modal .wpcf7-submit {
-	@apply inline-flex! mx-auto!;
-}
-
 #close-subscribe-modal {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 14px;
+	right: 16px;
 	background: none;
 	border: none;
 	font-size: 22px;
+	line-height: 1;
 	cursor: pointer;
+	@apply text-wyz-creations-guest-black-chalk/50;
+}
+
+#close-subscribe-modal:hover {
 	@apply text-wyz-creations-guest-black-chalk;
+}
+
+.subscribe-modal-logo {
+	display: block;
+	width: 72px;
+	margin: 0 auto 20px;
+}
+
+.subscribe-modal-eyebrow {
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin-bottom: 6px;
+}
+
+.subscribe-modal-value {
+	font-size: 3.75rem;
+	font-weight: 800;
+	line-height: 1;
+	margin-bottom: 6px;
+	@apply text-wyz-creations-guest-orange;
+}
+
+.subscribe-modal-subtitle {
+	font-size: 1.25rem;
+	font-weight: 500;
+	margin-bottom: 16px;
+}
+
+.subscribe-modal-disclaimer {
+	font-size: 0.75rem;
+	line-height: 1.6;
+	margin-bottom: 24px;
+	@apply text-wyz-creations-guest-dark-gray;
+}
+
+/* CF7 form */
+#subscribe-modal .wpcf7-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#subscribe-modal .wpcf7-form-control-wrap {
+	display: block;
+	width: 100%;
+}
+
+#subscribe-modal .wpcf7-text {
+	width: 100%;
+	padding: 15px 18px;
+	border: 2px solid var(--color-wyz-creations-guest-med-gray);
+	border-radius: 8px;
+	font-size: 1rem;
+	background: white;
+	outline: none;
+	text-align: left;
+}
+
+#subscribe-modal .wpcf7-text:focus {
+	border-color: var(--color-wyz-creations-guest-orange);
+}
+
+#subscribe-modal .wpcf7-submit {
+	display: block !important;
+	width: 100%;
+	padding: 15px;
+	font-size: 1.1rem;
+	font-weight: 700;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	margin: 0 !important;
+	@apply bg-wyz-creations-guest-orange text-white;
+	transition: opacity 0.2s ease;
+}
+
+#subscribe-modal .wpcf7-submit:hover {
+	opacity: 0.88;
 }

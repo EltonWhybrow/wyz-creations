@@ -1,6 +1,6 @@
 <!-- Full-width Social Media Strip -->
 <div class="bg-white w-full">
-    <div class="flex flex-wrap lg:flex-nowrap justify-between mx-auto px-4 py-10 max-w-7xl">
+    <div class="flex flex-wrap lg:flex-nowrap justify-evenly mx-auto px-4 py-10 max-w-7xl">
 
 
         <!-- Etsy -->

@@ -2,6 +2,12 @@
 	h1 {
 		@apply font-semibold text-[40px]! md:text-[70px]! leading-10! md:leading-[70px]!;
 	}
+	h4 {
+		font-size: 3.75rem;
+		font-weight: 800;
+		line-height: 1;
+		@apply text-wyz-creations-guest-orange;
+	}
 	p {
 		@apply my-0! leading-7!;
 	}
