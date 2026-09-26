@@ -35,6 +35,7 @@ function wyzcreations_home_builder_layouts()
         'promotion_offers'  => 'promotion-offers',
         'contact'           => 'contact',
         'rich_text'         => 'rich-text',
+        'trust_badges'      => 'trust-badges',
     ];
 }
 

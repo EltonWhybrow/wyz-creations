@@ -29,6 +29,7 @@
 @import "./components/forms.css";
 @import "./components/news-page.css";
 @import "./components/rich-text.css";
+@import "./components/trust-badges.css";
 
 .chart-headings {
 	margin-top: 3rem;
