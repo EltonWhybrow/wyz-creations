@@ -21,6 +21,60 @@
 	.add_to_cart_button {
 		@apply justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10! py-2.5! hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full! w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! flex! border!;
 	}
+
+	/* Row containing Add to Cart + favourites heart */
+	.woocommerce-variation-add-to-cart,
+	form.cart {
+		display: flex !important;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+}
+
+/* Single product favourites heart button */
+.single-product-fav-btn {
+	position: relative;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 4px;
+	line-height: 1;
+	font-size: 2.25rem;
+	transition: transform 0.2s ease;
+
+	.heart {
+		display: block;
+		transition: color 0.2s ease;
+	}
+
+	&:hover .heart {
+		@apply text-red-500;
+		transform: scale(1.15);
+	}
+
+	/* Tooltip */
+	&::after {
+		content: attr(aria-label);
+		position: absolute;
+		bottom: calc(100% + 8px);
+		left: 50%;
+		transform: translateX(-50%);
+		white-space: nowrap;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.03em;
+		padding: 4px 10px;
+		border-radius: 6px;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.15s ease;
+		@apply bg-wyz-creations-guest-black-chalk text-wyz-guest-white;
+	}
+
+	&:hover::after {
+		opacity: 1;
+	}
 }
 
 /* Add-to-cart notice: keep the message text on the left and pin the

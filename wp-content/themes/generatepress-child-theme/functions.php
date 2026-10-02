@@ -160,6 +160,28 @@ function wyzcreations_favs_large_thumbnail() {
 }
 
 /**
+ * Add a heart "Add to Favourites" button next to the Add to Cart button
+ * on single product pages. Reuses the same .favourite-toggle JS handler.
+ */
+add_action('woocommerce_after_add_to_cart_button', function () {
+    global $product;
+    if (!$product) return;
+    $product_id  = $product->get_id();
+    $is_fav      = in_array($product_id, wyzcreations_get_stored_favourites());
+    $heart_class = $is_fav ? 'text-red-500' : 'text-gray-300';
+    ?>
+    <button type="button"
+            class="favourite-toggle single-product-fav-btn"
+            data-product-id="<?php echo esc_attr($product_id); ?>"
+            aria-label="<?php echo $is_fav ? 'Remove from favourites' : 'Add to favourites'; ?>">
+        <span class="heart <?php echo $heart_class; ?>">
+            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+        </span>
+    </button>
+    <?php
+});
+
+/**
  * Block Google StoreBot (Merchant Center) from triggering abandoned cart sessions.
  * The bot crawls product/cart pages using a headless browser but never submits checkout,
  * so we identify it by user-agent and prevent WooCommerce from persisting cart state.
