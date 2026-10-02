@@ -114,7 +114,7 @@
             ?>
 
 
-            <div class="flex gap-1 md:gap-3 ml-2 align-middle">
+            <div class="flex gap-5 md:gap-3 ml-2 align-middle">
 
                 <!-- Search bar  -->
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex">
@@ -141,7 +141,7 @@
                         <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
                         <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
                     </a>
-                    <a href="<?php echo home_url('/cart'); ?>" class="hidden relative md:flex text-wyz-creations-guest-black-chalk! menu-link-icons">
+                    <a href="<?php echo home_url('/cart'); ?>" class="relative flex text-wyz-creations-guest-black-chalk! menu-link-icons">
                         <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
                         <?php $cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
                         <span class="cart-count-badge<?php echo $cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($cart_count); ?></span>
@@ -211,19 +211,32 @@
 
             <!-- Mobile Menu Footer -->
 
-            <div class="flex gap-2 bg-wyz-creations-guest-black-chalk/80 p-3 border-t">
+            <div class="flex items-center gap-8 bg-wyz-creations-guest-black-chalk/80 p-3 border-t">
 
-
-                <a href="<?php echo home_url('/cart'); ?>"
-                    class="relative flex mt-0! w-full wyz-btn btn-sm secondary">
-                    View Cart
-                    <?php $mobile_cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
-                    <span class="cart-count-badge<?php echo $mobile_cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_cart_count); ?></span>
-                </a>
                 <a href="<?php echo home_url('/my-account'); ?>"
-                    class="flex mt-0! w-full wyz-btn btn-sm secondary">
+                    class="flex mt-0! flex-1 wyz-btn btn-sm secondary">
                     My Account
                 </a>
+
+                <div class="flex items-center gap-5 pr-3">
+                    <a href="<?php echo home_url('/favourites'); ?>"
+                        class="flex justify-center items-center text-white! text-2xl no-underline!">
+                        <span class="relative inline-flex">
+                            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                            <?php $mobile_fav_count = wyzcreations_get_favourites_count(); ?>
+                            <span class="favourites-count-badge<?php echo $mobile_fav_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_fav_count); ?></span>
+                        </span>
+                    </a>
+                    <a href="<?php echo home_url('/cart'); ?>"
+                        class="flex justify-center items-center text-white! text-2xl no-underline!">
+                        <span class="relative inline-flex">
+                            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                            <?php $mobile_cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
+                            <span class="cart-count-badge<?php echo $mobile_cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_cart_count); ?></span>
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </nav>

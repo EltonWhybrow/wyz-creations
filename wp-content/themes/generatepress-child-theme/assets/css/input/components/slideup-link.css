@@ -28,6 +28,65 @@
 	padding: 100px 20px;
 	overflow-y: auto;
 	height: 100%;
+	text-align: center;
+}
+
+#linkme-panel .linkme-logo {
+	filter: brightness(0) invert(1);
+}
+
+#linkme-panel .subscribe-modal-disclaimer {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+/* CF7 form inside linkme-panel */
+#linkme-panel .wpcf7-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#linkme-panel .wpcf7-form-control-wrap {
+	display: block;
+	width: 100%;
+}
+
+#linkme-panel .wpcf7-text {
+	width: 100%;
+	padding: 15px 18px;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-radius: 8px;
+	font-size: 1rem;
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	outline: none;
+	text-align: left;
+}
+
+#linkme-panel .wpcf7-text::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+#linkme-panel .wpcf7-text:focus {
+	border-color: var(--color-wyz-creations-guest-orange);
+}
+
+#linkme-panel .wpcf7-submit {
+	display: block !important;
+	width: 100%;
+	padding: 15px;
+	font-size: 1.1rem;
+	font-weight: 700;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	margin: 0 !important;
+	@apply bg-wyz-creations-guest-orange text-white;
+	transition: opacity 0.2s ease;
+}
+
+#linkme-panel .wpcf7-submit:hover {
+	opacity: 0.88;
 }
 
 #close-linkme,

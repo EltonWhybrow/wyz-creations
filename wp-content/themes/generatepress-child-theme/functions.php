@@ -150,6 +150,26 @@ function mytheme_register_menus()
 }
 add_action('init', 'mytheme_register_menus');
 
+/**
+ * Block Google StoreBot (Merchant Center) from triggering abandoned cart sessions.
+ * The bot crawls product/cart pages using a headless browser but never submits checkout,
+ * so we identify it by user-agent and prevent WooCommerce from persisting cart state.
+ */
+add_action('init', 'block_storebot_sessions', 1);
+function block_storebot_sessions() {
+    if (is_admin()) return;
+
+    $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    if (stripos($ua, 'Storebot-Google') === false && stripos($ua, 'Google-InspectionTool') === false) {
+        return;
+    }
+
+    add_filter('woocommerce_persistent_cart_enabled', '__return_false');
+    add_action('woocommerce_before_calculate_totals', function ($cart) {
+        $cart->empty_cart();
+    }, 1);
+}
+
 // Enable AJAX add to cart on single product pages (even older WC versions)
 add_filter('woocommerce_add_to_cart_redirect', '__return_false');
 
