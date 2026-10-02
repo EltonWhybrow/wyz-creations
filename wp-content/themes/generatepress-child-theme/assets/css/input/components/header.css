@@ -39,9 +39,58 @@
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
+	/* Expanding search bar */
+	.header-search {
+		display: flex;
+		align-items: center;
+	}
+
+	.header-search-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+		height: 36px;
+		max-width: 36px;
+		overflow: hidden;
+		border-radius: 9999px;
+		transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+		@apply bg-wyz-creations-guest-light-gray;
+	}
+
+	/* Stay expanded when focused or when input has a value (search results page) */
+	.header-search:focus-within .header-search-wrap,
+	.header-search-wrap:has(.header-search-input:not(:placeholder-shown)) {
+		max-width: 220px;
+	}
+
+	.header-search-icon {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		flex-shrink: 0;
+		z-index: 1;
+		@apply text-wyz-creations-guest-black-chalk;
+	}
+
+	.header-search-input {
+		width: 220px;
+		min-width: 220px;
+		padding: 8px 16px 8px 40px;
+		background: transparent;
+		border: none;
+		outline: none;
+		font-size: 0.875rem;
+	}
+
 	.cart-count-badge,
 	.favourites-count-badge {
-		@apply -top-[11px] -right-[11px] absolute flex justify-center items-center bg-wyz-creations-guest-orange px-1 rounded-full min-w-[19px] h-[19px] font-bold text-[11px] text-white leading-none;
+		@apply -top-[5px] -right-[11px] absolute flex justify-center items-center bg-wyz-creations-guest-orange px-1 rounded-full min-w-[19px] h-[19px] font-bold text-[11px] text-white leading-none;
 	}
 
 	.wyz-btn .cart-count-badge {

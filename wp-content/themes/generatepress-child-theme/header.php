@@ -114,39 +114,36 @@
             ?>
 
 
-            <div class="flex gap-5 md:gap-3 ml-2 align-middle">
+            <div class="flex gap-8 md:gap-5 ml-2 align-middle">
 
-                <!-- Search bar  -->
-                <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex">
-
-                    <div class="relative w-full">
-                        <i class="top-1/2 left-4 absolute text-gray-500 -translate-y-1/2 fa-solid fa-magnifying-glass"></i>
-
+                <!-- Search bar -->
+                <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="header-search">
+                    <div class="header-search-wrap">
+                        <label for="header-search-input" class="header-search-icon" aria-label="Search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </label>
                         <input
                             type="search"
                             name="s"
+                            id="header-search-input"
                             placeholder="Search..."
-                            class="bg-wyz-creations-guest-light-gray py-2 pr-4 pl-10 rounded-full w-full"
+                            class="header-search-input"
                             value="<?php echo get_search_query(); ?>">
-
                         <input type="hidden" name="post_type" value="product">
                     </div>
-
                 </form>
 
                 <!-- Desktop Icons (Wishlist and Cart) -->
-                <div class="flex items-center gap-3">
-                    <a href="<?php echo home_url('/favourites'); ?>" class="hidden relative md:flex text-wyz-creations-guest-black-chalk! menu-link-icons">
-                        <i class="fa-solid fa-heart" aria-hidden="true"></i>
-                        <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
-                        <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
-                    </a>
-                    <a href="<?php echo home_url('/cart'); ?>" class="relative flex text-wyz-creations-guest-black-chalk! menu-link-icons">
-                        <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
-                        <?php $cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
-                        <span class="cart-count-badge<?php echo $cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($cart_count); ?></span>
-                    </a>
-                </div>
+                <a href="<?php echo home_url('/favourites'); ?>" class="hidden relative md:flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                    <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
+                    <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
+                </a>
+                <a href="<?php echo home_url('/cart'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
+                    <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                    <?php $cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
+                    <span class="cart-count-badge<?php echo $cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($cart_count); ?></span>
+                </a>
 
                 <!-- Mobile Menu Toggle (Burger Icon) -->
                 <button id="mobile-menu-toggle"
