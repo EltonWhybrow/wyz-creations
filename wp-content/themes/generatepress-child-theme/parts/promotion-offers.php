@@ -1,9 +1,15 @@
 <?php if (have_rows('promos_and_offers')) : ?>
 
+    <?php
+    $promo_rows  = get_field('promos_and_offers');
+    $promo_count = is_array($promo_rows) ? count($promo_rows) : 0;
+    $promo_index = 0;
+    ?>
+
     <div class="mx-auto mt-2 mb-10" id="show-me">
         <div class="gap-2 grid md:grid-cols-2">
 
-            <?php while (have_rows('promos_and_offers')) : the_row(); ?>
+            <?php while (have_rows('promos_and_offers')) : the_row(); $promo_index++; ?>
 
                 <?php if (get_row_layout() === 'offer_block') :
 
@@ -11,9 +17,10 @@
                     $action_bg_image = get_sub_field('offer_bg_image');
                     $action_title    = get_sub_field('offer_title');
                     $action_subtitle    = get_sub_field('offer_subtitle');
+                    $is_lone_last    = ($promo_index === $promo_count && $promo_count % 2 !== 0);
                 ?>
 
-                    <div class="relative overflow-hidden section steps-slider-module"
+                    <div class="relative overflow-hidden section steps-slider-module<?php echo $is_lone_last ? ' md:col-span-2' : ''; ?>"
                         <?php if (!empty($action_bg_image['url'])) : ?>
                         style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.75)), url('<?php echo esc_url($action_bg_image['url']); ?>') center/cover no-repeat;"
                         <?php endif; ?>>
