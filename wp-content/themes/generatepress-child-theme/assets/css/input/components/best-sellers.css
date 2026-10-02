@@ -16,3 +16,21 @@
 		@apply flex justify-center items-center bg-wyz-creations-guest-light-gray hover:bg-wyz-creations-guest-med-gray rounded-full w-14 h-14 text-wyz-creations-guest-black-chalk transition-colors duration-300;
 	}
 }
+
+.best-seller-label {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 10px 16px;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 0;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	@apply bg-wyz-creations-guest-black-chalk text-wyz-guest-white;
+}
+
+.group:hover .best-seller-label {
+	background-color: #2a2a2a;
+}

@@ -59,37 +59,17 @@ $taxonomy_term = get_sub_field('taxonomy_term');
 
                                 $image = get_the_post_thumbnail_url(get_the_ID(), 'large');
                                 $name = get_the_title();
-                                $short_name = mb_strlen($name) > 20 ? mb_substr($name, 0, 20) . '…' : $name;
+                                $short_name = mb_strlen($name) > 30 ? mb_substr($name, 0, 30) . '…' : $name;
                                 // $price = $product->get_price_html();
                                 $link = get_permalink();
                         ?>
                                 <div class="best-seller-slider-item">
                                     <a href="<?php echo esc_url($link); ?>" class="group block h-full">
-                                        <div class="flex flex-col justify-end gap-1 p-10 h-full min-h-[480px] md:min-h-[570px] overflow-hidden transition-all duration-500"
+                                        <div class="relative h-full min-h-[480px] md:min-h-[570px] overflow-hidden"
                                             style="background: url('<?php echo esc_url($image); ?>') center/cover no-repeat;">
-
-                                            <!-- Content -->
-                                            <div class="flex items-center p-4 align-center">
-                                                <div class="w-full transition-transform translate-y-2 group-hover:translate-y-0 duration-500 transform">
-                                                    <div class="text-center best-seller-content">
-
-
-
-                                                        <?php  ?>
-
-                                                        <div
-                                                            class="group relative wyz-btn btn-sm primary">
-                                                            <?php echo esc_html($short_name); ?>
-                                                        </div>
-
-                                                        <?php ?>
-
-
-
-                                                    </div>
-                                                </div>
+                                            <div class="best-seller-label">
+                                                <?php echo esc_html($short_name); ?>
                                             </div>
-
                                         </div>
                                     </a>
                                 </div>
