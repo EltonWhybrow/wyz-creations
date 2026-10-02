@@ -44,6 +44,9 @@ get_header();
             // Optional: WooCommerce result count + sorting
             do_action('woocommerce_before_shop_loop');
 
+            remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+            add_action('woocommerce_before_shop_loop_item_title', 'wyzcreations_favs_large_thumbnail', 10);
+
             // Start product loop wrapper
             echo '<div class="gap-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">';
 
@@ -52,6 +55,9 @@ get_header();
             endwhile;
 
             echo '</div>';
+
+            remove_action('woocommerce_before_shop_loop_item_title', 'wyzcreations_favs_large_thumbnail', 10);
+            add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
 
             // Optional: WooCommerce pagination
             do_action('woocommerce_after_shop_loop');

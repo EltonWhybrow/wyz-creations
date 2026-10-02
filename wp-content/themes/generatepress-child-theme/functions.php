@@ -151,6 +151,15 @@ function mytheme_register_menus()
 add_action('init', 'mytheme_register_menus');
 
 /**
+ * Favourites page uses the large image size instead of woocommerce_thumbnail
+ * so product images match the quality of the best-sellers slider.
+ */
+function wyzcreations_favs_large_thumbnail() {
+    global $product;
+    echo $product->get_image('large', ['class' => 'attachment-woocommerce_thumbnail size-woocommerce_thumbnail']);
+}
+
+/**
  * Block Google StoreBot (Merchant Center) from triggering abandoned cart sessions.
  * The bot crawls product/cart pages using a headless browser but never submits checkout,
  * so we identify it by user-agent and prevent WooCommerce from persisting cart state.
