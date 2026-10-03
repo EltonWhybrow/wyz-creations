@@ -68,11 +68,16 @@
 		flex-shrink: 0;
 	}
 
-	/* On mobile, cap expansion so cart + burger still have room */
+	/* On mobile, constrain search and the icons row so the logo is never pushed off */
 	@media (max-width: 767px) {
+		.header-search {
+			min-width: 0;
+			flex-shrink: 1;
+		}
+
 		.header-search:focus-within .header-search-wrap,
 		.header-search-wrap:has(.header-search-input:not(:placeholder-shown)) {
-			max-width: 140px;
+			max-width: min(140px, calc(100vw - 160px)) !important;
 		}
 	}
 
