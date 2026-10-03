@@ -128,6 +128,7 @@
                             id="header-search-input"
                             placeholder="Search..."
                             class="header-search-input"
+                            style="font-size: 16px;"
                             value="<?php echo get_search_query(); ?>">
                         <input type="hidden" name="post_type" value="product">
                     </div>
