@@ -63,25 +63,36 @@
 		max-width: 220px;
 	}
 
+	/* Logo must never shrink regardless of search expansion */
+	.site-branding {
+		flex-shrink: 0;
+	}
+
+	/* On mobile, cap expansion so cart + burger still have room */
+	@media (max-width: 767px) {
+		.header-search:focus-within .header-search-wrap,
+		.header-search-wrap:has(.header-search-input:not(:placeholder-shown)) {
+			max-width: 140px;
+		}
+	}
+
+
 	.header-search-icon {
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		width: 36px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 36px;
+		min-width: 36px;
+		height: 36px;
 		cursor: pointer;
 		flex-shrink: 0;
-		z-index: 1;
 		@apply text-wyz-creations-guest-black-chalk;
 	}
 
 	.header-search-input {
-		width: 220px;
-		min-width: 220px;
-		padding: 8px 16px 8px 40px;
+		flex: 1;
+		min-width: 0;
+		padding: 8px 16px 8px 4px;
 		background: transparent;
 		border: none;
 		outline: none;

@@ -114,7 +114,7 @@
             ?>
 
 
-            <div class="flex gap-8 md:gap-5 ml-2 align-middle">
+            <div class="flex gap-4 md:gap-5 ml-2 align-middle">
 
                 <!-- Search bar -->
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="header-search">
