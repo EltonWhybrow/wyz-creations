@@ -68,11 +68,15 @@
 		flex-shrink: 0;
 	}
 
-	/* On mobile, constrain search and the icons row so the logo is never pushed off */
+	/* On mobile, constrain search and prevent iOS zoom (font-size <16px triggers it) */
 	@media (max-width: 767px) {
 		.header-search {
 			min-width: 0;
 			flex-shrink: 1;
+		}
+
+		.header-search-input {
+			font-size: 16px;
 		}
 
 		.header-search:focus-within .header-search-wrap,
