@@ -92,3 +92,8 @@
 .grecaptcha-badge {
 	visibility: hidden !important;
 }
+
+/* Hide CookieYes floating revisit badge — preferences accessible via footer link */
+#cky-btn-revisit {
+	display: none !important;
+}
