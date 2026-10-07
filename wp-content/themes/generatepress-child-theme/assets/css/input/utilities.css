@@ -86,3 +86,9 @@
 		}
 	}
 }
+
+/* Hide reCAPTCHA badge — visibility:hidden keeps it in the DOM for Google's
+   script while removing it from view. display:none would break reCAPTCHA. */
+.grecaptcha-badge {
+	visibility: hidden !important;
+}
