@@ -18,3 +18,9 @@
 		@apply mb-4 text-base leading-relaxed;
 	}
 }
+
+/* Links inside WordPress page/post editor content */
+.page .entry-content a,
+.single-post .entry-content a {
+	@apply text-wyz-creations-guest-orange underline hover:text-wyz-creations-guest-black-chalk;
+}
