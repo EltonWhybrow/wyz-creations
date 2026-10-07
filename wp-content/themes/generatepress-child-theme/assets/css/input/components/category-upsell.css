@@ -1,10 +1,15 @@
 /* Category Upsell Section */
 @layer components {
 	.info-card {
-		min-height: 650px; /* Important for grid items */
-		@apply md:p-10 px-5 py-[30px] relative!;
+		min-height: 320px;
+		@apply md:p-10 px-3 py-5 relative!;
+
+		@media (min-width: 768px) {
+			min-height: 650px;
+		}
+
 		p {
-			@apply mb-0! font-medium text-[18px] text-wyz-creations-guest-black-chalk max-lg:text-wyz-guest-white group-hover:text-wyz-guest-white leading-6! transition-colors duration-400 ease-in-out;
+			@apply mb-0! font-medium max-md:text-sm text-[18px] text-wyz-creations-guest-black-chalk max-lg:text-wyz-guest-white group-hover:text-wyz-guest-white leading-6! transition-colors duration-400 ease-in-out;
 		}
 	}
 }

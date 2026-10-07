@@ -6,11 +6,11 @@
 
 ?>
 
-<footer id="colophon" class="px-20 pt-20 pb-10 md:text-left text-center" role="contentinfo">
+<footer id="colophon" class="px-6 md:px-20 pt-20 pb-10 md:text-left text-center" role="contentinfo">
     <div id="main-footer" class="mx-auto">
 
         <div class="py-4 pb-10 w-full footer-menu">
-            <div class="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto">
+            <div class="gap-8 grid grid-cols-2 lg:grid-cols-4 mx-auto">
 
                 <!-- MENU COLUMNS -->
                 <?php
@@ -25,7 +25,7 @@
                 ?>
 
                 <!-- STATIC IMAGE COLUMN -->
-                <div class="flex justify-end items-start col-span-1">
+                <div class="flex justify-end items-center col-span-1">
                     <img
                         src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
                         alt="<?php bloginfo('name'); ?>"

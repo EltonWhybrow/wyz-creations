@@ -4,7 +4,7 @@
 <section id="show-me">
 
     <div class="mx-auto p-1">
-        <div class="items-stretch gap-1 grid grid-cols-1 lg:grid-cols-2">
+        <div class="items-stretch gap-1 grid grid-cols-2">
 
             <!-- Cards -->
 
@@ -53,7 +53,7 @@
                             <?php endif; ?>
 
                             <?php if ($upsell_title) : ?>
-                                <h3 class="font-semibold text-[40px] text-wyz-creations-guest-black-chalk max-lg:text-wyz-guest-white group-hover:text-wyz-guest-white leading-10 transition-colors duration-400 ease-in-out stagger-words">
+                                <h3 class="font-semibold text-xl md:text-[40px] text-wyz-creations-guest-black-chalk max-lg:text-wyz-guest-white group-hover:text-wyz-guest-white md:leading-10 transition-colors duration-400 ease-in-out stagger-words">
 
                                     <?php echo esc_html($upsell_title); ?>
                                 </h3>

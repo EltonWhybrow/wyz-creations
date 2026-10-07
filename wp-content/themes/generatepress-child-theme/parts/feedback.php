@@ -43,15 +43,20 @@ $feedback_link = get_sub_field('feedback_link');
 
             <!-- Full Width Steps Slider -->
             <div class="relative pt-[30px] md:pt-0 pb-[30px] md:pb-[60px] md:pl-[150px]! w-full">
-                <!-- Review title inside slider -->
-                <div class="md:block top-[255px] -left-[150px] absolute -rotate-90 hiiden">
+                <!-- Review title — rotated on desktop, normal above slider on mobile -->
+                <div class="hidden md:block top-[255px] -left-[150px] absolute -rotate-90">
                     <?php if ($feedback_title): ?>
-                        <h2 class="mb-0! font-semibold! text-[36px] md:text-[100px] leading-0">
-
+                        <h2 class="mb-0! font-semibold! text-[100px] leading-0">
                             <span class="text-wyzc-brown"><?php echo esc_html($feedback_title); ?></span>
                         </h2>
                     <?php endif; ?>
                 </div>
+
+                <?php if ($feedback_title): ?>
+                    <h2 class="md:hidden mb-4 px-5 font-semibold text-[36px] text-wyzc-brown leading-none">
+                        <?php echo esc_html($feedback_title); ?>
+                    </h2>
+                <?php endif; ?>
 
                 <div class="half-slide-right mb-0 steps-slider">
                     <?php if (have_rows('feedback_repeater')) : ?>
@@ -74,7 +79,7 @@ $feedback_link = get_sub_field('feedback_link');
 
 
                                                     <?php if ($item_content): ?>
-                                                        <div class="font-normal [&_p]:text-[40px] text-center">
+                                                        <div class="font-normal [&_p]:text-xl [&_p]:md:text-[40px] text-center">
                                                             <?php echo wp_kses_post($item_content); ?>
                                                         </div>
                                                     <?php endif; ?>
