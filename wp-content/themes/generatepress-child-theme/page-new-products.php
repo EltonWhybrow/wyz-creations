@@ -48,7 +48,7 @@ get_header();
             add_action('woocommerce_before_shop_loop_item_title', 'wyzcreations_favs_large_thumbnail', 10);
 
             // Start product loop wrapper
-            echo '<div class="gap-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">';
+            echo '<div class="gap-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">';
 
             while ($loop->have_posts()) : $loop->the_post();
                 wc_get_template_part('content', 'product');
