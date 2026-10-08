@@ -12,12 +12,16 @@
 	}
 
 	.wc-block-components-button.wp-element-button {
-		&.wc-block-cart__submit-button,
+		&.wc-block-cart__submit-button {
+			@apply flex justify-center items-center bg-[var(--color-wyz-creations-guest-green)]! hover:bg-[var(--color-wyz-guest-white)]! px-10 py-2.5 hover:border-[var(--color-wyz-creations-guest-green)]! rounded-full h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-green)]! transition-all no-underline! border!;
+		}
 		&.wc-block-components-checkout-place-order-button {
-			@apply flex justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10 py-2.5 hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! border!;
+			@apply flex justify-center items-center bg-[var(--color-wyz-creations-guest-green)]! hover:bg-[var(--color-wyz-guest-white)]! px-10 py-2.5 hover:border-[var(--color-wyz-creations-guest-green)]! rounded-full h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-green)]! transition-all no-underline! border!;
 		}
 	}
-	button.single_add_to_cart_button.button,
+	button.single_add_to_cart_button.button {
+		@apply justify-center items-center bg-[var(--color-wyz-creations-guest-green)]! hover:bg-[var(--color-wyz-guest-white)]! px-10! py-2.5! hover:border-[var(--color-wyz-creations-guest-green)]! rounded-full! w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-green)]! transition-all no-underline! flex! border!;
+	}
 	.add_to_cart_button {
 		@apply justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10! py-2.5! hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full! w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! flex! border!;
 	}
@@ -26,7 +30,7 @@
 	.woocommerce-variation-add-to-cart,
 	form.cart {
 		display: flex !important;
-		align-items: center;
+		align-items: center !important;
 		gap: 16px;
 		flex-wrap: wrap;
 	}
@@ -152,6 +156,19 @@
 	@apply text-wyz-creations-guest-black-chalk text-lg no-underline!;
 }
 
+/* Single product details page — orange semi-bold price */
+.single-product .summary .price,
+.single-product .summary .price ins,
+.single-product .summary .price > .woocommerce-Price-amount {
+	@apply text-wyz-creations-guest-orange! font-semibold!;
+}
+
+/* Zero out the <p class="price"> margin so it centres properly next to the button */
+.woocommerce-variation-add-to-cart p.price {
+	margin: 0 !important;
+	line-height: 1 !important;
+}
+
 /* // custom styles to category pages and shop page */
 .woocommerce-archive-wrapper {
 	@apply pt-8;
@@ -174,7 +191,33 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
 }
 
 li.relative.product.type-product {
-	@apply flex flex-col justify-between mb-6 list-none;
+	@apply flex flex-col mb-6 list-none;
+
+	.woocommerce-loop-product__title {
+		@apply mt-4 mb-1! pb-0!;
+	}
+}
+
+/* Pin add-to-cart button to the bottom of every card, centred, brown bg */
+li.relative.product.type-product > a.button,
+li.relative.product.type-product > a.add_to_cart_button {
+	margin-top: auto;
+	align-self: center;
+	@apply bg-wyzc-brown! hover:bg-wyz-guest-white! hover:text-wyzc-brown! hover:border-wyzc-brown!;
+}
+
+/* Hide star ratings in product loops — single product page keeps them */
+li.relative.product.type-product .star-rating {
+	display: none !important;
+}
+
+/* Price in product loops — brand orange, slightly smaller, centred */
+li.relative.product.type-product .price {
+	@apply block! text-wyz-creations-guest-orange! text-base! text-center! mb-3!;
+}
+li.relative.product.type-product .price ins,
+li.relative.product.type-product .price > .woocommerce-Price-amount {
+	@apply text-wyz-creations-guest-orange! text-base!;
 }
 
 article .product .summary {
@@ -182,6 +225,7 @@ article .product .summary {
 		@apply mb-2 font-normal text-2xl md:text-4xl;
 	}
 }
+
 
 .woocommerce div.product .woocommerce-tabs ul.tabs {
 	display: flex;
@@ -242,6 +286,21 @@ article .product .summary {
 		@apply mb-4;
 	}
 
+	.woocommerce-review-link {
+		@apply text-wyz-creations-guest-orange! no-underline!;
+		.count {
+			@apply font-semibold;
+		}
+	}
+
+	/* Star ratings — filled stars brown, empty stars a lighter tint */
+	.star-rating::before {
+		color: color-mix(in srgb, var(--color-wyzc-brown) 30%, transparent) !important;
+	}
+	.star-rating span::before {
+		color: var(--color-wyzc-brown) !important;
+	}
+
 	#review_form #respond {
 		textarea,
 		input:not(#wp-comment-cookies-consent, #submit) {
@@ -258,7 +317,7 @@ article .product .summary {
 			@apply pt-2 md:pt-8;
 			table.variations {
 				th {
-					@apply align-sub;
+					@apply align-sub text-right pr-4;
 				}
 				.value {
 					@apply flex items-center mb-4;
@@ -282,13 +341,21 @@ article .product .summary {
 
 .product_meta {
 	@apply flex flex-col gap-2 mt-4 text-wyz-creations-guest-black-chalk-75 text-sm;
+	border-top: 2px solid var(--color-wyzc-brown);
+	padding-top: 1rem;
 	a {
 		@apply text-wyz-creations-guest-black-chalk-75 hover:text-wyz-creations-guest-black-chalk underline;
+	}
+	.sku_wrapper {
+		@apply text-wyz-creations-guest-orange!;
+		.sku {
+			@apply text-wyz-creations-guest-black-chalk-75!;
+		}
 	}
 }
 
 .product_meta .posted_in {
-	@apply flex flex-wrap items-center gap-2;
+	@apply flex flex-wrap items-center gap-2 text-wyz-creations-guest-orange!;
 	a {
 		@apply inline-flex items-center bg-wyz-creations-guest-light-gray hover:bg-wyz-creations-guest-med-gray px-3 py-1 rounded-full text-wyz-creations-guest-black-chalk text-xs no-underline!;
 	}

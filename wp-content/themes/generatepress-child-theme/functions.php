@@ -182,6 +182,33 @@ add_action('woocommerce_after_add_to_cart_button', function () {
 });
 
 /**
+ * Single product page: move price to just before Add to Cart button,
+ * and add a "Quantity" label above the quantity input.
+ */
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+add_action('woocommerce_before_add_to_cart_button', 'woocommerce_template_single_price', 5);
+
+// Variable products: quantity is rendered in the variations table (template override),
+// so replace the default button callback (which also outputs quantity) with one that
+// outputs only the price (via hook above) + button.
+remove_action('woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20);
+add_action('woocommerce_single_variation', function () {
+    global $product;
+    ?>
+    <div class="woocommerce-variation-add-to-cart variations_button">
+        <?php do_action('woocommerce_before_add_to_cart_button'); ?>
+        <button type="submit" class="single_add_to_cart_button button alt">
+            <?php echo esc_html($product->single_add_to_cart_text()); ?>
+        </button>
+        <input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
+        <input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
+        <input type="hidden" name="variation_id" class="variation_id" value="0" />
+        <?php do_action('woocommerce_after_add_to_cart_button'); ?>
+    </div>
+    <?php
+}, 20);
+
+/**
  * Block Google StoreBot (Merchant Center) from triggering abandoned cart sessions.
  * The bot crawls product/cart pages using a headless browser but never submits checkout,
  * so we identify it by user-agent and prevent WooCommerce from persisting cart state.
