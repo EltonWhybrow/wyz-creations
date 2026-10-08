@@ -8,7 +8,7 @@ $split_button    = get_sub_field('split_button');
 $split_flip      = (bool) get_sub_field('split_flip');
 ?>
 
-<section id="call-to-action-split" class="px-5 lg:px-20 py-[50px] md:py-[100px] call-to-action-split">
+<section id="call-to-action-split" class="px-5 lg:px-20 py-[50px] md:py-[100px] bg-[#42332f]/10 call-to-action-split">
     <div class="items-center gap-8 md:gap-16 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-7xl">
 
         <div class="<?php echo $split_flip ? 'md:order-2' : 'md:order-1'; ?>">

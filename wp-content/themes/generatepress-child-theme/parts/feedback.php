@@ -67,8 +67,8 @@ $feedback_link = get_sub_field('feedback_link');
                         ?>
                             <div class="step-slider-item">
                                 <div class="group block h-full">
-                                    <div class="relative flex flex-col justify-between md:gap-1 bg-wyz-creations-guest-light-gray shadow p-5 md:p-14 rounded-[10px] h-full min-h-80 md:min-h-[480px] overflow-hidden text-wyzc-brown">
-                                        <i class="-right-12 -bottom-3 fa-quote-left absolute opacity-10 text-[150px] text-wyzc-brown md:text-[200px] fa-solid"></i>
+                                    <div class="relative flex flex-col justify-between md:gap-1 bg-[#2e221e] shadow p-5 md:p-14 rounded-[10px] h-full min-h-80 md:min-h-[480px] overflow-hidden text-wyz-guest-white">
+                                        <i class="-right-12 -bottom-3 fa-quote-left absolute opacity-10 text-[150px] text-wyz-guest-white md:text-[200px] fa-solid"></i>
 
 
                                         <!-- Title & Content Overlay - Slides up on Hover -->
@@ -90,7 +90,7 @@ $feedback_link = get_sub_field('feedback_link');
                                         <!-- Image/Icon Area -->
                                         <div class="flex flex-col justify-center items-center gap-4 align-middle">
                                             <?php if ($item_title): ?>
-                                                <h3 class="font-light text-wyzc-brown text-2xl">
+                                                <h3 class="font-light text-wyz-guest-white text-2xl">
                                                     <?php echo esc_html($item_title); ?>
                                                 </h3>
                                             <?php endif; ?>
@@ -119,7 +119,7 @@ $feedback_link = get_sub_field('feedback_link');
                                                 ?>
                                                 <img src="<?php echo esc_url($image_url); ?>"
                                                     alt="<?php echo esc_attr($image_alt); ?>"
-                                                    class="rounded-full w-12 h-12" />
+                                                    class="rounded-full w-16 h-16" />
                                             </div>
 
                                         </div>
