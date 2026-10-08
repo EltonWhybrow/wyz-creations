@@ -7,7 +7,7 @@ $taxonomy_term = get_sub_field('taxonomy_term');
 
 
     <!-- Content Container (everything on top) -->
-    <div class="z-10 relative mb-5">
+    <div class="z-10 relative mb-0">
         <div class="w-full">
             <div class="w-full">
 
