@@ -210,7 +210,7 @@ article .product .summary {
 /* Description tab — WooCommerce renders the product's raw description
    content here, so any links inside it need explicit link styling */
 .woocommerce-Tabs-panel--description a {
-	@apply text-wyz-creations-guest-orange underline hover:text-wyz-creations-guest-black-chalk;
+	@apply text-wyz-creations-guest-orange hover:text-wyz-creations-guest-black-chalk underline;
 }
 
 .woocommerce {
@@ -231,7 +231,7 @@ article .product .summary {
 					@apply text-lg;
 				}
 			}
-			@apply pt-8;
+			@apply pt-2 md:pt-8;
 			table.variations {
 				th {
 					@apply align-sub;
@@ -358,7 +358,7 @@ select.dropdown_layered_nav_attribute:hover {
 
 .wc-block-grid__product-image img,
 .wc-block-components-product-image img {
-	@apply w-full aspect-square object-cover;
+	@apply w-full object-cover aspect-square;
 }
 
 /* Same "New in store" block: the shared .add_to_cart_button rule above
