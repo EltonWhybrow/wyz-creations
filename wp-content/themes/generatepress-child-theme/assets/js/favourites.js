@@ -19,8 +19,12 @@ jQuery(function ($) {
 
             if (data.status === 'added') {
                 $heart.removeClass('text-gray-400').addClass('text-red-500');
+                $button.find('.fav-label').text('Remove from favourites');
+                $button.attr('aria-label', 'Remove from favourites');
             } else {
                 $heart.removeClass('text-red-500').addClass('text-gray-400');
+                $button.find('.fav-label').text('Add to favourites');
+                $button.attr('aria-label', 'Add to favourites');
 
                 // 💥 REMOVE FROM PAGE (only on favourites page)
                 if ($productCard.length) {

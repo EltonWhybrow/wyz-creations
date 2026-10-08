@@ -177,6 +177,7 @@ add_action('woocommerce_after_add_to_cart_button', function () {
         <span class="heart <?php echo $heart_class; ?>">
             <i class="fa-solid fa-heart" aria-hidden="true"></i>
         </span>
+        <span class="fav-label"><?php echo $is_fav ? 'Remove from favourites' : 'Add to favourites'; ?></span>
     </button>
     <?php
 });

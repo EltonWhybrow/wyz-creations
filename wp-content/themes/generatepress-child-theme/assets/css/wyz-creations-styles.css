@@ -1072,9 +1072,6 @@
   .text-\[24px\] {
     font-size: 24px;
   }
-  .text-\[28px\] {
-    font-size: 28px;
-  }
   .text-\[28px\]\! {
     font-size: 28px !important;
   }
@@ -2103,16 +2100,18 @@
     --tw-duration: 300ms;
     transition-duration: 300ms;
     &.btn-sm {
-      padding-inline: calc(var(--spacing) * 8);
-      padding-block: calc(var(--spacing) * 2.5);
-      font-size: var(--text-base);
-      line-height: var(--tw-leading, var(--text-base--line-height));
+      height: auto !important;
+      padding-inline: calc(var(--spacing) * 8) !important;
+      padding-block: calc(var(--spacing) * 2.5) !important;
+      font-size: var(--text-base) !important;
+      line-height: var(--tw-leading, var(--text-base--line-height)) !important;
     }
     &.btn-lg {
-      padding-inline: calc(var(--spacing) * 12);
-      padding-block: calc(var(--spacing) * 3.5);
-      font-size: var(--text-xl);
-      line-height: var(--tw-leading, var(--text-xl--line-height));
+      height: auto !important;
+      padding-inline: calc(var(--spacing) * 12) !important;
+      padding-block: calc(var(--spacing) * 3.5) !important;
+      font-size: var(--text-xl) !important;
+      line-height: var(--tw-leading, var(--text-xl--line-height)) !important;
     }
     &.primary {
       background-color: var(--color-wyz-creations-guest-black-chalk);
@@ -3111,42 +3110,34 @@ button.faq-question {
   }
 }
 .single-product-fav-btn {
-  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px;
   line-height: 1;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   transition: transform 0.2s ease;
   .heart {
     display: block;
     transition: color 0.2s ease;
+  }
+  .fav-label {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-wyz-creations-guest-black-chalk-75);
+    line-height: 1;
   }
   &:hover .heart {
     color: var(--color-red-500);
     transform: scale(1.15);
   }
   &::after {
-    content: attr(aria-label);
-    position: absolute;
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    padding: 4px 10px;
-    border-radius: 6px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.15s ease;
-    background-color: var(--color-wyz-creations-guest-black-chalk);
-    color: var(--color-wyz-guest-white);
-  }
-  &:hover::after {
-    opacity: 1;
+    display: none;
   }
 }
 .woocommerce-message {
@@ -3403,8 +3394,8 @@ article .product .summary {
     --tw-font-weight: var(--font-weight-normal);
     font-weight: var(--font-weight-normal);
     @media (width >= 48rem) {
-      font-size: var(--text-4xl);
-      line-height: var(--tw-leading, var(--text-4xl--line-height));
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
   }
 }

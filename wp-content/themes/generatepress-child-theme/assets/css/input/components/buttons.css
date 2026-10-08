@@ -3,10 +3,10 @@
 	.wyz-btn {
 		@apply inline-flex justify-center items-center mt-3 rounded-full w-fit font-bold! no-underline transition-all duration-300;
 		&.btn-sm {
-			@apply px-8 py-2.5 text-base;
+			@apply px-8! py-2.5! text-base! h-auto!;
 		}
 		&.btn-lg {
-			@apply px-12 py-3.5 text-xl;
+			@apply px-12! py-3.5! text-xl! h-auto!;
 		}
 		&.primary {
 			@apply bg-wyz-creations-guest-black-chalk hover:bg-wyz-guest-white text-wyz-guest-white hover:text-wyz-creations-guest-black-chalk;

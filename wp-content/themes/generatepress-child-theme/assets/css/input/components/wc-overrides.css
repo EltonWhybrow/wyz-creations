@@ -38,13 +38,15 @@
 
 /* Single product favourites heart button */
 .single-product-fav-btn {
-	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
 	background: none;
 	border: none;
 	cursor: pointer;
 	padding: 4px;
 	line-height: 1;
-	font-size: 2.25rem;
+	font-size: 1.5rem;
 	transition: transform 0.2s ease;
 
 	.heart {
@@ -52,32 +54,19 @@
 		transition: color 0.2s ease;
 	}
 
+	.fav-label {
+		@apply font-medium text-wyz-creations-guest-black-chalk-75 text-sm;
+		line-height: 1;
+	}
+
 	&:hover .heart {
 		@apply text-red-500;
 		transform: scale(1.15);
 	}
 
-	/* Tooltip */
+	/* No tooltip — visible label replaces it */
 	&::after {
-		content: attr(aria-label);
-		position: absolute;
-		bottom: calc(100% + 8px);
-		left: 50%;
-		transform: translateX(-50%);
-		white-space: nowrap;
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.03em;
-		padding: 4px 10px;
-		border-radius: 6px;
-		pointer-events: none;
-		opacity: 0;
-		transition: opacity 0.15s ease;
-		@apply bg-wyz-creations-guest-black-chalk text-wyz-guest-white;
-	}
-
-	&:hover::after {
-		opacity: 1;
+		display: none;
 	}
 }
 
@@ -160,7 +149,7 @@
 .single-product .summary .price,
 .single-product .summary .price ins,
 .single-product .summary .price > .woocommerce-Price-amount {
-	@apply text-wyz-creations-guest-orange! font-semibold!;
+	@apply font-semibold! text-wyz-creations-guest-orange!;
 }
 
 /* Zero out the <p class="price"> margin so it centres properly next to the button */
@@ -203,7 +192,7 @@ li.relative.product.type-product > a.button,
 li.relative.product.type-product > a.add_to_cart_button {
 	margin-top: auto;
 	align-self: center;
-	@apply bg-wyzc-brown! hover:bg-wyz-guest-white! hover:text-wyzc-brown! hover:border-wyzc-brown!;
+	@apply bg-wyzc-brown! hover:bg-wyz-guest-white! hover:border-wyzc-brown! hover:text-wyzc-brown!;
 }
 
 /* Hide star ratings in product loops — single product page keeps them */
@@ -213,19 +202,18 @@ li.relative.product.type-product .star-rating {
 
 /* Price in product loops — brand orange, slightly smaller, centred */
 li.relative.product.type-product .price {
-	@apply block! text-wyz-creations-guest-orange! text-base! text-center! mb-3!;
+	@apply mb-3! text-base! text-center! text-wyz-creations-guest-orange! block!;
 }
 li.relative.product.type-product .price ins,
 li.relative.product.type-product .price > .woocommerce-Price-amount {
-	@apply text-wyz-creations-guest-orange! text-base!;
+	@apply text-base! text-wyz-creations-guest-orange!;
 }
 
 article .product .summary {
 	h1 {
-		@apply mb-2 font-normal text-2xl md:text-4xl;
+		@apply mb-2 font-normal text-2xl md:text-3xl;
 	}
 }
-
 
 .woocommerce div.product .woocommerce-tabs ul.tabs {
 	display: flex;
@@ -317,7 +305,7 @@ article .product .summary {
 			@apply pt-2 md:pt-8;
 			table.variations {
 				th {
-					@apply align-sub text-right pr-4;
+					@apply pr-4 text-right align-sub;
 				}
 				.value {
 					@apply flex items-center mb-4;
