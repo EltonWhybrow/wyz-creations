@@ -179,7 +179,7 @@ li.relative.product.type-product {
 
 article .product .summary {
 	h1 {
-		@apply mb-2 font-normal text-4xl;
+		@apply mb-2 font-normal text-2xl md:text-4xl;
 	}
 }
 
