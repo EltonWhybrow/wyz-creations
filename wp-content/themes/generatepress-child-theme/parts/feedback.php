@@ -67,7 +67,7 @@ $feedback_link = get_sub_field('feedback_link');
                         ?>
                             <div class="step-slider-item">
                                 <div class="group block h-full">
-                                    <div class="relative flex flex-col justify-between md:gap-1 bg-[#2e221e] shadow p-5 md:p-14 rounded-[10px] h-full min-h-80 md:min-h-[480px] overflow-hidden text-wyz-guest-white">
+                                    <div class="relative flex flex-col justify-between md:gap-1 bg-gradient-to-br from-[#42332f] to-[#1a0e0a] shadow p-5 md:p-14 rounded-[10px] h-full min-h-80 md:min-h-[480px] overflow-hidden text-wyz-guest-white">
                                         <i class="-right-12 -bottom-3 fa-quote-left absolute opacity-10 text-[150px] text-wyz-guest-white md:text-[200px] fa-solid"></i>
 
 
