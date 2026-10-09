@@ -47,40 +47,44 @@
     </div> -->
 
     <div id="top-section" class="z-50 relative bg-wyz-creations-guest-light-gray">
-        <div class="relative flex flex-row items-center items-justified-right gap-3 p-2 px-4">
-            <a href="/subscribe" id="open-linkme" class="menu-link-secondary">
-                Win FREE products!</a>
-            |
-            <?php
-            // Check if on My Account page
-            $is_my_account_page = false;
+        <div class="relative flex flex-row items-center justify-between p-2 px-4">
+            <span class="sale-notice">October sale now on<span class="sale-dot d1">.</span><span class="sale-dot d2">.</span><span class="sale-dot d3">.</span></span>
 
-            $myaccount_page_id = get_option('woocommerce_myaccount_page_id');
-            if ($myaccount_page_id && is_page($myaccount_page_id)) {
-                $is_my_account_page = true;
-            }
-            ?>
-            <a href="/help" class="menu-link-secondary">
-                Help
-            </a>
-            |
-            <?php if ($is_my_account_page && is_user_logged_in()): ?>
-                <a href="<?php echo esc_url(wc_logout_url()); ?>" class="menu-link-secondary">
-                    Sign out
+            <div class="flex items-center gap-3">
+                <a href="/subscribe" id="open-linkme" class="menu-link-secondary">
+                    Win FREE products!</a>
+                |
+                <?php
+                // Check if on My Account page
+                $is_my_account_page = false;
+
+                $myaccount_page_id = get_option('woocommerce_myaccount_page_id');
+                if ($myaccount_page_id && is_page($myaccount_page_id)) {
+                    $is_my_account_page = true;
+                }
+                ?>
+                <a href="/help" class="menu-link-secondary">
+                    Help
                 </a>
-            <?php endif; ?>
-            <?php if (!is_user_logged_in()): ?>
-                <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
-                    class="menu-link-secondary">
-                    Sign In
-                </a>
-            <?php endif; ?>
-            <?php if (!$is_my_account_page && is_user_logged_in()): ?>
-                <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
-                    class="menu-link-secondary">
-                    My Account
-                </a>
-            <?php endif; ?>
+                |
+                <?php if ($is_my_account_page && is_user_logged_in()): ?>
+                    <a href="<?php echo esc_url(wc_logout_url()); ?>" class="menu-link-secondary">
+                        Sign out
+                    </a>
+                <?php endif; ?>
+                <?php if (!is_user_logged_in()): ?>
+                    <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
+                        class="menu-link-secondary">
+                        Sign In
+                    </a>
+                <?php endif; ?>
+                <?php if (!$is_my_account_page && is_user_logged_in()): ?>
+                    <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
+                        class="menu-link-secondary">
+                        My Account
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 
