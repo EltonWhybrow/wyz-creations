@@ -44,6 +44,26 @@
 							"max_size": 0
 						},
 						{
+							"key": "field_69c37d0ffcb20",
+							"label": "Loop video?",
+							"name": "video_loop",
+							"aria-label": "",
+							"type": "true_false",
+							"instructions": "Enable to loop the video continuously. Disable to play once and stop.",
+							"required": false,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"message": "",
+							"default_value": 1,
+							"ui": 1,
+							"ui_on_text": "Loop",
+							"ui_off_text": "Play once"
+						},
+						{
 							"key": "field_693023eb5393e",
 							"label": "Hero Image",
 							"name": "hero_image",

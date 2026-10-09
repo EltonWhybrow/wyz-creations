@@ -1,6 +1,7 @@
 <?php
 $hero_image = wyzcreations_builder_field('hero_image');
 $video = wyzcreations_builder_field('video');
+$video_loop = wyzcreations_builder_field('video_loop');
 $title = wyzcreations_builder_field('title');
 $subtitle = wyzcreations_builder_field('sub_title');
 $button_link = wyzcreations_builder_field('button_link');
@@ -41,7 +42,7 @@ $hero_image_url = $hero_image['url'] ?? '';
             <video
                 class="opacity-0 w-full h-[calc(100vh-160px)] object-cover transition-opacity duration-700 hero-banner-video"
                 autoplay
-                loop
+                <?php if ($video_loop) echo 'loop'; ?>
                 muted
                 playsinline
                 preload="none"
