@@ -23,8 +23,10 @@ if ($audience !== 'everywhere' && !current_user_can('manage_options')) {
 $action_title = get_sub_field('action_title');
 $action_subtitle = get_sub_field('action_subtitle');
 $action_bg_image = get_sub_field('action_bg_image');
+$overlay_opacity = get_sub_field('overlay_opacity');
 $action_link = get_sub_field('action_link');
 $action_text_align = strtolower(get_sub_field('action_text_align') ?: 'center');
+$overlay_alpha = round(max(0, min(100, (int) ($overlay_opacity !== false && $overlay_opacity !== '' ? $overlay_opacity : 40))) / 100, 2);
 
 $align_classes = [
     'left'   => 'items-start text-left',
@@ -50,8 +52,7 @@ if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
     <?php if ($bg_url): ?>
     style="background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.0)), url('<?php echo esc_url($bg_url); ?>') center / cover no-repeat;"
     <?php endif; ?>>
-    <!-- Optional: Overlay for better text readability -->
-    <div class="z-0 absolute inset-0 bg-black/40"></div>
+    <div class="z-0 absolute inset-0" style="background: rgba(0,0,0,<?php echo $overlay_alpha; ?>);"></div>
 
 
     <!-- Content Container (everything on top) -->

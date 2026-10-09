@@ -1032,6 +1032,27 @@
 							"mime_types": ""
 						},
 						{
+							"key": "field_69331b5093924",
+							"label": "Overlay Opacity",
+							"name": "overlay_opacity",
+							"aria-label": "",
+							"type": "range",
+							"instructions": "Controls the darkness of the image overlay (0 = none, 100 = fully black).",
+							"required": false,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": 40,
+							"min": 0,
+							"max": 100,
+							"step": 1,
+							"prepend": "",
+							"append": "%"
+						},
+						{
 							"key": "field_69331b3293923",
 							"label": "Action Link",
 							"name": "action_link",
@@ -1310,6 +1331,27 @@
 							"max_height": 0,
 							"max_size": 0,
 							"mime_types": ""
+						},
+						{
+							"key": "field_69ec84a390f44",
+							"label": "Overlay Opacity",
+							"name": "overlay_opacity",
+							"aria-label": "",
+							"type": "range",
+							"instructions": "Controls the darkness of the image overlay (0 = none, 100 = fully black).",
+							"required": false,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": 40,
+							"min": 0,
+							"max": 100,
+							"step": 1,
+							"prepend": "",
+							"append": "%"
 						},
 						{
 							"key": "field_69ec84a390f42",

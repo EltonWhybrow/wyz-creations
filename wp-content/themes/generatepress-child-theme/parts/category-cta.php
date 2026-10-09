@@ -3,7 +3,9 @@
 $cat_action_title = get_sub_field('cat_action_title');
 $cat_action_subtitle = get_sub_field('cat_action_subtitle');
 $cat_action_bg_image = get_sub_field('cat_action_bg_image');
+$overlay_opacity = get_sub_field('overlay_opacity');
 $cat_action_link = get_sub_field('cat_action_link');
+$overlay_alpha = round(max(0, min(100, (int) ($overlay_opacity !== false && $overlay_opacity !== '' ? $overlay_opacity : 40))) / 100, 2);
 ?>
 
 <?php
@@ -22,8 +24,7 @@ if (is_array($cat_action_bg_image) && isset($cat_action_bg_image['url'])) {
     <?php if ($bg_url): ?>
     style="background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.0)), url('<?php echo esc_url($bg_url); ?>') center / cover no-repeat;"
     <?php endif; ?>>
-    <!-- Optional: Overlay for better text readability -->
-    <div class="z-0 absolute inset-0 bg-black/40"></div>
+    <div class="z-0 absolute inset-0" style="background: rgba(0,0,0,<?php echo $overlay_alpha; ?>);"></div>
 
 
     <!-- Content Container (everything on top) -->
