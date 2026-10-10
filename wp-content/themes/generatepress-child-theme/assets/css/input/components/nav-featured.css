@@ -57,12 +57,12 @@
 		}
 	}
 
-	/* At medium desktop, stacked layout: vertical column, left-aligned */
+	/* At medium desktop, stacked layout: vertical column, left-aligned, ~¼ screen wide */
 	@media (min-width: 1024px) and (max-width: 1279px) {
 		.nav-featured-panel {
 			flex-direction: column !important;
 			align-items: flex-start;
-			width: 220px;
+			width: 25vw;
 		}
 	}
 
