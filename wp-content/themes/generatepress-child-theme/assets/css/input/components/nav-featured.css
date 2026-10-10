@@ -57,22 +57,12 @@
 		}
 	}
 
-	/* At medium desktop, stacked layout uses a horizontal card */
+	/* At medium desktop, stacked layout: vertical column, left-aligned */
 	@media (min-width: 1024px) and (max-width: 1279px) {
 		.nav-featured-panel {
-			flex-direction: row !important;
-			align-items: flex-end;
-			gap: 1rem;
-			width: 100%;
-
-			.nav-featured-panel__image-link {
-				flex-shrink: 0;
-				width: 120px;
-			}
-
-			.nav-featured-panel__image {
-				aspect-ratio: 4 / 3;
-			}
+			flex-direction: column !important;
+			align-items: flex-start;
+			width: 220px;
 		}
 	}
 
