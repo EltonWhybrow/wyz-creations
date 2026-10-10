@@ -1,0 +1,98 @@
+{
+	"key": "group_nav_featured_content",
+	"title": "Nav Featured Content",
+	"fields": [
+		{
+			"key": "field_nav_feat_post",
+			"label": "Featured Post or Page",
+			"name": "nav_featured_post",
+			"aria-label": "",
+			"type": "post_object",
+			"instructions": "Select a post or page to feature in the navigation dropdown for this category.",
+			"required": false,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"post_type": [
+				"post",
+				"page"
+			],
+			"taxonomy": [],
+			"filters": [
+				"search",
+				"post_type"
+			],
+			"return_format": "object",
+			"multiple": 0,
+			"allow_null": 1,
+			"ui": 1,
+			"allow_in_bindings": false
+		},
+		{
+			"key": "field_nav_feat_position",
+			"label": "Panel Position",
+			"name": "nav_featured_position",
+			"aria-label": "",
+			"type": "button_group",
+			"instructions": "Which side of the dropdown links the featured panel appears on.",
+			"required": false,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"choices": {
+				"left": "Left",
+				"right": "Right"
+			},
+			"default_value": "right",
+			"return_format": "value",
+			"allow_null": 0,
+			"allow_in_bindings": false
+		},
+		{
+			"key": "field_nav_feat_btn_label",
+			"label": "Button Label",
+			"name": "nav_featured_button_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Text shown on the button. Defaults to \"View more\" if left blank.",
+			"required": false,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "",
+			"placeholder": "View more",
+			"maxlength": "",
+			"allow_in_bindings": false,
+			"prepend": "",
+			"append": ""
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "taxonomy",
+				"operator": "==",
+				"value": "product_cat"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": "",
+	"active": true,
+	"description": "Featured content panel shown in the navigation mega menu for product categories.",
+	"show_in_rest": 0,
+	"modified": 1760140000
+}

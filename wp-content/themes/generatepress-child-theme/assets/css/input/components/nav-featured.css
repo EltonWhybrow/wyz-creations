@@ -1,0 +1,80 @@
+/* Featured content panel inside the nav mega menu */
+@layer components {
+
+	/* Override justify-center on the mega menu when a featured panel is present */
+	@media (min-width: 1024px) {
+		ul.sub-menu-level-1:has(.nav-featured-panel-item) {
+			justify-content: flex-start !important;
+		}
+	}
+
+	/* The <li> wrapper — hidden on mobile, flex column on desktop */
+	.nav-featured-panel-item {
+		display: none;
+
+		@media (min-width: 1024px) {
+			display: flex;
+			align-items: flex-start;
+			flex-shrink: 0;
+			width: 220px;
+			padding: 0 1.5rem;
+			border-left: 1px solid var(--color-wyz-creations-guest-light-gray);
+		}
+	}
+
+	/* Right: push to far right */
+	.nav-featured-panel-item--right {
+		@media (min-width: 1024px) {
+			margin-left: auto;
+		}
+	}
+
+	/* Left: push to far left, separator on the right instead */
+	.nav-featured-panel-item--left {
+		@media (min-width: 1024px) {
+			order: -1;
+			margin-right: auto;
+			border-left: none;
+			border-right: 1px solid var(--color-wyz-creations-guest-light-gray);
+			padding: 0 1.5rem 0 0;
+		}
+	}
+
+	/* Inner panel card */
+	.nav-featured-panel {
+		display: flex;
+		flex-direction: column;
+		gap: 0.625rem;
+		width: 100%;
+
+		.nav-featured-panel__image-link {
+			display: block;
+			text-decoration: none;
+		}
+
+		.nav-featured-panel__image {
+			@apply overflow-hidden rounded-lg;
+			aspect-ratio: 4 / 3;
+
+			img {
+				@apply w-full h-full object-cover transition-transform duration-300;
+			}
+		}
+
+		.nav-featured-panel__image-link:hover img {
+			transform: scale(1.04);
+		}
+
+		.nav-featured-panel__title {
+			@apply mb-0!;
+
+			a {
+				@apply font-semibold text-wyz-creations-guest-black-chalk text-sm leading-snug no-underline! hover:underline;
+			}
+		}
+
+		.nav-featured-panel__btn {
+			@apply mt-1! self-start;
+		}
+	}
+}
