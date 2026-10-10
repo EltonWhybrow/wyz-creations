@@ -2,6 +2,9 @@
 @layer utilities {
 	.wyz-btn {
 		@apply inline-flex justify-center items-center mt-3 rounded-full w-fit font-bold! no-underline transition-all duration-300;
+		&.btn-xs {
+			@apply px-5! py-1.5! text-xs! h-auto!;
+		}
 		&.btn-sm {
 			@apply px-8! py-2.5! text-base! h-auto!;
 		}

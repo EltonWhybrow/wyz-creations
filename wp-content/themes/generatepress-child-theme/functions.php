@@ -586,7 +586,7 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
             $this->featured_data = [
                 'post'         => $feat_post,
                 'position'     => get_field('nav_featured_position', 'option') ?: 'right',
-                'button_label' => get_field('nav_featured_button_label', 'option') ?: 'View more',
+                'button_label' => get_field('nav_featured_button_label', 'option') ?: 'Check this out',
             ];
         }
     }
@@ -627,7 +627,7 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
                 $output .= '<a href="' . esc_url($permalink) . '">' . esc_html($title) . '</a>';
                 $output .= '</h3>';
 
-                $output .= '<a href="' . esc_url($permalink) . '" class="wyz-btn btn-sm primary nav-featured-panel__btn">';
+                $output .= '<a href="' . esc_url($permalink) . '" class="wyz-btn btn-xs primary nav-featured-panel__btn">';
                 $output .= esc_html($btn_text);
                 $output .= '</a>';
 
