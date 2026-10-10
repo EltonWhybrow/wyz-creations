@@ -1,8 +1,9 @@
 /* Featured content panel inside the nav mega menu */
 @layer components {
 
-	/* Override justify-center on the mega menu when a featured panel is present */
-	@media (min-width: 1024px) {
+	/* Override justify-center only when panel sits beside the links (≥1280px).
+	   Below that the panel is stacked underneath so links stay centred. */
+	@media (min-width: 1280px) {
 		ul.sub-menu-level-1:has(.nav-featured-panel-item) {
 			justify-content: flex-start !important;
 		}
