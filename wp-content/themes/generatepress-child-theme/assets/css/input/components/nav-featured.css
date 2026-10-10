@@ -1,72 +1,7 @@
 /* Featured content panel inside the nav mega menu */
 @layer components {
 
-	/* Override justify-center only when panel sits beside the links (≥1280px).
-	   Below that the panel is stacked underneath so links stay centred. */
-	@media (min-width: 1280px) {
-		ul.sub-menu-level-1:has(.nav-featured-panel-item) {
-			justify-content: flex-start !important;
-		}
-	}
-
-	/* -------------------------------------------------------
-	   The <li> wrapper
-	   - mobile        (<1024px): hidden — mobile menu takes over
-	   - medium-desktop (1024–1279px): shown, stacked below links
-	   - large-desktop  (≥1280px): shown, side-by-side with links
-	------------------------------------------------------- */
-	.nav-featured-panel-item {
-		display: none;
-
-		/* Medium desktop: stacked below the link columns */
-		@media (min-width: 1024px) and (max-width: 1279px) {
-			display: flex;
-			align-items: flex-start;
-			width: 100%;
-			order: 999;
-			padding: 1rem 0 0;
-			border-top: 1px solid var(--color-wyz-creations-guest-light-gray);
-		}
-
-		/* Large desktop: beside the link columns */
-		@media (min-width: 1280px) {
-			display: flex;
-			align-items: flex-start;
-			flex-shrink: 0;
-			width: 220px;
-			padding: 0 1.5rem;
-			border-left: 1px solid var(--color-wyz-creations-guest-light-gray);
-		}
-	}
-
-	/* Right: push to far right (large desktop only) */
-	.nav-featured-panel-item--right {
-		@media (min-width: 1280px) {
-			margin-left: auto;
-		}
-	}
-
-	/* Left: push to far left, separator on right (large desktop only) */
-	.nav-featured-panel-item--left {
-		@media (min-width: 1280px) {
-			order: -1;
-			margin-right: auto;
-			border-left: none;
-			border-right: 1px solid var(--color-wyz-creations-guest-light-gray);
-			padding: 0 1.5rem 0 0;
-		}
-	}
-
-	/* At medium desktop, stacked layout: vertical column, left-aligned, ~¼ screen wide */
-	@media (min-width: 1024px) and (max-width: 1279px) {
-		.nav-featured-panel {
-			flex-direction: column !important;
-			align-items: flex-start;
-			width: 25vw;
-		}
-	}
-
-	/* Inner panel card */
+	/* ---- Inner panel card (base styles, all sizes) ---- */
 	.nav-featured-panel {
 		display: flex;
 		flex-direction: column;
@@ -101,6 +36,66 @@
 
 		.nav-featured-panel__btn {
 			@apply mt-1! self-start;
+		}
+	}
+
+	/* ---- Wrapper <li> — hidden on mobile ---- */
+	.nav-featured-panel-item {
+		display: none;
+	}
+
+	/* -------------------------------------------------------
+	   Medium desktop (1024–1279px): stacked below the links,
+	   quarter-screen-wide vertical card, left-aligned
+	------------------------------------------------------- */
+	@media (min-width: 1024px) and (max-width: 1279px) {
+		.nav-featured-panel-item {
+			display: flex;
+			align-items: flex-start;
+			width: 100%;       /* full-row so it wraps below the links */
+			order: 999;
+			padding: 1rem 0 0;
+			border-top: 1px solid var(--color-wyz-creations-guest-light-gray);
+		}
+
+		/* Quarter-screen card, left-aligned */
+		.nav-featured-panel {
+			flex-direction: column;
+			align-items: flex-start;
+			width: 25vw;
+		}
+	}
+
+	/* -------------------------------------------------------
+	   Large desktop (≥1280px): beside the links
+	   Override justify-center so links start from the left
+	------------------------------------------------------- */
+	@media (min-width: 1280px) {
+		ul.sub-menu-level-1:has(.nav-featured-panel-item) {
+			justify-content: flex-start !important;
+		}
+
+		.nav-featured-panel-item {
+			display: flex;
+			align-items: flex-start;
+			flex-shrink: 0;
+			width: 220px;
+			padding: 0 1.5rem;
+			border-left: 1px solid var(--color-wyz-creations-guest-light-gray);
+		}
+
+		/* Right: push to far right */
+		.nav-featured-panel-item--right {
+			margin-left: auto;
+		}
+
+		/* Left: push to far left, separator on right */
+		.nav-featured-panel-item--left {
+			order: -1;
+			margin-right: auto;
+			border-left: none;
+			border-right: 1px solid var(--color-wyz-creations-guest-light-gray);
+			padding: 0 1.5rem 0 0;
 		}
 	}
 }
