@@ -47,12 +47,12 @@
     </div> -->
 
     <div id="top-section" class="z-50 relative bg-wyz-creations-guest-light-gray">
-        <div class="relative flex flex-row items-center justify-between p-2 px-4">
+        <div class="relative flex flex-row justify-between items-center p-2 px-4">
             <span class="sale-notice">October sale now on<span class="sale-dot d1">.</span><span class="sale-dot d2">.</span><span class="sale-dot d3">.</span></span>
 
             <div class="flex items-center gap-3">
                 <a href="/subscribe" id="open-linkme" class="menu-link-secondary">
-                    Win FREE products!</a>
+                    FREE products!</a>
                 |
                 <?php
                 // Check if on My Account page
@@ -118,7 +118,7 @@
             ?>
 
 
-            <div class="flex gap-4 md:gap-5 ml-2 align-middle min-w-0">
+            <div class="flex gap-4 md:gap-5 ml-2 min-w-0 align-middle">
 
                 <!-- Search bar -->
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="header-search">
@@ -216,14 +216,14 @@
             <div class="flex items-center gap-8 bg-wyz-creations-guest-black-chalk/80 p-3 border-t">
 
                 <a href="<?php echo home_url('/my-account'); ?>"
-                    class="flex mt-0! flex-1 wyz-btn btn-sm secondary">
+                    class="flex flex-1 mt-0! wyz-btn btn-sm secondary">
                     My Account
                 </a>
 
                 <div class="flex items-center gap-5 pr-3">
                     <a href="<?php echo home_url('/favourites'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
-                        <span class="relative inline-flex">
+                        <span class="inline-flex relative">
                             <i class="fa-solid fa-heart" aria-hidden="true"></i>
                             <?php $mobile_fav_count = wyzcreations_get_favourites_count(); ?>
                             <span class="favourites-count-badge<?php echo $mobile_fav_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_fav_count); ?></span>
@@ -231,7 +231,7 @@
                     </a>
                     <a href="<?php echo home_url('/cart'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
-                        <span class="relative inline-flex">
+                        <span class="inline-flex relative">
                             <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
                             <?php $mobile_cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
                             <span class="cart-count-badge<?php echo $mobile_cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_cart_count); ?></span>
