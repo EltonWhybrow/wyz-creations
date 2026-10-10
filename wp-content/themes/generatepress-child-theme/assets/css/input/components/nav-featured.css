@@ -8,11 +8,27 @@
 		}
 	}
 
-	/* The <li> wrapper — hidden on mobile, flex column on desktop */
+	/* -------------------------------------------------------
+	   The <li> wrapper
+	   - mobile        (<1024px): hidden — mobile menu takes over
+	   - medium-desktop (1024–1279px): shown, stacked below links
+	   - large-desktop  (≥1280px): shown, side-by-side with links
+	------------------------------------------------------- */
 	.nav-featured-panel-item {
 		display: none;
 
-		@media (min-width: 1024px) {
+		/* Medium desktop: stacked below the link columns */
+		@media (min-width: 1024px) and (max-width: 1279px) {
+			display: flex;
+			align-items: flex-start;
+			width: 100%;
+			order: 999;
+			padding: 1rem 0 0;
+			border-top: 1px solid var(--color-wyz-creations-guest-light-gray);
+		}
+
+		/* Large desktop: beside the link columns */
+		@media (min-width: 1280px) {
 			display: flex;
 			align-items: flex-start;
 			flex-shrink: 0;
@@ -22,21 +38,40 @@
 		}
 	}
 
-	/* Right: push to far right */
+	/* Right: push to far right (large desktop only) */
 	.nav-featured-panel-item--right {
-		@media (min-width: 1024px) {
+		@media (min-width: 1280px) {
 			margin-left: auto;
 		}
 	}
 
-	/* Left: push to far left, separator on the right instead */
+	/* Left: push to far left, separator on right (large desktop only) */
 	.nav-featured-panel-item--left {
-		@media (min-width: 1024px) {
+		@media (min-width: 1280px) {
 			order: -1;
 			margin-right: auto;
 			border-left: none;
 			border-right: 1px solid var(--color-wyz-creations-guest-light-gray);
 			padding: 0 1.5rem 0 0;
+		}
+	}
+
+	/* At medium desktop, stacked layout uses a horizontal card */
+	@media (min-width: 1024px) and (max-width: 1279px) {
+		.nav-featured-panel {
+			flex-direction: row !important;
+			align-items: center;
+			gap: 1rem;
+			width: 100%;
+
+			.nav-featured-panel__image-link {
+				flex-shrink: 0;
+				width: 120px;
+			}
+
+			.nav-featured-panel__image {
+				aspect-ratio: 4 / 3;
+			}
 		}
 	}
 
