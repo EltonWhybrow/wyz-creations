@@ -35,7 +35,7 @@
 		}
 
 		.nav-featured-panel__btn {
-			@apply mt-1! self-start;
+			@apply mt-1! self-start border border-transparent hover:border-wyz-creations-guest-black-chalk!;
 		}
 	}
 
@@ -45,34 +45,36 @@
 	}
 
 	/* -------------------------------------------------------
-	   Medium desktop (1024–1279px): stacked below the links,
-	   quarter-screen-wide vertical card, left-aligned
+	   nav-links-zone: wraps all the walker <li> items inside
+	   sub-menu-level-1, letting them flex-wrap independently
+	   of the featured panel.
 	------------------------------------------------------- */
-	@media (min-width: 1024px) and (max-width: 1279px) {
-		.nav-featured-panel-item {
+	@media (min-width: 1024px) {
+		.nav-links-zone {
 			display: flex;
-			align-items: flex-start;
-			width: 100%;       /* full-row so it wraps below the links */
-			order: 999;
-			padding: 1rem 0 0;
-			border-top: 1px solid var(--color-wyz-creations-guest-light-gray);
-		}
-
-		/* Quarter-screen card, left-aligned */
-		.nav-featured-panel {
-			flex-direction: column;
-			align-items: flex-start;
-			width: 25vw;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-content: flex-start;
+			flex: 1;
+			min-width: 0;
+			width: 100%;
 		}
 	}
 
 	/* -------------------------------------------------------
-	   Large desktop (≥1280px): beside the links
-	   Override justify-center so links start from the left
+	   Large desktop (≥1280px): links zone + panel side-by-side
+	   as normal flex siblings — no absolute positioning, so
+	   the container grows to fit whichever is taller.
 	------------------------------------------------------- */
 	@media (min-width: 1280px) {
 		ul.sub-menu-level-1:has(.nav-featured-panel-item) {
+			flex-wrap: nowrap !important;
 			justify-content: flex-start !important;
+			align-items: flex-start;
+		}
+
+		.nav-links-zone {
+			justify-content: space-evenly;
 		}
 
 		.nav-featured-panel-item {
@@ -80,22 +82,19 @@
 			align-items: flex-start;
 			flex-shrink: 0;
 			width: 220px;
-			padding: 0 1.5rem;
+		}
+
+		.nav-featured-panel-item--right {
+			margin-left: 1.5rem;
+			padding: 0 0 0 1.5rem;
 			border-left: 1px solid var(--color-wyz-creations-guest-light-gray);
 		}
 
-		/* Right: push to far right */
-		.nav-featured-panel-item--right {
-			margin-left: auto;
-		}
-
-		/* Left: push to far left, separator on right */
 		.nav-featured-panel-item--left {
 			order: -1;
-			margin-right: auto;
-			border-left: none;
-			border-right: 1px solid var(--color-wyz-creations-guest-light-gray);
+			margin-right: 1.5rem;
 			padding: 0 1.5rem 0 0;
+			border-right: 1px solid var(--color-wyz-creations-guest-light-gray);
 		}
 	}
 }

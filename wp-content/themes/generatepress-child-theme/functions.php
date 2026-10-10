@@ -596,12 +596,16 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
     {
         $level = $depth + 1; // Start counting from 1 (more readable)
         $output .= "\n<ul class=\"sub-menu sub-menu-level-{$level}\">\n";
+        if ($depth === 0) {
+            $output .= '<div class="nav-links-zone">';
+        }
     }
 
     // End submenu level — inject featured panel as last item in every level-1 mega menu
     function end_lvl(&$output, $depth = 0, $args = null)
     {
         if ($depth === 0) {
+            $output .= '</div>'; // close nav-links-zone
             $this->load_featured();
 
             if ($this->featured_data) {
