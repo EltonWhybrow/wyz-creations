@@ -1,6 +1,6 @@
 {
 	"key": "group_nav_featured_content",
-	"title": "Nav Featured Content",
+	"title": "Navigation Featured Content",
 	"fields": [
 		{
 			"key": "field_nav_feat_post",
@@ -8,7 +8,7 @@
 			"name": "nav_featured_post",
 			"aria-label": "",
 			"type": "post_object",
-			"instructions": "Select a post or page to feature in the navigation dropdown for this category.",
+			"instructions": "Select a post or page to promote inside the mega menu this month.",
 			"required": false,
 			"conditional_logic": false,
 			"wrapper": {
@@ -79,9 +79,9 @@
 	"location": [
 		[
 			{
-				"param": "taxonomy",
+				"param": "options_page",
 				"operator": "==",
-				"value": "product_cat"
+				"value": "nav-settings"
 			}
 		]
 	],
@@ -92,7 +92,7 @@
 	"instruction_placement": "label",
 	"hide_on_screen": "",
 	"active": true,
-	"description": "Featured content panel shown in the navigation mega menu for product categories.",
+	"description": "Global featured content panel shown inside navigation mega menu dropdowns.",
 	"show_in_rest": 0,
-	"modified": 1760140000
+	"modified": 1760140001
 }

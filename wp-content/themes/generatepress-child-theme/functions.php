@@ -18,6 +18,20 @@ add_filter('acf/settings/load_json', function ($paths) {
     return $paths;
 });
 
+// ACF options page for global navigation settings
+add_action('acf/init', function () {
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Navigation Settings',
+            'menu_title' => 'Nav Settings',
+            'menu_slug'  => 'nav-settings',
+            'capability' => 'manage_options',
+            'position'   => 80,
+            'redirect'   => false,
+        ]);
+    }
+});
+
 // Enqueue Google Fonts
 // add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);
 // function wyzcreations_load_google_fonts()
@@ -558,7 +572,24 @@ function add_google_reviews_optin($order_id)
 
 class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
 {
-    protected $current_featured = null;
+    protected $featured_data   = null;
+    protected $featured_loaded = false;
+
+    // Lazy-load the global featured panel data once per render
+    protected function load_featured()
+    {
+        if ($this->featured_loaded) return;
+        $this->featured_loaded = true;
+
+        $feat_post = get_field('nav_featured_post', 'option');
+        if ($feat_post) {
+            $this->featured_data = [
+                'post'         => $feat_post,
+                'position'     => get_field('nav_featured_position', 'option') ?: 'right',
+                'button_label' => get_field('nav_featured_button_label', 'option') ?: 'View more',
+            ];
+        }
+    }
 
     // Start submenu level (ul)
     function start_lvl(&$output, $depth = 0, $args = null)
@@ -567,41 +598,41 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
         $output .= "\n<ul class=\"sub-menu sub-menu-level-{$level}\">\n";
     }
 
-    // End submenu level — inject featured panel as last item in level-1 mega menu
+    // End submenu level — inject featured panel as last item in every level-1 mega menu
     function end_lvl(&$output, $depth = 0, $args = null)
     {
-        if ($depth === 0 && $this->current_featured) {
-            $feat      = $this->current_featured;
-            $post      = $feat['post'];
-            $position  = $feat['position'];
-            $btn_text  = $feat['button_label'];
-            $permalink = get_permalink($post->ID);
-            $title     = get_the_title($post);
-            $img_url   = get_the_post_thumbnail_url($post->ID, 'large');
+        if ($depth === 0) {
+            $this->load_featured();
 
-            $pos_class = 'nav-featured-panel-item--' . esc_attr($position);
+            if ($this->featured_data) {
+                $post      = $this->featured_data['post'];
+                $position  = $this->featured_data['position'];
+                $btn_text  = $this->featured_data['button_label'];
+                $permalink = get_permalink($post->ID);
+                $title     = get_the_title($post);
+                $img_url   = get_the_post_thumbnail_url($post->ID, 'large');
+                $pos_class = 'nav-featured-panel-item--' . esc_attr($position);
 
-            $output .= '<li class="nav-featured-panel-item ' . $pos_class . '">';
-            $output .= '<div class="nav-featured-panel">';
+                $output .= '<li class="nav-featured-panel-item ' . $pos_class . '">';
+                $output .= '<div class="nav-featured-panel">';
 
-            if ($img_url) {
-                $output .= '<a href="' . esc_url($permalink) . '" class="nav-featured-panel__image-link" tabindex="-1" aria-hidden="true">';
-                $output .= '<div class="nav-featured-panel__image">';
-                $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" loading="lazy" />';
-                $output .= '</div></a>';
+                if ($img_url) {
+                    $output .= '<a href="' . esc_url($permalink) . '" class="nav-featured-panel__image-link" tabindex="-1" aria-hidden="true">';
+                    $output .= '<div class="nav-featured-panel__image">';
+                    $output .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($title) . '" loading="lazy" />';
+                    $output .= '</div></a>';
+                }
+
+                $output .= '<h3 class="nav-featured-panel__title">';
+                $output .= '<a href="' . esc_url($permalink) . '">' . esc_html($title) . '</a>';
+                $output .= '</h3>';
+
+                $output .= '<a href="' . esc_url($permalink) . '" class="wyz-btn btn-sm primary nav-featured-panel__btn">';
+                $output .= esc_html($btn_text);
+                $output .= '</a>';
+
+                $output .= '</div></li>';
             }
-
-            $output .= '<h3 class="nav-featured-panel__title">';
-            $output .= '<a href="' . esc_url($permalink) . '">' . esc_html($title) . '</a>';
-            $output .= '</h3>';
-
-            $output .= '<a href="' . esc_url($permalink) . '" class="wyz-btn btn-sm primary nav-featured-panel__btn">';
-            $output .= esc_html($btn_text);
-            $output .= '</a>';
-
-            $output .= '</div></li>';
-
-            $this->current_featured = null;
         }
 
         $output .= "</ul>\n";
@@ -612,19 +643,6 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
     {
         $classes      = empty($item->classes) ? array() : (array) $item->classes;
         $has_children = in_array('menu-item-has-children', $classes);
-
-        // Populate featured panel data for top-level product_cat items with children
-        if ($depth === 0 && $has_children && $item->object === 'product_cat') {
-            $term_key = 'product_cat_' . $item->object_id;
-            $feat_post = get_field('nav_featured_post', $term_key);
-            if ($feat_post) {
-                $this->current_featured = [
-                    'post'         => $feat_post,
-                    'position'     => get_field('nav_featured_position', $term_key) ?: 'right',
-                    'button_label' => get_field('nav_featured_button_label', $term_key) ?: 'View more',
-                ];
-            }
-        }
         $level = $depth + 1;
 
         // Base classes (shared across all levels)
