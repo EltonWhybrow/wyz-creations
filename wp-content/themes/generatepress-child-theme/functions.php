@@ -558,6 +558,7 @@ function add_google_reviews_optin($order_id)
 
 class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
 {
+    protected $current_featured = null;
 
     // Start submenu level (ul)
     function start_lvl(&$output, $depth = 0, $args = null)
@@ -566,12 +567,60 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
         $output .= "\n<ul class=\"sub-menu sub-menu-level-{$level}\">\n";
     }
 
+    // End submenu level — inject featured panel into level-1 mega menu
+    function end_lvl(&$output, $depth = 0, $args = null)
+    {
+        if ($depth === 0 && $this->current_featured) {
+            $f      = $this->current_featured;
+            $img    = $f['image'];
+            $title  = $f['title'];
+            $button = $f['button'];
+
+            $output .= '<li class="nav-featured-panel-item">';
+            $output .= '<div class="nav-featured-panel">';
+
+            if ($img && !empty($img['url'])) {
+                $output .= '<div class="nav-featured-panel__image">';
+                $output .= '<img src="' . esc_url($img['url']) . '" alt="' . esc_attr($img['alt'] ?? $title) . '" />';
+                $output .= '</div>';
+            }
+
+            if ($title) {
+                $output .= '<h3 class="nav-featured-panel__title">' . esc_html($title) . '</h3>';
+            }
+
+            if ($button && !empty($button['url'])) {
+                $target  = !empty($button['target']) ? ' target="' . esc_attr($button['target']) . '"' : '';
+                $output .= '<a href="' . esc_url($button['url']) . '"' . $target . ' class="wyz-btn btn-sm primary nav-featured-panel__btn">';
+                $output .= esc_html($button['title'] ?: 'Shop now');
+                $output .= '</a>';
+            }
+
+            $output .= '</div></li>';
+
+            $this->current_featured = null;
+        }
+
+        $output .= "</ul>\n";
+    }
+
     // Start menu item (li + a)
     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
     {
-        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $classes      = empty($item->classes) ? array() : (array) $item->classes;
         $has_children = in_array('menu-item-has-children', $classes);
-        $level = $depth + 1;
+        $level        = $depth + 1;
+
+        // Cache featured data for product_cat items with children at the top level
+        if ($depth === 0 && $has_children && $item->object === 'product_cat') {
+            $term_key = 'product_cat_' . $item->object_id;
+            $image    = get_field('nav_featured_image', $term_key);
+            $title    = get_field('nav_featured_title', $term_key);
+            $button   = get_field('nav_featured_button', $term_key);
+            if ($image || $title || $button) {
+                $this->current_featured = compact('image', 'title', 'button');
+            }
+        }
 
         // Base classes (shared across all levels)
         $li_classes = [

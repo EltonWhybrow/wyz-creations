@@ -1,0 +1,42 @@
+/* Featured panel injected into the nav mega menu for product categories */
+@layer components {
+
+	.nav-featured-panel-item {
+		/* Push to far right inside the mega menu flex row */
+		margin-left: auto;
+		list-style: none;
+		display: none; /* hidden on mobile */
+
+		@media (min-width: 1024px) {
+			display: flex;
+			align-items: center;
+			padding: 0 1rem;
+		}
+	}
+
+	.nav-featured-panel {
+		@apply flex flex-col gap-3;
+		width: 220px;
+
+		.nav-featured-panel__image {
+			@apply overflow-hidden rounded-xl;
+			aspect-ratio: 4 / 3;
+
+			img {
+				@apply w-full h-full object-cover transition-transform duration-300;
+			}
+		}
+
+		&:hover .nav-featured-panel__image img {
+			transform: scale(1.04);
+		}
+
+		.nav-featured-panel__title {
+			@apply mb-0! font-semibold text-wyz-creations-guest-black-chalk text-base leading-snug;
+		}
+
+		.nav-featured-panel__btn {
+			@apply mt-0! self-start;
+		}
+	}
+}
