@@ -60,7 +60,7 @@
 	@media (min-width: 1024px) and (max-width: 1279px) {
 		.nav-featured-panel {
 			flex-direction: row !important;
-			align-items: center;
+			align-items: flex-end;
 			gap: 1rem;
 			width: 100%;
 
