@@ -804,18 +804,113 @@ function wyzcreations_append_result_count_to_title($title)
 
     $per_page = wc_get_loop_prop('per_page');
 
-    if (1 === (int) $total) {
-        $count_text = '1 result';
-    } elseif ($total <= $per_page || -1 === (int) $per_page) {
-        $count_text = $total . ' results';
-    } else {
-        $current = wc_get_loop_prop('current_page');
-        $first   = ($per_page * $current) - $per_page + 1;
-        $last    = min($total, $per_page * $current);
-        $count_text = $first . '-' . $last . ' of ' . $total . ' results';
-    }
+    $count_text = 1 === (int) $total ? '1 result' : $total . ' results';
 
     return $title . ' <span class="shop-title-result-count">(' . esc_html($count_text) . ')</span>';
+}
+
+// Infinite scroll: 16 products per page, no pagination link
+add_filter('loop_shop_per_page', function () { return 16; }, 20);
+remove_action('woocommerce_after_shop_loop', 'woocommerce_pagination', 10);
+
+add_action('woocommerce_after_shop_loop', function () {
+    global $wp_query;
+    $max_pages = (int) $wp_query->max_num_pages;
+    ?>
+    <div id="shop-infinite-sentinel" class="w-full"<?php if ($max_pages > 1): ?> data-max-pages="<?php echo $max_pages; ?>"<?php endif; ?>></div>
+    <div id="shop-infinite-loader" class="hidden py-10 w-full text-center">
+        <span class="inline-block rounded-full w-10 h-10 animate-spin" style="border: 4px solid var(--color-wyz-creations-guest-orange); border-top-color: transparent;"></span>
+    </div>
+    <?php
+}, 15);
+
+add_action('wp_enqueue_scripts', function () {
+    if (!is_shop() && !is_product_category() && !is_product_tag()) return;
+
+    global $wp_query;
+
+    $tax_data = [];
+    if (is_product_category()) {
+        $term     = get_queried_object();
+        $tax_data = ['taxonomy' => 'product_cat', 'term' => $term->slug];
+    } elseif (is_product_tag()) {
+        $term     = get_queried_object();
+        $tax_data = ['taxonomy' => 'product_tag', 'term' => $term->slug];
+    }
+
+    wp_localize_script('wyz-creations-main-js', 'wyz_shop_infinite', [
+        'ajax_url'  => admin_url('admin-ajax.php'),
+        'nonce'     => wp_create_nonce('wyz_infinite_scroll'),
+        'max_pages' => (int) $wp_query->max_num_pages,
+        'tax'       => $tax_data,
+        'orderby'   => isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : '',
+    ]);
+}, 20);
+
+add_action('wp_ajax_wyz_infinite_products',        'wyzcreations_infinite_products_ajax');
+add_action('wp_ajax_nopriv_wyz_infinite_products', 'wyzcreations_infinite_products_ajax');
+
+function wyzcreations_infinite_products_ajax()
+{
+    check_ajax_referer('wyz_infinite_scroll', 'nonce');
+
+    $page     = max(2, (int) ($_POST['page'] ?? 2));
+    $per_page = 16;
+    $taxonomy = sanitize_key($_POST['taxonomy'] ?? '');
+    $term     = sanitize_text_field($_POST['term'] ?? '');
+    $orderby  = sanitize_text_field($_POST['orderby'] ?? '');
+
+    $args = [
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+        'posts_per_page' => $per_page,
+        'paged'          => $page,
+        'tax_query'      => [[
+            'taxonomy' => 'product_visibility',
+            'field'    => 'name',
+            'terms'    => ['exclude-from-catalog'],
+            'operator' => 'NOT IN',
+        ]],
+    ];
+
+    if ($taxonomy && $term) {
+        $args['tax_query'][] = [
+            'taxonomy' => $taxonomy,
+            'field'    => 'slug',
+            'terms'    => [$term],
+        ];
+    }
+
+    $default_order = get_option('woocommerce_default_catalog_orderby', 'menu_order');
+    $ordering      = WC()->query->get_catalog_ordering_args($orderby ?: $default_order);
+    $args          = array_merge($args, $ordering);
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) {
+        wp_send_json_success(['html' => '', 'has_more' => false]);
+        return;
+    }
+
+    wc_set_loop_prop('total',        $query->found_posts);
+    wc_set_loop_prop('total_pages',  $query->max_num_pages);
+    wc_set_loop_prop('per_page',     $per_page);
+    wc_set_loop_prop('current_page', $page);
+    wc_set_loop_prop('is_paginated', true);
+    wc_set_loop_prop('loop',         0);
+
+    ob_start();
+    while ($query->have_posts()) {
+        $query->the_post();
+        wc_get_template_part('content', 'product');
+    }
+    wp_reset_postdata();
+    $html = ob_get_clean();
+
+    wp_send_json_success([
+        'html'     => $html,
+        'has_more' => $page < $query->max_num_pages,
+    ]);
 }
 
 // override cart buttons

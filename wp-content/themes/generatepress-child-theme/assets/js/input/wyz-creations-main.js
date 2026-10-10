@@ -560,6 +560,58 @@ jQuery(function ($) {
   })();
 
 
+  // Infinite scroll for shop / category / tag archive pages
+  (function () {
+    if (typeof wyz_shop_infinite === 'undefined') return;
+
+    var sentinel = document.getElementById('shop-infinite-sentinel');
+    var loader   = document.getElementById('shop-infinite-loader');
+    var grid     = document.querySelector('ul.products');
+
+    if (!sentinel || !grid) return;
+
+    var currentPage = 1;
+    var loading     = false;
+    var maxPages    = parseInt(sentinel.dataset.maxPages, 10) || 1;
+
+    if (maxPages <= 1) return;
+
+    function loadNextPage() {
+      if (loading || currentPage >= maxPages) return;
+
+      loading = true;
+      currentPage++;
+
+      if (loader) loader.classList.remove('hidden');
+
+      $.post(wyz_shop_infinite.ajax_url, {
+        action:   'wyz_infinite_products',
+        nonce:    wyz_shop_infinite.nonce,
+        page:     currentPage,
+        taxonomy: (wyz_shop_infinite.tax && wyz_shop_infinite.tax.taxonomy) || '',
+        term:     (wyz_shop_infinite.tax && wyz_shop_infinite.tax.term)     || '',
+        orderby:  wyz_shop_infinite.orderby || '',
+      }).done(function (res) {
+        if (res.success && res.data.html) {
+          grid.insertAdjacentHTML('beforeend', res.data.html);
+        }
+        if (!res.success || !res.data.has_more || currentPage >= maxPages) {
+          observer.disconnect();
+          sentinel.remove();
+        }
+      }).always(function () {
+        loading = false;
+        if (loader) loader.classList.add('hidden');
+      });
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) loadNextPage();
+    }, { rootMargin: '300px' });
+
+    observer.observe(sentinel);
+  })();
+
   // FAQ seach facility
   const $search = $('#faqSearchInput');
   const $clear = $('#faqClearSearch');
