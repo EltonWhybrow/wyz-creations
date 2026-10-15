@@ -18,7 +18,7 @@
 			aspect-ratio: 4 / 3;
 
 			img {
-				@apply w-full h-full object-cover transition-transform duration-300;
+				@apply w-full h-full object-cover rounded-lg! transition-transform duration-300;
 			}
 		}
 
@@ -81,7 +81,7 @@
 			display: flex;
 			align-items: flex-start;
 			flex-shrink: 0;
-			width: 220px;
+			width: 350px;
 		}
 
 		.nav-featured-panel-item--right {
