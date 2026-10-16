@@ -171,7 +171,7 @@
 
     <!-- Mobile Menu Panel -->
     <nav id="mobile-menu-panel"
-        class="lg:hidden top-0 right-0 z-50 fixed bg-white shadow-xl w-[90%] h-full transition-transform translate-x-full duration-300 transform"
+        class="lg:hidden top-0 right-0 z-[105] fixed bg-white shadow-xl w-[90%] h-full transition-transform translate-x-full duration-300 transform"
         role="navigation"
         aria-label="Mobile menu">
 
