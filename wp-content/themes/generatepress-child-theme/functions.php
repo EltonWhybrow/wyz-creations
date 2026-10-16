@@ -60,67 +60,61 @@ function wyzcreations_enqueue_tailwind()
 add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_scripts');
 function wyzcreations_enqueue_scripts()
 {
-    // Load Slick Carousel from CDN
-    wp_enqueue_style(
-        'slick-css',
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css',
-        array(),
-        '1.9.0'
-    );
-
-    wp_enqueue_style(
-        'slick-theme-css',
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css',
-        array('slick-css'),
-        '1.9.0'
-    );
-
-    wp_enqueue_script(
-        'slick-js',
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js',
-        array('jquery'),
-        '1.9.0',
-        true
-    );
-
+    // Font Awesome — every page
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css', array(), '7.0.1');
     wp_add_inline_style('font-awesome', '
         @font-face {
-            font-family: "Font Awesome 7 Free";
+            font-family: “Font Awesome 7 Free”;
             font-style: normal;
             font-weight: 900;
             font-display: swap;
-            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/webfonts/fa-solid-900.woff2") format("woff2");
+            src: url(“https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/webfonts/fa-solid-900.woff2”) format(“woff2”);
         }
     ');
 
+    // Pages that use page-builder sections (sliders, GSAP animations).
+    // WooCommerce functional pages and blog posts/archives don't use any of these.
+    $is_wc_page = function_exists('is_shop') && (
+        is_shop() || is_product() || is_product_category() ||
+        is_product_tag() || is_cart() || is_checkout()
+    );
+    $is_blog = is_singular('post') || (is_home() && !is_front_page()) || is_archive();
+    $needs_page_builder = !$is_wc_page && !$is_blog;
 
-    wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', [], null, true);
-    // ScrollTrigger (optional, for “animate when scrolled into view”)
-    wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', ['gsap'], null, true);
-    // Animations init script
+    // Slick Carousel — only on pages that may have slider sections
+    if ($needs_page_builder) {
+        wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css', array(), '1.9.0');
+        wp_enqueue_style('slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css', array('slick-css'), '1.9.0');
+        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array('jquery'), '1.9.0', true);
+    }
+
+    // Main theme JS — every page (handles cart, nav, infinite scroll, etc.)
     wp_enqueue_script(
         'wyz-creations-main-js',
-        get_stylesheet_directory_uri() . '/assets/js/wyz-creations-main.min.js', // npm run build to re minify latest
-        array('jquery', 'slick-js'), // Important: slick-js as dependency
+        get_stylesheet_directory_uri() . '/assets/js/wyz-creations-main.min.js',
+        array('jquery'),
         filemtime(get_stylesheet_directory() . '/assets/js/wyz-creations-main.min.js'),
         true
     );
 
-    // Localize script for PHP variables
     wp_localize_script('wyz-creations-main-js', 'wyzcreations_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'home_url' => home_url('/'),
         'shop_url' => function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/'),
     ));
 
-    wp_enqueue_script(
-        'animations-init',
-        get_stylesheet_directory_uri() . '/assets/js/animations.js',
-        ['gsap', 'gsap-scrolltrigger', 'wyz-creations-main-js'],
-        filemtime(get_stylesheet_directory() . '/assets/js/animations.js'),
-        true
-    );
+    // GSAP + animations — only on pages that use animation classes
+    if ($needs_page_builder) {
+        wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', [], null, true);
+        wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', ['gsap'], null, true);
+        wp_enqueue_script(
+            'animations-init',
+            get_stylesheet_directory_uri() . '/assets/js/animations.js',
+            ['gsap', 'gsap-scrolltrigger'],
+            filemtime(get_stylesheet_directory() . '/assets/js/animations.js'),
+            true
+        );
+    }
 }
 
 // Remove entry title from My Account (woocommerce)
