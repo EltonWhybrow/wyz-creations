@@ -81,7 +81,13 @@
 	opacity: 0;
 	visibility: hidden;
 	transition: opacity 0.4s ease;
-	z-index: 20; /* below menu, above content */
+	z-index: 20;
+}
+
+@media (max-width: 1023px) {
+	#menu-overlay {
+		z-index: 104;
+	}
 }
 
 #menu-overlay.active {
