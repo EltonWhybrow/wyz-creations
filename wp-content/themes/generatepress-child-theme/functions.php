@@ -119,7 +119,8 @@ function wyzcreations_enqueue_scripts()
         is_shop() || is_product() || is_product_category() ||
         is_product_tag() || is_cart() || is_checkout()
     );
-    $is_blog = is_singular('post') || (is_home() && !is_front_page()) || is_archive();
+    $blog_index_has_builder = (is_home() && !is_front_page()) && function_exists('wyzcreations_news_page_has_builder_rows') && wyzcreations_news_page_has_builder_rows();
+    $is_blog = is_singular('post') || ((is_home() && !is_front_page()) && !$blog_index_has_builder) || is_archive();
     $needs_page_builder = !$is_wc_page && !$is_blog;
 
     // Slick Carousel — only on pages that may have slider sections
