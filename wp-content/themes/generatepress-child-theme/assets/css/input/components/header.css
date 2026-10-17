@@ -44,27 +44,41 @@
 		}
 	}
 
-	/* Mobile menu */
-	#wyz-creations-mobile-menu {
-		@apply !m-0 !p-0;
-		li {
-			margin: 0;
-			padding: 0;
-			list-style-type: none !important;
-		}
+	/* Space between the header bar and the first link on every panel */
+	.mobile-menu-screen {
+		padding-top: 12px;
 	}
 
-	#wyz-creations-mobile-menu a {
-		display: block;
-		padding: 20px !important;
+	/* Mobile drill-down menu items */
+	.mobile-nav-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 22px 20px;
+		text-align: left;
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: var(--color-wyz-creations-guest-black-chalk);
+		border: none;
+		border-bottom: 1px solid #f3f4f6;
 		text-decoration: none;
-		transition: all 0.2s ease;
-		@apply text-center! font-semibold! text-2xl! rounded-none! border-0! no-underline! hover:bg-[var(--color-wyz-creations-guest-black-chalk)]/90! hover:!text-[var(--color-wyz-guest-white)] transition-colors! duration-300!;
-		color: var(--color-wyz-creations-guest-black-chalk) !important;
-	}
+		background: white;
+		cursor: pointer;
+		transition: background 0.15s ease;
 
-	#wyz-creations-mobile-menu .current-menu-item > a {
-		@apply bg-[var(--color-wyz-creations-guest-black-chalk)] !text-[var(--color-wyz-guest-white)];
+		&:hover, &:active {
+			background-color: var(--color-wyz-creations-guest-light-gray);
+			color: var(--color-wyz-creations-guest-black-chalk);
+			text-decoration: none;
+		}
+
+		.mobile-nav-chevron {
+			width: 1.25rem;
+			height: 1.25rem;
+			opacity: 0.35;
+			flex-shrink: 0;
+		}
 	}
 
 	.burger-line {

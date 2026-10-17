@@ -760,8 +760,8 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
 // Use the custom walker in your menu
 function add_submenu_toggle($args)
 {
-    // Add the custom walker only to your main menu, adjust location as needed
-    if ($args['theme_location'] == 'primary') {
+    // Skip the walker when building the mobile drill-down source data.
+    if ($args['theme_location'] == 'primary' && empty($args['mobile_source'])) {
         $args['walker'] = new Add_Submenu_Toggle_Walker();
     }
     return $args;

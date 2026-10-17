@@ -67,92 +67,91 @@ jQuery(function ($) {
 
   }
 
-  //mobile specific main menu mobile
-  const SUBMENU_SLIDE_DURATION = 300; // keep in sync with the CSS transition duration
+  // Mobile drill-down menu: tapping a parent item slides the panel right
+  // to reveal its children; back arrow slides back. Up to 3 levels deep.
+  (function () {
+    var source = document.getElementById('mobile-menu-source');
+    var track  = document.getElementById('mobile-menu-track');
+    if (!source || !track) return;
 
-  function slideSubmenuOpen(submenu) {
-    clearTimeout(submenu._slideTimeout);
+    var screens   = Array.from(document.querySelectorAll('.mobile-menu-screen'));
+    var backWrap  = document.getElementById('mobile-header-back');
+    var backBtn   = document.getElementById('mobile-menu-back');
+    var backTitle = document.getElementById('mobile-menu-back-title');
 
-    submenu.style.display = 'flex';
-    submenu.style.flexDirection = 'column';
-    submenu.style.overflow = 'hidden';
-    submenu.style.maxHeight = '0px';
-    submenu.style.opacity = '0';
+    var level   = 0;
+    var history = [];
 
-    submenu.offsetHeight; // force reflow so the transition runs
+    var chevron = '<svg xmlns="http://www.w3.org/2000/svg" class="mobile-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>';
 
-    submenu.style.maxHeight = submenu.scrollHeight + 'px';
-    submenu.style.opacity = '1';
+    function buildScreen(screen, ul) {
+      screen.innerHTML = '';
+      ul.querySelectorAll(':scope > li').forEach(function (li) {
+        var a     = li.querySelector(':scope > a');
+        if (!a) return;
+        var subUl = li.querySelector(':scope > ul');
+        var label = a.textContent.trim();
 
-    // Once open, drop the height cap so a nested submenu can expand
-    // inside it later without being clipped by this fixed value.
-    submenu._slideTimeout = setTimeout(() => {
-      submenu.style.maxHeight = 'none';
-    }, SUBMENU_SLIDE_DURATION);
-  }
+        if (subUl) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'mobile-nav-item';
+          btn.innerHTML = '<span>' + label + '</span>' + chevron;
+          btn.addEventListener('click', function () {
+            history.push({ title: label, ul: subUl });
+            advance();
+          });
+          screen.appendChild(btn);
+        } else {
+          var link = document.createElement('a');
+          link.href = a.href;
+          link.className = 'mobile-nav-item';
+          link.textContent = label;
+          screen.appendChild(link);
+        }
+      });
+    }
 
-  function slideSubmenuClosed(submenu) {
-    clearTimeout(submenu._slideTimeout);
+    function advance() {
+      level = Math.min(level + 1, 2);
+      buildScreen(screens[level], history[history.length - 1].ul);
+      track.style.transform = 'translateX(-' + ((100 / 3) * level) + '%)';
+      updateHeader();
+    }
 
-    submenu.style.overflow = 'hidden';
-    submenu.style.maxHeight = submenu.scrollHeight + 'px';
-    submenu.style.opacity = '1';
+    function goBack() {
+      history.pop();
+      level = Math.max(level - 1, 0);
+      track.style.transform = 'translateX(-' + ((100 / 3) * level) + '%)';
+      updateHeader();
+    }
 
-    submenu.offsetHeight; // force reflow so the transition runs
-
-    submenu.style.maxHeight = '0px';
-    submenu.style.opacity = '0';
-
-    submenu._slideTimeout = setTimeout(() => {
-      submenu.style.display = 'none';
-    }, SUBMENU_SLIDE_DURATION);
-  }
-
-  document.querySelectorAll('.menu-item-has-children').forEach(item => {
-
-    const link = item.querySelector(':scope > a');
-    const button = link ? link.nextElementSibling : null;
-
-    function toggleMenu(e) {
-      if (window.innerWidth >= 1024) return;
-
-      e.preventDefault();
-
-      const submenu = item.querySelector(':scope > ul');
-      if (!submenu) return;
-
-      const isOpen = item.classList.contains('is-active');
-
-      // Close sibling dropdowns at the same level so only one is open at a time
-      const parentList = item.parentElement;
-      if (parentList) {
-        parentList.querySelectorAll(':scope > .menu-item-has-children').forEach(sibling => {
-          if (sibling === item) return;
-
-          const siblingSubmenu = sibling.querySelector(':scope > ul');
-          if (siblingSubmenu) slideSubmenuClosed(siblingSubmenu);
-          sibling.classList.remove('is-active');
-        });
-      }
-
-      if (isOpen) {
-        slideSubmenuClosed(submenu);
-        item.classList.remove('is-active');
+    function updateHeader() {
+      if (level === 0) {
+        backWrap.classList.remove('flex');
+        backWrap.classList.add('hidden');
       } else {
-        slideSubmenuOpen(submenu);
-        item.classList.add('is-active');
+        backWrap.classList.remove('hidden');
+        backWrap.classList.add('flex');
+        backTitle.textContent = history[history.length - 1].title;
       }
     }
 
-    if (link) {
-      link.addEventListener('click', toggleMenu);
-    }
+    // Exposed so mobileMenu.toggle can reset after the close animation.
+    window._mobileMenuReset = function () {
+      level = 0;
+      history.length = 0;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+      requestAnimationFrame(function () { track.style.transition = ''; });
+      updateHeader();
+    };
 
-    if (button) {
-      button.addEventListener('click', toggleMenu);
-    }
+    if (backBtn) backBtn.addEventListener('click', goBack);
 
-  });
+    var rootUl = source.querySelector('ul');
+    if (rootUl) buildScreen(screens[0], rootUl);
+  })();
 
 
   // Mobile menu
@@ -163,12 +162,11 @@ jQuery(function ($) {
     },
 
     cacheElements: function () {
-      this.$toggle = $("#mobile-menu-toggle");
-      this.$close = $("#mobile-menu-close");
+      this.$toggle  = $("#mobile-menu-toggle");
+      this.$close   = $("#mobile-menu-close");
       this.$overlay = $("#mobile-menu-overlay");
-      this.$panel = $("#mobile-menu-panel");
-      this.$burger = $(".burger-line");
-      this.$links = $("#wyz-creations-mobile-menu a").not(".dropdown-toggle");
+      this.$panel   = $("#mobile-menu-panel");
+      this.$burger  = $(".burger-line");
     },
 
     bindEvents: function () {
@@ -177,7 +175,8 @@ jQuery(function ($) {
         .add(this.$overlay)
         .on("click", $.proxy(this.toggle, this));
       $(document).on("keydown", $.proxy(this.onKeydown, this));
-      this.$links.on("click", $.proxy(this.toggle, this));
+      // Delegate: close panel when a leaf-node link is tapped
+      this.$panel.on("click", "a.mobile-nav-item", $.proxy(this.toggle, this));
       $(window).on("resize", $.proxy(this.onResize, this));
     },
 
@@ -194,6 +193,11 @@ jQuery(function ($) {
       this.$burger.eq(2).toggleClass("-rotate-45 -translate-y-2", !isOpen);
 
       this.$toggle.attr("aria-expanded", !isOpen);
+
+      // Reset drill-down state after the close animation completes
+      if (isOpen && window._mobileMenuReset) {
+        setTimeout(window._mobileMenuReset, 320);
+      }
     },
 
     onKeydown: function (e) {

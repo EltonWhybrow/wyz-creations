@@ -46,7 +46,7 @@
         </div>
     </div> -->
 
-    <div id="top-section" class="z-50 relative bg-wyz-creations-guest-light-gray">
+    <div id="top-section" class="hidden md:block z-50 relative bg-wyz-creations-guest-light-gray">
         <div class="relative flex flex-row justify-between items-center p-2 px-4">
             <span class="sale-notice">October sale now on<span class="sale-dot d1">.</span><span class="sale-dot d2">.</span><span class="sale-dot d3">.</span></span>
 
@@ -169,57 +169,80 @@
         class="lg:hidden invisible z-50 fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300">
     </div>
 
+    <!-- Hidden menu data source — JS reads the nested <ul> structure from here.
+         mobile_source=true bypasses Add_Submenu_Toggle_Walker so we get clean
+         standard <ul><li> output without the nav-links-zone <div> wrapper. -->
+    <div id="mobile-menu-source" class="hidden" aria-hidden="true">
+        <?php wp_nav_menu(['theme_location' => 'primary', 'mobile_source' => true, 'fallback_cb' => false, 'container_id' => 'mobile-menu-source-nav']); ?>
+    </div>
+
     <!-- Mobile Menu Panel -->
     <nav id="mobile-menu-panel"
-        class="lg:hidden top-0 right-0 z-[105] fixed bg-white shadow-xl w-[90%] h-full transition-transform translate-x-full duration-300 transform"
+        class="lg:hidden top-0 right-0 z-[105] fixed bg-white shadow-xl w-[80%] h-full transition-transform translate-x-full duration-300 transform"
         role="navigation"
         aria-label="Mobile menu">
 
         <div class="flex flex-col h-full">
-            <!-- Mobile Menu Header -->
-            <div class="flex justify-between items-center px-5 py-3">
-                <img
-                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creations-logo.svg"
-                    alt="<?php bloginfo('name'); ?>"
-                    class="w-14" />
 
+            <!-- Header row: back arrow (hidden at level 0) + close button -->
+            <div class="flex justify-between items-center px-5 h-[68px] border-b border-gray-100 shrink-0">
+
+                <!-- Back button (hidden at level 0) -->
+                <div id="mobile-header-back" class="hidden items-center gap-2 min-w-0">
+                    <button id="mobile-menu-back"
+                        class="flex items-center justify-center bg-wyz-creations-guest-light-gray rounded-full w-9 h-9 shrink-0"
+                        aria-label="Go back">
+                        <?php echo wyzcreations_icon('chevron-left'); ?>
+                    </button>
+                    <span id="mobile-menu-back-title" class="font-semibold text-base text-wyz-creations-guest-black-chalk truncate"></span>
+                </div>
+
+                <!-- Spacer so close button stays right when back is hidden -->
+                <div class="flex-1"></div>
+
+                <!-- Close button (always visible) -->
                 <button id="mobile-menu-close"
-                    class="lg:hidden flex justify-center items-center bg-wyz-creations-guest-black-chalk p-0! rounded-full w-7 h-7"
+                    class="flex justify-center items-center bg-wyz-creations-guest-black-chalk p-0! rounded-full w-8 h-8 shrink-0"
                     aria-label="Close mobile menu">
-                    <!-- Just an SVG X icon -->
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
 
-            <!-- Mobile Menu Items -->
-            <div class="flex-1 h-full overflow-auto">
-
-
-                <?php
-                wp_nav_menu(
-                    array(
-                        'container_id'    => 'primary-menu',
-                        'container_class' => 'main-menu main-menu-mobile gap-4 overflow-y-auto',
-                        'menu_class'      => 'lg:flex lg:-mx-4 block lg:flex-row flex-col lg:gap-0 gap-4 overflow-y-auto',
-                        'theme_location'  => 'primary',
-                        'li_class'        => 'lg:mx-4 relative py-0',
-                        'fallback_cb'     => false,
-                    )
-                );
-                ?>
+            <!-- Sliding panels: 3-screen track, JS translates to show current level -->
+            <div class="flex-1 overflow-hidden relative">
+                <div id="mobile-menu-track"
+                    class="flex h-full"
+                    style="width:300%;transform:translateX(0);transition:transform .3s cubic-bezier(.4,0,.2,1)">
+                    <div class="mobile-menu-screen overflow-y-auto" style="width:33.333%"></div>
+                    <div class="mobile-menu-screen overflow-y-auto" style="width:33.333%"></div>
+                    <div class="mobile-menu-screen overflow-y-auto" style="width:33.333%"></div>
+                </div>
             </div>
 
-            <!-- Mobile Menu Footer -->
+            <!-- Subscribe callout -->
+            <div class="mx-4 mb-4 rounded-2xl overflow-hidden shrink-0 bg-wyz-creations-guest-black-chalk">
+                <div class="px-5 pt-4 pb-0">
+                    <p class="mb-0! text-center text-sm font-bold text-white! tracking-wide uppercase">Subscriber exclusive</p>
+                </div>
+                <div class="px-5 py-4">
+                    <p class="mb-0.5! font-bold text-white! text-base leading-snug">50% off your first order</p>
+                    <p class="mb-3! text-sm leading-snug text-white/70">Plus a chance to win free T-shirts when you join the Wyz Creations community.</p>
+                    <a href="<?php echo home_url('/subscribe'); ?>"
+                        class="flex justify-center wyz-btn btn-sm"
+                        style="background:var(--color-wyz-creations-guest-orange);color:#fff;border-color:var(--color-wyz-creations-guest-orange);">
+                        Join Us — It's Free
+                    </a>
+                </div>
+            </div>
 
-            <div class="flex items-center gap-8 bg-wyz-creations-guest-black-chalk/80 p-3 border-t">
-
+            <!-- Footer -->
+            <div class="flex items-center gap-8 bg-wyz-creations-guest-black-chalk/80 p-3 border-t shrink-0">
                 <a href="<?php echo home_url('/my-account'); ?>"
                     class="flex flex-1 mt-0! wyz-btn btn-sm secondary">
                     My Account
                 </a>
-
                 <div class="flex items-center gap-5 pr-3">
                     <a href="<?php echo home_url('/favourites'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
@@ -238,7 +261,7 @@
                         </span>
                     </a>
                 </div>
-
             </div>
+
         </div>
     </nav>
