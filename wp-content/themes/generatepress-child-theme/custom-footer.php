@@ -27,7 +27,7 @@
                 <!-- STATIC IMAGE COLUMN -->
                 <div class="flex justify-end items-center col-span-1">
                     <img
-                        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creation-logo.png"
+                        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creations-logo.svg"
                         alt="<?php bloginfo('name'); ?>"
                         class="mx-auto md:mx-0 w-24" />
                 </div>
@@ -61,7 +61,7 @@
 
     <div class="linkme-content">
         <img
-            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creation-logo.png"
+            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creations-logo.svg"
             alt="<?php bloginfo('name'); ?>"
             class="subscribe-modal-logo linkme-logo">
 
@@ -85,7 +85,7 @@
         <button id="close-subscribe-modal" aria-label="Close">✕</button>
 
         <img
-            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creation-logo.png"
+            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creations-logo.svg"
             alt="<?php bloginfo('name'); ?>"
             class="subscribe-modal-logo">
 
