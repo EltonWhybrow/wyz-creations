@@ -28,7 +28,7 @@
 	}
 
 	.menu-link-icons {
-		@apply text-wyz-creations-guest-black-chalk! text-xl no-underline!;
+		@apply text-wyz-creations-guest-black-chalk! text-2xl no-underline!;
 	}
 
 	.wpcf7-submit {

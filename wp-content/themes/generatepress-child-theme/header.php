@@ -124,7 +124,7 @@
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="header-search">
                     <div class="header-search-wrap">
                         <label for="header-search-input" class="header-search-icon" aria-label="Search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <?php echo wyzcreations_icon('magnifying-glass'); ?>
                         </label>
                         <input
                             type="search"
@@ -140,12 +140,12 @@
 
                 <!-- Desktop Icons (Wishlist and Cart) -->
                 <a href="<?php echo home_url('/favourites'); ?>" class="hidden relative md:flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
-                    <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                    <?php echo wyzcreations_icon('heart'); ?>
                     <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
                     <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
                 </a>
                 <a href="<?php echo home_url('/cart'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
-                    <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                    <?php echo wyzcreations_icon('basket-shopping'); ?>
                     <?php $cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
                     <span class="cart-count-badge<?php echo $cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($cart_count); ?></span>
                 </a>
@@ -224,7 +224,7 @@
                     <a href="<?php echo home_url('/favourites'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
                         <span class="inline-flex relative">
-                            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                            <?php echo wyzcreations_icon('heart'); ?>
                             <?php $mobile_fav_count = wyzcreations_get_favourites_count(); ?>
                             <span class="favourites-count-badge<?php echo $mobile_fav_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_fav_count); ?></span>
                         </span>
@@ -232,7 +232,7 @@
                     <a href="<?php echo home_url('/cart'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
                         <span class="inline-flex relative">
-                            <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                            <?php echo wyzcreations_icon('basket-shopping'); ?>
                             <?php $mobile_cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
                             <span class="cart-count-badge<?php echo $mobile_cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_cart_count); ?></span>
                         </span>

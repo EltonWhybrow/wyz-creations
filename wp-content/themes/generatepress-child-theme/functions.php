@@ -6,6 +6,59 @@
 
 require_once get_stylesheet_directory() . '/inc/acf-page-builder.php';
 
+/**
+ * Returns an inline SVG for the given icon name.
+ * Pass non-FA classes (e.g. Tailwind utilities) via $class.
+ */
+function wyzcreations_icon( string $name, string $class = '' ): string {
+    $class_attr = $class ? ' class="' . esc_attr( $class ) . '"' : '';
+
+    $icons = [
+        'heart' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"/>',
+        ],
+        'basket-shopping' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd"/>',
+        ],
+        'magnifying-glass' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd"/>',
+        ],
+        'chevron-down' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd"/>',
+        ],
+        'chevron-left' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd"/>',
+        ],
+        'chevron-right' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd"/>',
+        ],
+        'arrow-up' => [
+            'viewBox' => '0 0 24 24',
+            'path'    => '<path fill-rule="evenodd" d="M11.47 2.47a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06l-6.22-6.22V21a.75.75 0 0 1-1.5 0V4.81l-6.22 6.22a.75.75 0 1 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd"/>',
+        ],
+        'quote-left' => [
+            'viewBox' => '0 0 448 512',
+            'path'    => '<path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V216z"/>',
+        ],
+    ];
+
+    if ( ! isset( $icons[ $name ] ) ) return '';
+
+    $icon = $icons[ $name ];
+    return sprintf(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="%s" fill="currentColor" width="1em" height="1em" aria-hidden="true"%s>%s</svg>',
+        esc_attr( $icon['viewBox'] ),
+        $class_attr,
+        $icon['path']
+    );
+}
+
 // Sync the Page Builder field group with acf-json/ instead of registering
 // it via PHP, so it's fully editable in wp-admin (add/remove/reorder
 // fields, including inside flexible-content layouts) while still being
@@ -60,18 +113,6 @@ function wyzcreations_enqueue_tailwind()
 add_action('wp_enqueue_scripts', 'wyzcreations_enqueue_scripts');
 function wyzcreations_enqueue_scripts()
 {
-    // Font Awesome — every page
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css', array(), '7.0.1');
-    wp_add_inline_style('font-awesome', '
-        @font-face {
-            font-family: “Font Awesome 7 Free”;
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(“https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/webfonts/fa-solid-900.woff2”) format(“woff2”);
-        }
-    ');
-
     // Pages that use page-builder sections (sliders, GSAP animations).
     // WooCommerce functional pages and blog posts/archives don't use any of these.
     $is_wc_page = function_exists('is_shop') && (
@@ -192,7 +233,7 @@ add_action('woocommerce_after_add_to_cart_button', function () {
             data-product-id="<?php echo esc_attr($product_id); ?>"
             aria-label="<?php echo $is_fav ? 'Remove from favourites' : 'Add to favourites'; ?>">
         <span class="heart <?php echo $heart_class; ?>">
-            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            <?php echo wyzcreations_icon('heart'); ?>
         </span>
         <span class="fav-label"><?php echo $is_fav ? 'Remove from favourites' : 'Add to favourites'; ?></span>
     </button>
@@ -310,9 +351,9 @@ class Mobile_Menu_Walker extends Walker_Nav_Menu
 
         // Optional: toggle button
         if ($has_children) {
-            $output .= '<button class="top-4 right-4 absolute submenu-toggle">
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>';
+            $output .= '<button class="top-4 right-4 absolute submenu-toggle">'
+                . wyzcreations_icon('chevron-down')
+                . '</button>';
         }
     }
 
@@ -354,7 +395,7 @@ class Desktop_Mega_Menu_Walker extends Walker_Nav_Menu
             $output .= esc_html($item->title);
 
             if ($has_children) {
-                $output .= '<i class="ml-1 text-xs fa fa-chevron-down"></i>';
+                $output .= wyzcreations_icon('chevron-down', 'ml-1 text-xs');
             }
 
             $output .= '</a>';
@@ -688,13 +729,11 @@ class Add_Submenu_Toggle_Walker extends Walker_Nav_Menu
 
         // Toggle button (if has children)
         if ($has_children) {
-            $output .= sprintf(
-                '<button class="lg:hidden right-0 absolute h-[70px] cursor-pointer submenu-toggle %s">
-          <i class="fa-solid fa-chevron-down %s"></i>
-        </button>',
-                $depth > 0 ? 'top-0 px-3 pt-2 pb-3' : 'top-0 px-3 pt-4 pb-2', // Adjust position per level
-                $depth > 0 ? 'text-md' : 'text-md' // Icon size
-            );
+            $btn_class = 'lg:hidden right-0 absolute h-[70px] cursor-pointer submenu-toggle ' . ($depth > 0 ? 'top-0 px-3 pt-2 pb-3' : 'top-0 px-3 pt-4 pb-2');
+            $icon_class = $depth > 0 ? 'text-md' : 'text-md';
+            $output .= '<button class="' . esc_attr($btn_class) . '">'
+                . wyzcreations_icon('chevron-down', $icon_class)
+                . '</button>';
         }
     }
 

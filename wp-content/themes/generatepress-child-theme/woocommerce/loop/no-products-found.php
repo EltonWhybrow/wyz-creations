@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 <div class="woocommerce-no-products-found">
     <div class="woocommerce-info" role="alert">
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <?php echo wyzcreations_icon('magnifying-glass'); ?>
         <?php esc_html_e('No products were found matching your selection.', 'woocommerce'); ?>
     </div>
 </div>

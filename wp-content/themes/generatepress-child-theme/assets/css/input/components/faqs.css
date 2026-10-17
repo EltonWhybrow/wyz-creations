@@ -66,13 +66,11 @@ button.faq-question {
 	display: none;
 }
 
-.faq-question .fa-chevron-down,
-.faq-question i {
+.faq-question .faq-chevron {
 	transition: transform 0.3s ease;
 }
 
 /* rotated state when open */
-.faq-question.active .fa-chevron-down,
-.faq-question.active i {
+.faq-question.active .faq-chevron {
 	transform: rotate(180deg);
 }

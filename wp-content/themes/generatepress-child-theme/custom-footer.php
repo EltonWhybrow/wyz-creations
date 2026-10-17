@@ -49,7 +49,7 @@
 </footer>
 
 <button id="backToTop" class="back-to-top" aria-label="Back to top">
-    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    <?php echo wyzcreations_icon('arrow-up'); ?>
 </button>
 
 

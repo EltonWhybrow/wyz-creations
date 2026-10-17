@@ -26,10 +26,10 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                     <!-- Arrows -->
                     <div class="flex gap-3">
                         <button class="trusted-prev">
-                            <i class="fa-chevron-left fa-solid"></i>
+                            <?php echo wyzcreations_icon('chevron-left'); ?>
                         </button>
                         <button class="trusted-next">
-                            <i class="fa-chevron-right fa-solid"></i>
+                            <?php echo wyzcreations_icon('chevron-right'); ?>
                         </button>
                     </div>
 

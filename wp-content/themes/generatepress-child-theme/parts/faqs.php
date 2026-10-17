@@ -50,7 +50,7 @@
                             <?php echo get_the_title(); ?>
                         </h3>
                         <span class="flex-shrink-0 ml-4 faq-icon">
-                            <i class="transition-transform duration-300 fa-solid fa-chevron-down"></i>
+                            <?php echo wyzcreations_icon('chevron-down', 'transition-transform duration-300 faq-chevron'); ?>
                         </span>
                     </button>
 
