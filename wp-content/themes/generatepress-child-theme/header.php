@@ -227,7 +227,7 @@
                     <p class="mb-0! text-center text-sm font-bold text-white! tracking-wide uppercase">Subscriber exclusive</p>
                 </div>
                 <div class="px-5 py-4">
-                    <p class="mb-0.5! font-bold text-white! text-base leading-snug">50% off your first order</p>
+                    <p class="mb-0.5! font-bold text-white! text-base leading-snug"><?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
                     <p class="mb-3! text-sm leading-snug text-white/70">Plus a chance to win free T-shirts when you join the Wyz Creations community.</p>
                     <a href="<?php echo home_url('/subscribe'); ?>"
                         class="flex justify-center wyz-btn btn-sm"

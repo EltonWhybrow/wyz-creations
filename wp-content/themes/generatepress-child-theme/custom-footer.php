@@ -67,10 +67,10 @@
 
         <p class="subscribe-modal-eyebrow">Enter to win</p>
         <div class="subscribe-modal-value">Any 3 Tees</div>
-        <p class="subscribe-modal-subtitle">+ Get 50% off your first order</p>
+        <p class="subscribe-modal-subtitle">+ Get <?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
 
         <p class="subscribe-modal-disclaimer">
-            50% off for new subscribers only. Be the first to know about new drops
+            <?php echo wyzcreations_subscribe_discount(); ?>% off for new subscribers only. Be the first to know about new drops
             and get exclusive promo codes.
         </p>
 
@@ -91,10 +91,10 @@
 
         <p class="subscribe-modal-eyebrow">Enter to win</p>
         <div class="subscribe-modal-value">Any 3 Tees</div>
-        <p class="subscribe-modal-subtitle">+ Get 50% off your first order</p>
+        <p class="subscribe-modal-subtitle">+ Get <?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
 
         <p class="subscribe-modal-disclaimer">
-            50% off for new subscribers only. Be the first to know about new drops
+            <?php echo wyzcreations_subscribe_discount(); ?>% off for new subscribers only. Be the first to know about new drops
             and get exclusive promo codes.
         </p>
 

@@ -75,19 +75,43 @@ add_filter('acf/settings/load_json', function ($paths) {
     return $paths;
 });
 
-// ACF options page for global navigation settings
+// ACF options pages
 add_action('acf/init', function () {
-    if (function_exists('acf_add_options_page')) {
-        acf_add_options_page([
-            'page_title' => 'Navigation Settings',
-            'menu_title' => 'Nav Settings',
-            'menu_slug'  => 'nav-settings',
-            'capability' => 'manage_options',
-            'position'   => 80,
-            'redirect'   => false,
-        ]);
-    }
+    if (!function_exists('acf_add_options_page')) return;
+
+    acf_add_options_page([
+        'page_title' => 'WYZ Settings',
+        'menu_title' => 'WYZ Settings',
+        'menu_slug'  => 'wyz-settings',
+        'capability' => 'manage_options',
+        'position'   => 80,
+        'redirect'   => true,
+    ]);
+
+    acf_add_options_sub_page([
+        'page_title'  => 'Nav Settings',
+        'menu_title'  => 'Nav Settings',
+        'menu_slug'   => 'nav-settings',
+        'parent_slug' => 'wyz-settings',
+        'capability'  => 'manage_options',
+    ]);
+
+    acf_add_options_sub_page([
+        'page_title'  => 'Site Settings',
+        'menu_title'  => 'Site Settings',
+        'menu_slug'   => 'site-settings',
+        'parent_slug' => 'wyz-settings',
+        'capability'  => 'manage_options',
+    ]);
 });
+
+// Returns the subscribe discount percentage string (e.g. "50") from ACF options,
+// falling back to "50" if not yet set.
+function wyzcreations_subscribe_discount(): string {
+    $val = get_field('subscribe_discount', 'option');
+    return ($val !== '' && $val !== false && $val !== null) ? esc_html($val) : '50';
+}
+add_shortcode('wyz_discount', 'wyzcreations_subscribe_discount');
 
 // Enqueue Google Fonts
 // add_action('wp_enqueue_scripts', 'wyzcreations_load_google_fonts', 5);

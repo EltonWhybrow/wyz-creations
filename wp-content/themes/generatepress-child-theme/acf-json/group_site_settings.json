@@ -1,0 +1,44 @@
+{
+    "key": "group_site_settings",
+    "title": "Site Settings",
+    "fields": [
+        {
+            "key": "field_subscribe_discount",
+            "label": "Subscribe Discount",
+            "name": "subscribe_discount",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The discount percentage shown to new subscribers (e.g. 50). Used in the subscribe modal, menu callout, and anywhere the offer appears. Enter the number only, without the % sign.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "50",
+            "maxlength": "",
+            "placeholder": "50",
+            "prepend": "",
+            "append": "%"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": false
+}
