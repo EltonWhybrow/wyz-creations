@@ -40,7 +40,7 @@ $contact_info = get_sub_field('contact_info');
 
         <?php endif; ?>
     </div>
-    <?php if ($contact_info) : ?>
+    <?php if (!empty(array_filter((array) $contact_info))) : ?>
     <div class="flex flex-col flex-1 mx-auto md:text-left text-center contact-us-content">
 
             <div class="flex md:flex-row flex-col justify-center gap-5 my-[50px] md:text-left text-center align-middle">
