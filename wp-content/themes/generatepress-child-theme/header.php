@@ -139,7 +139,7 @@
                 </form>
 
                 <!-- Desktop Icons (Wishlist and Cart) -->
-                <a href="<?php echo home_url('/favourites'); ?>" class="hidden relative md:flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
+                <a href="<?php echo home_url('/favourites'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
                     <?php echo wyzcreations_icon('heart'); ?>
                     <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
                     <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>

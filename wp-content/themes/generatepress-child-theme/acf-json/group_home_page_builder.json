@@ -213,7 +213,7 @@
                             "name": "hero_mobile_center",
                             "aria-label": "",
                             "type": "true_false",
-                            "instructions": "When enabled, the title, subtitle and buttons are horizontally centred on mobile screens.",
+                            "instructions": "When enabled, the title, subtitle and buttons are vertically centred within the hero on mobile screens.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {

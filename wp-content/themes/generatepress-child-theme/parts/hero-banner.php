@@ -81,7 +81,7 @@ $hero_image_mobile_id = $hero_image_mobile['id'] ?? 0;
     <?php endif; ?>
 
     <!-- Main Content Container -->
-    <div class="bottom-6! z-10 flex flex-col pt-14 pb-[60px] absolute! banner-content <?php echo $hero_mobile_center ? 'left-0! right-0! items-center text-center px-6 lg:items-start lg:text-left lg:left-12! lg:right-auto!' : 'left-12! text-left'; ?>">
+    <div class="z-10 flex flex-col pt-14 pb-[60px] absolute! banner-content <?php echo $hero_mobile_center ? 'left-0! right-0! top-1/2! -translate-y-1/2! px-6 items-center text-center lg:top-auto! lg:translate-y-0! lg:bottom-6! lg:left-12! lg:right-auto! lg:items-start! lg:text-left! lg:px-0!' : 'bottom-6! left-12! text-left'; ?>">
 
         <?php if ($subtitle) : ?>
             <p class="mb-0! ml-1! text-[18px] text-wyz-guest-white/90 lg:text-2xl leading-normal! slide-up">
