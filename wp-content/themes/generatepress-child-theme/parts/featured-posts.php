@@ -32,7 +32,7 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                 </div>
 
                 <!-- Full Width Posts Slider -->
-                <div class="pt-2 pb-1 w-full">
+                <div class="pt-2 pb-0 w-full">
                     <div class="featured-posts-slider">
                         <?php
                         // Posts shown are those in the chosen category, plus any
