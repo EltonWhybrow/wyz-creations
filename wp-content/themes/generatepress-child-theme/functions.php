@@ -960,7 +960,7 @@ function wyzcreations_append_result_count_to_title($title)
 
     $per_page = wc_get_loop_prop('per_page');
 
-    $count_text = 1 === (int) $total ? '1 result' : $total . ' results';
+    $count_text = $total;
 
     return $title . ' <span class="shop-title-result-count">(' . esc_html($count_text) . ')</span>';
 }
