@@ -4,6 +4,29 @@
 	}
 }
 
+.banner-content--mobile-center {
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	left: 0 !important;
+	right: 0 !important;
+	padding-left: 1.5rem !important;
+	padding-right: 1.5rem !important;
+	align-items: center !important;
+	text-align: center !important;
+
+	@media (min-width: 1024px) {
+		top: auto !important;
+		transform: none !important;
+		bottom: 1.5rem !important;
+		left: 3rem !important;
+		right: auto !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		align-items: flex-start !important;
+		text-align: left !important;
+	}
+}
+
 /* Shown over the hero image wrapper until the <img> fires its load
    event (see hero-banner-video JS in wyz-creations-main.js), then
    faded out as the image fades in. */
