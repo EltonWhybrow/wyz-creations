@@ -6,6 +6,8 @@ jQuery(function ($) {
   // assign the src once the page is idle/loaded, then fade the video in
   // over the image once it's actually ready to play.
   (function () {
+    if (window.innerWidth < 768) return;
+
     const videos = document.querySelectorAll('.hero-banner-video[data-src]');
     if (!videos.length) return;
 

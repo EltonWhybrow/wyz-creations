@@ -458,6 +458,15 @@ add_action('wp_enqueue_scripts', function () {
     wp_deregister_style('generate-style'); // important
 }, 999);
 
+// Dequeue WooCommerce front-end CSS on non-WC pages
+add_action('wp_enqueue_scripts', function () {
+    if (is_woocommerce() || is_cart() || is_checkout() || is_account_page()) return;
+    wp_dequeue_style('woocommerce-general');
+    wp_dequeue_style('woocommerce-smallscreen');
+    wp_dequeue_style('woocommerce-layout');
+    wp_dequeue_style('woocommerce-inline');
+}, 999);
+
 // CUSTOM TEXT FOR SPECIFIC PRODUCTS
 // Add custom input field on product page
 // dd custom input field on specific products only

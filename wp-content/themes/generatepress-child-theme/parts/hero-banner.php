@@ -11,8 +11,10 @@ $overlay_opacity = ($overlay_opacity !== '' && $overlay_opacity !== false) ? (in
 $opacity_top     = round($overlay_opacity / 100, 2);
 $opacity_mid     = round($overlay_opacity * 0.8 / 100, 2);
 
-$hero_image_url = $hero_image['url'] ?? '';
-$hero_image_id  = $hero_image['id']  ?? 0;
+$hero_image_mobile    = wyzcreations_builder_field('hero_image_mobile');
+$hero_image_url       = $hero_image['url'] ?? '';
+$hero_image_id        = $hero_image['id']  ?? 0;
+$hero_image_mobile_id = $hero_image_mobile['id'] ?? 0;
 ?>
 
 <section class="relative justify-center h-[calc(100vh-160px)] overflow-hidden hero-banner">
@@ -22,15 +24,36 @@ $hero_image_id  = $hero_image['id']  ?? 0;
          as early as possible. wp_get_attachment_image supplies srcset. -->
     <?php if ($hero_image_id) : ?>
         <div class="z-0 absolute inset-0 overflow-hidden hero-banner-image-wrap">
-            <?php echo wp_get_attachment_image($hero_image_id, 'full', false, [
-                'class'         => 'absolute inset-0 w-full h-full object-cover hero-banner-image',
-                'style'         => 'object-position: 55% 75%;',
-                'fetchpriority' => 'high',
-                'loading'       => 'eager',
-                'decoding'      => 'async',
-                'sizes'         => '100vw',
-                'alt'           => '',
-            ]); ?>
+            <?php if ($hero_image_mobile_id) :
+                $mobile_src    = wp_get_attachment_image_url($hero_image_mobile_id, 'full');
+                $mobile_srcset = wp_get_attachment_image_srcset($hero_image_mobile_id, 'full');
+            ?>
+                <picture class="absolute inset-0 w-full h-full">
+                    <source
+                        media="(max-width: 767px)"
+                        srcset="<?php echo esc_attr($mobile_srcset ?: $mobile_src); ?>"
+                        sizes="100vw">
+                    <?php echo wp_get_attachment_image($hero_image_id, 'full', false, [
+                        'class'         => 'absolute inset-0 w-full h-full object-cover hero-banner-image',
+                        'style'         => 'object-position: 55% 75%;',
+                        'fetchpriority' => 'high',
+                        'loading'       => 'eager',
+                        'decoding'      => 'async',
+                        'sizes'         => '100vw',
+                        'alt'           => '',
+                    ]); ?>
+                </picture>
+            <?php else : ?>
+                <?php echo wp_get_attachment_image($hero_image_id, 'full', false, [
+                    'class'         => 'absolute inset-0 w-full h-full object-cover hero-banner-image',
+                    'style'         => 'object-position: 55% 75%;',
+                    'fetchpriority' => 'high',
+                    'loading'       => 'eager',
+                    'decoding'      => 'async',
+                    'sizes'         => '100vw',
+                    'alt'           => '',
+                ]); ?>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 

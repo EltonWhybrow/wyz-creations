@@ -89,6 +89,32 @@
                             "mime_types": ""
                         },
                         {
+                            "key": "field_hero_img_mobile1",
+                            "label": "Hero Image (Mobile)",
+                            "name": "hero_image_mobile",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional portrait-cropped image for mobile screens (< 768px). If not set, the main hero image is used.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": false,
+                            "preview_size": "medium"
+                        },
+                        {
                             "key": "field_693042685393f",
                             "label": "Title",
                             "name": "title",
