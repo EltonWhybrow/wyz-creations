@@ -41,7 +41,7 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                         <?php
                         $args = [
                             'post_type' => 'product',
-                            'posts_per_page' => 21,
+                            'posts_per_page' => 12,
                             'tax_query' => [
                                 [
                                     'taxonomy' => 'product_cat',
@@ -65,8 +65,13 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                         ?>
                                 <div class="best-seller-slider-item">
                                     <a href="<?php echo esc_url($link); ?>" class="group block h-full">
-                                        <div class="relative h-full min-h-[480px] md:min-h-[570px] overflow-hidden"
-                                            style="background: url('<?php echo esc_url($image); ?>') center/cover no-repeat;">
+                                        <div class="relative h-full min-h-[480px] md:min-h-[570px] overflow-hidden">
+                                            <img
+                                                src="<?php echo esc_url($image); ?>"
+                                                alt="<?php echo esc_attr($short_name); ?>"
+                                                loading="lazy"
+                                                decoding="async"
+                                                class="absolute inset-0 w-full h-full object-cover object-center">
                                             <div class="best-seller-label">
                                                 <?php echo esc_html($short_name); ?>
                                             </div>
