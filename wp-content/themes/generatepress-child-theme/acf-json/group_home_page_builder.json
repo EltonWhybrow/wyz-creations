@@ -1100,6 +1100,32 @@
                             "mime_types": ""
                         },
                         {
+                            "key": "field_cta_bg_image_mobile1",
+                            "label": "Background Image (Mobile)",
+                            "name": "action_bg_image_mobile",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional portrait-cropped image for mobile screens (< 768px). If not set, the main background image is used.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": false,
+                            "preview_size": "medium"
+                        },
+                        {
                             "key": "field_69331b5093924",
                             "label": "Overlay Opacity",
                             "name": "overlay_opacity",
@@ -1824,6 +1850,32 @@
                             "max_height": 0,
                             "max_size": 0,
                             "mime_types": ""
+                        },
+                        {
+                            "key": "field_split_image_mobile1",
+                            "label": "Image (Mobile)",
+                            "name": "split_image_mobile",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional portrait-cropped image for mobile screens (< 768px). If not set, the main image is used.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": false,
+                            "preview_size": "medium"
                         },
                         {
                             "key": "field_21775d92e5441",

@@ -1,8 +1,9 @@
 <?php
 
-$split_heading   = get_sub_field('split_heading');
-$split_image     = get_sub_field('split_image');
-$split_paragraph = get_sub_field('split_paragraph');
+$split_heading        = get_sub_field('split_heading');
+$split_image          = get_sub_field('split_image');
+$split_image_mobile   = get_sub_field('split_image_mobile');
+$split_paragraph      = get_sub_field('split_paragraph');
 $split_content   = get_sub_field('split_content');
 $split_button    = get_sub_field('split_button');
 $split_flip      = (bool) get_sub_field('split_flip');
@@ -14,11 +15,25 @@ $split_flip      = (bool) get_sub_field('split_flip');
         <div class="<?php echo $split_flip ? 'md:order-2' : 'md:order-1'; ?>">
             <?php if ($split_image) : ?>
                 <div class="rounded-[35px] w-full overflow-hidden scale-hover">
-                    <img
-                        src="<?php echo esc_url($split_image['url']); ?>"
-                        alt="<?php echo esc_attr($split_image['alt'] ?? ''); ?>"
-                        class="w-full h-[300px] md:h-[480px] object-cover"
-                        loading="lazy">
+                    <?php if ($split_image_mobile) :
+                        $mobile_src    = wp_get_attachment_image_url($split_image_mobile['id'], 'large');
+                        $mobile_srcset = wp_get_attachment_image_srcset($split_image_mobile['id'], 'large');
+                    ?>
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="<?php echo esc_attr($mobile_srcset ?: $mobile_src); ?>" sizes="100vw">
+                            <img
+                                src="<?php echo esc_url($split_image['url']); ?>"
+                                alt="<?php echo esc_attr($split_image['alt'] ?? ''); ?>"
+                                class="w-full h-[300px] md:h-[480px] object-cover"
+                                loading="lazy">
+                        </picture>
+                    <?php else : ?>
+                        <img
+                            src="<?php echo esc_url($split_image['url']); ?>"
+                            alt="<?php echo esc_attr($split_image['alt'] ?? ''); ?>"
+                            class="w-full h-[300px] md:h-[480px] object-cover"
+                            loading="lazy">
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>

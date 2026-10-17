@@ -20,10 +20,11 @@ if ($audience !== 'everywhere' && !current_user_can('manage_options')) {
     }
 }
 
-$action_title = get_sub_field('action_title');
-$action_subtitle = get_sub_field('action_subtitle');
-$action_bg_image = get_sub_field('action_bg_image');
-$overlay_opacity = get_sub_field('overlay_opacity');
+$action_title          = get_sub_field('action_title');
+$action_subtitle       = get_sub_field('action_subtitle');
+$action_bg_image       = get_sub_field('action_bg_image');
+$action_bg_image_mobile = get_sub_field('action_bg_image_mobile');
+$overlay_opacity       = get_sub_field('overlay_opacity');
 $action_link = get_sub_field('action_link');
 $action_text_align = strtolower(get_sub_field('action_text_align') ?: 'center');
 $overlay_alpha = round(max(0, min(100, (int) ($overlay_opacity !== false && $overlay_opacity !== '' ? $overlay_opacity : 40))) / 100, 2);
@@ -37,21 +38,38 @@ $align_class = $align_classes[$action_text_align] ?? $align_classes['center'];
 ?>
 
 <?php
-$bg_url = '';
-
-if (is_array($action_bg_image) && isset($action_bg_image['url'])) {
-    $bg_url = $action_bg_image['url'];
-} elseif (is_string($action_bg_image)) {
-    $bg_url = $action_bg_image; // already a URL
-} elseif (is_numeric($action_bg_image)) {
-    $bg_url = wp_get_attachment_image_url($action_bg_image, 'full');
-}
+$bg_id        = is_array($action_bg_image) ? ($action_bg_image['id'] ?? 0) : (int) $action_bg_image;
+$bg_mobile_id = is_array($action_bg_image_mobile) ? ($action_bg_image_mobile['id'] ?? 0) : 0;
 ?>
 
-<div class="relative overflow-hidden skip-lazy" id="call-to-action"
-    <?php if ($bg_url): ?>
-    style="background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.0)), url('<?php echo esc_url($bg_url); ?>') center / cover no-repeat;"
-    <?php endif; ?>>
+<div class="relative overflow-hidden skip-lazy" id="call-to-action">
+    <?php if ($bg_id) : ?>
+        <div class="z-0 absolute inset-0 overflow-hidden">
+            <?php if ($bg_mobile_id) :
+                $mobile_src    = wp_get_attachment_image_url($bg_mobile_id, 'full');
+                $mobile_srcset = wp_get_attachment_image_srcset($bg_mobile_id, 'full');
+            ?>
+                <picture class="absolute inset-0 w-full h-full">
+                    <source media="(max-width: 767px)" srcset="<?php echo esc_attr($mobile_srcset ?: $mobile_src); ?>" sizes="100vw">
+                    <?php echo wp_get_attachment_image($bg_id, 'full', false, [
+                        'class'   => 'absolute inset-0 w-full h-full object-cover',
+                        'loading' => 'lazy',
+                        'decoding' => 'async',
+                        'sizes'   => '100vw',
+                        'alt'     => '',
+                    ]); ?>
+                </picture>
+            <?php else : ?>
+                <?php echo wp_get_attachment_image($bg_id, 'full', false, [
+                    'class'   => 'absolute inset-0 w-full h-full object-cover',
+                    'loading' => 'lazy',
+                    'decoding' => 'async',
+                    'sizes'   => '100vw',
+                    'alt'     => '',
+                ]); ?>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
     <div class="z-0 absolute inset-0" style="background: rgba(0,0,0,<?php echo $overlay_alpha; ?>);"></div>
 
 
