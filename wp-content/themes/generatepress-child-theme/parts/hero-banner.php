@@ -1,30 +1,32 @@
 <?php
-$hero_image = wyzcreations_builder_field('hero_image');
-$video = wyzcreations_builder_field('video');
-$video_loop = wyzcreations_builder_field('video_loop');
-$title = wyzcreations_builder_field('title');
-$subtitle = wyzcreations_builder_field('sub_title');
-$button_link = wyzcreations_builder_field('button_link');
+$hero_image   = wyzcreations_builder_field('hero_image');
+$video        = wyzcreations_builder_field('video');
+$video_loop   = wyzcreations_builder_field('video_loop');
+$title        = wyzcreations_builder_field('title');
+$subtitle     = wyzcreations_builder_field('sub_title');
+$button_link  = wyzcreations_builder_field('button_link');
 $button_link_2 = wyzcreations_builder_field('button_link_2');
 
 $hero_image_url = $hero_image['url'] ?? '';
+$hero_image_id  = $hero_image['id']  ?? 0;
 ?>
 
 <section class="relative justify-center h-[calc(100vh-160px)] overflow-hidden hero-banner">
 
-    <!-- Hero image: shows a spinner until it's actually loaded, then fades
-         in. Doubles as the video's placeholder while that lazy-loads below. -->
-    <?php if ($hero_image_url) : ?>
-        <div class="z-0 absolute inset-0 overflow-hidden skip-lazy hero-banner-image-wrap">
-            <div class="hero-banner-spinner" aria-hidden="true">
-                <div class="hero-banner-spinner__icon"></div>
-            </div>
-
-            <img
-                src="<?php echo esc_url($hero_image_url); ?>"
-                alt=""
-                style="object-position: 55% 75%;"
-                class="opacity-0 absolute inset-0 w-full h-full object-cover transition-opacity duration-500 hero-banner-image" />
+    <!-- Hero image: rendered immediately as the LCP element — no spinner,
+         no opacity-0. fetchpriority=high tells the browser to fetch it
+         as early as possible. wp_get_attachment_image supplies srcset. -->
+    <?php if ($hero_image_id) : ?>
+        <div class="z-0 absolute inset-0 overflow-hidden hero-banner-image-wrap">
+            <?php echo wp_get_attachment_image($hero_image_id, 'full', false, [
+                'class'         => 'absolute inset-0 w-full h-full object-cover hero-banner-image',
+                'style'         => 'object-position: 55% 75%;',
+                'fetchpriority' => 'high',
+                'loading'       => 'eager',
+                'decoding'      => 'async',
+                'sizes'         => '100vw',
+                'alt'           => '',
+            ]); ?>
 
             <div
                 class="absolute inset-0"

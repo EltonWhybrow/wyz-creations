@@ -97,7 +97,7 @@
         <div class="flex justify-between items-center mx-[3vw] py-2">
             <a href="<?php echo home_url('/'); ?>" class="site-branding">
                 <img
-                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
+                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creation-logo.png"
                     alt="<?php bloginfo('name'); ?>"
                     class="w-14" />
             </a>
@@ -179,7 +179,7 @@
             <!-- Mobile Menu Header -->
             <div class="flex justify-between items-center px-5 py-3">
                 <img
-                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/linkme-logo.png"
+                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creation-logo.png"
                     alt="<?php bloginfo('name'); ?>"
                     class="w-14" />
 
