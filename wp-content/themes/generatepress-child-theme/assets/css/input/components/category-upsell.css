@@ -2,7 +2,7 @@
 @layer components {
 	.info-card {
 		min-height: 320px;
-		@apply md:p-10 px-3 py-5 relative!;
+		@apply md:p-10 px-3 py-3 md:py-10 relative!;
 
 		@media (min-width: 768px) {
 			min-height: 650px;

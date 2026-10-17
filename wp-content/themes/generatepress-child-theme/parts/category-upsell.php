@@ -45,7 +45,7 @@
                         <?php endif; ?>
 
 
-                        <div class="relative mt-auto">
+                        <div class="relative md:mt-auto">
                             <?php if ($upsell_content) : ?>
                                 <div class="relative info-card-text">
                                     <?php echo wp_kses_post($upsell_content); ?>
@@ -54,24 +54,23 @@
 
                             <?php if ($upsell_title) : ?>
                                 <h3 class="font-semibold text-xl md:text-[40px] text-wyz-creations-guest-black-chalk max-lg:text-wyz-guest-white group-hover:text-wyz-guest-white md:leading-10 transition-colors duration-400 ease-in-out stagger-words">
-
                                     <?php echo esc_html($upsell_title); ?>
                                 </h3>
                             <?php endif; ?>
+                        </div>
 
-
-                            <!-- CTA button -->
-                            <?php if ($upsell_link) : ?>
-
+                        <!-- CTA button -->
+                        <?php if ($upsell_link) : ?>
+                            <div class="relative mt-auto md:mt-0">
                                 <a
                                     href="<?php echo esc_url($upsell_link['url']); ?>"
                                     target="<?php echo esc_attr($upsell_link['target']); ?>"
-                                    class="group relative wyz-btn btn-sm primary">
-                                    <?php echo esc_html($upsell_link['title']); ?>
+                                    class="group relative wyz-btn btn-sm btn-icon primary">
+                                    <span class="md:hidden"><?php echo wyzcreations_icon('storefront'); ?></span>
+                                    <span class="hidden md:inline"><?php echo esc_html($upsell_link['title']); ?></span>
                                 </a>
-
-                            <?php endif; ?>
-                        </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                 <?php endwhile; ?>
