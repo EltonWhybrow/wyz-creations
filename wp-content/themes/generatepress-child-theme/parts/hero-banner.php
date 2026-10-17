@@ -4,8 +4,12 @@ $video        = wyzcreations_builder_field('video');
 $video_loop   = wyzcreations_builder_field('video_loop');
 $title        = wyzcreations_builder_field('title');
 $subtitle     = wyzcreations_builder_field('sub_title');
-$button_link  = wyzcreations_builder_field('button_link');
-$button_link_2 = wyzcreations_builder_field('button_link_2');
+$button_link     = wyzcreations_builder_field('button_link');
+$button_link_2   = wyzcreations_builder_field('button_link_2');
+$overlay_opacity = wyzcreations_builder_field('overlay_opacity');
+$overlay_opacity = ($overlay_opacity !== '' && $overlay_opacity !== false) ? (int) $overlay_opacity : 75;
+$opacity_top     = round($overlay_opacity / 100, 2);
+$opacity_mid     = round($overlay_opacity * 0.8 / 100, 2);
 
 $hero_image_url = $hero_image['url'] ?? '';
 $hero_image_id  = $hero_image['id']  ?? 0;
@@ -27,15 +31,6 @@ $hero_image_id  = $hero_image['id']  ?? 0;
                 'sizes'         => '100vw',
                 'alt'           => '',
             ]); ?>
-
-            <div
-                class="absolute inset-0"
-                style="background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.6) 70%,
-    rgba(0, 0, 0, 0) 100%
-  );"></div>
         </div>
     <?php endif; ?>
 
@@ -52,10 +47,13 @@ $hero_image_id  = $hero_image['id']  ?? 0;
                 data-src="<?php echo esc_url($video['url']); ?>"
                 data-mime-type="<?php echo esc_attr($video['mime_type']); ?>">
             </video>
-
-            <!-- Overlay -->
-            <div class="z-1 absolute inset-0 bg-black/60"></div>
         </div>
+    <?php endif; ?>
+
+    <!-- Unified overlay: sits above image/video (z-[1]), below text content (z-10) -->
+    <?php if ($overlay_opacity > 0) : ?>
+        <div class="z-[1] absolute inset-0"
+            style="background: linear-gradient(180deg, rgba(0,0,0,<?php echo $opacity_top; ?>) 0%, rgba(0,0,0,<?php echo $opacity_mid; ?>) 70%, rgba(0,0,0,0) 100%);"></div>
     <?php endif; ?>
 
     <!-- Main Content Container -->
