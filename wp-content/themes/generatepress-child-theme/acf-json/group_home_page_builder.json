@@ -206,6 +206,27 @@
                             "step": 5,
                             "prepend": "",
                             "append": "%"
+                        },
+                        {
+                            "key": "field_hero_mobile_center1",
+                            "label": "Centre content on mobile",
+                            "name": "hero_mobile_center",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "When enabled, the title, subtitle and buttons are horizontally centred on mobile screens.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": false,
+                            "ui": 1,
+                            "ui_on_text": "Yes",
+                            "ui_off_text": "No"
                         }
                     ],
                     "min": "",

@@ -12,6 +12,7 @@ $opacity_top     = round($overlay_opacity / 100, 2);
 $opacity_mid     = round($overlay_opacity * 0.8 / 100, 2);
 
 $hero_image_mobile    = wyzcreations_builder_field('hero_image_mobile');
+$hero_mobile_center   = wyzcreations_builder_field('hero_mobile_center');
 $hero_image_url       = $hero_image['url'] ?? '';
 $hero_image_id        = $hero_image['id']  ?? 0;
 $hero_image_mobile_id = $hero_image_mobile['id'] ?? 0;
@@ -80,7 +81,7 @@ $hero_image_mobile_id = $hero_image_mobile['id'] ?? 0;
     <?php endif; ?>
 
     <!-- Main Content Container -->
-    <div class="bottom-6! left-12! z-10 flex flex-col pt-14 pb-[60px] text-left absolute! banner-content">
+    <div class="bottom-6! z-10 flex flex-col pt-14 pb-[60px] absolute! banner-content <?php echo $hero_mobile_center ? 'left-0! right-0! items-center text-center px-6 lg:items-start lg:text-left lg:left-12! lg:right-auto!' : 'left-12! text-left'; ?>">
 
         <?php if ($subtitle) : ?>
             <p class="mb-0! ml-1! text-[18px] text-wyz-guest-white/90 lg:text-2xl leading-normal! slide-up">
