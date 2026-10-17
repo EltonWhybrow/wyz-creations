@@ -10,46 +10,18 @@
 
     <?php if (have_posts()) : ?>
 
-        <div class="gap-8 grid grid-cols-1 md:grid-cols-2">
+        <div id="blog-posts-grid" class="gap-8 grid grid-cols-1 md:grid-cols-2">
 
             <?php while (have_posts()) : the_post(); ?>
-
-                <article class="p-4 border rounded-lg news-card">
-
-                    <?php if (has_post_thumbnail()) : ?>
-                        <a class="block rounded-lg w-full h-48 overflow-hidden" href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('large', ['class' => 'w-full h-full object-cover']); ?>
-                        </a>
-                    <?php endif; ?>
-
-                    <h2 class="mt-4 font-semibold text-xl">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_title(); ?>
-                        </a>
-                    </h2>
-
-                    <p class="mt-2 text-gray-500 text-sm">
-                        <?php echo get_the_date(); ?>
-                    </p>
-
-                    <div class="mt-3 text-base">
-                        <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
-                    </div>
-
-                </article>
-
+                <?php get_template_part('parts/blog-card'); ?>
             <?php endwhile; ?>
 
         </div>
 
-        <div class="mt-10">
-            <?php
-            the_posts_pagination([
-                'type'      => 'list',
-                'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
-                'next_text' => is_rtl() ? '&larr;' : '&rarr;',
-            ]);
-            ?>
+        <?php global $wp_query; $blog_max_pages = (int) $wp_query->max_num_pages; ?>
+        <div id="blog-infinite-sentinel" class="w-full"<?php if ($blog_max_pages > 1): ?> data-max-pages="<?php echo $blog_max_pages; ?>"<?php endif; ?>></div>
+        <div id="blog-infinite-loader" class="hidden py-10 w-full text-center">
+            <span class="inline-block rounded-full w-10 h-10 animate-spin" style="border: 4px solid var(--color-wyz-creations-guest-orange); border-top-color: transparent;"></span>
         </div>
 
     <?php else : ?>

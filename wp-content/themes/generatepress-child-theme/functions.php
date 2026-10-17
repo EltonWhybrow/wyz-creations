@@ -1031,6 +1031,59 @@ function wyzcreations_infinite_products_ajax()
     ]);
 }
 
+// Infinite scroll for blog index
+add_action('wp_enqueue_scripts', function () {
+    if (!is_home()) return;
+
+    global $wp_query;
+
+    wp_localize_script('wyz-creations-main-js', 'wyz_blog_infinite', [
+        'ajax_url'  => admin_url('admin-ajax.php'),
+        'nonce'     => wp_create_nonce('wyz_infinite_scroll'),
+        'max_pages' => (int) $wp_query->max_num_pages,
+        'per_page'  => (int) get_option('posts_per_page', 10),
+    ]);
+}, 20);
+
+add_action('wp_ajax_wyz_infinite_posts',        'wyzcreations_infinite_posts_ajax');
+add_action('wp_ajax_nopriv_wyz_infinite_posts', 'wyzcreations_infinite_posts_ajax');
+
+function wyzcreations_infinite_posts_ajax()
+{
+    check_ajax_referer('wyz_infinite_scroll', 'nonce');
+
+    $page     = max(2, (int) ($_POST['page'] ?? 2));
+    $per_page = (int) get_option('posts_per_page', 10);
+
+    $args = [
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'posts_per_page'      => $per_page,
+        'paged'               => $page,
+        'ignore_sticky_posts' => true,
+    ];
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) {
+        wp_send_json_success(['html' => '', 'has_more' => false]);
+        return;
+    }
+
+    ob_start();
+    while ($query->have_posts()) {
+        $query->the_post();
+        get_template_part('parts/blog-card');
+    }
+    wp_reset_postdata();
+    $html = ob_get_clean();
+
+    wp_send_json_success([
+        'html'     => $html,
+        'has_more' => $page < $query->max_num_pages,
+    ]);
+}
+
 // override cart buttons
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
