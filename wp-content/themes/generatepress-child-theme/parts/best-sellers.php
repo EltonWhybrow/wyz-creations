@@ -14,7 +14,7 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                 <!-- Content Section -->
                 <div class="best-seller-header">
                     <?php if ($slider_heading): ?>
-                        <h2 class="mb-0! font-semibold text-[50px] text-wyz-creations-guest-black-chalk leading-9 stagger-words">
+                        <h2 class="mb-0! font-semibold text-[36px] md:text-[50px] text-wyz-creations-guest-black-chalk leading-9 stagger-words">
                             <?php echo esc_html($slider_heading); ?>
                         </h2>
                         <!-- <p class="md:text-left text-center">
@@ -36,7 +36,7 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                 </div>
 
                 <!-- Full Width Steps Slider -->
-                <div class="pt-2 pb-1 w-full">
+                <div class="pt-2 pb-0 w-full">
                     <div class="best-seller-slider">
                         <?php
                         $args = [
@@ -71,7 +71,7 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                                                 alt="<?php echo esc_attr($short_name); ?>"
                                                 loading="lazy"
                                                 decoding="async"
-                                                class="absolute inset-0 w-full h-full object-cover object-center">
+                                                class="absolute inset-0 w-full h-full object-center object-cover">
                                             <div class="best-seller-label">
                                                 <?php echo esc_html($short_name); ?>
                                             </div>
