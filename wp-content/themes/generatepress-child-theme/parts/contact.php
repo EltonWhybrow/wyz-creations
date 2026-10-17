@@ -8,7 +8,7 @@ $contact_info = get_sub_field('contact_info');
 
 <section class="px-5 lg:px-60 py-2 md:pt-[120px] contact-us">
 
-    <div class="relative flex md:flex-row flex-col justify-center items-center gap-[30px] md:gap-28 pb-[50px] md:pb-[120px]">
+    <div class="relative flex md:flex-row flex-col justify-center items-center gap-[30px] md:gap-28 pb-[50px]">
         <div class="flex flex-col flex-1 justify-between mx-auto md:text-left text-center contact-us-content">
 
             <?php if ($contact_content) : ?>
