@@ -9,12 +9,15 @@
     "watch:css": "tailwindcss -i ./assets/css/input/wyz-creations-styles.css -o ./assets/css/wyz-creations-styles.css --watch",
     "watch:js": "npx chokidar \"./assets/js/input/**/*.js\" -c \"npm run js:dev\"",
     "js:dev": "cp ./assets/js/input/wyz-creations-main.js ./assets/js/wyz-creations-main.min.js",
+    "vendor": "mkdir -p assets/vendor/slick assets/vendor/gsap && cp node_modules/slick-carousel/slick/slick.css assets/vendor/slick/ && cp node_modules/slick-carousel/slick/slick-theme.css assets/vendor/slick/ && cp node_modules/slick-carousel/slick/slick.min.js assets/vendor/slick/ && cp node_modules/slick-carousel/slick/ajax-loader.gif assets/vendor/slick/ && cp -r node_modules/slick-carousel/slick/fonts assets/vendor/slick/ && cp node_modules/gsap/dist/gsap.min.js assets/vendor/gsap/ && cp node_modules/gsap/dist/ScrollTrigger.min.js assets/vendor/gsap/",
     "build": "npm run css:build && npm run js:build",
     "css:build": "tailwindcss -i ./assets/css/input/wyz-creations-styles.css -o ./assets/css/wyz-creations-styles.css --minify",
     "js:build": "terser ./assets/js/input/wyz-creations-main.js -o ./assets/js/wyz-creations-main.min.js --compress --mangle"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.17",
+    "gsap": "^3.15.0",
+    "slick-carousel": "^2.0.0",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {

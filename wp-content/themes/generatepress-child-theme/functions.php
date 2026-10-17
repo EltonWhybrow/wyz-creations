@@ -124,9 +124,9 @@ function wyzcreations_enqueue_scripts()
 
     // Slick Carousel — only on pages that may have slider sections
     if ($needs_page_builder) {
-        wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css', array(), '1.9.0');
-        wp_enqueue_style('slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css', array('slick-css'), '1.9.0');
-        wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array('jquery'), '1.9.0', true);
+        wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick.css', array(), filemtime(get_stylesheet_directory() . '/assets/vendor/slick/slick.css'));
+        wp_enqueue_style('slick-theme-css', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick-theme.css', array('slick-css'), filemtime(get_stylesheet_directory() . '/assets/vendor/slick/slick-theme.css'));
+        wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick.min.js', array('jquery'), filemtime(get_stylesheet_directory() . '/assets/vendor/slick/slick.min.js'), true);
     }
 
     // Main theme JS — every page (handles cart, nav, infinite scroll, etc.)
@@ -146,8 +146,8 @@ function wyzcreations_enqueue_scripts()
 
     // GSAP + animations — only on pages that use animation classes
     if ($needs_page_builder) {
-        wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', [], null, true);
-        wp_enqueue_script('gsap-scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', ['gsap'], null, true);
+        wp_enqueue_script('gsap', get_stylesheet_directory_uri() . '/assets/vendor/gsap/gsap.min.js', [], filemtime(get_stylesheet_directory() . '/assets/vendor/gsap/gsap.min.js'), true);
+        wp_enqueue_script('gsap-scrolltrigger', get_stylesheet_directory_uri() . '/assets/vendor/gsap/ScrollTrigger.min.js', ['gsap'], filemtime(get_stylesheet_directory() . '/assets/vendor/gsap/ScrollTrigger.min.js'), true);
         wp_enqueue_script(
             'animations-init',
             get_stylesheet_directory_uri() . '/assets/js/animations.js',
