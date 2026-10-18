@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <header id="masthead" role="banner" class="top-0 z-50 sticky bg-white">
+    <header id="masthead" role="banner" class="top-0 z-[102] sticky bg-white">
 
         <!-- Top Section with Promo and Account Links -->
 
@@ -166,7 +166,7 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu-overlay"
-        class="lg:hidden invisible z-50 fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300">
+        class="lg:hidden invisible z-[103] fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300">
     </div>
 
     <!-- Hidden menu data source — JS reads the nested <ul> structure from here.
@@ -185,16 +185,16 @@
         <div class="flex flex-col h-full">
 
             <!-- Header row: back arrow (hidden at level 0) + close button -->
-            <div class="flex justify-between items-center px-5 h-[68px] border-b border-gray-100 shrink-0">
+            <div class="flex justify-between items-center px-5 border-gray-100 border-b h-[68px] shrink-0">
 
                 <!-- Back button (hidden at level 0) -->
                 <div id="mobile-header-back" class="hidden items-center gap-2 min-w-0">
                     <button id="mobile-menu-back"
-                        class="flex items-center justify-center bg-wyz-creations-guest-light-gray rounded-full w-9 h-9 shrink-0"
+                        class="flex justify-center items-center bg-wyz-creations-guest-light-gray rounded-full w-9 h-9 shrink-0"
                         aria-label="Go back">
                         <?php echo wyzcreations_icon('chevron-left'); ?>
                     </button>
-                    <span id="mobile-menu-back-title" class="font-semibold text-base text-wyz-creations-guest-black-chalk truncate"></span>
+                    <span id="mobile-menu-back-title" class="font-semibold text-wyz-creations-guest-black-chalk text-lg truncate"></span>
                 </div>
 
                 <!-- Spacer so close button stays right when back is hidden -->
@@ -211,24 +211,24 @@
             </div>
 
             <!-- Sliding panels: 3-screen track, JS translates to show current level -->
-            <div class="flex-1 overflow-hidden relative">
+            <div class="relative flex-1 overflow-hidden">
                 <div id="mobile-menu-track"
                     class="flex h-full"
                     style="width:300%;transform:translateX(0);transition:transform .3s cubic-bezier(.4,0,.2,1)">
-                    <div class="mobile-menu-screen overflow-y-auto" style="width:33.333%"></div>
-                    <div class="mobile-menu-screen overflow-y-auto" style="width:33.333%"></div>
-                    <div class="mobile-menu-screen overflow-y-auto" style="width:33.333%"></div>
+                    <div class="overflow-y-auto mobile-menu-screen" style="width:33.333%"></div>
+                    <div class="overflow-y-auto mobile-menu-screen" style="width:33.333%"></div>
+                    <div class="overflow-y-auto mobile-menu-screen" style="width:33.333%"></div>
                 </div>
             </div>
 
             <!-- Subscribe callout -->
-            <div class="mx-4 mb-4 rounded-2xl overflow-hidden shrink-0 bg-wyz-creations-guest-black-chalk">
+            <div class="bg-wyz-creations-guest-black-chalk/80 mx-4 mb-4 rounded-2xl overflow-hidden shrink-0">
                 <div class="px-5 pt-4 pb-0">
-                    <p class="mb-0! text-center text-sm font-bold text-white! tracking-wide uppercase">Subscriber exclusive</p>
+                    <p class="mb-0! font-bold text-white! text-sm text-center uppercase tracking-wide">Subscriber exclusive</p>
                 </div>
                 <div class="px-5 py-4">
                     <p class="mb-0.5! font-bold text-white! text-base leading-snug"><?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
-                    <p class="mb-3! text-sm leading-snug text-white/70">Plus a chance to win free T-shirts when you join the Wyz Creations community.</p>
+                    <p class="mb-3! text-white/70 text-sm leading-snug">Plus a chance to win free T-shirts when you join the Wyz Creations community.</p>
                     <a href="<?php echo home_url('/subscribe'); ?>"
                         class="flex justify-center wyz-btn btn-sm"
                         style="background:var(--color-wyz-creations-guest-orange);color:#fff;border-color:var(--color-wyz-creations-guest-orange);">
