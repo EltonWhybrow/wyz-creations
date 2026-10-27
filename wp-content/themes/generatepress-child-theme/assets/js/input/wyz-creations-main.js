@@ -692,3 +692,27 @@ jQuery(function ($) {
     $search.focus();
   });
 });
+
+// Autumn sale countdown — ends 30 Nov 2026 midnight (UK time)
+(function () {
+  const el = document.getElementById('sale-countdown');
+  if (!el) return;
+
+  const end = new Date('2026-11-30T23:59:59+00:00');
+
+  function tick() {
+    const diff = end - Date.now();
+    if (diff <= 0) {
+      el.textContent = '';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.textContent = d + 'd ' + h + 'h ' + m + 'm ' + String(s).padStart(2, '0') + 's';
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();

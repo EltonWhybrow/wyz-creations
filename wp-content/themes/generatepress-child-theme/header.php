@@ -48,7 +48,7 @@
 
     <div id="top-section" class="hidden md:block z-50 relative bg-wyz-creations-guest-light-gray">
         <div class="relative flex flex-row justify-between items-center p-2 px-4">
-            <span class="sale-notice">October sale now on<span class="sale-dot d1">.</span><span class="sale-dot d2">.</span><span class="sale-dot d3">.</span></span>
+            <span class="sale-notice">Autumn sale now on — <span id="sale-countdown" aria-live="polite"></span></span>
 
             <div class="flex items-center gap-3">
                 <a href="/subscribe" id="open-linkme" class="menu-link-secondary">

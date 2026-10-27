@@ -26,6 +26,9 @@
 @layer components {
 	.sale-notice {
 		@apply text-xs font-bold text-wyz-creations-guest-green;
+		#sale-countdown {
+			@apply text-wyz-creations-guest-black-chalk;
+		}
 		.sale-dot { opacity: 0; }
 		.sale-dot.d1 { animation: sale-dot-1 1.8s infinite; }
 		.sale-dot.d2 { animation: sale-dot-2 1.8s infinite; }
