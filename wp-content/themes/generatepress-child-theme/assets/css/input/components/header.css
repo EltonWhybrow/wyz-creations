@@ -115,6 +115,41 @@
 	/* Logo must never shrink regardless of search expansion */
 	.site-branding {
 		flex-shrink: 0;
+		position: relative;
+	}
+
+	@keyframes bat-swoop {
+		0%   { transform: translate(82px,  -112px) rotate(12deg);  }
+		8%   { transform: translate(127px, -79px)  rotate(22deg);  }
+		17%  { transform: translate(150px, -34px)  rotate(28deg);  }
+		25%  { transform: translate(139px, 10px)   rotate(18deg);  }
+		33%  { transform: translate(111px, 46px)   rotate(4deg);   }
+		42%  { transform: translate(61px,  73px)   rotate(-12deg); }
+		50%  { transform: translate(10px,  81px)   rotate(-22deg); }
+		58%  { transform: translate(-43px, 58px)   rotate(-30deg); }
+		67%  { transform: translate(-94px, 13px)   rotate(-28deg); }
+		75%  { transform: translate(-127px,-34px)  rotate(-18deg); }
+		83%  { transform: translate(-117px,-85px)  rotate(-6deg);  }
+		91%  { transform: translate(-67px, -118px) rotate(4deg);   }
+		96%  { transform: translate(-6px,  -124px) rotate(10deg);  }
+		100% { transform: translate(82px,  -112px) rotate(12deg);  }
+	}
+
+	.logo-bat {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 36px;
+		height: auto;
+		pointer-events: none;
+		opacity: 0;
+		animation: bat-swoop 3.2s linear infinite;
+		animation-play-state: paused;
+	}
+
+	.site-branding:hover .logo-bat {
+		opacity: 1;
+		animation-play-state: running;
 	}
 
 	/* On mobile, constrain search and prevent iOS zoom (font-size <16px triggers it) */

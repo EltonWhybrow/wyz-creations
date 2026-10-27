@@ -100,6 +100,11 @@
                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creations-logo.svg"
                     alt="<?php bloginfo('name'); ?>"
                     class="w-14" />
+                <img
+                    src="https://media1.giphy.com/media/0xR7MUO0hJfWtco7C6/giphy.gif"
+                    alt=""
+                    aria-hidden="true"
+                    class="logo-bat" />
             </a>
 
 
