@@ -139,11 +139,15 @@
 }
 
 /* When a discount is active WooCommerce injects a <br> between <del> and
-   <ins>. Make the price container a flex row so del+ins sit side by side
-   and suppress the <br> so it doesn't add vertical space. */
+   <ins>. Make the price container a flex row so del+ins sit side by side,
+   suppress the <br>, and insert a non-breaking space after the del so the
+   two prices are always separated by exactly one &nbsp;. */
 span.price {
-	@apply inline-flex flex-wrap items-center gap-2;
+	@apply inline-flex flex-wrap items-center;
 	br { display: none; }
+	del + ins::before {
+		content: "\00a0";
+	}
 }
 
 /* Non-struck-through prices (the actual current price) — bigger + darker
