@@ -1132,7 +1132,9 @@ add_action('woocommerce_after_shop_loop_item', function () {
     // add-to-cart.js intercepts the click and does it via AJAX instead
     // of a full page reload — matches the classes wc_get_template()
     // would normally add on the default loop button markup.
-    $classes = ['wyz-btn', 'btn-sm', 'tertiary', 'product_type_' . $product->get_type()];
+    $is_variable = $product->get_type() === 'variable';
+    $size_class  = $is_variable ? 'btn-xs' : 'btn-sm';
+    $classes     = ['wyz-btn', $size_class, 'tertiary', 'product_type_' . $product->get_type()];
 
     if ($product->is_purchasable() && $product->is_in_stock()) {
         $classes[] = 'add_to_cart_button';
@@ -1142,6 +1144,8 @@ add_action('woocommerce_after_shop_loop_item', function () {
         }
     }
 
+    $label = $is_variable ? 'View Details' : $product->add_to_cart_text();
+
     echo '<a href="' . esc_url($product->add_to_cart_url()) . '"
         data-quantity="1"
         class="' . esc_attr(implode(' ', $classes)) . '"
@@ -1149,7 +1153,7 @@ add_action('woocommerce_after_shop_loop_item', function () {
         data-product_sku="' . esc_attr($product->get_sku()) . '"
         aria-label="' . esc_attr($product->add_to_cart_description()) . '"
         rel="nofollow">'
-        . esc_html($product->add_to_cart_text()) .
+        . esc_html($label) .
         '</a>';
 }, 10);
 
