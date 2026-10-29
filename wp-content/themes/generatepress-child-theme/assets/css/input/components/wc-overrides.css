@@ -143,18 +143,15 @@
    suppress the <br>, and insert a non-breaking space after the del so the
    two prices are always separated by exactly one &nbsp;. */
 span.price {
-	@apply inline-flex flex-wrap items-center;
+	@apply inline-flex flex-wrap items-center gap-2;
 	br { display: none; }
-	del + ins::before {
-		content: "\00a0";
-	}
 }
 
 /* Non-struck-through prices (the actual current price) — bigger + darker
    than the struck-through original price next to it */
 .price ins,
 .price > .woocommerce-Price-amount {
-	@apply text-wyz-creations-guest-black-chalk text-lg no-underline!;
+	@apply font-bold! text-wyz-creations-guest-black-chalk text-lg no-underline!;
 }
 
 /* Single product details page — orange semi-bold price */
@@ -214,11 +211,14 @@ li.relative.product.type-product .star-rating {
 
 /* Price in product loops — brand orange, slightly smaller, centred */
 li.relative.product.type-product .price {
-	@apply mb-3! text-base! text-center! text-wyz-creations-guest-orange! block!;
+	@apply flex! flex-wrap! justify-center! items-center! gap-2! mb-3! text-base! text-center! text-wyz-creations-guest-orange!;
 }
 li.relative.product.type-product .price ins,
 li.relative.product.type-product .price > .woocommerce-Price-amount {
 	@apply text-base! text-wyz-creations-guest-orange!;
+}
+li.relative.product.type-product .price del {
+	@apply text-sm! opacity-70!;
 }
 
 article .product .summary {
