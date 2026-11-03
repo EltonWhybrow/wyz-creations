@@ -18,10 +18,14 @@
 
         </div>
 
-        <?php global $wp_query; $blog_max_pages = (int) $wp_query->max_num_pages; ?>
-        <div id="blog-infinite-sentinel" class="w-full"<?php if ($blog_max_pages > 1): ?> data-max-pages="<?php echo $blog_max_pages; ?>"<?php endif; ?>></div>
-        <div id="blog-infinite-loader" class="hidden py-10 w-full text-center">
-            <span class="inline-block rounded-full w-10 h-10 animate-spin" style="border: 4px solid var(--color-wyz-creations-guest-orange); border-top-color: transparent;"></span>
+        <div class="mt-10">
+            <?php
+            the_posts_pagination([
+                'type'      => 'list',
+                'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
+                'next_text' => is_rtl() ? '&larr;' : '&rarr;',
+            ]);
+            ?>
         </div>
 
     <?php else : ?>

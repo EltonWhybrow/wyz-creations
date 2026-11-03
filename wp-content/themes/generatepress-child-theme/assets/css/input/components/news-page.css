@@ -6,6 +6,7 @@
    current-page span's square corners get clipped to the circle); that CSS only
    matches inside .woocommerce, so it's set explicitly here for the news page. */
 .news-page .nav-links {
+	@apply mt-10;
 	ul {
 		@apply flex flex-wrap justify-center items-center gap-2 m-0 p-0 w-full list-none;
 	}
