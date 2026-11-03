@@ -38,37 +38,43 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                         // Posts shown are those in the chosen category, plus any
                         // post marked Sticky — merged into one ID list so the
                         // query below is a plain OR of the two criteria.
-                        $sticky_ids = get_option('sticky_posts');
-                        $sticky_ids = is_array($sticky_ids) ? $sticky_ids : [];
+                        $cache_key   = 'wyz_featured_posts_' . md5(serialize($taxonomy_term));
+                        $posts_query = get_transient($cache_key);
 
-                        $category_ids = [];
-                        if ($taxonomy_term) {
-                            $category_query = new WP_Query([
-                                'post_type'      => 'post',
-                                'posts_per_page' => -1,
-                                'fields'         => 'ids',
-                                'tax_query'      => [
-                                    [
-                                        'taxonomy' => 'category',
-                                        'field'    => 'term_id',
-                                        'terms'    => $taxonomy_term,
+                        if ($posts_query === false) {
+                            $sticky_ids = get_option('sticky_posts');
+                            $sticky_ids = is_array($sticky_ids) ? $sticky_ids : [];
+
+                            $category_ids = [];
+                            if ($taxonomy_term) {
+                                $category_query = new WP_Query([
+                                    'post_type'      => 'post',
+                                    'posts_per_page' => 50,
+                                    'fields'         => 'ids',
+                                    'tax_query'      => [
+                                        [
+                                            'taxonomy' => 'category',
+                                            'field'    => 'term_id',
+                                            'terms'    => $taxonomy_term,
+                                        ],
                                     ],
-                                ],
-                            ]);
-                            $category_ids = $category_query->posts;
+                                ]);
+                                $category_ids = $category_query->posts;
+                            }
+
+                            $post_ids = array_unique(array_merge($category_ids, $sticky_ids));
+
+                            $args = [
+                                'post_type'           => 'post',
+                                'posts_per_page'      => 21,
+                                'post__in'            => !empty($post_ids) ? $post_ids : [0],
+                                'orderby'             => 'post__in',
+                                'ignore_sticky_posts' => 1,
+                            ];
+
+                            $posts_query = new WP_Query($args);
+                            set_transient($cache_key, $posts_query, 4 * HOUR_IN_SECONDS);
                         }
-
-                        $post_ids = array_unique(array_merge($category_ids, $sticky_ids));
-
-                        $args = [
-                            'post_type'           => 'post',
-                            'posts_per_page'      => 21,
-                            'post__in'            => !empty($post_ids) ? $post_ids : [0],
-                            'orderby'             => 'post__in',
-                            'ignore_sticky_posts' => 1,
-                        ];
-
-                        $posts_query = new WP_Query($args);
 
                         if ($posts_query->have_posts()) :
                             while ($posts_query->have_posts()) : $posts_query->the_post();

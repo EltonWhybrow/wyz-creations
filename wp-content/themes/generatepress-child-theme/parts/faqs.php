@@ -26,14 +26,17 @@
     <!-- FAQ Accordion -->
     <div class="mx-auto max-w-4xl faq-accordion">
         <?php
-        $faq_args = array(
-            'post_type' => 'faq',
-            'posts_per_page' => -1,
-            'orderby' => 'menu_order',
-            'order' => 'ASC'
-        );
-
-        $faq_query = new WP_Query($faq_args);
+        $faq_query = get_transient('wyz_faqs');
+        if ($faq_query === false) {
+            $faq_args = array(
+                'post_type'      => 'faq',
+                'posts_per_page' => -1,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+            );
+            $faq_query = new WP_Query($faq_args);
+            set_transient('wyz_faqs', $faq_query, 24 * HOUR_IN_SECONDS);
+        }
 
         if ($faq_query->have_posts()):
             $index = 0;

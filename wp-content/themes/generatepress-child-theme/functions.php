@@ -6,6 +6,10 @@
 
 require_once get_stylesheet_directory() . '/inc/acf-page-builder.php';
 
+// Single version string used for all asset cache-busting.
+// Update on each production deploy instead of stat()ing files on every request.
+define('WYZ_ASSETS_VERSION', wp_get_theme()->get('Version') ?: '1.0.0');
+
 /**
  * Returns an inline SVG for the given icon name.
  * Pass non-FA classes (e.g. Tailwind utilities) via $class.
@@ -133,7 +137,7 @@ function wyzcreations_enqueue_tailwind()
         'wyz-creations-tailwind',
         get_stylesheet_directory_uri() . '/assets/css/wyz-creations-styles.css',
         [],
-        filemtime(get_stylesheet_directory() . '/assets/css/wyz-creations-styles.css')
+        WYZ_ASSETS_VERSION
     );
 }
 
@@ -153,9 +157,9 @@ function wyzcreations_enqueue_scripts()
 
     // Slick Carousel — only on pages that may have slider sections
     if ($needs_page_builder) {
-        wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick.css', array(), filemtime(get_stylesheet_directory() . '/assets/vendor/slick/slick.css'));
-        wp_enqueue_style('slick-theme-css', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick-theme.css', array('slick-css'), filemtime(get_stylesheet_directory() . '/assets/vendor/slick/slick-theme.css'));
-        wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick.min.js', array('jquery'), filemtime(get_stylesheet_directory() . '/assets/vendor/slick/slick.min.js'), true);
+        wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick.css', array(), WYZ_ASSETS_VERSION);
+        wp_enqueue_style('slick-theme-css', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick-theme.css', array('slick-css'), WYZ_ASSETS_VERSION);
+        wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/vendor/slick/slick.min.js', array('jquery'), WYZ_ASSETS_VERSION, true);
     }
 
     // Main theme JS — every page (handles cart, nav, infinite scroll, etc.)
@@ -163,7 +167,7 @@ function wyzcreations_enqueue_scripts()
         'wyz-creations-main-js',
         get_stylesheet_directory_uri() . '/assets/js/wyz-creations-main.min.js',
         array('jquery'),
-        filemtime(get_stylesheet_directory() . '/assets/js/wyz-creations-main.min.js'),
+        WYZ_ASSETS_VERSION,
         true
     );
 
@@ -175,13 +179,13 @@ function wyzcreations_enqueue_scripts()
 
     // GSAP + animations — only on pages that use animation classes
     if ($needs_page_builder) {
-        wp_enqueue_script('gsap', get_stylesheet_directory_uri() . '/assets/vendor/gsap/gsap.min.js', [], filemtime(get_stylesheet_directory() . '/assets/vendor/gsap/gsap.min.js'), true);
-        wp_enqueue_script('gsap-scrolltrigger', get_stylesheet_directory_uri() . '/assets/vendor/gsap/ScrollTrigger.min.js', ['gsap'], filemtime(get_stylesheet_directory() . '/assets/vendor/gsap/ScrollTrigger.min.js'), true);
+        wp_enqueue_script('gsap', get_stylesheet_directory_uri() . '/assets/vendor/gsap/gsap.min.js', [], WYZ_ASSETS_VERSION, true);
+        wp_enqueue_script('gsap-scrolltrigger', get_stylesheet_directory_uri() . '/assets/vendor/gsap/ScrollTrigger.min.js', ['gsap'], WYZ_ASSETS_VERSION, true);
         wp_enqueue_script(
             'animations-init',
             get_stylesheet_directory_uri() . '/assets/js/animations.js',
             ['gsap', 'gsap-scrolltrigger'],
-            filemtime(get_stylesheet_directory() . '/assets/js/animations.js'),
+            WYZ_ASSETS_VERSION,
             true
         );
     }
@@ -839,27 +843,40 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
 
 // Dedupes stored IDs and drops any that no longer point to a published
 // product (deleted/trashed products), so counts always match what the
-// favourites page can actually display.
+// favourites page can actually display. Uses a single batch query instead
+// of per-ID get_post_type()/get_post_status() calls.
 function wyzcreations_get_valid_favourites($ids)
 {
     if (!is_array($ids) || empty($ids)) return [];
 
     $ids = array_unique(array_map('intval', $ids));
+    if (empty($ids)) return [];
 
-    return array_values(array_filter($ids, function ($id) {
-        return get_post_type($id) === 'product' && get_post_status($id) === 'publish';
-    }));
+    global $wpdb;
+    $placeholders = implode(',', array_fill(0, count($ids), '%d'));
+    $valid = $wpdb->get_col(
+        $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->posts} WHERE ID IN ($placeholders) AND post_type = 'product' AND post_status = 'publish'",
+            $ids
+        )
+    );
+
+    return array_values(array_intersect($ids, array_map('intval', $valid)));
 }
 
 function wyzcreations_get_stored_favourites()
 {
+    static $cache = null;
+    if ($cache !== null) return $cache;
+
     $favourites = is_user_logged_in()
         ? get_user_meta(get_current_user_id(), 'favourites', true)
         : (isset($_COOKIE['favourites'])
             ? json_decode(stripslashes($_COOKIE['favourites']), true)
             : []);
 
-    return wyzcreations_get_valid_favourites($favourites);
+    $cache = wyzcreations_get_valid_favourites($favourites);
+    return $cache;
 }
 
 function wyzcreations_get_favourites_count()
@@ -873,7 +890,7 @@ function favourites_scripts()
         'favourites-js',
         get_stylesheet_directory_uri() . '/assets/js/favourites.js',
         ['jquery'],
-        filemtime(get_stylesheet_directory() . '/assets/js/favourites.js'),
+        WYZ_ASSETS_VERSION,
         true
     );
 
@@ -933,14 +950,6 @@ function toggle_favourite()
     ]);
 }
 
-
-// debug template being used for product category pages
-add_action('template_include', function ($template) {
-    if (is_product_category()) {
-        echo '<!-- Template being used: ' . $template . ' -->';
-    }
-    return $template;
-});
 
 // Show the result count in brackets after the shop title instead of on its own line
 remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
@@ -1011,7 +1020,10 @@ add_action('woocommerce_after_shop_loop_item', function () {
 // rows are configured yet.
 function wyzcreations_default_template_has_builder_rows()
 {
-    return is_page() && !wp_doing_ajax() && is_page_template('default') && have_rows('home_page_builder');
+    static $result = null;
+    if ($result !== null) return $result;
+    if (!is_page() || wp_doing_ajax() || !is_page_template('default')) return $result = false;
+    return $result = (bool) have_rows('home_page_builder');
 }
 
 // True when the blog/posts page (Settings > Reading > "Posts page") has
@@ -1023,9 +1035,12 @@ function wyzcreations_default_template_has_builder_rows()
 // get_option('page_for_posts') instead. Only true on page 1 of the listing.
 function wyzcreations_news_page_has_builder_rows()
 {
+    static $result = null;
+    if ($result !== null) return $result;
+    if (!is_home() || wp_doing_ajax() || is_paged()) return $result = false;
     $news_page_id = (int) get_option('page_for_posts');
-
-    return $news_page_id && !wp_doing_ajax() && !is_paged() && have_rows('home_page_builder', $news_page_id);
+    if (!$news_page_id) return $result = false;
+    return $result = (bool) have_rows('home_page_builder', $news_page_id);
 }
 
 // Remove "Additional Information" tab from single product pages
@@ -1191,6 +1206,28 @@ add_shortcode('wyz_callout', function ($atts) {
         esc_html($atts['btn_text'])
     );
 });
+// Bust section transients when content changes so cached data never goes stale.
+add_action('save_post', function ($post_id, $post) {
+    if (wp_is_post_revision($post_id)) return;
+
+    if ($post->post_type === 'product') {
+        // Best-sellers: delete all variants (taxonomy term may vary per section)
+        global $wpdb;
+        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_wyz_best_sellers_%'");
+        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_wyz_best_sellers_%'");
+    }
+
+    if ($post->post_type === 'post') {
+        global $wpdb;
+        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_wyz_featured_posts_%'");
+        $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_wyz_featured_posts_%'");
+    }
+
+    if ($post->post_type === 'faq') {
+        delete_transient('wyz_faqs');
+    }
+}, 10, 2);
+
 /**
  * Use the WooCommerce featured image as an Open Graph image
  * on product pages, via Yoast's image-array filter (runs even

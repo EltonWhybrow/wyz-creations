@@ -248,16 +248,14 @@
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
                         <span class="inline-flex relative">
                             <?php echo wyzcreations_icon('heart'); ?>
-                            <?php $mobile_fav_count = wyzcreations_get_favourites_count(); ?>
-                            <span class="favourites-count-badge<?php echo $mobile_fav_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_fav_count); ?></span>
+                            <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
                         </span>
                     </a>
                     <a href="<?php echo home_url('/cart'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
                         <span class="inline-flex relative">
                             <?php echo wyzcreations_icon('basket-shopping'); ?>
-                            <?php $mobile_cart_count = function_exists('WC') && WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
-                            <span class="cart-count-badge<?php echo $mobile_cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($mobile_cart_count); ?></span>
+                            <span class="cart-count-badge<?php echo $cart_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($cart_count); ?></span>
                         </span>
                     </a>
                 </div>

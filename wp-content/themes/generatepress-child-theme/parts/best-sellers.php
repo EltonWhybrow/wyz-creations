@@ -51,7 +51,12 @@ $taxonomy_term = get_sub_field('taxonomy_term');
                             ],
                         ];
 
-                        $products = new WP_Query($args);
+                        $cache_key = 'wyz_best_sellers_' . md5(serialize($taxonomy_term));
+                        $products  = get_transient($cache_key);
+                        if ($products === false) {
+                            $products = new WP_Query($args);
+                            set_transient($cache_key, $products, 4 * HOUR_IN_SECONDS);
+                        }
 
                         if ($products->have_posts()) :
                             while ($products->have_posts()) : $products->the_post();

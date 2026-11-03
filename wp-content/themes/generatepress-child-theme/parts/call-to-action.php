@@ -10,8 +10,14 @@ if ($audience !== 'everywhere' && !current_user_can('manage_options')) {
     if ($is_local && isset($_GET['test_country'])) {
         $country = strtoupper(sanitize_text_field($_GET['test_country']));
     } elseif (class_exists('WC_Geolocation')) {
-        $location = WC_Geolocation::geolocate_ip();
-        $country  = $location['country'] ?? '';
+        $ip        = WC_Geolocation::get_ip_address();
+        $cache_key = 'wyz_geo_' . md5($ip);
+        $country   = get_transient($cache_key);
+        if ($country === false) {
+            $location = WC_Geolocation::geolocate_ip($ip);
+            $country  = $location['country'] ?? '';
+            set_transient($cache_key, $country, 12 * HOUR_IN_SECONDS);
+        }
     }
     if ($country) {
         $in_uk_eu = in_array($country, $uk_eu, true);
