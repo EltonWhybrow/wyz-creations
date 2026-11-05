@@ -55,6 +55,8 @@
 
 <div id="menu-overlay"></div>
 
+<?php $subscribe_form = do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
+
 <!-- // Subscribe Modal -->
 <div id="linkme-panel">
     <button id="close-linkme" aria-label="Close menu">✕</button>
@@ -74,7 +76,7 @@
             and get exclusive promo codes.
         </p>
 
-        <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
+        <?php echo $subscribe_form; ?>
     </div>
 </div>
 
@@ -98,7 +100,7 @@
             and get exclusive promo codes.
         </p>
 
-        <?php echo do_shortcode('[contact-form-7 id="36580a5" title="Subscribe"]'); ?>
+        <?php echo $subscribe_form; ?>
     </div>
 </div>
 

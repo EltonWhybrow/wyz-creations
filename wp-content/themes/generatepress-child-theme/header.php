@@ -73,13 +73,13 @@
                     </a>
                 <?php endif; ?>
                 <?php if (!is_user_logged_in()): ?>
-                    <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
+                    <a href="<?php echo esc_url(get_permalink($myaccount_page_id)); ?>"
                         class="menu-link-secondary">
                         Sign In
                     </a>
                 <?php endif; ?>
                 <?php if (!$is_my_account_page && is_user_logged_in()): ?>
-                    <a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>"
+                    <a href="<?php echo esc_url(get_permalink($myaccount_page_id)); ?>"
                         class="menu-link-secondary">
                         My Account
                     </a>
