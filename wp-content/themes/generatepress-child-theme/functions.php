@@ -323,6 +323,9 @@ function block_storebot_sessions() {
 // Enable AJAX add to cart on single product pages (even older WC versions)
 add_filter('woocommerce_add_to_cart_redirect', '__return_false');
 
+// Suppress the "X has been added to your cart" notice — user is already on the cart or navigated away
+add_filter('wc_add_to_cart_message_html', '__return_empty_string');
+
 // Keep the header cart count badge in sync after AJAX add-to-cart
 add_filter('woocommerce_add_to_cart_fragments', 'wyzcreations_cart_count_fragment');
 function wyzcreations_cart_count_fragment($fragments)
