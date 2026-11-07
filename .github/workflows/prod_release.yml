@@ -70,6 +70,8 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/.githooks
+            **/.githooks/**
             **/node_modules/**
             **/node_modules/**/*
             **/wp-content/themes/twentytwentyfive/**

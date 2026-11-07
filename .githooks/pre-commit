@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Auto-bump patch version in style.css before every commit.
+
+STYLE_CSS="wp-content/themes/generatepress-child-theme/style.css"
+ROOT="$(git rev-parse --show-toplevel)"
+FILE="$ROOT/$STYLE_CSS"
+
+current=$(grep -oE 'Version:[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+' "$FILE" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+
+if [ -z "$current" ]; then
+  echo "pre-commit: could not read version from $STYLE_CSS" >&2
+  exit 1
+fi
+
+IFS='.' read -r major minor patch <<< "$current"
+patch=$((patch + 1))
+new_version="${major}.${minor}.${patch}"
+
+sed -i '' "s/Version:      ${current}/Version:      ${new_version}/" "$FILE"
+
+git add "$FILE"
+
+echo "pre-commit: version ${current} → ${new_version}"
