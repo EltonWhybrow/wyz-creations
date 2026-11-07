@@ -1,0 +1,155 @@
+.xmas-snow-bar {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	overflow: hidden;
+}
+
+.xmas-flake {
+	position: absolute;
+	top: 50%;
+	display: block;
+	color: var(--color-wyzc-brown);
+	opacity: 1;
+	line-height: 0;
+}
+
+.xmas-flake svg {
+	display: block;
+}
+
+/* near logo — calc anchors to logo right edge (logo = 3vw + 56px) */
+.xmas-flake--a {
+	left: calc(4vw + 40px);
+	margin-top: -50px;
+	animation: xmas-orbit-cw 18s linear infinite;
+	animation-delay: 0s;
+}
+.xmas-flake--b {
+	left: calc(4vw + 95px);
+	margin-top: -13px;
+	animation: xmas-drift 16s linear infinite;
+	animation-delay: -3s;
+}
+
+/* tiny B flake near logo */
+.xmas-flake--b6 {
+	left: calc(3vw + 60px);
+	margin-top: 10px;
+	animation: xmas-drift 9s ease-in-out infinite;
+	animation-delay: -3s;
+}
+
+/* extra mini B flakes near logo */
+.xmas-flake--b2 {
+	left: calc(0vw + 85px);
+	margin-top: -10px;
+	/* animation: xmas-drift 13s ease-in-out infinite; */
+	animation-delay: -2s;
+}
+.xmas-flake--b3 {
+	left: calc(2vw + 115px);
+	margin-top: 8px;
+	/* animation: xmas-drift 10s ease-in-out infinite; */
+	animation-delay: -6s;
+}
+
+/* near icons */
+.xmas-flake--b4 {
+	right: calc(3vw + 140px);
+	margin-top: 5px;
+	animation: xmas-drift 11s ease-in-out infinite;
+	animation-delay: -4s;
+}
+.xmas-flake--b5 {
+	right: calc(3vw + 160px);
+	margin-top: -10px;
+	animation: xmas-drift 8s ease-in-out infinite;
+	animation-delay: -1s;
+}
+.xmas-flake--b7 {
+	right: calc(3vw + 90px);
+	margin-top: 6px;
+	/* animation: xmas-drift 12s ease-in-out infinite; */
+	animation-delay: -7s;
+}
+.xmas-flake--c {
+	right: calc(3vw + 110px);
+	margin-top: -40px;
+	animation: xmas-orbit-ccw 18s linear infinite;
+	animation-delay: -5s;
+}
+.xmas-flake--d {
+	right: calc(3vw + 68px);
+	margin-top: -30px;
+	animation: xmas-drift 15s ease-in-out infinite;
+	animation-delay: -6s;
+}
+
+@keyframes xmas-drift {
+	0% {
+		transform: translate(0px, 0px);
+	}
+	25% {
+		transform: translate(5px, -5px);
+	}
+	50% {
+		transform: translate(0px, -8px);
+	}
+	75% {
+		transform: translate(-5px, -5px);
+	}
+	100% {
+		transform: translate(0px, 0px);
+	}
+}
+
+@keyframes xmas-orbit-cw {
+	0% {
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+	25% {
+		transform: translate(3px, -3px) rotate(90deg);
+	}
+	50% {
+		transform: translate(0px, -5px) rotate(180deg);
+	}
+	75% {
+		transform: translate(-3px, -3px) rotate(270deg);
+	}
+	100% {
+		transform: translate(0px, 0px) rotate(360deg);
+	}
+}
+
+@keyframes xmas-orbit-ccw {
+	0% {
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+	25% {
+		transform: translate(-3px, -3px) rotate(-90deg);
+	}
+	50% {
+		transform: translate(0px, -5px) rotate(-180deg);
+	}
+	75% {
+		transform: translate(3px, -3px) rotate(-270deg);
+	}
+	100% {
+		transform: translate(0px, 0px) rotate(-360deg);
+	}
+}
+
+/* hide on small screens where they'd overlap the logo/icons */
+@media (max-width: 1023px) {
+	.xmas-snow-bar {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.xmas-flake {
+		animation: none !important;
+	}
+}

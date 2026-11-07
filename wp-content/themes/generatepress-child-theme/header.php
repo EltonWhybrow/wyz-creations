@@ -94,8 +94,179 @@
 
 
         <!-- Secondary section with logo and navigation -->
-        <div class="flex justify-between items-center mx-[3vw] py-2">
-            <a href="<?php echo home_url('/'); ?>" class="site-branding">
+        <div class="relative flex justify-between items-center mx-[3vw] py-2">
+
+            <!-- Christmas snowflakes — decorative, behind all content -->
+            <div class="xmas-snow-bar" aria-hidden="true" role="presentation">
+
+                <!-- Flake A: 6-arm, V-branch at midpoint — near logo -->
+                <span class="xmas-flake xmas-flake--a">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <g id="xfa">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.8"/>
+                            <line x1="12" y1="7" x2="9.5" y2="5" stroke-width="1.2"/>
+                            <line x1="12" y1="7" x2="14.5" y2="5" stroke-width="1.2"/>
+                        </g>
+                        <use href="#xfa" transform="rotate(60,12,12)"/>
+                        <use href="#xfa" transform="rotate(120,12,12)"/>
+                        <use href="#xfa" transform="rotate(180,12,12)"/>
+                        <use href="#xfa" transform="rotate(240,12,12)"/>
+                        <use href="#xfa" transform="rotate(300,12,12)"/>
+                    </svg>
+                </span>
+
+                <!-- Flake B: 8-arm asterisk, centre dot — near logo -->
+                <span class="xmas-flake xmas-flake--b">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb" transform="rotate(45,12,12)"/>
+                        <use href="#xfb" transform="rotate(90,12,12)"/>
+                        <use href="#xfb" transform="rotate(135,12,12)"/>
+                        <use href="#xfb" transform="rotate(180,12,12)"/>
+                        <use href="#xfb" transform="rotate(225,12,12)"/>
+                        <use href="#xfb" transform="rotate(270,12,12)"/>
+                        <use href="#xfb" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- Flakes B2 + B3: mini 8-arm asterisks — near logo -->
+                <span class="xmas-flake xmas-flake--b2">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb2">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb2" transform="rotate(45,12,12)"/>
+                        <use href="#xfb2" transform="rotate(90,12,12)"/>
+                        <use href="#xfb2" transform="rotate(135,12,12)"/>
+                        <use href="#xfb2" transform="rotate(180,12,12)"/>
+                        <use href="#xfb2" transform="rotate(225,12,12)"/>
+                        <use href="#xfb2" transform="rotate(270,12,12)"/>
+                        <use href="#xfb2" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+                <span class="xmas-flake xmas-flake--b3">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb3">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb3" transform="rotate(45,12,12)"/>
+                        <use href="#xfb3" transform="rotate(90,12,12)"/>
+                        <use href="#xfb3" transform="rotate(135,12,12)"/>
+                        <use href="#xfb3" transform="rotate(180,12,12)"/>
+                        <use href="#xfb3" transform="rotate(225,12,12)"/>
+                        <use href="#xfb3" transform="rotate(270,12,12)"/>
+                        <use href="#xfb3" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- Flake B6: tiny 8-arm asterisk — near logo -->
+                <span class="xmas-flake xmas-flake--b6">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb6">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb6" transform="rotate(45,12,12)"/>
+                        <use href="#xfb6" transform="rotate(90,12,12)"/>
+                        <use href="#xfb6" transform="rotate(135,12,12)"/>
+                        <use href="#xfb6" transform="rotate(180,12,12)"/>
+                        <use href="#xfb6" transform="rotate(225,12,12)"/>
+                        <use href="#xfb6" transform="rotate(270,12,12)"/>
+                        <use href="#xfb6" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- Flake B4: mini 8-arm asterisk — near icons -->
+                <span class="xmas-flake xmas-flake--b4">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb4">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb4" transform="rotate(45,12,12)"/>
+                        <use href="#xfb4" transform="rotate(90,12,12)"/>
+                        <use href="#xfb4" transform="rotate(135,12,12)"/>
+                        <use href="#xfb4" transform="rotate(180,12,12)"/>
+                        <use href="#xfb4" transform="rotate(225,12,12)"/>
+                        <use href="#xfb4" transform="rotate(270,12,12)"/>
+                        <use href="#xfb4" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- Flake B7: tiny 8-arm asterisk — near icons -->
+                <span class="xmas-flake xmas-flake--b7">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb7">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb7" transform="rotate(45,12,12)"/>
+                        <use href="#xfb7" transform="rotate(90,12,12)"/>
+                        <use href="#xfb7" transform="rotate(135,12,12)"/>
+                        <use href="#xfb7" transform="rotate(180,12,12)"/>
+                        <use href="#xfb7" transform="rotate(225,12,12)"/>
+                        <use href="#xfb7" transform="rotate(270,12,12)"/>
+                        <use href="#xfb7" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- Flake B5: tiny 8-arm asterisk — near icons -->
+                <span class="xmas-flake xmas-flake--b5">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfb5">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.6"/>
+                        </g>
+                        <use href="#xfb5" transform="rotate(45,12,12)"/>
+                        <use href="#xfb5" transform="rotate(90,12,12)"/>
+                        <use href="#xfb5" transform="rotate(135,12,12)"/>
+                        <use href="#xfb5" transform="rotate(180,12,12)"/>
+                        <use href="#xfb5" transform="rotate(225,12,12)"/>
+                        <use href="#xfb5" transform="rotate(270,12,12)"/>
+                        <use href="#xfb5" transform="rotate(315,12,12)"/>
+                        <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- Flake C: 6-arm, V-branch (same style as A) — near icons -->
+                <span class="xmas-flake xmas-flake--c">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <g id="xfc">
+                            <line x1="12" y1="2" x2="12" y2="12" stroke-width="1.8"/>
+                            <line x1="12" y1="7" x2="9.5" y2="5" stroke-width="1.2"/>
+                            <line x1="12" y1="7" x2="14.5" y2="5" stroke-width="1.2"/>
+                        </g>
+                        <use href="#xfc" transform="rotate(60,12,12)"/>
+                        <use href="#xfc" transform="rotate(120,12,12)"/>
+                        <use href="#xfc" transform="rotate(180,12,12)"/>
+                        <use href="#xfc" transform="rotate(240,12,12)"/>
+                        <use href="#xfc" transform="rotate(300,12,12)"/>
+                    </svg>
+                </span>
+
+                <!-- Flake D: 6-arm, perpendicular tick at midpoint — near icons -->
+                <span class="xmas-flake xmas-flake--d">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round">
+                        <g id="xfd">
+                            <line x1="12" y1="2"   x2="12" y2="12"  stroke-width="1.6"/>
+                            <line x1="10" y1="5.3" x2="14" y2="5.3" stroke-width="1.1"/>
+                            <line x1="10" y1="8.7" x2="14" y2="8.7" stroke-width="1.1"/>
+                        </g>
+                        <use href="#xfd" transform="rotate(60,12,12)"/>
+                        <use href="#xfd" transform="rotate(120,12,12)"/>
+                        <use href="#xfd" transform="rotate(180,12,12)"/>
+                        <use href="#xfd" transform="rotate(240,12,12)"/>
+                        <use href="#xfd" transform="rotate(300,12,12)"/>
+                    </svg>
+                </span>
+
+            </div>
+
+            <a href="<?php echo home_url('/'); ?>" class="relative z-[1] site-branding">
                 <img
                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/wyz-creations-logo.svg"
                     alt="<?php bloginfo('name'); ?>"
@@ -118,7 +289,7 @@
             ?>
 
 
-            <div class="flex gap-4 md:gap-5 ml-2 min-w-0 align-middle">
+            <div class="relative z-[1] flex gap-4 md:gap-5 ml-2 min-w-0 align-middle">
 
                 <!-- Search bar -->
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="header-search">
