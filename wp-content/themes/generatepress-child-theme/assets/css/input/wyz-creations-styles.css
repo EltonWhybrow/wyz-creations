@@ -57,3 +57,35 @@
 	background-color: white;
 	@apply flex justify-between items-center;
 }
+
+/* Size guide tables – visible scrollbar */
+.size-guide-scroll {
+	scrollbar-width: thin;
+	scrollbar-color: #999 #eee;
+	padding-bottom: 6px;
+}
+.size-guide-scroll::-webkit-scrollbar {
+	-webkit-appearance: none;
+	height: 8px;
+}
+.size-guide-scroll::-webkit-scrollbar-track {
+	background: #eee;
+	border-radius: 4px;
+}
+.size-guide-scroll::-webkit-scrollbar-thumb {
+	background: #999;
+	border-radius: 4px;
+}
+
+/* Swipe hint on phones (covers iPhones, which hide scrollbars) */
+@media (max-width: 600px) {
+	.size-guide-scroll::before {
+		content: "Swipe to see all sizes →";
+		display: block;
+		position: sticky;
+		left: 0;
+		font-size: 0.85em;
+		color: #666;
+		margin-bottom: 0.4em;
+	}
+}
