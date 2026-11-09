@@ -18,7 +18,7 @@ $hero_image_id        = $hero_image['id']  ?? 0;
 $hero_image_mobile_id = $hero_image_mobile['id'] ?? 0;
 ?>
 
-<section class="relative justify-center h-[calc(100vh-160px)] overflow-hidden hero-banner">
+<section class="relative justify-center h-[calc(75vh-160px)] md:h-[calc(100vh-160px)] overflow-hidden hero-banner">
 
     <!-- Hero image: rendered immediately as the LCP element — no spinner,
          no opacity-0. fetchpriority=high tells the browser to fetch it
@@ -61,7 +61,7 @@ $hero_image_mobile_id = $hero_image_mobile['id'] ?? 0;
     <?php if ($video) : ?>
         <div class="z-0 absolute inset-0 w-full">
             <video
-                class="opacity-0 w-full h-[calc(100vh-160px)] object-cover transition-opacity duration-700 hero-banner-video"
+                class="opacity-0 w-full h-[calc(75vh-160px)] md:h-[calc(100vh-160px)] object-cover transition-opacity duration-700 hero-banner-video"
                 autoplay
                 <?php if ($video_loop) echo 'loop'; ?>
                 muted

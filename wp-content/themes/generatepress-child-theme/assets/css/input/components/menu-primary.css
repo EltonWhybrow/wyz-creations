@@ -56,7 +56,7 @@
 
 	/* main mega menu opening */
 	.sub-menu-level-1 {
-		@apply lg:invisible lg:group-hover:visible lg:top-[70px] lg:left-0 lg:z-10 lg:absolute lg:flex lg:flex-row lg:flex-wrap lg:justify-center lg:bg-white lg:mt-2 lg:px-16 lg:py-8 w-full lg:w-full lg:transition-all lg:duration-200;
+		@apply lg:invisible lg:group-hover:visible lg:top-[70px] lg:left-[-3vw] lg:z-10 lg:absolute lg:flex lg:flex-row lg:flex-wrap lg:justify-center lg:bg-white lg:mt-2 lg:px-16 lg:py-8 w-full lg:w-[calc(100%+6vw)] lg:transition-all lg:duration-200;
 	}
 
 	.menu-level-2 {

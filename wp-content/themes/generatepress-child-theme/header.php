@@ -323,12 +323,12 @@
 
                 <!-- Mobile Menu Toggle (Burger Icon) -->
                 <button id="mobile-menu-toggle"
-                    class="lg:hidden flex flex-col justify-center items-center bg-wyz-creations-guest-black-chalk! rounded-lg w-10 h-10 transition-colors"
+                    class="lg:hidden flex flex-col justify-center items-center w-10 h-10 transition-colors"
                     aria-label="Toggle mobile menu"
                     aria-expanded="false">
-                    <span class="bg-white mb-1.5 w-6 h-0.5 transition-all duration-300 burger-line"></span>
-                    <span class="bg-white mb-1.5 w-6 h-0.5 transition-all duration-300 burger-line"></span>
-                    <span class="bg-white w-6 h-0.5 transition-all duration-300 burger-line"></span>
+                    <span class="bg-wyz-creations-guest-black-chalk mb-1.5 w-6 h-[3px] transition-all duration-300 burger-line"></span>
+                    <span class="bg-wyz-creations-guest-black-chalk mb-1.5 w-6 h-[3px] transition-all duration-300 burger-line"></span>
+                    <span class="bg-wyz-creations-guest-black-chalk w-6 h-[3px] transition-all duration-300 burger-line"></span>
                 </button>
             </div>
         </div>
@@ -373,10 +373,10 @@
 
                 <!-- Close button (always visible) -->
                 <button id="mobile-menu-close"
-                    class="flex justify-center items-center bg-wyz-creations-guest-black-chalk p-0! rounded-full w-8 h-8 shrink-0"
+                    class="flex justify-center items-center p-0! w-8 h-8 shrink-0"
                     aria-label="Close mobile menu">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    <svg class="w-7 h-7 text-wyz-creations-guest-black-chalk" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
