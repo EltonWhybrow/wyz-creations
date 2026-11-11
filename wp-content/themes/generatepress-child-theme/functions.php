@@ -251,24 +251,24 @@ function wyzcreations_favs_large_thumbnail() {
 }
 
 /**
- * Add a heart "Add to Favourites" button next to the Add to Cart button
- * on single product pages. Reuses the same .favourite-toggle JS handler.
+ * Add a heart "Add to Wish List" button next to the Add to Cart button
+ * on single product pages. Reuses the same .wishlist-toggle JS handler.
  */
 add_action('woocommerce_after_add_to_cart_button', function () {
     global $product;
     if (!$product) return;
     $product_id  = $product->get_id();
-    $is_fav      = in_array($product_id, wyzcreations_get_stored_favourites());
+    $is_fav      = in_array($product_id, wyzcreations_get_stored_wishlist());
     $heart_class = $is_fav ? 'text-red-500' : 'text-gray-300';
     ?>
     <button type="button"
-            class="favourite-toggle single-product-fav-btn"
+            class="wishlist-toggle single-product-fav-btn"
             data-product-id="<?php echo esc_attr($product_id); ?>"
-            aria-label="<?php echo $is_fav ? 'Remove from favourites' : 'Add to favourites'; ?>">
+            aria-label="<?php echo $is_fav ? 'Remove from Wish List' : 'Add to Wish List'; ?>">
         <span class="heart <?php echo $heart_class; ?>">
             <?php echo wyzcreations_icon('heart'); ?>
         </span>
-        <span class="fav-label"><?php echo $is_fav ? 'Remove from favourites' : 'Add to favourites'; ?></span>
+        <span class="wishlist-label"><?php echo $is_fav ? 'Remove from Wish List' : 'Add to Wish List'; ?></span>
     </button>
     <?php
 });
@@ -277,6 +277,9 @@ add_action('woocommerce_after_add_to_cart_button', function () {
  * Single product page: move price to just before Add to Cart button,
  * and add a "Quantity" label above the quantity input.
  */
+add_filter('woocommerce_breadcrumb_defaults', '__return_empty_array');
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
 add_action('woocommerce_before_add_to_cart_button', 'woocommerce_template_single_price', 5);
 
@@ -842,13 +845,13 @@ class Mega_Menu_Walker extends Walker_Nav_Menu
     }
 }
 
-// favourite code
+// wish list code
 
 // Dedupes stored IDs and drops any that no longer point to a published
 // product (deleted/trashed products), so counts always match what the
-// favourites page can actually display. Uses a single batch query instead
+// wish list page can actually display. Uses a single batch query instead
 // of per-ID get_post_type()/get_post_status() calls.
-function wyzcreations_get_valid_favourites($ids)
+function wyzcreations_get_valid_wishlist($ids)
 {
     if (!is_array($ids) || empty($ids)) return [];
 
@@ -867,89 +870,108 @@ function wyzcreations_get_valid_favourites($ids)
     return array_values(array_intersect($ids, array_map('intval', $valid)));
 }
 
-function wyzcreations_get_stored_favourites()
+function wyzcreations_get_stored_wishlist()
 {
     static $cache = null;
     if ($cache !== null) return $cache;
 
-    $favourites = is_user_logged_in()
-        ? get_user_meta(get_current_user_id(), 'favourites', true)
-        : (isset($_COOKIE['favourites'])
-            ? json_decode(stripslashes($_COOKIE['favourites']), true)
-            : []);
+    if (is_user_logged_in()) {
+        $user_id  = get_current_user_id();
+        $wishlist = get_user_meta($user_id, 'wishlist', true) ?: [];
+        // Migrate from old 'favourites' meta key
+        if (empty($wishlist)) {
+            $old = get_user_meta($user_id, 'favourites', true);
+            if (!empty($old)) {
+                update_user_meta($user_id, 'wishlist', $old);
+                delete_user_meta($user_id, 'favourites');
+                $wishlist = $old;
+            }
+        }
+    } else {
+        if (isset($_COOKIE['wishlist'])) {
+            $wishlist = json_decode(stripslashes($_COOKIE['wishlist']), true);
+        } elseif (isset($_COOKIE['favourites'])) {
+            // Migrate from old cookie
+            $wishlist = json_decode(stripslashes($_COOKIE['favourites']), true);
+            setcookie('wishlist', json_encode($wishlist), time() + (86400 * 14), '/');
+        } else {
+            $wishlist = [];
+        }
+    }
 
-    $cache = wyzcreations_get_valid_favourites($favourites);
+    $cache = wyzcreations_get_valid_wishlist($wishlist);
     return $cache;
 }
 
-function wyzcreations_get_favourites_count()
+function wyzcreations_get_wishlist_count()
 {
-    return count(wyzcreations_get_stored_favourites());
+    return count(wyzcreations_get_stored_wishlist());
 }
 
-function favourites_scripts()
+function wishlist_scripts()
 {
     wp_enqueue_script(
-        'favourites-js',
-        get_stylesheet_directory_uri() . '/assets/js/favourites.js',
+        'wishlist-js',
+        get_stylesheet_directory_uri() . '/assets/js/wishlist.js',
         ['jquery'],
         WYZ_ASSETS_VERSION,
         true
     );
 
-    // Pass data to JS
-    wp_localize_script('favourites-js', 'favourites_ajax', [
-        'ajax_url'   => admin_url('admin-ajax.php'),
-        'favourites' => wyzcreations_get_stored_favourites(),
+    wp_localize_script('wishlist-js', 'wishlist_ajax', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'wishlist' => wyzcreations_get_stored_wishlist(),
     ]);
 }
-add_action('wp_enqueue_scripts', 'favourites_scripts');
+add_action('wp_enqueue_scripts', 'wishlist_scripts');
 
-add_action('wp_ajax_toggle_favourite', 'toggle_favourite');
-add_action('wp_ajax_nopriv_toggle_favourite', 'toggle_favourite');
+add_action('wp_ajax_toggle_wishlist', 'toggle_wishlist');
+add_action('wp_ajax_nopriv_toggle_wishlist', 'toggle_wishlist');
 
-function toggle_favourite()
+function toggle_wishlist()
 {
     $product_id = intval($_POST['product_id']);
 
     // Logged-in users → user meta
     if (is_user_logged_in()) {
-        $user_id = get_current_user_id();
-        $favourites = wyzcreations_get_valid_favourites(get_user_meta($user_id, 'favourites', true));
+        $user_id  = get_current_user_id();
+        $wishlist = wyzcreations_get_valid_wishlist(get_user_meta($user_id, 'wishlist', true) ?: []);
 
-        if (in_array($product_id, $favourites)) {
-            $favourites = array_diff($favourites, [$product_id]);
+        if (in_array($product_id, $wishlist)) {
+            $wishlist = array_diff($wishlist, [$product_id]);
             $status = 'removed';
         } else {
-            $favourites[] = $product_id;
+            $wishlist[] = $product_id;
             $status = 'added';
         }
 
-        $favourites = array_values($favourites);
-        update_user_meta($user_id, 'favourites', $favourites);
+        $wishlist = array_values($wishlist);
+        update_user_meta($user_id, 'wishlist', $wishlist);
     }
     // Guests → cookies
     else {
-        $stored = isset($_COOKIE['favourites'])
-            ? json_decode(stripslashes($_COOKIE['favourites']), true)
-            : [];
-        $favourites = wyzcreations_get_valid_favourites($stored);
+        $stored   = isset($_COOKIE['wishlist'])
+            ? json_decode(stripslashes($_COOKIE['wishlist']), true)
+            : (isset($_COOKIE['favourites'])
+                ? json_decode(stripslashes($_COOKIE['favourites']), true)
+                : []);
+        $wishlist = wyzcreations_get_valid_wishlist($stored);
 
-        if (in_array($product_id, $favourites)) {
-            $favourites = array_diff($favourites, [$product_id]);
+        if (in_array($product_id, $wishlist)) {
+            $wishlist = array_diff($wishlist, [$product_id]);
             $status = 'removed';
         } else {
-            $favourites[] = $product_id;
+            $wishlist[] = $product_id;
             $status = 'added';
         }
 
-        $favourites = array_values($favourites);
-        setcookie('favourites', json_encode($favourites), time() + 86400 * 30, '/');
+        $wishlist = array_values($wishlist);
+        setcookie('wishlist', json_encode($wishlist), time() + (86400 * 14), '/');
     }
 
     wp_send_json([
-        'status' => $status,
-        'favourites' => $favourites
+        'status'   => $status,
+        'wishlist' => $wishlist,
     ]);
 }
 

@@ -12,16 +12,6 @@ get_header();
     <main class="pt-8 site-main" id="main">
 
 
-        <?php
-        // WooCommerce breadcrumbs
-        if (function_exists('woocommerce_breadcrumb')) {
-            woocommerce_breadcrumb([
-                'wrap_before' => '<nav class="mb-[1em] text-[.92em] text-[#767676] CUSTOM-woocommerce-breadcrumb">',
-                'wrap_after'  => '</nav>',
-            ]);
-        }
-        ?>
-
         <!-- Page Title -->
         <h1 class="mb-[1em] CUSTOM-woocommerce-products-header"><?php the_title(); ?></h1>
 

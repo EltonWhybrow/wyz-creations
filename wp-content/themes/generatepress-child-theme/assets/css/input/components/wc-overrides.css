@@ -26,7 +26,7 @@
 		@apply justify-center items-center bg-[var(--color-wyz-creations-guest-blue)]! hover:bg-[var(--color-wyz-guest-white)]! px-10! py-2.5! hover:border-[var(--color-wyz-creations-guest-blue)]! rounded-full! w-fit! h-[60px] font-bold! text-[var(--color-wyz-guest-white)]! text-xl! hover:text-[var(--color-wyz-creations-guest-blue)]! transition-all no-underline! flex! border!;
 	}
 
-	/* Row containing Add to Cart + favourites heart */
+	/* Row containing Add to Cart + wish list heart */
 	.woocommerce-variation-add-to-cart,
 	form.cart {
 		display: flex !important;
@@ -36,7 +36,7 @@
 	}
 }
 
-/* Single product favourites heart button */
+/* Single product wish list heart button */
 .single-product-fav-btn {
 	display: inline-flex;
 	align-items: center;
@@ -54,7 +54,7 @@
 		transition: color 0.2s ease;
 	}
 
-	.fav-label {
+	.wishlist-label {
 		@apply font-medium text-wyz-creations-guest-black-chalk-75 text-sm;
 		line-height: 1;
 	}

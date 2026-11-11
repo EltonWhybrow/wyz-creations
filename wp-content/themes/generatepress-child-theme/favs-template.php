@@ -1,33 +1,29 @@
 <?php
-/* Template Name: Favourites */
+/* Template Name: Wish List */
 get_header();
 
-$favourites = wyzcreations_get_stored_favourites();
+$wishlist = wyzcreations_get_stored_wishlist();
 ?>
 <div class="content-area" id="primary">
     <main class="pt-8 site-main" id="main">
 
 
-        <?php
-        // WooCommerce breadcrumbs
-        if (function_exists('woocommerce_breadcrumb')) {
-            woocommerce_breadcrumb([
-                'wrap_before' => '<nav class="mb-[1em] text-[.92em] text-[#767676] CUSTOM-woocommerce-breadcrumb">',
-                'wrap_after'  => '</nav>',
-            ]);
-        }
-        ?>
-
         <!-- Page Title -->
-        <h1 class="mb-[1em] CUSTOM-woocommerce-products-header">Your <?php the_title(); ?></h1>
+        <h1 class="mb-[1em] CUSTOM-woocommerce-products-header"><?php the_title(); ?></h1>
 
+        <?php if (!is_user_logged_in()): ?>
+            <div class="mb-6">
+                <p class="mb-1.5! text-xs text-wyzc-brown">Your Wish List is only saved on this device and will expire in 14 days. Sign in to save permanently — your account is created at first checkout.</p>
+                <a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" class="wyz-btn btn-xs inline-flex" style="background:var(--color-wyz-creations-guest-black-chalk);color:#fff;border-color:var(--color-wyz-creations-guest-black-chalk);">Sign In</a>
+            </div>
+        <?php endif; ?>
 
         <?php
-        if (!empty($favourites)) {
+        if (!empty($wishlist)) {
 
             $args = [
                 'post_type' => 'product',
-                'post__in'  => $favourites,
+                'post__in'  => $wishlist,
                 'orderby'   => 'post__in'
             ];
 
@@ -55,7 +51,7 @@ $favourites = wyzcreations_get_stored_favourites();
 
             wp_reset_postdata();
         } else {
-            echo '<p class="text-gray-500">No favourites yet.</p>';
+            echo '<p class="text-gray-500">Your Wish List is empty.</p>';
         }
         ?>
     </main>

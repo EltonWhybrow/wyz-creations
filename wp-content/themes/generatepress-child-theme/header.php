@@ -310,10 +310,10 @@
                 </form>
 
                 <!-- Desktop Icons (Wishlist and Cart) -->
-                <a href="<?php echo home_url('/favourites'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
+                <a href="<?php echo home_url('/wishlist'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
                     <?php echo wyzcreations_icon('heart'); ?>
-                    <?php $favourites_count = wyzcreations_get_favourites_count(); ?>
-                    <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
+                    <?php $wishlist_count = wyzcreations_get_wishlist_count(); ?>
+                    <span class="wishlist-count-badge<?php echo $wishlist_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($wishlist_count); ?></span>
                 </a>
                 <a href="<?php echo home_url('/cart'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
                     <?php echo wyzcreations_icon('basket-shopping'); ?>
@@ -415,11 +415,11 @@
                     My Account
                 </a>
                 <div class="flex items-center gap-5 pr-3">
-                    <a href="<?php echo home_url('/favourites'); ?>"
+                    <a href="<?php echo home_url('/wishlist'); ?>"
                         class="flex justify-center items-center text-white! text-2xl no-underline!">
                         <span class="inline-flex relative">
                             <?php echo wyzcreations_icon('heart'); ?>
-                            <span class="favourites-count-badge<?php echo $favourites_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($favourites_count); ?></span>
+                            <span class="wishlist-count-badge<?php echo $wishlist_count > 0 ? '' : ' hidden'; ?>"><?php echo esc_html($wishlist_count); ?></span>
                         </span>
                     </a>
                     <a href="<?php echo home_url('/cart'); ?>"
