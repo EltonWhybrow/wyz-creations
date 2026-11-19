@@ -67,12 +67,11 @@
             alt="<?php bloginfo('name'); ?>"
             class="subscribe-modal-logo linkme-logo">
 
-        <p class="subscribe-modal-eyebrow">Enter to win</p>
-        <div class="subscribe-modal-value">Any 3 Tees</div>
-        <p class="subscribe-modal-subtitle">+ Get <?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
+        <div class="subscribe-modal-value"><?php echo wyzcreations_subscribe_discount(); ?>% off</div>
+        <p class="subscribe-modal-subtitle">your first order</p>
 
         <p class="subscribe-modal-disclaimer">
-            <?php echo wyzcreations_subscribe_discount(); ?>% off for new subscribers only. Be the first to know about new drops
+            <?php echo wyzcreations_subscribe_discount(); ?>% off your first order for new subscribers only. Be the first to know about new drops
             and get exclusive promo codes.
         </p>
 
@@ -91,12 +90,11 @@
             alt="<?php bloginfo('name'); ?>"
             class="subscribe-modal-logo">
 
-        <p class="subscribe-modal-eyebrow">Enter to win</p>
-        <div class="subscribe-modal-value">Any 3 Tees</div>
-        <p class="subscribe-modal-subtitle">+ Get <?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
+        <div class="subscribe-modal-value"><?php echo wyzcreations_subscribe_discount(); ?>% off</div>
+        <p class="subscribe-modal-subtitle">your first order</p>
 
         <p class="subscribe-modal-disclaimer">
-            <?php echo wyzcreations_subscribe_discount(); ?>% off for new subscribers only. Be the first to know about new drops
+            <?php echo wyzcreations_subscribe_discount(); ?>% off your first order for new subscribers only. Be the first to know about new drops
             and get exclusive promo codes.
         </p>
 

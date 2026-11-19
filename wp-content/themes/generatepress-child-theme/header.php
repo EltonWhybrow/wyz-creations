@@ -411,7 +411,7 @@
                 </div>
                 <div class="px-5 py-4">
                     <p class="mb-0.5! font-bold text-white! text-base leading-snug"><?php echo wyzcreations_subscribe_discount(); ?>% off your first order</p>
-                    <p class="mb-3! text-white/70 text-sm leading-snug">Plus a chance to win free T-shirts when you join the Wyz Creations community.</p>
+                    <p class="mb-3! text-white/70 text-sm leading-snug">New subscribers only. Be the first to know about new drops and exclusive promo codes.</p>
                     <a href="<?php echo home_url('/subscribe'); ?>"
                         class="flex justify-center wyz-btn btn-sm"
                         style="background:var(--color-wyz-creations-guest-orange);color:#fff;border-color:var(--color-wyz-creations-guest-orange);">
