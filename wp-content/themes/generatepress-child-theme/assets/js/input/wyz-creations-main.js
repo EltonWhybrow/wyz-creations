@@ -32,15 +32,42 @@ jQuery(function ($) {
     }
   })();
 
-  // Header search: clicking the browser's native "x" clear button on
-  // input[type=search] only empties the field, it doesn't re-run the
-  // search — so the old (empty) results stay on screen. Send the user
-  // back to the shop when that happens.
-  $('input[type="search"][name="s"]').on('search', function () {
-    if (!this.value && window.wyzcreations_ajax && wyzcreations_ajax.shop_url) {
-      window.location.href = wyzcreations_ajax.shop_url;
+  // Search overlay
+  (function () {
+    const trigger  = document.getElementById('search-trigger');
+    const overlay  = document.getElementById('search-overlay');
+    const closeBtn = document.getElementById('search-overlay-close');
+    const input    = document.getElementById('search-overlay-input');
+    if (!trigger || !overlay) return;
+
+    function openOverlay() {
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { if (input) input.focus(); }, 50);
     }
-  });
+
+    function closeOverlay() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      trigger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    trigger.addEventListener('click', openOverlay);
+    if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+    // Click outside inner content closes overlay
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeOverlay();
+    });
+
+    // Escape key closes overlay
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeOverlay();
+    });
+  })();
 
   // menu js
   const overlay = document.getElementById('menu-overlay');

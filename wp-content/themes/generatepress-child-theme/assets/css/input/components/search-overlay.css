@@ -1,0 +1,119 @@
+/* Header search trigger — same grey circle as before */
+.header-search-trigger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	min-width: 36px;
+	height: 36px;
+	border-radius: 9999px;
+	border: none;
+	cursor: pointer;
+	flex-shrink: 0;
+	@apply bg-wyz-creations-guest-light-gray text-wyz-creations-guest-black-chalk;
+	transition: background 0.2s ease;
+}
+.header-search-trigger:hover {
+	@apply bg-gray-200;
+}
+.header-search-trigger svg {
+	width: 1.2em;
+	height: 1.2em;
+}
+
+/* Full-screen overlay */
+.search-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding-top: clamp(80px, 18vh, 160px);
+	background: rgba(0, 0, 0, 0.88);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease;
+}
+.search-overlay.is-open {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.search-overlay-close {
+	position: absolute;
+	top: 20px;
+	right: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.7);
+	line-height: 0;
+	padding: 8px;
+	transition: color 0.2s ease;
+}
+.search-overlay-close:hover {
+	color: #fff;
+}
+
+.search-overlay-inner {
+	width: 100%;
+	max-width: 680px;
+	padding: 0 24px;
+	transform: translateY(16px);
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.search-overlay.is-open .search-overlay-inner {
+	transform: translateY(0);
+}
+
+.search-overlay-label {
+	color: rgba(255, 255, 255, 0.55);
+	font-size: 0.85rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-bottom: 1rem !important;
+}
+
+.search-overlay-input-wrap {
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+	transition: border-color 0.2s ease;
+}
+.search-overlay-input-wrap:focus-within {
+	border-color: #fff;
+}
+
+.search-overlay-input-wrap input[type="search"] {
+	flex: 1;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: #fff;
+	font-size: clamp(1.5rem, 4vw, 2.2rem);
+	font-weight: 300;
+	padding: 12px 0;
+	caret-color: #fff;
+}
+.search-overlay-input-wrap input[type="search"]::placeholder {
+	color: rgba(255, 255, 255, 0.3);
+}
+.search-overlay-input-wrap input[type="search"]::-webkit-search-cancel-button {
+	filter: invert(1);
+}
+
+.search-overlay-submit {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.6);
+	padding: 8px;
+	line-height: 0;
+	flex-shrink: 0;
+	font-size: 1.5rem;
+	transition: color 0.2s ease;
+}
+.search-overlay-submit:hover {
+	color: #fff;
+}

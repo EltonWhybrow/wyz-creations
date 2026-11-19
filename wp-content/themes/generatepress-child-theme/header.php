@@ -291,23 +291,10 @@
 
             <div class="relative z-[1] flex gap-4 md:gap-5 ml-2 min-w-0 align-middle">
 
-                <!-- Search bar -->
-                <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="header-search">
-                    <div class="header-search-wrap">
-                        <label for="header-search-input" class="header-search-icon" aria-label="Search">
-                            <?php echo wyzcreations_icon('magnifying-glass'); ?>
-                        </label>
-                        <input
-                            type="search"
-                            name="s"
-                            id="header-search-input"
-                            placeholder="Search..."
-                            class="header-search-input"
-                            style="font-size: 16px;"
-                            value="<?php echo get_search_query(); ?>">
-                        <input type="hidden" name="post_type" value="product">
-                    </div>
-                </form>
+                <!-- Search trigger -->
+                <button type="button" id="search-trigger" class="header-search-trigger" aria-label="Open search" aria-expanded="false" aria-controls="search-overlay">
+                    <?php echo wyzcreations_icon('magnifying-glass'); ?>
+                </button>
 
                 <!-- Desktop Icons (Wishlist and Cart) -->
                 <a href="<?php echo home_url('/wishlist'); ?>" class="relative flex items-center text-wyz-creations-guest-black-chalk! menu-link-icons">
@@ -334,6 +321,31 @@
         </div>
 
     </header>
+
+    <!-- Search overlay -->
+    <div id="search-overlay" class="search-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Search">
+        <button class="search-overlay-close" id="search-overlay-close" aria-label="Close search">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="search-overlay-inner">
+            <p class="search-overlay-label">What are you looking for?</p>
+            <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="search-overlay-form">
+                <input type="hidden" name="post_type" value="product">
+                <div class="search-overlay-input-wrap">
+                    <input
+                        type="search"
+                        name="s"
+                        id="search-overlay-input"
+                        placeholder="Search products..."
+                        autocomplete="off"
+                        value="<?php echo esc_attr(get_search_query()); ?>">
+                    <button type="submit" class="search-overlay-submit" aria-label="Search">
+                        <?php echo wyzcreations_icon('magnifying-glass'); ?>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu-overlay"

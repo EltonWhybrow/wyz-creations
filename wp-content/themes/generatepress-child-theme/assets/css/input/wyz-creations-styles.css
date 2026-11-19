@@ -32,6 +32,7 @@
 @import "./components/rich-text.css";
 @import "./components/trust-badges.css";
 @import "./components/christmas-snowflakes.css";
+@import "./components/search-overlay.css";
 
 .chart-headings {
 	margin-top: 3rem;
