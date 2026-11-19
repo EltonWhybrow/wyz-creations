@@ -177,3 +177,13 @@
 		}
 	}
 }
+
+/* Hide header on scroll-down, reveal on scroll-up — mobile only */
+@media (max-width: 1023px) {
+	#masthead {
+		transition: transform 0.3s ease;
+	}
+	#masthead.header-hidden {
+		transform: translateY(-100%);
+	}
+}

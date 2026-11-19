@@ -617,3 +617,24 @@ jQuery(function ($) {
   tick();
   setInterval(tick, 1000);
 })();
+
+// Hide header on scroll-down, reveal on scroll-up — mobile only
+(function () {
+  if (window.innerWidth >= 1024) return;
+
+  const header = document.getElementById('masthead');
+  if (!header) return;
+
+  let lastY = window.scrollY;
+
+  window.addEventListener('scroll', function () {
+    if (window.innerWidth >= 1024) return;
+    const currentY = window.scrollY;
+    if (currentY > lastY && currentY > header.offsetHeight) {
+      header.classList.add('header-hidden');
+    } else {
+      header.classList.remove('header-hidden');
+    }
+    lastY = currentY;
+  }, { passive: true });
+})();
