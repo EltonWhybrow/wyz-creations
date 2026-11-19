@@ -8,7 +8,4 @@
 		line-height: 1;
 		@apply text-wyz-creations-guest-orange;
 	}
-	p {
-		@apply my-0! leading-7!;
-	}
 }
